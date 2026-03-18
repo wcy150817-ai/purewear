@@ -45,6 +45,15 @@ const TOOLS_DATA = [
         tag: 'New',
         featured: true,
         url: '/tools/message-template-generator/'
+    },
+    {
+        id: 'cleaning-checklist',
+        title: 'Cleaning Checklist Generator',
+        icon: '☑️',
+        desc: 'Create and print professional cleaning checklists for every job.',
+        tag: 'Popular',
+        featured: true,
+        url: '/tools/cleaning-checklist/'
     }
 ];
 

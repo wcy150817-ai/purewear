@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleaning Checklist Generator | PureWear Space</title>
+    <meta name="description" content="Generate and print custom cleaning checklists for housekeepers and maids.">
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <!-- 打印专用样式：打印时隐藏不需要的元素 -->
+    <style>
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printArea, #printArea * {
+                visibility: visible;
+            }
+            #printArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                padding: 20px;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .checklist-item {
+                border-bottom: 1px solid #eee !important;
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* 清单样式 */
+        .checklist-container {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .checklist-header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        .checklist-room {
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--primary);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--text-sub);
+            margin-right: 15px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 (打印时隐藏) -->
+    <nav class="navbar no-print">
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../../resources.html" class="nav-link">Resources</a>
+            <a href="../../about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <main>
+            <div class="card no-print">
+                <div class="form-header">
+                    <h1>Cleaning Checklist</h1>
+                    <p>Select areas to clean, then generate a printable list.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <!-- 房间选择按钮 -->
+                    <button onclick="toggleRoom('kitchen')" id="btn-kitchen" class="room-btn active">🍳 Kitchen</button>
+                    <button onclick="toggleRoom('bathroom')" id="btn-bathroom" class="room-btn active">🚿 Bathroom</button>
+                    <button onclick="toggleRoom('bedroom')" id="btn-bedroom" class="room-btn active">🛏️ Bedroom</button>
+                    <button onclick="toggleRoom('living')" id="btn-living" class="room-btn active">🛋️ Living Room</button>
+                    <button onclick="toggleRoom('office')" id="btn-office" class="room-btn">💼 Office</button>
+                    <button onclick="toggleRoom('general')" id="btn-general" class="room-btn active">✨ General</button>
+                </div>
+                <style>
+                    .room-btn {
+                        padding: 15px;
+                        border: 2px solid var(--border-color);
+                        background: #fff;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        transition: all 0.2s;
+                    }
+                    .room-btn.active {
+                        border-color: var(--primary);
+                        background: #fff0f0;
+                        color: var(--primary);
+                    }
+                </style>
+
+                <div class="ad-container ad-in-content no-print">Advertisement</div>
+
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button onclick="generateList()" class="btn-submit" style="flex: 2;">GENERATE LIST</button>
+                    <button onclick="window.print()" class="btn-submit" style="flex: 1; background: var(--text-main);">PRINT</button>
+                </div>
+            </div>
+
+            <!-- 打印区域 (这里的内容会被打印) -->
+            <div id="printArea">
+                <!-- 默认隐藏，生成后显示 -->
+                <div id="checklistOutput" style="display:none;"></div>
+            </div>
+
+        </main>
+
+        <!-- 侧边栏 (打印时隐藏) -->
+        <aside class="sidebar no-print">
+            <div class="info-card">
+                <h3>💡 Why Checklists?</h3>
+                <p>Using a checklist ensures consistent quality and helps clients see exactly what was done.</p>
+            </div>
+            
+            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+        </aside>
+    </div>
+
+    <script>
+        // 定义每个房间的任务列表
+        const tasks = {
+            kitchen: [
+                "Clean and sanitize countertops",
+                "Clean inside and outside of microwave",
+                "Wipe down appliances (fridge, oven, dishwasher)",
+                "Clean sink and faucet",
+                "Mop floor",
+                "Take out trash and replace bag"
+            ],
+            bathroom: [
+                "Clean and sanitize toilet (bowl, seat, tank)",
+                "Clean shower/tub and tiles",
+                "Clean mirrors",
+                "Wipe countertops and sink",
+                "Mop floor",
+                "Restock toilet paper and towels"
+            ],
+            bedroom: [
+                "Change bed linens",
+                "Dust all surfaces (nightstands, dressers)",
+                "Vacuum floor/carpet",
+                "Clean mirrors",
+                "Empty trash bins"
+            ],
+            living: [
+                "Dust all furniture and surfaces",
+                "Vacuum carpet/mop floor",
+                "Clean glass tables",
+                "Fluff pillows and fold blankets",
+                "Wipe down electronics (TV screen)"
+            ],
+            office: [
+                "Dust desk and monitors",
+                "Organize papers",
+                "Vacuum floor",
+                "Empty trash"
+            ],
+            general: [
+                "Dust baseboards",
+                "Dust window blinds",
+                "Clean interior windows",
+                "Check for cobwebs",
+                "Turn off lights and lock doors"
+            ]
+        };
+
+        // 记录当前选中的房间
+        let activeRooms = ['kitchen', 'bathroom', 'bedroom', 'living', 'general'];
+
+        function toggleRoom(room) {
+            const btn = document.getElementById('btn-' + room);
+            const index = activeRooms.indexOf(room);
+
+            if (index > -1) {
+                activeRooms.splice(index, 1); // 移除
+                btn.classList.remove('active');
+            } else {
+                activeRooms.push(room); // 添加
+                btn.classList.add('active');
+            }
+        }
+
+        function generateList() {
+            if(activeRooms.length === 0) {
+                alert("Please select at least one room.");
+                return;
+            }
+
+            let html = `
+                <div class="checklist-container">
+                    <div class="checklist-header">
+                        <h1 style="margin:0; font-size: 24px;">CLEANING CHECKLIST</h1>
+                        <p style="margin:5px 0 0; color: #666;">Date: ___________ &nbsp;&nbsp; Staff: ___________</p>
+                    </div>
+            `;
+
+            activeRooms.forEach(roomKey => {
+                const roomName = {
+                    kitchen: 'Kitchen', 
+                    bathroom: 'Bathroom', 
+                    bedroom: 'Bedroom', 
+                    living: 'Living Room', 
+                    office: 'Office', 
+                    general: 'General Areas'
+                }[roomKey];
+
+                html += `<div class="checklist-room">${roomName}</div>`;
+                
+                tasks[roomKey].forEach(task => {
+                    html += `
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <div>${task}</div>
+                        </div>
+                    `;
+                });
+            });
+
+            html += `
+                <div style="margin-top: 40px; border-top: 2px solid #eee; padding-top: 20px; text-align: center; color: #999; font-size: 12px;">
+                    Generated by PureWear Space
+                </div>
+            </div>`;
+
+            document.getElementById('checklistOutput').innerHTML = html;
+            document.getElementById('checklistOutput').style.display = 'block';
+            
+            // 滚动到清单位置
+            document.getElementById('checklistOutput').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
