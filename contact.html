@@ -37,23 +37,34 @@
         <p>Have a question or suggestion? We'd love to hear from you.</p>
     </div>
 
-    <!-- 主内容区 -->
-    <div class="main-content">
-        <div class="contact-form">
-            <form>
+    <!-- 主内容区：居中布局 -->
+    <div class="main-content" style="max-width: 800px;">
+        
+        <!-- 核心表单卡片 -->
+        <div class="contact-form" style="margin-bottom: 40px;">
+            
+            <!-- 重要：action 填你的邮箱，method 必须是 POST -->
+            <form action="https://formsubmit.co/zansiok1127@gmail.com" method="POST">
+                
+                <!-- 隐藏字段：防垃圾邮件 -->
+                <input type="text" name="_honey" style="display:none">
+                <!-- 隐藏字段：提交成功后跳转回首页 -->
+                <input type="hidden" name="_next" value="https://purewearspace.com/index.html">
+
                 <div class="form-group">
                     <label class="form-label">Your Name</label>
-                    <input type="text" class="form-input" placeholder="John Doe">
+                    <!-- 使用了 .form-input 类，样式美观 -->
+                    <input type="text" name="name" class="form-input" placeholder="John Doe" required>
                 </div>
                 
                 <div class="form-group">
                     <label class="form-label">Email Address</label>
-                    <input type="email" class="form-input" placeholder="john@example.com">
+                    <input type="email" name="email" class="form-input" placeholder="john@example.com" required>
                 </div>
                 
                 <div class="form-group">
                     <label class="form-label">Subject</label>
-                    <select class="form-input">
+                    <select name="subject" class="form-input">
                         <option>General Question</option>
                         <option>Tool Suggestion</option>
                         <option>Bug Report</option>
@@ -64,17 +75,19 @@
                 
                 <div class="form-group">
                     <label class="form-label">Message</label>
-                    <textarea class="form-input form-textarea" placeholder="Write your message here..."></textarea>
+                    <!-- 使用了 .form-textarea 类 -->
+                    <textarea name="message" class="form-input form-textarea" placeholder="Write your message here..." required></textarea>
                 </div>
                 
+                <!-- 使用了 .btn-submit 类，带渐变色和悬停效果 -->
                 <button type="submit" class="btn-submit">Send Message</button>
             </form>
         </div>
 
         <!-- 广告位 -->
-        <div class="ad-container ad-rectangle" style="max-width: 600px; margin: 40px auto;">Advertisement</div>
+        <div class="ad-container ad-rectangle">Advertisement</div>
 
-        <!-- Contact Info -->
+        <!-- 底部联系信息卡片 -->
         <div class="card-grid" style="margin-top: 40px;">
             <div class="card about-card">
                 <div class="card-icon">📧</div>
@@ -94,6 +107,7 @@
                 <div class="card-desc">We serve users worldwide.</div>
             </div>
         </div>
+
     </div>
 
     <!-- 页脚 -->
@@ -108,7 +122,6 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="tools/index.html">Tools</a></li>
-                    <li><a href="resources.html">Resources</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
             </div>
