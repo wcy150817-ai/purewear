@@ -54,7 +54,17 @@ const TOOLS_DATA = [
         tag: 'Popular',
         featured: true,
         url: '/tools/cleaning-checklist/'
+    },
+    {
+        id: 'service-agreement',
+        title: 'Service Agreement Generator',
+        icon: '📄',
+        desc: 'Create simple cleaning contracts to protect you and your client.',
+        tag: 'Legal',
+        featured: true,
+        url: '/tools/service-agreement/'
     }
+
 ];
 
 if (typeof window !== 'undefined') {
