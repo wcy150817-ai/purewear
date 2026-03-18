@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hourly Pay Calculator | PureWear Space</title>
+    <meta name="description" content="Calculate wages and overtime pay. Free tool for hourly workers and contractors.">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../../resources.html" class="nav-link">Resources</a>
+            <a href="../../about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <main>
+            <div class="card">
+                <div class="form-header">
+                    <h1>Hourly Pay Calculator</h1>
+                    <p>Calculate your wages, overtime, and total earnings.</p>
+                </div>
+
+                <form id="payForm">
+                    <div class="input-group">
+                        <label>💰 Hourly Rate ($)</label>
+                        <input type="number" id="hourlyRate" class="form-control" placeholder="e.g. 15.00" step="0.01" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>🕐 Regular Hours Worked</label>
+                        <input type="number" id="regularHours" class="form-control" placeholder="e.g. 40" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>⏰ Overtime Hours Worked</label>
+                        <input type="number" id="overtimeHours" class="form-control" placeholder="e.g. 5" value="0">
+                    </div>
+
+                    <div class="input-group">
+                        <label>⚡ Overtime Multiplier</label>
+                        <select id="overtimeMultiplier" class="form-control">
+                            <option value="1.5">1.5x (Standard Time & a Half)</option>
+                            <option value="2">2.0x (Double Time)</option>
+                            <option value="1">1.0x (No Extra Pay)</option>
+                        </select>
+                    </div>
+
+                    <!-- 广告位 -->
+                    <div class="ad-container ad-in-content">Advertisement</div>
+
+                    <button type="button" class="btn-submit" onclick="calculatePay()">CALCULATE PAY</button>
+                </form>
+
+                <!-- 结果 -->
+                <div id="resultBox" class="result-box">
+                    <div style="font-size: 14px; color: var(--accent); text-transform: uppercase; font-weight: 800; margin-bottom: 15px;">Pay Breakdown</div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: center; margin-bottom: 20px;">
+                        <div>
+                            <div style="font-size: 24px; font-weight: 700; color: var(--text-main);">$<span id="regularPay">0.00</span></div>
+                            <div style="font-size: 12px; color: var(--text-sub);">Regular Pay</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 24px; font-weight: 700; color: var(--primary);">$<span id="overtimePay">0.00</span></div>
+                            <div style="font-size: 12px; color: var(--text-sub);">Overtime Pay</div>
+                        </div>
+                    </div>
+
+                    <div style="border-top: 2px dashed var(--border-color); padding-top: 15px; margin-top: 10px;">
+                        <div style="font-size: 14px; color: var(--text-sub);">Total Earnings</div>
+                        <div class="price-value" style="font-size: 48px;" id="totalPay">$0.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO 内容 -->
+            <div class="card" style="margin-top: 20px; padding: 20px;">
+                <h2 style="font-size: 18px; margin-bottom: 10px;">How Overtime Works</h2>
+                <p style="color: var(--text-sub); font-size: 14px; line-height: 1.6;">
+                    In many places, overtime pay is required by law for hours worked over 40 per week. The standard overtime rate is <strong>1.5 times</strong> (time and a half) your regular hourly rate.
+                </p>
+                <p style="color: var(--text-sub); font-size: 14px; line-height: 1.6; margin-top: 10px;">
+                    <strong>Example:</strong> If your rate is $20/hour, your overtime rate would be $30/hour ($20 x 1.5).
+                </p>
+            </div>
+        </main>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="info-card">
+                <h3>💡 Tip</h3>
+                <p>Don't forget to track your tips! Tips are income, but usually calculated separately for tax purposes.</p>
+            </div>
+            
+            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+        </aside>
+    </div>
+
+    <script>
+        function calculatePay() {
+            // 1. 获取输入值
+            const rate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+            const regHours = parseFloat(document.getElementById('regularHours').value) || 0;
+            const otHours = parseFloat(document.getElementById('overtimeHours').value) || 0;
+            const multiplier = parseFloat(document.getElementById('overtimeMultiplier').value);
+
+            if (rate <= 0) {
+                alert("Please enter an hourly rate.");
+                return;
+            }
+
+            // 2. 计算工资
+            const regularPay = rate * regHours;
+            const overtimeRate = rate * multiplier;
+            const overtimePay = overtimeRate * otHours;
+            const total = regularPay + overtimePay;
+
+            // 3. 显示结果
+            document.getElementById('regularPay').innerText = regularPay.toFixed(2);
+            document.getElementById('overtimePay').innerText = overtimePay.toFixed(2);
+            document.getElementById('totalPay').innerText = '$' + total.toFixed(2);
+            
+            document.getElementById('resultBox').style.display = 'block';
+            document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
