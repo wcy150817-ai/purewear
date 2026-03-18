@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator | PureWear Space</title>
+    <meta name="description" content="Split tips among team members easily. Calculate fair tip distribution.">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../../resources.html" class="nav-link">Resources</a>
+            <a href="../../about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <main>
+            <div class="card">
+                <div class="form-header">
+                    <h1>Tip Calculator</h1>
+                    <p>Split tips fairly among your team members.</p>
+                </div>
+
+                <form id="tipForm">
+                    <div class="input-group">
+                        <label>💵 Total Tip Amount ($)</label>
+                        <input type="number" id="totalTip" class="form-control" placeholder="e.g. 150" step="0.01" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>👥 Number of People</label>
+                        <input type="number" id="numPeople" class="form-control" placeholder="e.g. 3" required>
+                    </div>
+
+                    <!-- 广告位 -->
+                    <div class="ad-container ad-in-content">Advertisement</div>
+
+                    <button type="button" class="btn-submit" onclick="calculateTip()">SPLIT TIPS</button>
+                </form>
+
+                <!-- 结果 -->
+                <div id="resultBox" class="result-box">
+                    <div style="font-size: 14px; color: var(--accent); text-transform: uppercase; font-weight: 800; margin-bottom: 10px;">Each Person Gets</div>
+                    <div class="price-value" id="tipPerPerson">$0.00</div>
+                </div>
+            </div>
+
+            <!-- SEO 内容 -->
+            <div class="card" style="margin-top: 20px; padding: 20px;">
+                <h2 style="font-size: 18px; margin-bottom: 10px;">How to Split Tips Fairly</h2>
+                <p style="color: var(--text-sub); font-size: 14px; line-height: 1.6;">
+                    The easiest way to split tips is equally among all team members who worked the shift. This calculator helps you divide the total tip amount instantly.
+                </p>
+                <p style="color: var(--text-sub); font-size: 14px; line-height: 1.6; margin-top: 10px;">
+                    <strong>Note:</strong> Some teams prefer to split based on hours worked. For now, this calculator supports equal splitting.
+                </p>
+            </div>
+        </main>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="info-card">
+                <h3>💡 Pro Tip</h3>
+                <p>Make sure to keep a record of tip distributions for tax purposes. Tips are considered income by the IRS.</p>
+            </div>
+            
+            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+        </aside>
+    </div>
+
+    <script>
+        function calculateTip() {
+            // 1. 获取值
+            const totalTip = parseFloat(document.getElementById('totalTip').value) || 0;
+            const numPeople = parseInt(document.getElementById('numPeople').value) || 0;
+
+            // 2. 验证
+            if (totalTip <= 0 || numPeople <= 0) {
+                alert("Please enter valid numbers for both fields.");
+                return;
+            }
+
+            // 3. 计算
+            const perPerson = totalTip / numPeople;
+
+            // 4. 显示结果
+            document.getElementById('tipPerPerson').innerText = '$' + perPerson.toFixed(2);
+            document.getElementById('resultBox').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

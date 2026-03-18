@@ -27,6 +27,15 @@ const TOOLS_DATA = [
         tag: 'Utility',
         featured: true,
         url: '/tools/dilution-calculator/' // 前面加了斜杠
+    },
+    {
+        id: 'tip-calculator',
+        title: 'Tip Calculator',
+        icon: '💵',
+        desc: 'Split tips among team members easily and fairly.',
+        tag: 'New',
+        featured: true,
+        url: '/tools/tip-calculator/'
     }
 ];
 
