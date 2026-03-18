@@ -36,6 +36,15 @@ const TOOLS_DATA = [
         tag: 'New',
         featured: true,
         url: '/tools/tip-calculator/'
+    } ,
+    {
+        id: 'message-template-generator',
+        title: 'Message Template Generator',
+        icon: '📝',
+        desc: 'Generate professional SMS templates for clients instantly.',
+        tag: 'New',
+        featured: true,
+        url: '/tools/message-template-generator/'
     }
 ];
 

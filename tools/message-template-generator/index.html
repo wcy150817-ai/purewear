@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Template Generator | PureWear Space</title>
+    <meta name="description" content="Generate professional SMS and email templates for cleaning business.">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../../resources.html" class="nav-link">Resources</a>
+            <a href="../../about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <main>
+            <div class="card">
+                <div class="form-header">
+                    <h1>Message Template Generator</h1>
+                    <p>Create professional replies for your clients in seconds.</p>
+                </div>
+
+                <form id="templateForm">
+                    <!-- 1. 选择场景 -->
+                    <div class="input-group">
+                        <label>📋 Select Scenario</label>
+                        <select id="scenario" class="form-control" onchange="updateInputFields()">
+                            <option value="confirm">Booking Confirmation</option>
+                            <option value="late">Running Late</option>
+                            <option value="cancel">Cancellation Notice</option>
+                            <option value="payment">Payment Reminder</option>
+                            <option value="thank">Thank You / Follow-up</option>
+                            <option value="holiday">Holiday Schedule</option>
+                        </select>
+                    </div>
+
+                    <!-- 2. 动态输入区域 -->
+                    <div id="dynamicInputs">
+                        <!-- 这里会通过JS动态变化 -->
+                        <div class="input-group">
+                            <label>👤 Client Name</label>
+                            <input type="text" id="clientName" class="form-control" placeholder="e.g. Mrs. Smith">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>📅 Date / Time</label>
+                            <input type="text" id="dateTime" class="form-control" placeholder="e.g. Tomorrow at 2 PM">
+                        </div>
+                    </div>
+
+                    <!-- 广告位 -->
+                    <div class="ad-container ad-in-content">Advertisement</div>
+
+                    <button type="button" class="btn-submit" onclick="generateTemplate()">GENERATE MESSAGE</button>
+                </form>
+
+                <!-- 结果区域 -->
+                <div id="resultBox" class="result-box" style="display:none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <div style="font-size: 14px; font-weight: 800; color: var(--accent); text-transform: uppercase;">Generated Message</div>
+                        <button onclick="copyText()" style="background: var(--accent); color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600;">Copy</button>
+                    </div>
+                    <div id="outputText" style="background: #f9f9f9; padding: 15px; border-radius: 8px; font-size: 15px; line-height: 1.6; color: var(--text-main); border: 1px solid var(--border-color);">
+                        <!-- 生成的内容在这里 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO 区域 -->
+            <div class="card" style="margin-top: 20px; padding: 20px;">
+                <h2 style="font-size: 18px; margin-bottom: 10px;">Why Professional Communication Matters</h2>
+                <p style="color: var(--text-sub); font-size: 14px; line-height: 1.6;">
+                    Clear communication builds trust. Using professional templates reduces misunderstandings and makes your cleaning business look more reliable.
+                </p>
+            </div>
+        </main>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="info-card">
+                <h3>💡 Tip</h3>
+                <p>Always include your name or business name in the message so clients know who is texting.</p>
+            </div>
+            
+            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+        </aside>
+    </div>
+
+    <script>
+        // 根据场景动态改变输入框提示
+        function updateInputFields() {
+            const scenario = document.getElementById('scenario').value;
+            const container = document.getElementById('dynamicInputs');
+            
+            let html = '';
+
+            // 通用的姓名输入
+            html += `
+                <div class="input-group">
+                    <label>👤 Client Name</label>
+                    <input type="text" id="clientName" class="form-control" placeholder="e.g. Mrs. Smith">
+                </div>
+            `;
+
+            // 根据不同场景显示不同的额外输入框
+            if (scenario === 'confirm' || scenario === 'thank') {
+                html += `
+                    <div class="input-group">
+                        <label>📅 Date / Time</label>
+                        <input type="text" id="dateTime" class="form-control" placeholder="e.g. Tomorrow at 2 PM">
+                    </div>
+                `;
+            } else if (scenario === 'late') {
+                html += `
+                    <div class="input-group">
+                        <label>⏱️ Minutes Late</label>
+                        <input type="text" id="minutesLate" class="form-control" placeholder="e.g. 15">
+                    </div>
+                `;
+            } else if (scenario === 'cancel') {
+                 html += `
+                    <div class="input-group">
+                        <label>📅 Date of Service</label>
+                        <input type="text" id="dateTime" class="form-control" placeholder="e.g. Today">
+                    </div>
+                `;
+            } else if (scenario === 'payment') {
+                 html += `
+                    <div class="input-group">
+                        <label>💰 Amount (Optional)</label>
+                        <input type="text" id="amount" class="form-control" placeholder="e.g. $150">
+                    </div>
+                `;
+            } else if (scenario === 'holiday') {
+                 html += `
+                    <div class="input-group">
+                        <label>📅 Return Date</label>
+                        <input type="text" id="returnDate" class="form-control" placeholder="e.g. Next Monday">
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        // 生成模板逻辑
+        function generateTemplate() {
+            const scenario = document.getElementById('scenario').value;
+            const nameInput = document.getElementById('clientName');
+            
+            // 获取姓名，如果没填默认用 "Client"
+            const name = nameInput ? nameInput.value || 'Client' : 'Client';
+            
+            let message = '';
+
+            if (scenario === 'confirm') {
+                const date = document.getElementById('dateTime').value || 'the scheduled time';
+                message = `Hi ${name}, this is to confirm our cleaning appointment on ${date}. Please let me know if you have any special requests. Thank you!`;
+            } 
+            else if (scenario === 'late') {
+                const mins = document.getElementById('minutesLate').value || 'a few';
+                message = `Hi ${name}, I am running about ${mins} minutes late due to traffic/previous job. I apologize for the delay and will be there shortly. Thank you for your patience.`;
+            } 
+            else if (scenario === 'cancel') {
+                const date = document.getElementById('dateTime').value || 'today';
+                message = `Hi ${name}, I am very sorry but I need to reschedule our cleaning for ${date} due to an emergency. Are you available [Insert New Time]? I apologize for any inconvenience.`;
+            } 
+            else if (scenario === 'payment') {
+                const amount = document.getElementById('amount').value;
+                const amountText = amount ? ` of $${amount}` : '';
+                message = `Hi ${name}, this is a friendly reminder regarding the invoice for our recent cleaning service${amountText}. Please let me know when payment has been sent. Thank you!`;
+            } 
+            else if (scenario === 'thank') {
+                const date = document.getElementById('dateTime').value || 'today';
+                message = `Hi ${name}, thank you for trusting us with your cleaning needs ${date}. We hope you are enjoying your fresh space! Let us know if you need anything else.`;
+            } 
+            else if (scenario === 'holiday') {
+                const returnDate = document.getElementById('returnDate').value || 'next week';
+                message = `Hi ${name}, please note that I will be away for the holidays starting tomorrow. I will be back and available for bookings on ${returnDate}. Happy Holidays!`;
+            }
+
+            // 显示结果
+            document.getElementById('outputText').innerText = message;
+            document.getElementById('resultBox').style.display = 'block';
+        }
+
+        // 复制功能
+        function copyText() {
+            const text = document.getElementById('outputText').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
