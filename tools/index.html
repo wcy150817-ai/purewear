@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Tools | PureWear Space</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <div class="nav-menu">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="index.html" class="nav-link active">Tools</a>
+            <a href="../resources.html" class="nav-link">Resources</a>
+            <a href="../about.html" class="nav-link">About</a>
+            <a href="../contact.html" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- 页面标题 -->
+    <div class="page-header">
+        <h1>All Tools</h1>
+        <p>Browse all free tools for cleaning professionals.</p>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <!-- 卡片容器：自动显示所有工具 -->
+        <div id="all-tools-container" class="card-grid">
+            <!-- 这里不用写代码，脚本会自动填入 -->
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>© 2024 PureWear Space.</p>
+        </div>
+    </footer>
+
+    <!-- 关键：引入脚本文件 (注意路径多了 ../) -->
+    <script src="../js/tools-data.js"></script>
+    <script src="../js/render-tools.js"></script>
+</body>
+</html>

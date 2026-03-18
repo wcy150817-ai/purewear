@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilution Calculator | PureWear Space</title>
+    <meta name="description" content="Calculate cleaning solution ratios. Mix the perfect dilution for chemicals.">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../../resources.html" class="nav-link">Resources</a>
+            <a href="../../about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <main>
+            <div class="card">
+                <div class="form-header">
+                    <h1>Dilution Calculator</h1>
+                    <p>Mix chemicals correctly. Save money and stay safe.</p>
+                </div>
+
+                <form id="dilutionForm">
+                    <div class="input-group">
+                        <label>🧴 Total Amount Needed (oz)</label>
+                        <input type="number" id="totalOz" class="form-control" placeholder="e.g. 32 (for a spray bottle)" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>🔢 Dilution Ratio (1 to X)</label>
+                        <input type="number" id="ratio" class="form-control" placeholder="e.g. 10 (for 1:10 ratio)" required>
+                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 5px;">
+                            Enter the 'X' number. (e.g. for 1:10, enter 10)
+                        </div>
+                    </div>
+
+                    <div class="ad-container ad-in-content">Advertisement</div>
+
+                    <button type="button" class="btn-submit" onclick="calculateDilution()">CALCULATE MIX</button>
+                </form>
+
+                <!-- 结果 -->
+                <div id="resultBox" class="result-box">
+                    <div style="font-size: 14px; color: var(--accent); text-transform: uppercase; font-weight: 800; margin-bottom: 15px;">Mixing Instructions</div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: center;">
+                        <div>
+                            <div style="font-size: 32px; font-weight: 800; color: var(--primary);" id="productOz">0</div>
+                            <div style="font-size: 13px; color: var(--text-sub);">Product (oz)</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 32px; font-weight: 800; color: var(--accent);" id="waterOz">0</div>
+                            <div style="font-size: 13px; color: var(--text-sub);">Water (oz)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO 内容 -->
+            <div class="card" style="margin-top: 20px; padding: 20px;">
+                <h2 style="font-size: 18px; margin-bottom: 10px;">How to Use Dilution Ratios</h2>
+                <p style="color: var(--text-sub); font-size: 14px; line-height: 1.6;">
+                    Most cleaning chemicals use ratios like <strong>1:10</strong> or <strong>1:4</strong>. This means <strong>1 part chemical</strong> mixed with <strong>X parts water</strong>.
+                </p>
+                <p style="color: var(--text-sub); font-size: 14px; line-height: 1.6; margin-top: 10px;">
+                    <strong>Example:</strong> If you need 32 oz total and the ratio is 1:10, you will mix approx 2.9 oz of product with 29.1 oz of water.
+                </p>
+            </div>
+        </main>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="info-card">
+                <h3>⚠️ Safety First</h3>
+                <p>Always check the product label. Using too much chemical can damage surfaces and be unsafe.</p>
+            </div>
+            
+            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+        </aside>
+    </div>
+
+    <script>
+        function calculateDilution() {
+            const total = parseFloat(document.getElementById('totalOz').value) || 0;
+            const ratio = parseFloat(document.getElementById('ratio').value) || 1;
+
+            if (total <= 0 || ratio < 1) {
+                alert("Please enter valid numbers.");
+                return;
+            }
+
+            // 计算公式: Product = Total / (Ratio + 1)
+            // Water = Total - Product
+            const totalParts = ratio + 1;
+            const productAmount = total / totalParts;
+            const waterAmount = total - productAmount;
+
+            document.getElementById('productOz').innerText = productAmount.toFixed(1);
+            document.getElementById('waterOz').innerText = waterAmount.toFixed(1);
+            
+            document.getElementById('resultBox').style.display = 'block';
+            document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
