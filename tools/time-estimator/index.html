@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleaning Time Estimator | PureWear Space</title>
+    <meta name="description" content="Calculate estimated cleaning time for housekeeping jobs.">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../../resources.html" class="nav-link">Resources</a>
+            <a href="../../about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <main>
+            <div class="card">
+                <div class="form-header">
+                    <h1>Cleaning Time Estimator</h1>
+                    <p>Predict how long your cleaning job will take to optimize your schedule.</p>
+                </div>
+
+                <form id="timeForm">
+                    <div class="input-group">
+                        <label>🏠 Property Size</label>
+                        <select id="propertySize" class="form-control">
+                            <option value="0.5">Small (Studio / 1 Bed / 1 Bath)</option>
+                            <option value="1" selected>Medium (2 Bed / 2 Bath)</option>
+                            <option value="1.5">Large (3 Bed / 2 Bath)</option>
+                            <option value="2">X-Large (4+ Bed / 3+ Bath)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>🧹 Condition of Property</label>
+                        <select id="condition" class="form-control">
+                            <option value="1">Standard (Maintained)</option>
+                            <option value="1.3">A Bit Dusty</option>
+                            <option value="1.6">Messy (Cluttered)</option>
+                            <option value="2">Very Dirty / Deep Clean Needed</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>🧽 Service Type</label>
+                        <select id="serviceType" class="form-control">
+                            <option value="1">Standard Cleaning</option>
+                            <option value="1.5">Deep Cleaning</option>
+                            <option value="1.8">Move-In / Move-Out</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>👥 Number of Cleaners</label>
+                        <select id="cleaners" class="form-control">
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People (Team)</option>
+                            <option value="3">3 People (Team)</option>
+                        </select>
+                    </div>
+
+                    <div class="ad-container ad-in-content">Advertisement</div>
+
+                    <button type="button" class="btn-submit" onclick="calculateTime()">ESTIMATE TIME</button>
+                </form>
+
+                <!-- 结果 -->
+                <div id="resultBox" class="result-box">
+                    <div style="font-size: 14px; color: var(--accent); text-transform: uppercase; font-weight: 800; margin-bottom: 15px;">Estimated Duration</div>
+                    
+                    <div class="price-value" id="totalTime">0 Hours</div>
+                    
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--border-color); text-align: left;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="color: var(--text-sub);">Total Man-Hours:</span>
+                            <span id="manHours" style="font-weight: 700;">0 hours</span>
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-sub); margin-top: 10px;">
+                            *Actual time may vary based on specific requests and clutter levels.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="info-card">
+                <h3>💡 Scheduling Tip</h3>
+                <p>Always add 15-30 minutes buffer between jobs for travel and unexpected delays.</p>
+            </div>
+            
+            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+        </aside>
+    </div>
+
+    <script>
+        function calculateTime() {
+            // 1. 获取参数
+            const sizeVal = parseFloat(document.getElementById('propertySize').value);
+            const condVal = parseFloat(document.getElementById('condition').value);
+            const servVal = parseFloat(document.getElementById('serviceType').value);
+            const cleaners = parseInt(document.getElementById('cleaners').value);
+
+            // 2. 计算逻辑
+            // 基础时间：以标准2室2卫为基准，假设需要 3 小时 (基准值设为3)
+            // 实际上上面的 sizeVal 是系数，比如 0.5 (小房子), 1 (中房子)
+            // 基础工时 = 3小时 * 面积系数
+            const baseManHours = 3 * sizeVal;
+
+            // 调整后的总工时 = 基础工时 * 脏乱系数 * 服务类型系数
+            let totalManHours = baseManHours * condVal * servVal;
+
+            // 四舍五入保留一位小数
+            totalManHours = Math.round(totalManHours * 2) / 2; // 向上取整到0.5小时
+
+            // 3. 计算实际耗时（如果是多人团队）
+            const actualDuration = totalManHours / cleaners;
+
+            // 4. 显示结果
+            // 格式化显示
+            let displayTime = "";
+            if(actualDuration < 1) {
+                displayTime = Math.round(actualDuration * 60) + " Minutes";
+            } else {
+                const hours = Math.floor(actualDuration);
+                const minutes = Math.round((actualDuration - hours) * 60);
+                displayTime = hours + " Hour" + (hours > 1 ? "s" : "") + (minutes > 0 ? " " + minutes + " Min" : "");
+            }
+
+            document.getElementById('totalTime').innerText = displayTime;
+            document.getElementById('manHours').innerText = totalManHours.toFixed(1) + " hours";
+            
+            document.getElementById('resultBox').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

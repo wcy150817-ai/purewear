@@ -63,6 +63,15 @@ const TOOLS_DATA = [
         tag: 'Legal',
         featured: true,
         url: '/tools/service-agreement/'
+    },
+    {
+        id: 'time-estimator',
+        title: 'Cleaning Time Estimator',
+        icon: '⏳',
+        desc: 'Estimate how long a cleaning job will take based on size and condition.',
+        tag: 'Utility',
+        featured: true,
+        url: '/tools/time-estimator/'
     }
 
 ];
