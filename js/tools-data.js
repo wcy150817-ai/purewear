@@ -81,6 +81,15 @@ const TOOLS_DATA = [
         tag: 'Safety',
         featured: true,
         url: '/tools/chemical-safety-checker/'
+    },
+    {
+        id: 'inventory-tracker',
+        title: 'Supply Inventory Tracker',
+        icon: '📦',
+        desc: 'Track your cleaning supplies stock and get low stock alerts.',
+        tag: 'Management',
+        featured: true,
+        url: '/tools/inventory-tracker/'
     }
 
 ];
