@@ -72,6 +72,15 @@ const TOOLS_DATA = [
         tag: 'Utility',
         featured: true,
         url: '/tools/time-estimator/'
+    },
+    {
+        id: 'chemical-safety-checker',
+        title: 'Chemical Safety Checker',
+        icon: '☣️',
+        desc: 'Check if two cleaning brands can be mixed safely. Avoid toxic fumes.',
+        tag: 'Safety',
+        featured: true,
+        url: '/tools/chemical-safety-checker/'
     }
 
 ];
