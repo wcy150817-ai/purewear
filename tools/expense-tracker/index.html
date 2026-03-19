@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income & Expense Tracker | PureWear Space</title>
+    <meta name="description" content="Simple bookkeeping tool for cleaning businesses.">
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <style>
+        /* 交易记录列表 */
+        .transaction-list {
+            margin-top: 20px;
+        }
+        
+        .trans-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .trans-item:last-child {
+            border-bottom: none;
+        }
+
+        .trans-info {
+            flex: 1;
+        }
+        
+        .trans-desc {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .trans-date {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .trans-amount {
+            font-weight: 800;
+            font-size: 16px;
+            min-width: 80px;
+            text-align: right;
+        }
+        
+        .amount-income { color: #27ae60; }
+        .amount-expense { color: #e74c3c; }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #bdc3c7;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 12px;
+        }
+
+        /* 汇总卡片 */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .summary-card {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .sum-title {
+            font-size: 12px;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .sum-value {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        /* 打印样式 */
+        .report-container {
+            background: #fff;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            margin-top: 20px;
+            display: none; /* 默认隐藏 */
+        }
+
+        @media print {
+            body * { visibility: hidden; }
+            #printArea, #printArea * { visibility: visible; }
+            #printArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar no-print">
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../../resources.html" class="nav-link">Resources</a>
+            <a href="../../about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <main>
+            <!-- 输入表单 -->
+            <div class="card no-print">
+                <div class="form-header">
+                    <h1>Income & Expense Tracker</h1>
+                    <p>Keep track of your money. Data is saved on your phone.</p>
+                </div>
+
+                <!-- 汇总 -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="sum-title">Income</div>
+                        <div class="sum-value" style="color: #27ae60;">$<span id="totalIncome">0</span></div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="sum-title">Expenses</div>
+                        <div class="sum-value" style="color: #e74c3c;">$<span id="totalExpense">0</span></div>
+                    </div>
+                    <div class="summary-card" style="background: var(--primary); color: #fff;">
+                        <div class="sum-title" style="color: rgba(255,255,255,0.8);">Net Profit</div>
+                        <div class="sum-value">$<span id="netProfit">0</span></div>
+                    </div>
+                </div>
+
+                <!-- 添加记录 -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: flex-end;">
+                    <div class="input-group" style="margin:0;">
+                        <label>Type</label>
+                        <select id="transType" class="form-control">
+                            <option value="income">💰 Income</option>
+                            <option value="expense">🛒 Expense</option>
+                        </select>
+                    </div>
+                    <div class="input-group" style="margin:0;">
+                        <label>Description</label>
+                        <input type="text" id="transDesc" class="form-control" placeholder="e.g. Cleaning Job / Supplies">
+                    </div>
+                    <div class="input-group" style="margin:0;">
+                        <label>Amount ($)</label>
+                        <input type="number" id="transAmount" class="form-control" placeholder="0.00">
+                    </div>
+                </div>
+                
+                <button onclick="addTransaction()" class="btn-submit" style="margin-top: 15px;">ADD RECORD</button>
+
+                <div class="ad-container ad-in-content no-print">Advertisement</div>
+
+                <!-- 记录列表 -->
+                <div id="transactionList" class="transaction-list"></div>
+                
+                <div id="emptyState" style="text-align: center; padding: 40px; color: var(--text-sub); display: none;">
+                    No records yet.
+                </div>
+
+                <div style="margin-top: 20px; display: flex; gap: 10px;">
+                    <button onclick="generateReport()" class="btn-submit" style="background: var(--text-sub);">PREVIEW REPORT</button>
+                    <button onclick="window.print()" class="btn-submit" style="background: var(--text-main); flex: 1;">PRINT REPORT</button>
+                </div>
+            </div>
+
+            <!-- 打印区域 -->
+            <div id="printArea">
+                <div id="reportDoc" class="report-container"></div>
+            </div>
+
+        </main>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar no-print">
+            <div class="info-card">
+                <h3>💡 Tax Tip</h3>
+                <p>Keep receipts for all expenses listed here. Supplies and travel costs are often tax-deductible.</p>
+            </div>
+            
+            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+        </aside>
+    </div>
+
+    <script>
+        // 1. 数据管理
+        let transactions = JSON.parse(localStorage.getItem('purewear_finance')) || [];
+
+        function saveData() {
+            localStorage.setItem('purewear_finance', JSON.stringify(transactions));
+            renderList();
+            updateSummary();
+        }
+
+        // 2. 添加记录
+        function addTransaction() {
+            const type = document.getElementById('transType').value;
+            const desc = document.getElementById('transDesc').value;
+            const amount = parseFloat(document.getElementById('transAmount').value);
+
+            if (!desc || !amount) {
+                alert("Please enter description and amount.");
+                return;
+            }
+
+            transactions.push({
+                id: Date.now(),
+                date: new Date().toLocaleDateString('en-US'),
+                type: type,
+                desc: desc,
+                amount: amount
+            });
+
+            // 清空输入
+            document.getElementById('transDesc').value = '';
+            document.getElementById('transAmount').value = '';
+
+            saveData();
+        }
+
+        // 3. 删除记录
+        function deleteTransaction(id) {
+            if(confirm("Delete this record?")) {
+                transactions = transactions.filter(t => t.id !== id);
+                saveData();
+            }
+        }
+
+        // 4. 渲染列表
+        function renderList() {
+            const listContainer = document.getElementById('transactionList');
+            const emptyState = document.getElementById('emptyState');
+            listContainer.innerHTML = '';
+
+            if (transactions.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            } else {
+                emptyState.style.display = 'none';
+            }
+
+            // 倒序显示（最新的在前）
+            const sorted = [...transactions].reverse();
+
+            sorted.forEach(item => {
+                const isIncome = item.type === 'income';
+                const html = `
+                    <div class="trans-item">
+                        <div class="trans-info">
+                            <div class="trans-desc">${item.desc}</div>
+                            <div class="trans-date">${item.date}</div>
+                        </div>
+                        <div class="trans-amount ${isIncome ? 'amount-income' : 'amount-expense'}">
+                            ${isIncome ? '+' : '-'}$${item.amount.toFixed(2)}
+                        </div>
+                        <button class="delete-btn no-print" onclick="deleteTransaction(${item.id})">✕</button>
+                    </div>
+                `;
+                listContainer.innerHTML += html;
+            });
+        }
+
+        // 5. 更新汇总数据
+        function updateSummary() {
+            let income = 0;
+            let expense = 0;
+
+            transactions.forEach(t => {
+                if (t.type === 'income') income += t.amount;
+                else expense += t.amount;
+            });
+
+            document.getElementById('totalIncome').innerText = income.toFixed(2);
+            document.getElementById('totalExpense').innerText = expense.toFixed(2);
+            document.getElementById('netProfit').innerText = (income - expense).toFixed(2);
+        }
+
+        // 6. 生成打印报表
+        function generateReport() {
+            const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+            
+            let tableRows = '';
+            transactions.forEach(t => {
+                tableRows += `
+                    <tr>
+                        <td>${t.date}</td>
+                        <td>${t.desc}</td>
+                        <td>${t.type === 'income' ? '$' + t.amount.toFixed(2) : ''}</td>
+                        <td>${t.type === 'expense' ? '$' + t.amount.toFixed(2) : ''}</td>
+                    </tr>
+                `;
+            });
+
+            const income = document.getElementById('totalIncome').innerText;
+            const expense = document.getElementById('totalExpense').innerText;
+            const profit = document.getElementById('netProfit').innerText;
+
+            const html = `
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2 style="margin:0;">MONTHLY FINANCIAL REPORT</h2>
+                    <div style="color: #666;">Period: ${date}</div>
+                </div>
+
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                    <thead>
+                        <tr style="background: #f0f0f0;">
+                            <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">Date</th>
+                            <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">Description</th>
+                            <th style="border: 1px solid #ccc; padding: 8px; text-align: right;">Income</th>
+                            <th style="border: 1px solid #ccc; padding: 8px; text-align: right;">Expense</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${tableRows}
+                    </tbody>
+                </table>
+
+                <div style="display: flex; justify-content: flex-end; gap: 20px; margin-top: 30px;">
+                    <div style="text-align: right;"><strong>Total Income:</strong> $${income}</div>
+                    <div style="text-align: right;"><strong>Total Expense:</strong> $${expense}</div>
+                    <div style="text-align: right; font-size: 18px;"><strong>Net Profit:</strong> $${profit}</div>
+                </div>
+            `;
+
+            const doc = document.getElementById('reportDoc');
+            doc.innerHTML = html;
+            doc.style.display = 'block';
+            doc.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 初始化
+        renderList();
+        updateSummary();
+    </script>
+</body>
+</html>

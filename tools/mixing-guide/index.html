@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Mixing Guide | PureWear Space</title>
+    <meta name="description" content="Get the right dilution ratio instantly. No math required.">
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <style>
+        /* 结果展示区样式 */
+        .result-guide {
+            background: #fff;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .guide-step {
+            font-size: 18px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .guide-highlight {
+            background: #ffeaa7;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 24px;
+            color: #000;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        
+        .guide-small {
+            font-size: 14px;
+            color: var(--text-sub);
+        }
+
+        /* 视觉化图示 */
+        .visual-guide {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .visual-cup {
+            width: 60px;
+            height: 80px;
+            border: 2px solid #000;
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            background: #fff;
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .liquid {
+            width: 100%;
+            background: var(--primary);
+            opacity: 0.8;
+            border-radius: 0 0 8px 8px;
+            transition: height 0.3s ease;
+        }
+        
+        .visual-bucket {
+            width: 120px;
+            height: 100px;
+            border: 2px solid #000;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            background: #fff;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        /* 警告框 */
+        .safety-warning {
+            background: #fff5f5;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #c0392b;
+        }
+
+        .safety-tip {
+            background: #e8f5e9;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #1e7d34;
+        }
+
+        /* 方法切换标签 */
+        .method-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .method-tab {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .method-tab:hover {
+            border-color: var(--primary);
+        }
+
+        .method-tab.active {
+            border-color: var(--primary);
+            background: rgba(255, 107, 107, 0.05);
+        }
+
+        .method-tab-icon {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .method-tab-title {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .method-tab-desc {
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-top: 5px;
+        }
+
+        /* 动态输入区 */
+        #inputArea {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* 预设按钮 */
+        .preset-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .preset-btn {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .preset-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .preset-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../../resources.html" class="nav-link">Resources</a>
+            <a href="../../about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <main>
+            <div class="card">
+                <div class="form-header">
+                    <h1>Chemical Mixing Guide</h1>
+                    <p>Get the exact ratio in seconds. No more guessing.</p>
+                </div>
+
+                <!-- 方法选择 -->
+                <div class="input-group">
+                    <label>Choose Your Method</label>
+                    <div class="method-tabs">
+                        <div class="method-tab active" onclick="selectMethod('scale')">
+                            <div class="method-tab-icon">📏</div>
+                            <div class="method-tab-title">Has Scale Marks</div>
+                            <div class="method-tab-desc">Bottle or bucket with measurements</div>
+                        </div>
+                        <div class="method-tab" onclick="selectMethod('cup')">
+                            <div class="method-tab-icon">☕</div>
+                            <div class="method-tab-title">No Scale Marks</div>
+                            <div class="method-tab-desc">Use any cup to measure</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 动态输入区 -->
+                <div id="inputArea"></div>
+
+                <!-- 比例选择 -->
+                <div class="input-group">
+                    <label>Select Dilution Ratio</label>
+                    <select id="ratioSelect" class="form-control" onchange="calculate()">
+                        <option value="5">1:5 - Heavy Duty / Deep Cleaning</option>
+                        <option value="10">1:10 - Strong Cleaning / Disinfecting</option>
+                        <option value="20" selected>1:20 - General Cleaning</option>
+                        <option value="30">1:30 - Light Cleaning</option>
+                        <option value="50">1:50 - Mild Solution</option>
+                        <option value="100">1:100 - Very Mild / Glass</option>
+                    </select>
+                    
+                    <div class="preset-buttons">
+                        <button class="preset-btn" onclick="setRatio(5)">🚿 Heavy Duty</button>
+                        <button class="preset-btn" onclick="setRatio(10)">🦠 Disinfect</button>
+                        <button class="preset-btn active" onclick="setRatio(20)">🧹 General</button>
+                        <button class="preset-btn" onclick="setRatio(30)">✨ Light</button>
+                        <button class="preset-btn" onclick="setRatio(100)">🪟 Glass</button>
+                    </div>
+                </div>
+
+                <div class="ad-container ad-in-content">Advertisement</div>
+
+                <button onclick="calculate()" class="btn-submit">CALCULATE NOW</button>
+
+                <!-- 结果展示区 -->
+                <div id="resultArea" class="result-guide" style="display:none;">
+                    <!-- JS 生成内容 -->
+                </div>
+
+                <!-- 安全提示 -->
+                <div class="safety-warning" id="safetyNote" style="display:none;">
+                    <strong>⚠️ Safety Warning:</strong>
+                    <span id="safetyText"></span>
+                </div>
+            </div>
+
+            <!-- 使用说明 -->
+            <div class="card" style="margin-top: 20px;">
+                <h3 style="margin-bottom: 15px;">📖 How to Use</h3>
+                <div style="line-height: 1.8; color: var(--text-sub);">
+                    <p><strong>Method 1 - With Scale Marks:</strong><br>
+                    If your bottle or bucket has measurement marks (like 100ml, 200ml), choose this method. We'll tell you exactly where to fill to.</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Method 2 - No Scale Marks:</strong><br>
+                    If your container has no measurements, just use any cup. Fill your container with water using that cup, count how many cups it takes, then we'll tell you how many cups of chemical to add.</p>
+                    
+                    <p style="margin-top: 15px;"><strong>What does 1:20 mean?</strong><br>
+                    It means <strong>1 part chemical + 20 parts water</strong>. For example: 1 cup chemical + 20 cups water.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="info-card">
+                <h3>💡 Pro Tip</h3>
+                <p>Always add chemical to water, not water to chemical. This prevents splashing concentrated solution.</p>
+            </div>
+
+            <div class="info-card" style="margin-top: 20px;">
+                <h3>⚠️ Check Label</h3>
+                <p>Every product is different. Always double-check the label on your specific bottle. This tool provides general guidance.</p>
+            </div>
+            
+            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+        </aside>
+    </div>
+
+    <script>
+        let currentMethod = 'scale';
+
+        // 选择方法
+        function selectMethod(method) {
+            currentMethod = method;
+            
+            // 更新标签样式
+            document.querySelectorAll('.method-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // 更新输入区
+            updateInputArea();
+            
+            // 清空结果
+            document.getElementById('resultArea').style.display = 'none';
+        }
+
+        // 根据方法更新输入区
+        function updateInputArea() {
+            const area = document.getElementById('inputArea');
+            
+            if (currentMethod === 'scale') {
+                area.innerHTML = `
+                    <div class="input-group" style="margin:0;">
+                        <label>Container Type</label>
+                        <select id="containerType" class="form-control" onchange="updateContainerSize()">
+                            <option value="spray">Spray Bottle (500ml - 1L)</option>
+                            <option value="bucket">Bucket (5L - 15L)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group" style="margin-top: 15px; margin-bottom: 0;">
+                        <label>How much solution do you need?</label>
+                        <select id="totalSize" class="form-control">
+                            <option value="500">500 ml</option>
+                            <option value="750">750 ml</option>
+                            <option value="1000">1 Liter (1000 ml)</option>
+                        </select>
+                    </div>
+                `;
+            } else {
+                area.innerHTML = `
+                    <div style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <p style="font-weight: 600; margin-bottom: 10px;">📝 Step-by-step:</p>
+                        <ol style="margin-left: 20px; line-height: 1.8; color: var(--text-sub);">
+                            <li>Find any cup or container</li>
+                            <li>Fill your bucket with water using that cup</li>
+                            <li>Count how many cups it took</li>
+                            <li>Enter that number below</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="input-group" style="margin-top: 15px; margin-bottom: 0;">
+                        <label>How many cups of water did you use?</label>
+                        <input type="number" id="cupCount" class="form-control" placeholder="e.g. 10" value="10">
+                    </div>
+                `;
+            }
+        }
+
+        // 更新容器大小选项
+        function updateContainerSize() {
+            const type = document.getElementById('containerType').value;
+            const sizeSelect = document.getElementById('totalSize');
+            
+            if (type === 'spray') {
+                sizeSelect.innerHTML = `
+                    <option value="500">500 ml</option>
+                    <option value="750">750 ml</option>
+                    <option value="1000">1 Liter (1000 ml)</option>
+                `;
+            } else {
+                sizeSelect.innerHTML = `
+                    <option value="5000">5 Liters</option>
+                    <option value="10000">10 Liters</option>
+                    <option value="15000">15 Liters</option>
+                `;
+            }
+        }
+
+        // 设置比例
+        function setRatio(ratio) {
+            document.getElementById('ratioSelect').value = ratio;
+            
+            // 更新按钮样式
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            calculate();
+        }
+
+        // 核心计算逻辑
+        function calculate() {
+            const ratio = parseInt(document.getElementById('ratioSelect').value);
+            const resultArea = document.getElementById('resultArea');
+            const safetyNote = document.getElementById('safetyNote');
+            
+            let html = '';
+            let safetyText = '';
+
+            // 情况 A：有刻度的容器
+            if (currentMethod === 'scale') {
+                const totalMl = parseInt(document.getElementById('totalSize').value);
+                
+                // 计算原液量：总量 ÷ (比例+1)
+                const chemMl = Math.round(totalMl / (ratio + 1));
+                const waterMl = totalMl - chemMl;
+
+                html = `
+                    <div class="visual-guide">
+                        <div class="visual-cup">
+                            <div class="liquid" style="height: 80%;"></div>
+                        </div>
+                        <div style="font-size: 30px;">➜</div>
+                        <div class="visual-bucket">
+                            <div class="liquid" style="height: 70%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-step">
+                        👉 Pour chemical to the<br>
+                        <span class="guide-highlight">${chemMl} ml</span><br>
+                        mark on your container.
+                    </div>
+                    
+                    <div class="guide-step">
+                        👉 Then fill the rest with water<br>
+                        <span style="color: var(--text-sub);">(about ${waterMl} ml)</span>
+                    </div>
+                    
+                    <div class="guide-small">
+                        Total mixture: ${totalMl} ml at 1:${ratio} ratio
+                    </div>
+                `;
+            } 
+            // 情况 B：无刻度桶 (杯数法)
+            else {
+                const cups = parseInt(document.getElementById('cupCount').value);
+                
+                if (!cups || cups < 1) {
+                    alert('Please enter how many cups of water you used.');
+                    return;
+                }
+
+                // 计算原液杯数
+                const chemCups = cups / ratio;
+                const displayCups = chemCups % 1 === 0 ? chemCups : chemCups.toFixed(1);
+
+                html = `
+                    <div class="visual-guide">
+                        <div class="visual-cup">
+                            <div class="liquid" style="height: 100%; background: #000;"></div>
+                        </div>
+                        <div style="font-size: 24px;">× ${displayCups}</div>
+                        <div style="font-size: 30px;">+</div>
+                        <div class="visual-bucket">
+                            <div class="liquid" style="height: 80%; background: #3498db;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-step">
+                        You used <span class="guide-highlight">${cups} Cups</span><br>
+                        of water
+                    </div>
+                    
+                    <div class="guide-step">
+                        Add <span class="guide-highlight">${displayCups} Cup(s)</span><br>
+                        of chemical
+                    </div>
+                    
+                    <div class="safety-tip" style="margin-top: 15px; text-align: left;">
+                        <strong>💡 Tip:</strong> 
+                        ${chemCups < 1 
+                            ? `Since it's less than 1 cup, just fill your cup to about ${Math.round(chemCups * 100)}% full.`
+                            : 'Use the same cup you used to measure the water.'
+                        }
+                    </div>
+                `;
+            }
+
+            // 安全提示
+            if (ratio <= 5) {
+                safetyText = 'This is a strong solution (1:5 or higher). Wear gloves and ensure good ventilation. Avoid contact with skin.';
+                safetyNote.style.display = 'block';
+            } else if (ratio <= 10) {
+                safetyText = 'This is a disinfecting-level solution. Wear gloves and avoid mixing with other chemicals.';
+                safetyNote.style.display = 'block';
+            } else {
+                safetyNote.style.display = 'none';
+            }
+
+            document.getElementById('safetyText').textContent = safetyText;
+            resultArea.innerHTML = html;
+            resultArea.style.display = 'block';
+            
+            // 滚动到结果
+            resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // 页面加载初始化
+        updateInputArea();
+    </script>
+</body>
+</html>

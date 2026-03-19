@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Schedule Generator | PureWear Space</title>
+    <meta name="description" content="Printable cleaning team schedule template.">
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <style>
+        /* 表格容器 */
+        .schedule-wrapper {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        /* 表格样式 */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        
+        .schedule-table th, .schedule-table td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .schedule-table th {
+            background: var(--bg-color);
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .schedule-table td {
+            height: 60px;
+            vertical-align: middle;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .schedule-table td:hover {
+            background: #f8f9fa;
+        }
+
+        /* 单元格内的员工名 */
+        .staff-tag {
+            background: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* 打印控制 */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printArea, #printArea * {
+                visibility: visible;
+            }
+            #printArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+            .no-print {
+                display: none !important;
+            }
+            /* 打印时边框变黑 */
+            .schedule-table th, .schedule-table td {
+                border-color: #000;
+            }
+            .staff-tag {
+                border: 1px solid #000;
+                background: #fff !important;
+                color: #000 !important;
+                -webkit-print-color-adjust: exact; /* 强制保留颜色，或黑白 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar no-print">
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../../resources.html" class="nav-link">Resources</a>
+            <a href="../../about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <main>
+            <!-- 设置区域 (打印时隐藏) -->
+            <div class="card no-print">
+                <div class="form-header">
+                    <h1>Weekly Schedule</h1>
+                    <p>Click a cell to assign staff. Then print it out.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="input-group">
+                        <label>🗓️ Week Starting (Date)</label>
+                        <input type="date" id="startDate" class="form-control" onchange="updateHeader()">
+                    </div>
+                    <div class="input-group">
+                        <label>👥 Staff List</label>
+                        <input type="text" id="staffInput" class="form-control" placeholder="e.g. Ana, John, Mike" onchange="updateStaffList()">
+                        <small style="color: var(--text-sub);">Separate names with commas.</small>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 10px; display: flex; gap: 5px;">
+                    <button onclick="fillTestData()" style="background: #eee; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">Fill Demo Data</button>
+                </div>
+
+                <div class="ad-container ad-in-content no-print">Advertisement</div>
+
+                <button onclick="window.print()" class="btn-submit">PRINT SCHEDULE</button>
+            </div>
+
+            <!-- 打印区域 -->
+            <div id="printArea">
+                <div class="schedule-wrapper">
+                    <h2 style="text-align: center; margin-bottom: 20px; font-size: 22px; border-bottom: 2px solid #000; padding-bottom: 10px;">
+                        WORK SCHEDULE <br>
+                        <span id="weekTitle" style="font-size: 14px; color: #666; font-weight: normal;">Week of: ___________</span>
+                    </h2>
+
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">Time</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                                <th>Sun</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleBody">
+                            <!-- JS生成内容 -->
+                        </tbody>
+                    </table>
+                    
+                    <div style="margin-top: 20px; display: flex; justify-content: space-between; font-size: 12px; color: #666;">
+                        <div>Manager Sign: _________________</div>
+                        <div>Generated by PureWear Space</div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // 默认时间段
+        const times = ["08:00 - 10:00", "10:00 - 12:00", "13:00 - 15:00", "15:00 - 17:00"];
+        let staffList = ["Select Staff"];
+
+        // 初始化表格
+        function initTable() {
+            const tbody = document.getElementById('scheduleBody');
+            tbody.innerHTML = '';
+
+            times.forEach(time => {
+                let tr = document.createElement('tr');
+                
+                // 时间列
+                let tdTime = document.createElement('td');
+                tdTime.innerText = time;
+                tdTime.style.fontWeight = 'bold';
+                tdTime.style.background = '#f9f9f9';
+                tr.appendChild(tdTime);
+
+                // 周一到周日
+                for (let i = 0; i < 7; i++) {
+                    let td = document.createElement('td');
+                    td.innerHTML = `<span class="staff-tag" style="background: #f0f0f0; color: #999; cursor: pointer;" onclick="assignStaff(this)">Select</span>`;
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            });
+        }
+
+        // 更新顶部日期
+        function updateHeader() {
+            const date = document.getElementById('startDate').value;
+            if(date) {
+                const d = new Date(date);
+                document.getElementById('weekTitle').innerText = "Week of: " + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            }
+        }
+
+        // 更新员工列表
+        function updateStaffList() {
+            const input = document.getElementById('staffInput').value;
+            if(input) {
+                staffList = input.split(',').map(s => s.trim());
+            }
+        }
+
+        // 分配员工 (核心交互)
+        function assignStaff(element) {
+            updateStaffList(); // 确保列表最新
+            
+            let currentStaff = element.innerText;
+            let currentIndex = staffList.indexOf(currentStaff);
+            
+            let nextIndex = (currentIndex + 1) % staffList.length;
+            let nextStaff = staffList[nextIndex];
+
+            element.innerText = nextStaff;
+
+            // 循环颜色变化，方便区分
+            const colors = ["#ff7675", "#74b9ff", "#55efc4", "#ffeaa7", "#a29bfe"];
+            if (nextIndex === 0) {
+                 element.style.background = "#f0f0f0";
+                 element.style.color = "#999";
+            } else {
+                 element.style.background = colors[(nextIndex - 1) % colors.length];
+                 element.style.color = "#000";
+            }
+        }
+
+        // 填充测试数据
+        function fillTestData() {
+            document.getElementById('startDate').value = '2023-10-23'; // Example date
+            document.getElementById('staffInput').value = 'Ana, John, Mike';
+            updateHeader();
+            updateStaffList();
+            initTable(); // 重置表格
+
+            // 模拟点击填入数据 (简单的随机演示)
+            const cells = document.querySelectorAll('.schedule-table td .staff-tag');
+            let staffIdx = 0;
+            for(let i=0; i<cells.length; i++) {
+                // 随机留空一些
+                if(Math.random() > 0.3) {
+                    // 循环分配员工
+                    const staff = staffList[(staffIdx % (staffList.length - 1)) + 1];
+                    cells[i].innerText = staff;
+                    const colors = ["#ff7675", "#74b9ff", "#55efc4"];
+                    cells[i].style.background = colors[staffIdx % 3];
+                    cells[i].style.color = "#000";
+                    staffIdx++;
+                }
+            }
+        }
+
+        // 页面加载初始化
+        initTable();
+    </script>
+</body>
+</html>

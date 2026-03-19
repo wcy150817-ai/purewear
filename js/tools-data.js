@@ -90,6 +90,42 @@ const TOOLS_DATA = [
         tag: 'Management',
         featured: true,
         url: '/tools/inventory-tracker/'
+    },
+    {
+        id: 'schedule-generator',
+        title: 'Weekly Schedule Generator',
+        icon: '📅',
+        desc: 'Create and print professional work schedules for your team in seconds.',
+        tag: 'Management',
+        featured: true,
+        url: '/tools/schedule-generator/'
+    },
+    {
+        id: 'performance-review',
+        title: 'Staff Performance Review',
+        icon: '⭐',
+        desc: 'Generate professional performance evaluations for your cleaning staff.',
+        tag: 'Management',
+        featured: true,
+        url: '/tools/performance-review/'
+    },
+    {
+        id: 'expense-tracker',
+        title: 'Income & Expense Tracker',
+        icon: '💰',
+        desc: 'Track your cleaning business finances and print monthly reports.',
+        tag: 'Finance',
+        featured: true,
+        url: '/tools/expense-tracker/'
+    },
+    {
+        id: 'mixing-guide',
+        title: 'Chemical Mixing Guide',
+        icon: '🧪',
+        desc: 'Get the right dilution ratio instantly. No math required.',
+        tag: 'Safety',
+        featured: true,
+        url: '/tools/mixing-guide/'
     }
 
 ];

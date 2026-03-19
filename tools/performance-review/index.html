@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Performance Review | PureWear Space</title>
+    <meta name="description" content="Printable cleaning staff performance evaluation form.">
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <style>
+        /* 评分区域样式 */
+        .review-section {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .review-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* 星星评分组件 */
+        .star-rating {
+            font-size: 24px;
+            color: #ddd; /* 默认灰色 */
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .star-rating .star {
+            margin-left: 5px;
+            transition: color 0.2s;
+        }
+        
+        .star-rating .star.active {
+            color: #fdcb6e; /* 选中金色 */
+        }
+
+        /* 打印文档样式 */
+        .doc-container {
+            background: #fff;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            margin-top: 20px;
+            display: none; /* 默认隐藏 */
+        }
+
+        .doc-header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .doc-row {
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .doc-label {
+            font-weight: 700;
+            display: inline-block;
+            width: 120px;
+        }
+        
+        .doc-field {
+            border-bottom: 1px solid #ccc;
+            display: inline-block;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .doc-score-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .doc-score-table td {
+            border: 1px solid #eee;
+            padding: 8px;
+        }
+        
+        .doc-score-val {
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        @media print {
+            body * { visibility: hidden; }
+            #printArea, #printArea * { visibility: visible; }
+            #printArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar no-print">
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../../resources.html" class="nav-link">Resources</a>
+            <a href="../../about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <main>
+            <!-- 输入表单 -->
+            <div class="card no-print">
+                <div class="form-header">
+                    <h1>Performance Review</h1>
+                    <p>Rate your employee's performance and generate a printable review form.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="input-group">
+                        <label>Employee Name</label>
+                        <input type="text" id="empName" class="form-control" placeholder="e.g. Sarah Jones">
+                    </div>
+                    <div class="input-group">
+                        <label>Review Period</label>
+                        <input type="text" id="period" class="form-control" placeholder="e.g. October 2023">
+                    </div>
+                </div>
+
+                <!-- 评分项目 -->
+                <div class="review-section">
+                    <div class="review-title">
+                        <span>1. Quality of Work (Thoroughness)</span>
+                        <div class="star-rating" data-rating="quality"></div>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <div class="review-title">
+                        <span>2. Punctuality (On-time arrival)</span>
+                        <div class="star-rating" data-rating="punctuality"></div>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <div class="review-title">
+                        <span>3. Attitude (Professionalism)</span>
+                        <div class="star-rating" data-rating="attitude"></div>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <div class="review-title">
+                        <span>4. Safety & Equipment Care</span>
+                        <div class="star-rating" data-rating="safety"></div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Manager's Comments</label>
+                    <textarea id="comments" class="form-control" rows="3" placeholder="Optional: Great job on the deep cleaning last week..."></textarea>
+                </div>
+
+                <div class="ad-container ad-in-content no-print">Advertisement</div>
+
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="generateReview()" class="btn-submit">GENERATE REVIEW</button>
+                    <button onclick="window.print()" class="btn-submit" style="background: var(--text-main); flex: 1;">PRINT</button>
+                </div>
+            </div>
+
+            <!-- 打印区域 -->
+            <div id="printArea">
+                <div id="reviewDoc" class="doc-container"></div>
+            </div>
+
+        </main>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar no-print">
+            <div class="info-card">
+                <h3>💡 Tip</h3>
+                <p>Keep reviews positive but honest. Use specific examples to justify scores.</p>
+            </div>
+            
+            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+        </aside>
+    </div>
+
+    <script>
+        // 1. 初始化星星点击事件
+        const ratings = {
+            quality: 0,
+            punctuality: 0,
+            attitude: 0,
+            safety: 0
+        };
+
+        document.querySelectorAll('.star-rating').forEach(container => {
+            const key = container.dataset.rating;
+            
+            // 创建5个星星
+            for(let i=1; i<=5; i++) {
+                const star = document.createElement('span');
+                star.className = 'star';
+                star.innerHTML = '★';
+                star.dataset.value = i;
+                
+                star.onclick = function() {
+                    // 更新数据
+                    ratings[key] = i;
+                    // 更新UI
+                    updateStars(container, i);
+                };
+                
+                container.appendChild(star);
+            }
+        });
+
+        function updateStars(container, value) {
+            container.querySelectorAll('.star').forEach(star => {
+                if(parseInt(star.dataset.value) <= value) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        // 2. 生成考核单
+        function generateReview() {
+            const name = document.getElementById('empName').value || '________________________';
+            const period = document.getElementById('period').value || '________________________';
+            const comments = document.getElementById('comments').value || 'No additional comments.';
+
+            // 计算总分
+            const total = ratings.quality + ratings.punctuality + ratings.attitude + ratings.safety;
+            const maxScore = 20;
+            const percentage = Math.round((total / maxScore) * 100);
+
+            let grade = "Needs Improvement";
+            if(percentage >= 90) grade = "Outstanding";
+            else if(percentage >= 75) grade = "Exceeds Expectations";
+            else if(percentage >= 60) grade = "Meets Expectations";
+            else if(percentage >= 40) grade = "Below Expectations";
+
+            const today = new Date().toLocaleDateString('en-US');
+
+            const html = `
+                <div class="doc-header">
+                    <h1 style="margin:0; font-size: 24px;">EMPLOYEE PERFORMANCE REVIEW</h1>
+                    <div style="font-size: 12px; color: #666; margin-top: 5px;">Confidential Document</div>
+                </div>
+
+                <div class="doc-row">
+                    <span class="doc-label">Employee:</span>
+                    <span class="doc-field">${name}</span>
+                </div>
+                <div class="doc-row">
+                    <span class="doc-label">Period:</span>
+                    <span class="doc-field">${period}</span>
+                </div>
+
+                <h3 style="margin-top: 20px; margin-bottom: 10px;">Evaluation Scores</h3>
+                <table class="doc-score-table">
+                    <tr>
+                        <td>Quality of Work</td>
+                        <td width="80" align="center">${ratings.quality} / 5</td>
+                    </tr>
+                    <tr>
+                        <td>Punctuality</td>
+                        <td align="center">${ratings.punctuality} / 5</td>
+                    </tr>
+                    <tr>
+                        <td>Attitude</td>
+                        <td align="center">${ratings.attitude} / 5</td>
+                    </tr>
+                    <tr>
+                        <td>Safety & Equipment</td>
+                        <td align="center">${ratings.safety} / 5</td>
+                    </tr>
+                    <tr style="font-weight: 700; background: #f9f9f9;">
+                        <td>TOTAL SCORE</td>
+                        <td align="center">${total} / 20</td>
+                    </tr>
+                </table>
+
+                <div style="background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0;">
+                    <div style="font-size: 14px; color: #666;">Overall Rating</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--primary);">${grade}</div>
+                    <div style="font-size: 12px;">${percentage}% Score</div>
+                </div>
+
+                <h3 style="margin-top: 20px;">Manager Comments</h3>
+                <p style="line-height: 1.6; border: 1px solid #eee; padding: 10px; min-height: 60px;">${comments}</p>
+
+                <div style="margin-top: 60px; display: flex; justify-content: space-between;">
+                    <div style="width: 45%;">
+                        <hr style="border: none; border-bottom: 1px solid #000;">
+                        <div style="font-size: 12px; color: #666;">Manager Signature / Date</div>
+                    </div>
+                    <div style="width: 45%;">
+                        <hr style="border: none; border-bottom: 1px solid #000;">
+                        <div style="font-size: 12px; color: #666;">Employee Signature / Date</div>
+                    </div>
+                </div>
+            `;
+
+            const doc = document.getElementById('reviewDoc');
+            doc.innerHTML = html;
+            doc.style.display = 'block';
+            
+            // 滚动到文档
+            doc.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

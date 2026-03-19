@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!-- Created with PureWear Space Tools Generator -->
+
+  <!-- 1. 首页 (最高优先级) -->
+  <url>
+       <loc>https://www.purewearspace.com/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>weekly</changefreq>
+       <priority>1.00</priority>
+  </url>
+
+  <!-- 2. 工具聚合页 -->
+  <url>
+       <loc>https://www.purewearspace.com/tools/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>weekly</changefreq>
+       <priority>0.90</priority>
+  </url>
+
+  <!-- 3. 资源页 -->
+  <url>
+       <loc>https://www.purewearspace.com/resources.html</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.60</priority>
+  </url>
+
+  <!-- 4. 关于我们 -->
+  <url>
+       <loc>https://www.purewearspace.com/about.html</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.50</priority>
+  </url>
+
+  <!-- 5. 核心工具列表 (优先级较高) -->
+  <!-- 清洁报价计算器 -->
+  <url>
+       <loc>https://www.purewearspace.com/tools/cleaning-quote-calculator/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.80</priority>
+  </url>
+  
+  <!-- 检查清单 -->
+  <url>
+       <loc>https://www.purewearspace.com/tools/cleaning-checklist/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.80</priority>
+  </url>
+
+  <!-- 服务协议 -->
+  <url>
+       <loc>https://www.purewearspace.com/tools/service-agreement/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.70</priority>
+  </url>
+
+  <!-- 时间估算 -->
+  <url>
+       <loc>https://www.purewearspace.com/tools/time-estimator/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.70</priority>
+  </url>
+
+  <!-- 化学品安全 -->
+  <url>
+       <loc>https://www.purewearspace.com/tools/chemical-safety/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.70</priority>
+  </url>
+
+  <!-- 库存管理 -->
+  <url>
+       <loc>https://www.purewearspace.com/tools/inventory-manager/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.80</priority>
+  </url>
+
+  <!-- 排班表 -->
+  <url>
+       <loc>https://www.purewearspace.com/tools/schedule-generator/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.80</priority>
+  </url>
+
+  <!-- 绩效考核 -->
+  <url>
+       <loc>https://www.purewearspace.com/tools/performance-review/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.80</priority>
+  </url>
+
+  <!-- 记账本 -->
+  <url>
+       <loc>https://www.purewearspace.com/tools/expense-tracker/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.80</priority>
+  </url>
+
+  <!-- 配比指南 (最新) -->
+  <url>
+       <loc>https://www.purewearspace.com/tools/mixing-guide/</loc>
+       <lastmod>2026-03-18</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.80</priority>
+  </url>
+
+</urlset>
