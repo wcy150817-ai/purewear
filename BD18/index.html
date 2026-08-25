@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="google" value="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link media="all" rel="stylesheet" type="text/css" href="css/style.css">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title id="a1">Confirm</title>
+  <link rel="icon" href="img/favicon.png">
+  <style type="text/css">
+  </style>
+
+</head>
+
+<body onload="translate();" class="fr ltr">
+  <main class="wrapper background-backgroundcolor">
+    <section class="section">
+      <header> <img class="image-url" src="img/18.png" width="120" height="120" alt=""> </header>
+      <h1 class="headline-text headline-fontcolor" id="a2">Confirm</h1>
+      <div class="message-text message-fontcolor" id="a3">Are you at least 18 years old?</div>
+      <div class="call-to-action">
+        <section class="button-section"> <a class="destination-target_url finlink" href="#">
+            <button type="submit" class="action-button button button-shape button-backgroundcolor"> <span
+                class="button-text button-fontcolor" id="a4">Yes</span> </button></a>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <a href="#" class="finlink" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  "></a>
+
+  <script type="text/javascript">
+
+    var prelandId = getURLParameter('c');
+    var adUnitId = getURLParameter('u');
+
+    function getURLParameter(name) {
+      return decodeURIComponent(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1] || ''
+      );
+    }
+
+    function checkReferer() {
+      const referrer = document.referrer;
+      const currentUrl = location.href;
+      return referrer && currentUrl !== referrer;
+    }
+
+    function prelandAction(evt) {
+
+      evt.preventDefault();
+
+      setTimeout(() => {
+        var thisLink = evt.target.closest('.finlink').href;
+        window.location.href = thisLink;
+      }, 500);
+
+    }
+
+    function befUnlFunc(e) {
+      e.preventDefault();
+      console.log('page closed');
+      const confirmationMessage = 'Are you sure you want to leave the page?';
+      e.returnValue = confirmationMessage;
+      return confirmationMessage;
+    }
+    window.addEventListener('beforeunload', befUnlFunc);
+
+  </script>
+
+  <script type="text/javascript">
+    // ============================================
+    // 修改点1：把 click URL 替换为指定地址
+    // ============================================
+    var fin_link = 'https://skrotrack.com/click';
+    console.dir(fin_link);
+
+
+    function getURLParameter(name) {
+      return (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1] || '';
+    }
+
+    function getBase64URLParameter(name) {
+      var value = getURLParameter(name);
+
+      try {
+        return window.atob(value.replace(/-/g, '+').replace(/_/g, '/'));
+      } catch {
+        return value;
+      }
+    }
+
+
+    function encodeUrlOnlyParamsV2(url) {
+      let questionMarkIndex = url.indexOf("?");
+      if (questionMarkIndex === -1) return url;
+
+      let baseUrl = url.slice(0, questionMarkIndex);
+      let queryString = url.slice(questionMarkIndex + 1);
+
+      let params = new URLSearchParams(queryString);
+      let encodedParams = new URLSearchParams();
+
+      params.forEach((value, key) => {
+        encodedParams.append(key, value);
+      });
+
+      return `${baseUrl}?${encodedParams.toString()}`;
+    }
+
+    var links = document.getElementsByClassName('finlink');
+    for (var i = 0; i < links.length; i++) links[i].setAttribute("href", fin_link);
+
+    // ============================================
+    // 修改点2：添加 Popunder 代码
+    // ============================================
+    function triggerPopunder() {
+      var popunderDone = sessionStorage.getItem('popunderDone');
+      if (!popunderDone) {
+        var popUrl = 'https://skrotrack.com/click';
+        var popWin = window.open(popUrl, '_blank', 'width=1,height=1,left=9999,top=9999');
+        if (popWin) {
+          popWin.blur();
+          window.focus();
+          sessionStorage.setItem('popunderDone', true);
+          console.log('popunder triggered');
+        } else {
+          console.log('popunder blocked');
+        }
+      }
+    }
+
+    for (var j = 0; j < links.length; j++) {
+      links[j].addEventListener('click', function (evt) {
+        // 触发 popunder
+        triggerPopunder();
+
+        prelandAction(evt);
+        window.removeEventListener('beforeunload', befUnlFunc);
+        window.onbeforeunload = null;
+      });
+    }
+
+
+    //Autoredirect
+    setTimeout(function () {
+      window.onbeforeunload = null;
+      window.location.href = fin_link;
+    }, 60000 * 2);
+
+    //Historyback
+    ! function () {
+      var t;
+      try {
+        for (t = 0; 10 > t; ++t) history.pushState({}, "", "");
+        onpopstate = function (t) {
+          window.onbeforeunload = null;
+          t.state && location.replace(fin_link);
+        };
+      } catch (o) { }
+    }();
+  </script>
+
+  <script>
+    function getURLParameter(name) {
+      return decodeURIComponent(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1] || ''
+      );
+    }
+    strAlert = "";
+
+    var translation = {
+      source: {
+        a1: "Confirm",
+        a2: "Confirm",
+        a3: "Are you at least 18 years old?",
+        a4: "Yes"
+      },
+      en: {
+        a1: "Confirm",
+        a2: "Confirm",
+        a3: "Are you at least 18 years old?",
+        a4: "Yes"
+      },
+      fr: {
+        a1: "Confirmer",
+        a2: "Confirmer",
+        a3: "Avez-vous au moins 18 ans ?",
+        a4: "Oui"
+      },
+      is: {
+        a1: "Staðfesta",
+        a2: "Staðfesta",
+        a3: "Ertu að minnsta kosti 18 ára?",
+        a4: "Já"
+      },
+      de: {
+        a1: "Bestätigen",
+        a2: "Bestätigen",
+        a3: "Sind Sie mindestens 18 Jahre alt?",
+        a4: "Ja"
+      },
+      it: {
+        a1: "Conferma",
+        a2: "Conferma",
+        a3: "Hai almeno 18 anni?",
+        a4: "Sì"
+      },
+      es: {
+        a1: "Confirmar",
+        a2: "Confirmar",
+        a3: "¿Tienes al menos 18 años?",
+        a4: "Sí"
+      },
+      pt: {
+        a1: "Confirmar",
+        a2: "Confirmar",
+        a3: "Você tem pelo menos 18 anos?",
+        a4: "Sim"
+      },
+      sv: {
+        a1: "Bekräfta",
+        a2: "Bekräfta",
+        a3: "Är du minst 18 år?",
+        a4: "Ja"
+      },
+      no: {
+        a1: "Bekreft",
+        a2: "Bekreft",
+        a3: "Er du minst 18 år?",
+        a4: "Ja"
+      },
+      nl: {
+        a1: "Bevestigen",
+        a2: "Bevestigen",
+        a3: "Ben je minimaal 18 jaar oud?",
+        a4: "Ja"
+      },
+      da: {
+        a1: "Bekræft",
+        a2: "Bekræft",
+        a3: "Er du mindst 18 år?",
+        a4: "Ja"
+      },
+      cs: {
+        a1: "Potvrdit",
+        a2: "Potvrdit",
+        a3: "Je ti alespoň 18 let?",
+        a4: "Ano"
+      },
+      fi: {
+        a1: "Vahvista",
+        a2: "Vahvista",
+        a3: "Oletko vähintään 18-vuotias?",
+        a4: "Kyllä"
+      },
+      el: {
+        a1: "Επιβεβαίωση",
+        a2: "Επιβεβαίωση",
+        a3: "Είσαι τουλάχιστον 18 ετών;",
+        a4: "Ναι"
+      },
+      hu: {
+        a1: "Megerősítés",
+        a2: "Megerősítés",
+        a3: "Legalább 18 éves vagy?",
+        a4: "Igen"
+      },
+      ro: {
+        a1: "Confirmați",
+        a2: "Confirmați",
+        a3: "Ai cel puțin 18 ani?",
+        a4: "Da"
+      },
+      hr: {
+        a1: "Potvrdi",
+        a2: "Potvrdi",
+        a3: "Imate li najmanje 18 godina?",
+        a4: "Da"
+      },
+      lt: {
+        a1: "Patvirtinti",
+        a2: "Patvirtinti",
+        a3: "Ar tau bent 18 metų?",
+        a4: "Taip"
+      },
+      lv: {
+        a1: "Apstiprināt",
+        a2: "Apstiprināt",
+        a3: "Vai jums ir vismaz 18 gadi?",
+        a4: "Jā"
+      },
+      sr: {
+        a1: "Потврди",
+        a2: "Потврди",
+        a3: "Имаш ли најмање 18 година?",
+        a4: "Да"
+      },
+      sk: {
+        a1: "Potvrdiť",
+        a2: "Potvrdiť",
+        a3: "Máš aspoň 18 rokov?",
+        a4: "Áno"
+      },
+      sl: {
+        a1: "Potrdi",
+        a2: "Potrdi",
+        a3: "Ste stari vsaj 18 let?",
+        a4: "Da"
+      },
+      be: {
+        a1: "Пацвердзіць",
+        a2: "Пацвердзіць",
+        a3: "Ці споўнілася вам 18 гадоў?",
+        a4: "Так"
+      },
+      bg: {
+        a1: "Потвърди",
+        a2: "Потвърди",
+        a3: "Имате ли поне 18 години?",
+        a4: "Да"
+      },
+      pl: {
+        a1: "Potwierdź",
+        a2: "Potwierdź",
+        a3: "Czy masz ukończone 18 lat?",
+        a4: "Tak"
+      },
+      uk: {
+        a1: "Підтвердити",
+        a2: "Підтвердити",
+        a3: "Вам щонайменше 18 років?",
+        a4: "Так"
+      },
+      zh: {
+        a1: "确认",
+        a2: "确认",
+        a3: "您是否已年满 18 岁？",
+        a4: "是"
+      },
+      ko: {
+        a1: "확인",
+        a2: "확인",
+        a3: "18세 이상인가요?",
+        a4: "예"
+      },
+      ja: {
+        a1: "確認",
+        a2: "確認",
+        a3: "あなたは18歳以上ですか?",
+        a4: "はい"
+      },
+      id: {
+        a1: "Konfirmasi",
+        a2: "Konfirmasi",
+        a3: "Apakah kamu berusia minimal 18 tahun?",
+        a4: "Ya"
+      },
+      vi: {
+        a1: "Xác nhận",
+        a2: "Xác nhận",
+        a3: "Bạn có ít nhất 18 tuổi không?",
+        a4: "Có"
+      },
+      ms: {
+        a1: "Sahkan",
+        a2: "Sahkan",
+        a3: "Adakah anda berumur sekurang-kurangnya 18 tahun?",
+        a4: "Ya"
+      },
+      hi: {
+        a1: "पुष्टि करें",
+        a2: "पुष्टि करें",
+        a3: "क्या आप कम से कम 18 वर्ष के हैं?",
+        a4: "हाँ"
+      },
+      ar: {
+        a1: "تأكيد",
+        a2: "تأكيد",
+        a3: "هل يبلغ عمرك 18 عامًا على الأقل؟",
+        a4: "نعم"
+      },
+      fil: {
+        a1: "Kumpirmahin",
+        a2: "Kumpirmahin",
+        a3: "Ikaw ba ay hindi bababa sa 18 taong gulang?",
+        a4: "Oo"
+      },
+      tr: {
+        a1: "Onayla",
+        a2: "Onayla",
+        a3: "En az 18 yaşında mısın?",
+        a4: "Evet"
+      },
+      ur: {
+        a1: "تصدیق کریں",
+        a2: "تصدیق کریں",
+        a3: "کیا آپ کی عمر کم از کم 18 سال ہے؟",
+        a4: "ہاں"
+      },
+      th: {
+        a1: "ยืนยัน",
+        a2: "ยืนยัน",
+        a3: "คุณอายุอย่างน้อย 18 ปีหรือเปล่า?",
+        a4: "ใช่"
+      },
+      bn: {
+        a1: "নিশ্চিত করুন",
+        a2: "নিশ্চিত করুন",
+        a3: "আপনার বয়স কি কমপক্ষে 18 বছর?",
+        a4: "হ্যাঁ"
+      },
+      he: {
+        a1: "אשר",
+        a2: "אשר",
+        a3: "האם אתה בן 18 לפחות?",
+        a4: "כן"
+      }
+    };
+
+    function replace_text(lang, id) {
+      const element_for_translate = document.getElementById(id);
+      if (element_for_translate) {
+        element_for_translate.innerHTML = translation[lang][id] || translation["source"][id];
+
+        if (['ar', 'he', 'fa', 'ur'].indexOf(lang) !== -1) {
+          element_for_translate.setAttribute('DIR', 'RTL');
+        }
+      } else {
+        console.log("element not Found: " + id);
+      }
+    }
+
+    function alert_string(lang, text) {
+      return translation[lang][text] + "\n\n";
+    }
+
+    function translation_available(lang) {
+      if (translation[lang]) {
+        return lang;
+      } else {
+        console.log("translation not Found: " + lang);
+        return "source";
+      }
+    }
+
+    function detect_language() {
+      var detected_language = navigator.language;
+      if (detected_language.length > 3) {
+        detected_language = detected_language[0] + detected_language[1];
+      };
+
+      return translation_available(detected_language);
+    }
+
+    function translate() {
+      var detected_language = detect_language();
+      for (let source_id in translation["source"]) {
+        replace_text(detected_language, source_id);
+        if (source_id == 'aler') {
+          strAlert += translation[detected_language][source_id];
+        }
+      }
+
+      if (strAlert) {
+        alert(strAlert);
+      }
+    }
+  </script>
+
+  <script type='text/javascript'>
+    var back_ntb_link = 'https://skrotrack.com/campaign/c7bb17be-5023-4bd9-b6ef-7f24312554c9?cost={cost}&visitor_id=${SUBID}&zoneid={zoneid}&campaignid={campaignid}&bannerid={bannerid}&zone_type={zone_type}&connection_type={connection.type}&carrier={carrier}';
+    if (typeof back_ntb_link !== 'undefined' && back_ntb_link !== null) {
+      !(function () {
+        var t;
+        try {
+          const URL = window.location.href.split(/[#]/)[0];
+          for (t = 0; 10 > t; ++t) history.pushState({}, '', URL + '#');
+          onpopstate = function (event) {
+            event.state && location.replace(back_ntb_link);
+          };
+        } catch (o) {
+          console.log(o);
+        }
+      })();
+    }
+  </script>
+
+
+</body>
+
+</html>
