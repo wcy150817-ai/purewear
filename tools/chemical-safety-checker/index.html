@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Cleaning Chemical Safety & Mixing Compatibility Checker | PureWear Space</title>
-    <meta name="description" content="Free cleaning chemical safety checker. Check if mixing two cleaning agents (bleach, vinegar, ammonia, peroxide, alcohol) releases lethal toxic fumes or creates explosion risks. Includes 2026 OSHA safety matrix.">
+    <meta name="description" content="Tier-1 cleaning chemical safety checker and hazard compatibility matrix. Instantly verify if mixing household and commercial cleaning products produces lethal chlorine gas, chloramine vapors, or explosions.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/chemical-safety-checker/">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Cleaning Chemical Safety & Mixing Compatibility Checker | PureWear Space">
-    <meta property="og:description" content="Instantly test if two cleaning chemicals are safe to mix or create hazardous toxic gases.">
+    <meta property="og:description" content="Test if mixing two cleaning chemicals produces lethal chlorine or chloramine gas. Features 2026 OSHA safety matrix and emergency flash protocols.">
     <meta property="og:url" content="https://tool.purewearspace.com/tools/chemical-safety-checker/">
     <meta property="og:type" content="website">
 
@@ -232,7 +232,7 @@
 
     <!-- 导航栏 -->
     <nav class="navbar">
-        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span> <span style="font-size: 11px; background: #fee2e2; color: #991b1b; padding: 2px 8px; border-radius: 999px; font-weight: 700;">SAFETY MATRIX</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
             <a href="../index.html" class="nav-link active">All Tools</a>
@@ -244,7 +244,7 @@
     <!-- 页面标题 -->
     <div class="page-header">
         <h1>Cleaning Chemical Safety & Mixing Checker</h1>
-        <p>Select any two cleaning chemicals or household products to instantly verify whether combining them releases hazardous toxic fumes, fires, or corrosive spills.</p>
+        <p>Real-time chemical reactivity testing engine for professional cleaners. Test combinations of bleach, vinegar, ammonia, peroxide, and acids to prevent lethal gas emissions.</p>
     </div>
 
     <!-- 主布局网格 -->
@@ -254,8 +254,8 @@
         <main>
             <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
-                    <h2 style="font-size: 18px; margin: 0;">Select Two Products or Ingredients</h2>
-                    <span style="font-size: 12px; color: var(--text-sub); font-weight: 600;">Real-time chemical evaluation</span>
+                    <h2 style="font-size: 18px; margin: 0;">Select Two Products or Active Ingredients</h2>
+                    <span style="font-size: 12px; color: var(--text-sub); font-weight: 600;">Reactive Evaluation</span>
                 </div>
                 <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 16px;">Pick from standard commercial custodial cleaners below to test chemical reactivity.</p>
 
@@ -296,7 +296,7 @@
 
                 <!-- 常见高危组合快捷标签 -->
                 <div>
-                    <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;">High-Risk Quick Checks:</span>
+                    <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;">High-Risk Presets:</span>
                     <div class="quick-combo-row">
                         <button type="button" class="quick-combo-chip" onclick="setPair('bleach', 'vinegar')">⚠️ Bleach + Vinegar</button>
                         <button type="button" class="quick-combo-chip" onclick="setPair('bleach', 'ammonia')">⚠️ Bleach + Ammonia</button>
@@ -544,7 +544,7 @@
                 type: 'danger',
                 icon: '☠️',
                 title: 'DEADLY! TOXIC CHLORINE GAS',
-                desc: 'Mixing <strong>Bleach</strong> with <strong>Vinegar (Acid)</strong> releases toxic <strong>Chlorine Gas</strong> (Cl₂). It causes immediate chemical burns to eyes, throat, and lungs, and can be fatal in enclosed spaces like bathrooms. <strong>NEVER MIX.</strong>'
+                desc: 'Mixing <strong>Bleach</strong> with <strong>Vinegar</strong> releases toxic <strong>Chlorine Gas</strong> (Cl₂). It causes immediate chemical burns to eyes, throat, and lungs, and can be fatal in enclosed spaces like bathrooms. <strong>NEVER MIX.</strong>'
             },
             {
                 pair: ['bleach', 'toilet_acid'],
@@ -634,7 +634,6 @@
                 return;
             }
 
-            // 查找危险库
             let match = null;
             for (let r of reactions) {
                 if (r.pair.includes(p1) && r.pair.includes(p2)) {
@@ -654,7 +653,6 @@
                     mobileSticky.style.color = match.type === 'danger' ? '#ef4444' : (match.type === 'warning' ? '#f59e0b' : '#3b82f6');
                 }
             } else {
-                // 安全或无致命已知反应
                 card.className = 'safety-result-card status-safe';
                 icon.innerText = '✅';
                 title.innerText = 'NO KNOWN HAZARDOUS REACTION';

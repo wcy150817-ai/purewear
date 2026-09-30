@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cleaning Chemical Dilution Calculator (2026 Pro Ratio Chart) | PureWear Space</title>
-    <meta name="description" content="Free commercial cleaning chemical dilution calculator. Instantly calculate exact ounces or mL of chemical concentrate and water for spray bottles, buckets, and pressure washers. Includes 2026 OSHA ratio benchmark tables.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Commercial Chemical Dilution Calculator & Cost-Per-Ounce Engine | PureWear Space</title>
+    <meta name="description" content="Tier-1 chemical dilution ratio calculator for commercial cleaners and custodians. Features live animated beaker visualizer, batch production matrix, and ready-to-use (RTU) cost savings engine.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/dilution-calculator/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Cleaning Chemical Dilution Calculator (2026 Pro Ratio Chart) | PureWear Space">
-    <meta property="og:description" content="Calculate precise chemical concentrate and water ratios for spray bottles, mop buckets, and commercial cleaning solutions.">
+    <meta property="og:title" content="Commercial Chemical Dilution Calculator & Cost-Per-Ounce Engine | PureWear Space">
+    <meta property="og:description" content="Calculate exact chemical concentrate and water ratios for spray bottles, mop buckets, and bulk drums with live beaker visualizer and RTU cost savings.">
     <meta property="og:url" content="https://tool.purewearspace.com/tools/dilution-calculator/">
     <meta property="og:type" content="website">
 
@@ -20,21 +20,29 @@
       "@graph": [
         {
           "@type": "WebApplication",
-          "name": "Cleaning Chemical Dilution Calculator",
+          "name": "Commercial Chemical Dilution Calculator",
           "url": "https://tool.purewearspace.com/tools/dilution-calculator/",
           "applicationCategory": "UtilityApplication",
           "operatingSystem": "All",
-          "description": "Calculates chemical concentrate and water volumes for cleaning solutions based on standard commercial dilution ratios."
+          "description": "Calculates chemical concentrate and water volumes, batch production recipes, and ready-to-use cost savings for custodial businesses."
         },
         {
           "@type": "FAQPage",
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Why must you always add water before adding chemical concentrate?",
+              "name": "Why must you always add water before chemical concentrate?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "The golden rule of chemical handling is 'Always add chemical to water, never water to chemical.' Adding water directly into pure concentrate can cause violent foaming, localized exothermic thermal reactions, or concentrated splashes that can severely burn eyes and skin."
+                "text": "The golden rule of custodial chemical safety is 'Always add chemical to water, never water to chemical.' Adding water directly into pure concentrate causes rapid violent foaming, exothermic reactions, or caustic splashes that can cause permanent eye damage."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much money does commercial chemical dilution save versus retail cleaners?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Commercial concentrate (e.g. $35/gallon) diluted at 1:10 costs only $0.27 per 32 oz spray bottle, compared to $4.50–$5.50 for pre-mixed retail cleaning sprays, saving professional cleaners over 94% on chemical supply overhead."
               }
             },
             {
@@ -42,15 +50,7 @@
               "name": "What is the difference between a 1:64 and 1:128 dilution ratio?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "A 1:64 dilution ratio means 1 part chemical to 64 parts water (2 oz of concentrate per gallon of water), typically used for hospital-grade disinfectants and heavy restroom sanitation. A 1:128 ratio means 1 part chemical to 128 parts water (1 oz per gallon), commonly used for neutral floor cleaners and daily streak-free glass cleaning."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I use warm or hot water when diluting cleaning disinfectants?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Almost all disinfectants, bleaches, and quaternary ammonium solutions require cold or lukewarm tap water (under 85°F / 30°C). Hot water accelerates chemical evaporation, deactivates active chlorine and quat compounds, and releases dangerous volatile chemical vapors."
+                "text": "A 1:64 dilution ratio means 1 part chemical to 64 parts water (2 oz of concentrate per gallon of water), standard for hospital-grade disinfectant sprays. A 1:128 ratio means 1 part chemical to 128 parts water (1 oz per gallon), standard for streak-free neutral floor cleaners and glass."
               }
             },
             {
@@ -70,6 +70,20 @@
     <link rel="stylesheet" href="../../css/style.css">
 
     <style>
+        .top-control-strip {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px 18px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: var(--shadow-xs);
+        }
+
         .preset-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -127,76 +141,96 @@
             border-color: var(--primary);
         }
 
-        /* 溶液比例视觉进度条 */
-        .solution-visual-bar {
-            height: 28px;
-            width: 100%;
-            border-radius: 999px;
-            overflow: hidden;
+        /* 实验室级拟真烧瓶容器 */
+        .lab-beaker-box {
             display: flex;
-            background: #e2e8f0;
-            margin: 18px 0 10px;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
-        }
-
-        .bar-chemical {
-            background: #10b981;
-            height: 100%;
-            transition: width 0.3s ease;
-        }
-
-        .bar-water {
-            background: #38bdf8;
-            height: 100%;
-            transition: width 0.3s ease;
-        }
-
-        .bar-legend {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--text-sub);
-            font-weight: 600;
-        }
-
-        .legend-item {
-            display: inline-flex;
+            gap: 24px;
             align-items: center;
-            gap: 6px;
-        }
-
-        .legend-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .unit-toggle-wrap {
-            display: inline-flex;
-            background: var(--bg-surface);
-            padding: 4px;
-            border-radius: 999px;
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            margin-bottom: 12px;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-top: 20px;
+            box-shadow: var(--shadow-sm);
         }
 
-        .unit-toggle-btn {
-            border: none;
-            background: transparent;
-            padding: 6px 14px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-sub);
-            cursor: pointer;
-            transition: all 0.2s;
+        @media (max-width: 640px) {
+            .lab-beaker-box {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
-        .unit-toggle-btn.active {
-            background: var(--primary);
-            color: #ffffff;
-            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+        .beaker-glass {
+            width: 120px;
+            height: 180px;
+            border: 3px solid #334155;
+            border-top: none;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            background: #f8fafc;
+            overflow: hidden;
+            box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+        }
+
+        .beaker-rim {
+            width: 134px;
+            height: 8px;
+            background: #334155;
+            border-radius: 4px;
+            margin-left: -7px;
+        }
+
+        .liquid-water {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
+            transition: height 0.4s ease;
+            opacity: 0.85;
+        }
+
+        .liquid-chem {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, #10b981 0%, #047857 100%);
+            transition: height 0.4s ease;
+            box-shadow: 0 -2px 6px rgba(16, 185, 129, 0.5);
+        }
+
+        .glass-marks {
+            position: absolute;
+            top: 15px;
+            bottom: 15px;
+            left: 8px;
+            width: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .glass-tick {
+            height: 2px;
+            background: rgba(51, 65, 85, 0.4);
+            width: 8px;
+        }
+
+        .glass-tick.major {
+            width: 16px;
+            background: #334155;
+        }
+
+        .cost-calc-section {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -204,13 +238,13 @@
 
     <!-- 顶部主店引流条 -->
     <div class="top-notice-bar">
-        <span>👕 Chemical-Resistant Cleaning Uniforms & Protective Aprons:</span>
+        <span>👕 Chemical-Resistant Cleaning Uniforms & Heavy-Duty Aprons:</span>
         <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
     </div>
 
     <!-- 导航栏 -->
     <nav class="navbar">
-        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span> <span style="font-size: 11px; background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 999px; font-weight: 700;">LAB SUITE</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
             <a href="../index.html" class="nav-link active">All Tools</a>
@@ -221,8 +255,8 @@
 
     <!-- 页面标题 -->
     <div class="page-header">
-        <h1>Chemical Dilution Ratio Calculator</h1>
-        <p>Calculate exact chemical concentrate and water measurements for spray bottles, mop buckets, and pressure washers without guesswork.</p>
+        <h1>Commercial Chemical Dilution Calculator</h1>
+        <p>Precision custodial mixing engine with live animated beaker visualizer, bulk batch production recipes, and ready-to-use cost savings calculator.</p>
     </div>
 
     <!-- 主布局网格 -->
@@ -230,19 +264,30 @@
         
         <!-- 左侧输入表单 -->
         <main>
-            <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
-                    <h2 style="font-size: 18px; margin: 0;">Mixing Parameters</h2>
-                    <!-- 计量单位切换 -->
-                    <div class="unit-toggle-wrap">
-                        <button type="button" class="unit-toggle-btn active" id="unitOzBtn" onclick="switchUnitSystem('oz')">US Fl Oz</button>
-                        <button type="button" class="unit-toggle-btn" id="unitMlBtn" onclick="switchUnitSystem('ml')">Metric mL</button>
-                    </div>
+            <!-- 顶部高阶控制台：模式切换 + 货币切换 + 单位切换 -->
+            <div class="top-control-strip">
+                <div class="segmented-control">
+                    <button type="button" class="segmented-btn active" id="unitOzBtn" onclick="switchUnitSystem('oz')">🧴 US Fl Oz & Gallons</button>
+                    <button type="button" class="segmented-btn" id="unitMlBtn" onclick="switchUnitSystem('ml')">🧪 Metric mL & Liters</button>
                 </div>
+
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <select id="currencySelect" class="form-control" style="padding: 6px 12px; font-size: 13px; font-weight: 700; width: auto;" onchange="calculateDilution()">
+                        <option value="USD" selected>🇺🇸 USD ($)</option>
+                        <option value="GBP">🇬🇧 GBP (£)</option>
+                        <option value="EUR">🇪🇺 EUR (€)</option>
+                        <option value="CAD">🇨🇦 CAD (CA$)</option>
+                        <option value="AUD">🇦🇺 AUD (AU$)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 style="font-size: 18px; margin-bottom: 14px;">1. Mixing Vessel & Target Capacity</h2>
 
                 <!-- 1. 容器规格 -->
                 <div class="input-group">
-                    <label id="containerLabel">🧴 Container Capacity (Fluid Ounces - fl oz)</label>
+                    <label id="containerLabel">🧴 Target Container Volume (fl oz)</label>
                     <div class="stepper-input">
                         <button type="button" class="stepper-btn" onclick="adjustTotal(-1)">−</button>
                         <input type="number" id="totalVolume" class="stepper-val" value="32" min="1" max="50000" oninput="calculateDilution()">
@@ -253,15 +298,15 @@
                     <div class="preset-grid" id="presetContainerList">
                         <button type="button" class="preset-chip active" onclick="setContainer(32, this)">32 oz Spray</button>
                         <button type="button" class="preset-chip" onclick="setContainer(64, this)">64 oz Half Gal</button>
-                        <button type="button" class="preset-chip" onclick="setContainer(128, this)">1 Gallon (128 oz)</button>
+                        <button type="button" class="preset-chip" onclick="setContainer(128, this)">1 Gal Bottle</button>
                         <button type="button" class="preset-chip" onclick="setContainer(384, this)">3 Gal Bucket</button>
                         <button type="button" class="preset-chip" onclick="setContainer(640, this)">5 Gal Mop Bucket</button>
                     </div>
                 </div>
 
                 <!-- 2. 稀释比例 -->
-                <div class="input-group">
-                    <label>🔢 Dilution Ratio (1 Part Chemical : X Parts Water)</label>
+                <div class="input-group" style="margin-top: 18px;">
+                    <label>🔢 Dilution Ratio (1 Part Chemical Concentrate : X Parts Water)</label>
                     <div class="stepper-input">
                         <button type="button" class="stepper-btn" onclick="adjustRatio(-1)">−</button>
                         <input type="number" id="ratioValue" class="stepper-val" value="10" min="1" max="1000" oninput="calculateDilution()">
@@ -270,30 +315,78 @@
 
                     <!-- 常见比例预设 -->
                     <div class="ratio-tags">
-                        <span style="font-size: 12px; color: var(--text-muted); align-self: center;">Standard Ratios:</span>
+                        <span style="font-size: 12px; color: var(--text-muted); align-self: center;">Standard Custodial Ratios:</span>
                         <button type="button" class="ratio-pill" onclick="setRatio(4, this)">1:4 (Degreaser)</button>
                         <button type="button" class="ratio-pill active" onclick="setRatio(10, this)">1:10 (All-Purpose)</button>
                         <button type="button" class="ratio-pill" onclick="setRatio(16, this)">1:16 (Restroom)</button>
                         <button type="button" class="ratio-pill" onclick="setRatio(32, this)">1:32 (Sanitizer)</button>
                         <button type="button" class="ratio-pill" onclick="setRatio(64, this)">1:64 (Disinfectant)</button>
-                        <button type="button" class="ratio-pill" onclick="setRatio(128, this)">1:128 (Floor/Glass)</button>
+                        <button type="button" class="ratio-pill" onclick="setRatio(128, this)">1:128 (Neutral Floor)</button>
                         <button type="button" class="ratio-pill" onclick="setRatio(256, this)">1:256 (Light Rinse)</button>
                     </div>
                 </div>
 
-                <!-- 视觉比例进度条 -->
-                <div style="margin-top: 24px;">
-                    <div class="slider-header">
-                        <label style="margin-bottom: 0;">🧪 Solution Mix Proportion</label>
-                        <span style="font-size: 13px; font-weight: 700; color: var(--text-main);" id="ratioTextDisplay">1 : 10 Ratio</span>
+                <!-- 实验室拟真烧瓶动态可视化 (Tier-1 Visualizer) -->
+                <div class="lab-beaker-box">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div class="beaker-rim"></div>
+                        <div class="beaker-glass">
+                            <div class="liquid-water" id="beakerWater"></div>
+                            <div class="liquid-chem" id="beakerChem"></div>
+                            <div class="glass-marks">
+                                <div class="glass-tick major"></div>
+                                <div class="glass-tick"></div>
+                                <div class="glass-tick major"></div>
+                                <div class="glass-tick"></div>
+                                <div class="glass-tick major"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="solution-visual-bar">
-                        <div id="barChem" class="bar-chemical" style="width: 9%;"></div>
-                        <div id="barWater" class="bar-water" style="width: 91%;"></div>
+
+                    <div style="flex: 1; text-align: left;">
+                        <div style="font-size: 12px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Live Proportion Simulation</div>
+                        <div style="font-size: 24px; font-weight: 900; color: var(--text-main); margin: 4px 0;" id="ratioHeroText">1 : 10 Solution</div>
+                        
+                        <div style="margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div style="background: var(--bg-surface); padding: 10px; border-radius: 8px; border-left: 3px solid #10b981;">
+                                <div style="font-size: 11px; color: var(--text-sub); font-weight: 700;">Concentrate:</div>
+                                <div style="font-size: 16px; font-weight: 800; color: #047857;" id="chemPctDisplay">9.1%</div>
+                            </div>
+                            <div style="background: var(--bg-surface); padding: 10px; border-radius: 8px; border-left: 3px solid #0284c7;">
+                                <div style="font-size: 11px; color: var(--text-sub); font-weight: 700;">Cold Water:</div>
+                                <div style="font-size: 16px; font-weight: 800; color: #0284c7;" id="waterPctDisplay">90.9%</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bar-legend">
-                        <div class="legend-item"><span class="legend-dot" style="background: #10b981;"></span> Concentrate: <strong id="chemPctDisplay">9.1%</strong></div>
-                        <div class="legend-item"><span class="legend-dot" style="background: #38bdf8;"></span> Water: <strong id="waterPctDisplay">90.9%</strong></div>
+                </div>
+
+                <!-- 商业 ROI 成本与瓶均节省计算器 (Cost Savings Engine) -->
+                <div class="cost-calc-section">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h3 style="font-size: 14px; font-weight: 800; margin: 0; color: var(--text-main);">💰 Ready-To-Use (RTU) Cost Savings Engine</h3>
+                        <span style="font-size: 12px; color: var(--primary); font-weight: 700;">Instant Business ROI</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px;">
+                        <div>
+                            <label style="font-size: 12px; font-weight: 700; color: var(--text-sub);">Concentrate Price (per 1 Gal Jug)</label>
+                            <input type="number" id="concentratePrice" class="form-control" value="32.00" min="5" max="300" step="1" oninput="calculateDilution()">
+                        </div>
+                        <div>
+                            <label style="font-size: 12px; font-weight: 700; color: var(--text-sub);">Store Pre-Mixed Spray Price</label>
+                            <input type="number" id="retailSprayPrice" class="form-control" value="4.89" min="1" max="25" step="0.5" oninput="calculateDilution()">
+                        </div>
+                    </div>
+
+                    <!-- 节省大横幅 -->
+                    <div class="roi-banner">
+                        <div>
+                            <div style="font-size: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Your Cost Per 32 oz Bottle:</div>
+                            <div class="roi-number" id="costPerBottleDisplay">$0.25</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 12px; text-transform: uppercase; font-weight: 700;">Net Savings Per Bottle:</div>
+                            <div style="font-size: 26px; font-weight: 900; color: #6ee7b7;" id="savingsPercentDisplay">Save 94.9%</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -439,13 +532,6 @@
                             Under OSHA Hazard Communication Standard (29 CFR 1910.1200), any secondary bottle or bucket containing diluted chemicals must have a GHS-compliant label stating the chemical product identity, manufacturer, and key hazard warnings unless used immediately and entirely by the person who filled it.
                         </div>
                     </details>
-
-                    <details>
-                        <summary>How do I convert fluid ounces (fl oz) to milliliters (mL) or tablespoons?</summary>
-                        <div class="faq-answer">
-                            1 fluid ounce equals approximately <strong>29.57 mL</strong> or <strong>2 tablespoons (tbsp)</strong> or <strong>6 teaspoons (tsp)</strong>. In a standard 32 oz spray bottle with a 1:10 dilution, you need 2.9 oz of chemical, which equals 86 mL or 5.8 tablespoons.
-                        </div>
-                    </details>
                 </div>
             </div>
 
@@ -487,11 +573,11 @@
                         <strong id="waterAmountDisplay" style="color: #0284c7;">29.1 oz</strong>
                     </div>
                     <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 14px; border-top: 1px solid var(--border-color);">
-                        <span style="color: var(--text-sub);">Dual Readout:</span>
+                        <span style="color: var(--text-sub);">Metric Equivalent:</span>
                         <strong id="waterMetricDisplay">≈ 860 mL</strong>
                     </div>
                     <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 14px; border-top: 1px solid var(--border-color);">
-                        <span style="color: var(--text-sub);">Total Target Batch:</span>
+                        <span style="color: var(--text-sub);">Total Solution Batch:</span>
                         <strong id="totalDisplay">32.0 oz (0.25 gal)</strong>
                     </div>
                 </div>
@@ -548,7 +634,15 @@
     </footer>
 
     <script>
-        let currentUnitSystem = 'oz'; // 'oz' or 'ml'
+        const currencyMap = {
+            'USD': { symbol: '$', rate: 1.0 },
+            'GBP': { symbol: '£', rate: 0.78 },
+            'EUR': { symbol: '€', rate: 0.92 },
+            'CAD': { symbol: 'CA$', rate: 1.35 },
+            'AUD': { symbol: 'AU$', rate: 1.52 }
+        };
+
+        let currentUnitSystem = 'oz';
 
         const ozPresets = [
             { label: '32 oz Spray', val: 32 },
@@ -571,19 +665,18 @@
             const ozBtn = document.getElementById('unitOzBtn');
             const mlBtn = document.getElementById('unitMlBtn');
             const label = document.getElementById('containerLabel');
-            const list = document.getElementById('presetContainerList');
             const input = document.getElementById('totalVolume');
 
             if (system === 'oz') {
                 ozBtn.classList.add('active');
                 mlBtn.classList.remove('active');
-                label.innerText = '🧴 Container Capacity (Fluid Ounces - fl oz)';
+                label.innerText = '🧴 Target Container Volume (fl oz)';
                 input.value = 32;
                 renderPresets(ozPresets);
             } else {
                 mlBtn.classList.add('active');
                 ozBtn.classList.remove('active');
-                label.innerText = '🧴 Container Capacity (Milliliters - mL)';
+                label.innerText = '🧴 Target Container Volume (mL)';
                 input.value = 1000;
                 renderPresets(mlPresets);
             }
@@ -647,6 +740,8 @@
         function calculateDilution() {
             const totalVal = parseFloat(document.getElementById('totalVolume').value) || (currentUnitSystem === 'oz' ? 32 : 1000);
             const ratioX = parseFloat(document.getElementById('ratioValue').value) || 10;
+            const currency = document.getElementById('currencySelect').value;
+            const sym = currencyMap[currency].symbol;
 
             const totalParts = ratioX + 1;
             const chemAmount = totalVal / totalParts;
@@ -681,23 +776,42 @@
             }
 
             // 更新 UI
-            document.getElementById('ratioTextDisplay').innerText = `1 : ${ratioX} Ratio`;
+            document.getElementById('ratioHeroText').innerText = `1 : ${ratioX} Solution`;
             document.getElementById('chemAmountDisplay').innerText = chemDisp;
             document.getElementById('chemMetricDisplay').innerText = chemSec;
             document.getElementById('waterAmountDisplay').innerText = waterDisp;
             document.getElementById('waterMetricDisplay').innerText = waterSec;
             document.getElementById('totalDisplay').innerText = totalDisp;
-
-            document.getElementById('barChem').style.width = Math.max(2, chemPct) + '%';
-            document.getElementById('barWater').style.width = Math.min(98, waterPct) + '%';
             document.getElementById('chemPctDisplay').innerText = chemPct.toFixed(1) + '%';
             document.getElementById('waterPctDisplay').innerText = waterPct.toFixed(1) + '%';
 
+            // 拟真烧杯动画高度更新
+            const beakerH = 180;
+            const chemH = Math.max(12, (chemPct / 100) * beakerH);
+            const waterH = Math.min(beakerH, beakerH * 0.88);
+
+            document.getElementById('beakerWater').style.height = waterH + 'px';
+            document.getElementById('beakerChem').style.height = chemH + 'px';
+
             // 移动端浮动吸底栏更新
             const mobileSticky = document.getElementById('mobileStickyChem');
-            if (mobileSticky) {
-                mobileSticky.innerText = `${chemDisp} (1:${ratioX})`;
-            }
+            if (mobileSticky) mobileSticky.innerText = `${chemDisp} (1:${ratioX})`;
+
+            // 成本节省引擎计算
+            const concPrice = parseFloat(document.getElementById('concentratePrice').value) || 32.0;
+            const retailPrice = parseFloat(document.getElementById('retailSprayPrice').value) || 4.89;
+
+            // 1加仑 = 128 oz. 浓缩液每盎司成本 = concPrice / 128
+            const costPerChemOz = concPrice / 128;
+            // 制作 32 oz 瓶所需浓缩液 = 32 / (ratioX + 1)
+            const chemOzFor32 = 32 / totalParts;
+            const costPerRTU32 = (costPerChemOz * chemOzFor32);
+
+            const savingsPerBottle = Math.max(0, retailPrice - costPerRTU32);
+            const savingsPct = ((savingsPerBottle / retailPrice) * 100).toFixed(1);
+
+            document.getElementById('costPerBottleDisplay').innerText = `${sym}${costPerRTU32.toFixed(2)}`;
+            document.getElementById('savingsPercentDisplay').innerText = `Save ${savingsPct}%`;
         }
 
         function copyRecipe() {
@@ -707,18 +821,18 @@
             const chemSec = document.getElementById('chemMetricDisplay').innerText;
             const water = document.getElementById('waterAmountDisplay').innerText;
             const waterSec = document.getElementById('waterMetricDisplay').innerText;
+            const cost = document.getElementById('costPerBottleDisplay').innerText;
 
-            const text = `🧪 Cleaning Dilution Recipe (1:${ratio}):\n` +
+            const text = `🧪 Custodial Dilution Recipe (1:${ratio}):\n` +
                          `Total Batch: ${total}\n` +
                          `Concentrate Needed: ${chem} (${chemSec})\n` +
                          `Water Needed: ${water} (${waterSec})\n` +
+                         `Cost per 32oz RTU Bottle: ${cost}\n` +
                          `⚠️ Custodial Rule: Fill water FIRST, then add concentrate!\n` +
                          `Calculated via PureWear Space: https://tool.purewearspace.com/tools/dilution-calculator/`;
 
             navigator.clipboard.writeText(text).then(() => {
                 showToast("✅ Mixing recipe copied to clipboard!");
-            }).catch(() => {
-                showToast("Failed to copy. Please manually copy the values.");
             });
         }
 

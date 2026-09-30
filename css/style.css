@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
 /* 
- * PureWear Space - Modern Design System 2026
- * Professional, Clean, High-Contrast UI for Utilities & Tools
+ * PureWear Space - Tier-1 Modern Design System 2026
+ * Flagship UI/UX for Cleaning Utilities & Commercial Calculators
  */
 
 :root {
@@ -56,7 +58,8 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-variant-numeric: tabular-nums;
     background-color: var(--bg-page);
     color: var(--text-body);
     line-height: 1.6;
@@ -1167,4 +1170,471 @@ body {
         padding: 14px 10px;
     }
 }
+
+/* ==========================================================================
+   TIER-1 FLAGSHIP DESIGN SYSTEM: LINEAR / STRIPE LEVEL COMPONENTS
+   ========================================================================== */
+
+/* 1. iOS / Linear 风格分段控制器 (Segmented Controls) */
+.segmented-control {
+    display: inline-flex;
+    background: #e2e8f0;
+    padding: 4px;
+    border-radius: 12px;
+    gap: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.segmented-btn {
+    border: none;
+    background: transparent;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-sub);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.segmented-btn:hover {
+    color: var(--text-main);
+}
+
+.segmented-btn.active {
+    background: #ffffff;
+    color: var(--primary);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* 2. 动态财务与工时成本分布可视化条 (Cost Breakdown Visualizer) */
+.breakdown-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.breakdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.breakdown-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.breakdown-bar-track {
+    height: 16px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+    display: flex;
+    margin-bottom: 14px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bar-segment {
+    height: 100%;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.seg-labor { background: #3b82f6; }
+.seg-supplies { background: #10b981; }
+.seg-overhead { background: #f59e0b; }
+.seg-profit { background: #8b5cf6; }
+
+.breakdown-legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+}
+
+.legend-box {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    background: var(--bg-surface);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid transparent;
+}
+
+.legend-box.leg-labor { border-left-color: #3b82f6; }
+.legend-box.leg-supplies { border-left-color: #10b981; }
+.legend-box.leg-overhead { border-left-color: #f59e0b; }
+.legend-box.leg-profit { border-left-color: #8b5cf6; }
+
+.legend-title {
+    font-size: 11px;
+    color: var(--text-sub);
+    font-weight: 700;
+}
+
+.legend-val {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-top: 2px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* 3. 客户级正式报价方案预览弹窗 (Client Proposal Modal) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.modal-overlay.open {
+    display: flex;
+    opacity: 1;
+}
+
+.proposal-modal {
+    background: #ffffff;
+    width: 100%;
+    max-width: 720px;
+    max-height: 90vh;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.open .proposal-modal {
+    transform: scale(1);
+}
+
+.modal-header-bar {
+    padding: 18px 24px;
+    background: #0f172a;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header-bar h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.modal-close-btn:hover {
+    color: #ffffff;
+}
+
+.proposal-scroll-body {
+    padding: 28px;
+    overflow-y: auto;
+    background: #f8fafc;
+}
+
+.proposal-paper {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.proposal-brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+}
+
+.proposal-logo {
+    font-size: 22px;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+.proposal-badge-quote {
+    background: #dbeafe;
+    color: #1e40af;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+}
+
+.proposal-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+    font-size: 13px;
+}
+
+.proposal-meta-item strong {
+    display: block;
+    color: var(--text-sub);
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.proposal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.proposal-table th, .proposal-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.proposal-table th {
+    background: #f1f5f9;
+    color: #475569;
+    font-weight: 700;
+}
+
+.proposal-total-card {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.total-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 14px;
+    color: var(--text-sub);
+}
+
+.total-line.final {
+    border-top: 2px solid #0f172a;
+    margin-top: 8px;
+    padding-top: 12px;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+.modal-footer-bar {
+    padding: 16px 24px;
+    background: #ffffff;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* 4. 实验室级拟真动画烧瓶 / 烧杯 (Laboratory Beaker Visualizer) */
+.beaker-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    margin-top: 20px;
+}
+
+.beaker-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.beaker-svg-wrap {
+    width: 140px;
+    height: 200px;
+    position: relative;
+    border: 3px solid #334155;
+    border-top: none;
+    border-radius: 0 0 24px 24px;
+    background: rgba(248, 250, 252, 0.7);
+    overflow: hidden;
+    box-shadow: inset 0 -6px 12px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.06);
+}
+
+.beaker-lip {
+    width: 154px;
+    height: 8px;
+    background: #334155;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+.beaker-fill-water {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
+    transition: height 0.4s ease;
+    opacity: 0.85;
+}
+
+.beaker-fill-chem {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+    transition: height 0.4s ease;
+    box-shadow: 0 -2px 6px rgba(16, 185, 129, 0.4);
+}
+
+.beaker-markings {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 0;
+    pointer-events: none;
+}
+
+.mark-tick {
+    height: 1.5px;
+    background: #94a3b8;
+    width: 12px;
+}
+
+.mark-tick.long {
+    width: 20px;
+    background: #475569;
+}
+
+/* 5. 商业 ROI 节省对比卡片 (Commercial ROI Savings Banner) */
+.roi-banner {
+    background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+    color: #ffffff;
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 25px -5px rgba(6, 95, 70, 0.3);
+}
+
+.roi-stats {
+    display: flex;
+    gap: 24px;
+}
+
+.roi-number {
+    font-size: 28px;
+    font-weight: 900;
+    color: #34d399;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* 6. 排班可视化互动矩阵 (Interactive Shift Grid) */
+.shift-matrix-wrap {
+    overflow-x: auto;
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: #ffffff;
+}
+
+.shift-grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 650px;
+}
+
+.shift-grid-table th, .shift-grid-table td {
+    padding: 12px 10px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.shift-grid-table th {
+    background: #f8fafc;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.shift-btn-pill {
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+    width: 100%;
+    display: block;
+}
+
+.shift-btn-morning { background: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
+.shift-btn-afternoon { background: #fef3c7; color: #b45309; border-color: #fde68a; }
+.shift-btn-fullday { background: #dcfce7; color: #15803d; border-color: #bbf7d0; }
+.shift-btn-evening { background: #f3e8ff; color: #7e22ce; border-color: #e9d5ff; }
+.shift-btn-off { background: #f1f5f9; color: #94a3b8; border-color: #e2e8f0; }
+
+.ot-badge {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    display: inline-block;
+}
+
 

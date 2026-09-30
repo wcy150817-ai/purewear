@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House Cleaning Time Estimator (2026 ISSA Benchmark Standards) | PureWear Space</title>
-    <meta name="description" content="Free professional cleaning time estimator for maid services & housekeepers. Accurately predict job duration and crew man-hours based on square footage, room count, and ISSA 612 cleaning benchmarks.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>House Cleaning Time Estimator & ISSA Job Duration Calculator | PureWear Space</title>
+    <meta name="description" content="Tier-1 cleaning time estimator for maid services & housekeepers. Accurately predict job duration, crew man-hours, room-by-room labor allocations, and print field work orders based on ISSA 612 standards.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/time-estimator/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="House Cleaning Time Estimator (2026 ISSA Benchmark Standards) | PureWear Space">
-    <meta property="og:description" content="Accurately estimate cleaning duration and crew man-hours for residential and commercial jobs.">
+    <meta property="og:title" content="House Cleaning Time Estimator & ISSA Job Duration Calculator | PureWear Space">
+    <meta property="og:description" content="Accurately estimate cleaning duration and crew man-hours with live room-by-room labor visualizers and printable work orders.">
     <meta property="og:url" content="https://tool.purewearspace.com/tools/time-estimator/">
     <meta property="og:type" content="website">
 
@@ -20,7 +20,7 @@
       "@graph": [
         {
           "@type": "WebApplication",
-          "name": "Cleaning Time Estimator",
+          "name": "House Cleaning Time Estimator",
           "url": "https://tool.purewearspace.com/tools/time-estimator/",
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "All",
@@ -42,7 +42,7 @@
               "name": "How does crew size affect total on-site cleaning time?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Total man-hours remain roughly constant, but on-site duration scales with crew size. For example, a 6 man-hour job takes 6 hours for a solo cleaner, 3 hours for a 2-person crew, and 2 hours for a 3-person crew. Note that teams larger than 3 may experience slight coordination drag (diminishing returns) in smaller homes."
+                "text": "Total man-hours remain roughly constant, but on-site duration scales inversely with crew size. For example, a 6 man-hour job takes 6 hours for a solo cleaner, 3 hours for a 2-person crew, and 2 hours for a 3-person crew."
               }
             },
             {
@@ -70,6 +70,20 @@
     <link rel="stylesheet" href="../../css/style.css">
 
     <style>
+        .top-control-strip {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px 18px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: var(--shadow-xs);
+        }
+
         .addon-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -122,46 +136,20 @@
             color: var(--text-sub);
         }
 
-        .unit-toggle-wrap {
-            display: inline-flex;
-            background: var(--bg-surface);
-            padding: 4px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-        }
-
-        .unit-toggle-btn {
-            border: none;
-            background: transparent;
-            padding: 5px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-sub);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .unit-toggle-btn.active {
-            background: var(--primary);
-            color: #ffffff;
-            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
-        }
-
         .preset-row {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         .preset-btn {
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
             padding: 5px 12px;
-            border-radius: 6px;
+            border-radius: 999px;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-sub);
             cursor: pointer;
             transition: all 0.15s;
@@ -171,6 +159,42 @@
             background: var(--primary);
             color: #ffffff;
             border-color: var(--primary);
+        }
+
+        /* 团队人数效率横向对比卡 */
+        .crew-comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .crew-box {
+            background: var(--bg-surface);
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 12px;
+            text-align: center;
+        }
+
+        .crew-box.highlight {
+            border-color: var(--primary);
+            background: var(--primary-subtle);
+        }
+
+        .crew-box-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-sub);
+            text-transform: uppercase;
+        }
+
+        .crew-box-time {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--text-main);
+            margin: 4px 0;
+            font-family: 'JetBrains Mono', monospace;
         }
     </style>
 </head>
@@ -184,7 +208,7 @@
 
     <!-- 导航栏 -->
     <nav class="navbar">
-        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span> <span style="font-size: 11px; background: #fef3c7; color: #92400e; padding: 2px 8px; border-radius: 999px; font-weight: 700;">ISSA PRO</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
             <a href="../index.html" class="nav-link active">All Tools</a>
@@ -196,7 +220,7 @@
     <!-- 页面标题 -->
     <div class="page-header">
         <h1>House Cleaning Time Estimator</h1>
-        <p>Predict exact on-site job duration and crew labor hours based on home size, room layout, condition, and optional deep-cleaning add-ons.</p>
+        <p>Predict on-site cleaning job duration and crew labor hours based on ISSA 612 standards, home layout, initial condition, and specialized deep-cleaning add-ons.</p>
     </div>
 
     <!-- 主布局网格 -->
@@ -204,34 +228,41 @@
         
         <!-- 左侧输入表单 -->
         <main>
+            <!-- 顶部高阶控制台 -->
+            <div class="top-control-strip">
+                <div class="segmented-control">
+                    <button type="button" class="segmented-btn active" id="unitSqftBtn" onclick="setAreaUnit('sqft')">🏠 Square Feet (sq ft)</button>
+                    <button type="button" class="segmented-btn" id="unitSqmBtn" onclick="setAreaUnit('sqm')">🌍 Square Meters (m²)</button>
+                </div>
+
+                <div style="font-size: 13px; font-weight: 700; color: var(--text-sub);">
+                    Standard: <span style="color: var(--primary);">ISSA 612 Cleaning Times</span>
+                </div>
+            </div>
+
             <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
-                    <h2 style="font-size: 18px; margin: 0;">Property & Service Details</h2>
-                    <div class="unit-toggle-wrap">
-                        <button type="button" class="unit-toggle-btn active" id="unitSqftBtn" onclick="setAreaUnit('sqft')">Sq Ft</button>
-                        <button type="button" class="unit-toggle-btn" id="unitSqmBtn" onclick="setAreaUnit('sqm')">Sq Meters (m²)</button>
-                    </div>
+                <h2 style="font-size: 18px; margin-bottom: 12px;">1. Property Layout & Dimensions</h2>
+
+                <!-- 场景快捷预设 -->
+                <div class="preset-row">
+                    <span style="font-size: 12px; color: var(--text-muted); align-self: center;">Quick Scenarios:</span>
+                    <button type="button" class="preset-btn" onclick="applyPreset(750, 1, 1)">Apartment (750 sq ft)</button>
+                    <button type="button" class="preset-btn active" onclick="applyPreset(1800, 3, 2)">Family Home (1,800 sq ft)</button>
+                    <button type="button" class="preset-btn" onclick="applyPreset(2800, 4, 3)">Large Home (2,800 sq ft)</button>
+                    <button type="button" class="preset-btn" onclick="applyPreset(4200, 5, 4)">Luxury Villa (4,200 sq ft)</button>
                 </div>
 
                 <!-- 1. 房屋面积与预设 -->
-                <div class="input-group">
+                <div class="input-group" style="margin-top: 18px;">
                     <div class="slider-header">
-                        <label id="areaLabel">🏠 Home Size</label>
+                        <label id="areaLabel">🏠 Cleanable Area</label>
                         <span class="slider-display"><span id="sqftDisplay">1,800</span> <span id="areaUnitDisplay">sq ft</span></span>
                     </div>
                     <input type="range" id="sqftSlider" class="range-slider" min="400" max="5000" step="50" value="1800" oninput="syncSqft(this.value)">
-                    
-                    <div class="preset-row">
-                        <span style="font-size: 12px; color: var(--text-muted); align-self: center;">Quick Presets:</span>
-                        <button type="button" class="preset-btn" onclick="applyPreset(750, 1, 1)">1-Bed Apt (750 sq ft)</button>
-                        <button type="button" class="preset-btn active" onclick="applyPreset(1800, 3, 2)">3-Bed Suburb (1,800 sq ft)</button>
-                        <button type="button" class="preset-btn" onclick="applyPreset(2800, 4, 3)">4-Bed Large (2,800 sq ft)</button>
-                        <button type="button" class="preset-btn" onclick="applyPreset(4200, 5, 4)">Estate (4,200 sq ft)</button>
-                    </div>
                 </div>
 
                 <!-- 2. 卧室与浴室数量 -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                     <div class="input-group">
                         <label>🛏️ Bedrooms</label>
                         <div class="stepper-input">
@@ -264,11 +295,11 @@
                     </div>
 
                     <div class="input-group">
-                        <label>📊 Initial Clutter / Dirt Level</label>
+                        <label>📊 Initial Clutter / Pet Hair</label>
                         <select id="condition" class="form-control" onchange="calculateTime()">
                             <option value="0.9">Low / Well Maintained (−10%)</option>
                             <option value="1.0" selected>Moderate / Normal Lived-in</option>
-                            <option value="1.25">Heavy / Pet Hair / Clutter (+25%)</option>
+                            <option value="1.25">Heavy / Dusty / Pet Hair (+25%)</option>
                             <option value="1.5">Extreme / Hoarder / Neglected (+50%)</option>
                         </select>
                     </div>
@@ -284,8 +315,24 @@
                     </div>
                 </div>
 
+                <!-- 团队人数横向效率对比 (Tier-1 Component) -->
+                <div class="crew-comparison-grid">
+                    <div class="crew-box" id="boxSolo">
+                        <div class="crew-box-title">👤 Solo Cleaner</div>
+                        <div class="crew-box-time" id="timeSolo">4h 30m</div>
+                    </div>
+                    <div class="crew-box highlight" id="boxCrew2">
+                        <div class="crew-box-title">👥 2-Person Crew</div>
+                        <div class="crew-box-time" id="timeCrew2">2h 15m</div>
+                    </div>
+                    <div class="crew-box" id="boxCrew3">
+                        <div class="crew-box-title">👥👤 3-Person Crew</div>
+                        <div class="crew-box-time" id="timeCrew3">1h 30m</div>
+                    </div>
+                </div>
+
                 <!-- 5. 附加耗时服务 -->
-                <div class="input-group" style="margin-bottom: 0;">
+                <div class="input-group" style="margin-top: 20px; margin-bottom: 0;">
                     <label>✨ Optional Extra Add-ons</label>
                     <div class="addon-grid">
                         <label class="addon-item" onclick="toggleAddon(this)">
@@ -330,6 +377,38 @@
                                 <span class="addon-time">+30 min</span>
                             </div>
                         </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 动态工时分布可视化条 (Labor Distribution Visualizer) -->
+            <div class="breakdown-card">
+                <div class="breakdown-header">
+                    <span class="breakdown-title">⏱️ Room-By-Room Labor Time Distribution</span>
+                    <span style="font-size: 13px; font-weight: 800; color: #3b82f6;" id="distributionTotalHours">4.5 man-hours</span>
+                </div>
+                <div class="breakdown-bar-track">
+                    <div class="bar-segment seg-labor" id="barBaths" style="width: 38%;" title="Bathrooms"></div>
+                    <div class="bar-segment seg-supplies" id="barKitchen" style="width: 28%;" title="Kitchen"></div>
+                    <div class="bar-segment seg-overhead" id="barLiving" style="width: 18%;" title="Living Areas"></div>
+                    <div class="bar-segment seg-profit" id="barBeds" style="width: 16%;" title="Bedrooms"></div>
+                </div>
+                <div class="breakdown-legend-grid">
+                    <div class="legend-box leg-labor">
+                        <span class="legend-title">🚿 Bathrooms</span>
+                        <span class="legend-val" id="legendBathsTime">1h 45m</span>
+                    </div>
+                    <div class="legend-box leg-supplies">
+                        <span class="legend-title">🍳 Kitchen</span>
+                        <span class="legend-val" id="legendKitchenTime">1h 15m</span>
+                    </div>
+                    <div class="legend-box leg-overhead">
+                        <span class="legend-title">🛋️ Living Spaces</span>
+                        <span class="legend-val" id="legendLivingTime">50m</span>
+                    </div>
+                    <div class="legend-box leg-profit">
+                        <span class="legend-title">🛏️ Bedrooms</span>
+                        <span class="legend-val" id="legendBedsTime">40m</span>
                     </div>
                 </div>
             </div>
@@ -495,8 +574,8 @@
                         <strong id="addonTimeDisplay">+0 mins</strong>
                     </div>
                     <div style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; border-top: 1px solid var(--border-color);">
-                        <span style="color: var(--text-sub);">Recommended Buffer:</span>
-                        <strong style="color: var(--accent);">+30 mins (Transit/Setup)</strong>
+                        <span style="color: var(--text-sub);">Transit/Setup Buffer:</span>
+                        <strong style="color: var(--accent);">+30 mins</strong>
                     </div>
                     <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 15px; font-weight: 800; border-top: 2px solid var(--border-color); margin-top: 6px;">
                         <span>Arrival Window Block:</span>
@@ -507,7 +586,7 @@
                 <!-- 操作按钮 -->
                 <div class="action-row" style="margin-top: 24px;">
                     <button class="btn-primary" onclick="copyTimeEstimate()">📋 Copy Time Estimate</button>
-                    <button class="btn-secondary" onclick="window.print()">🖨️ Print Job Sheet</button>
+                    <button class="btn-secondary" onclick="window.print()">🖨️ Print Work Order</button>
                 </div>
             </div>
 
@@ -551,12 +630,12 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free cleaning business calculators and productivity tools.</p>
+            <p>© 2026 PureWear Space. Flagship cleaning business calculators and productivity tools.</p>
         </div>
     </footer>
 
     <script>
-        let currentAreaUnit = 'sqft'; // 'sqft' or 'sqm'
+        let currentAreaUnit = 'sqft';
 
         function setAreaUnit(unit) {
             currentAreaUnit = unit;
@@ -633,9 +712,14 @@
             }, 3000);
         }
 
+        function formatHoursMinutes(totalMinutes) {
+            const h = Math.floor(totalMinutes / 60);
+            const m = totalMinutes % 60;
+            return `${h}h ${m}m`;
+        }
+
         function calculateTime() {
             let areaVal = parseFloat(document.getElementById('sqftSlider').value) || 1800;
-            // 归一化为 sqft 进行计算
             let sqft = currentAreaUnit === 'sqm' ? areaVal * 10.764 : areaVal;
 
             const beds = parseInt(document.getElementById('beds').value) || 3;
@@ -646,11 +730,8 @@
 
             // 基础时间计算: 500 sq ft per hour baseline + room weighting
             let baseLaborHours = 1.2 + (sqft / 1400) + (beds * 0.25) + (baths * 0.5);
-
-            // 乘以服务与脏污系数
             let totalLaborHours = baseLaborHours * servMultiplier * condMultiplier;
 
-            // 计算附加服务增量时间 (分钟)
             let addonMinutes = 0;
             document.querySelectorAll('.addon-grid input[type="checkbox"]:checked').forEach(cb => {
                 addonMinutes += parseInt(cb.value) || 0;
@@ -658,7 +739,7 @@
             const addonLaborHours = addonMinutes / 60;
             totalLaborHours += addonLaborHours;
 
-            // 实际在场工时 (除以清洁人数)
+            // 实际在场工时
             const onSiteHours = totalLaborHours / crew;
             const onSiteTotalMinutes = Math.round(onSiteHours * 60);
 
@@ -678,11 +759,44 @@
             document.getElementById('addonTimeDisplay').innerText = `+${addonMinutes} mins`;
             document.getElementById('windowBlock').innerText = `${bufferH}h ${bufferM}m (with buffer)`;
 
+            // 团队对比卡
+            const soloMinutes = Math.round(totalLaborHours * 60);
+            const crew2Minutes = Math.round((totalLaborHours / 2) * 60);
+            const crew3Minutes = Math.round((totalLaborHours / 3) * 60);
+
+            document.getElementById('timeSolo').innerText = formatHoursMinutes(soloMinutes);
+            document.getElementById('timeCrew2').innerText = formatHoursMinutes(crew2Minutes);
+            document.getElementById('timeCrew3').innerText = formatHoursMinutes(crew3Minutes);
+
+            document.getElementById('boxSolo').classList.toggle('highlight', crew === 1);
+            document.getElementById('boxCrew2').classList.toggle('highlight', crew === 2);
+            document.getElementById('boxCrew3').classList.toggle('highlight', crew === 3);
+
+            // 房间时间分布可视化
+            const bathHrs = (baths * 0.50 + 0.3) * servMultiplier * condMultiplier;
+            const kitchenHrs = 1.0 * servMultiplier * condMultiplier;
+            const bedHrs = (beds * 0.25) * servMultiplier * condMultiplier;
+            const livingHrs = Math.max(0.5, totalLaborHours - (bathHrs + kitchenHrs + bedHrs));
+
+            const pctBath = Math.round((bathHrs / totalLaborHours) * 100);
+            const pctKitchen = Math.round((kitchenHrs / totalLaborHours) * 100);
+            const pctBed = Math.round((bedHrs / totalLaborHours) * 100);
+            const pctLiving = Math.max(5, 100 - (pctBath + pctKitchen + pctBed));
+
+            document.getElementById('barBaths').style.width = pctBath + '%';
+            document.getElementById('barKitchen').style.width = pctKitchen + '%';
+            document.getElementById('barLiving').style.width = pctLiving + '%';
+            document.getElementById('barBeds').style.width = pctBed + '%';
+
+            document.getElementById('legendBathsTime').innerText = formatHoursMinutes(Math.round(bathHrs * 60));
+            document.getElementById('legendKitchenTime').innerText = formatHoursMinutes(Math.round(kitchenHrs * 60));
+            document.getElementById('legendLivingTime').innerText = formatHoursMinutes(Math.round(livingHrs * 60));
+            document.getElementById('legendBedsTime').innerText = formatHoursMinutes(Math.round(bedHrs * 60));
+            document.getElementById('distributionTotalHours').innerText = `${totalLaborHours.toFixed(1)} man-hours`;
+
             // 移动端浮动栏
             const mobileSticky = document.getElementById('mobileStickyDuration');
-            if (mobileSticky) {
-                mobileSticky.innerText = `${durationStr} (${crew} pros)`;
-            }
+            if (mobileSticky) mobileSticky.innerText = `${durationStr} (${crew} pros)`;
         }
 
         function copyTimeEstimate() {
@@ -695,18 +809,16 @@
             const manHours = document.getElementById('totalManHours').innerText;
             const windowBlock = document.getElementById('windowBlock').innerText;
 
-            const text = `⏱️ Cleaning Time Estimate:\n` +
+            const text = `⏱️ ISSA CLEANING TIME ESTIMATE:\n` +
                          `Property: ${Number(area).toLocaleString()} ${unit} | ${beds} Bed, ${baths} Bath\n` +
                          `Crew Size: ${crew} cleaner(s)\n` +
                          `Estimated Duration: ${duration}\n` +
-                         `Total Labor: ${manHours}\n` +
-                         `Recommended Booking Block: ${windowBlock}\n` +
-                         `Generated via PureWear Space: https://tool.purewearspace.com/tools/time-estimator/`;
+                         `Total Crew Labor: ${manHours}\n` +
+                         `Arrival Window Block: ${windowBlock}\n` +
+                         `Calculated via PureWear Space: https://tool.purewearspace.com/tools/time-estimator/`;
 
             navigator.clipboard.writeText(text).then(() => {
                 showToast("✅ Time estimate copied to clipboard!");
-            }).catch(() => {
-                showToast("Failed to copy. Please manually copy the values.");
             });
         }
 
