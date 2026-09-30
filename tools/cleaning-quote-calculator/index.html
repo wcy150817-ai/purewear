@@ -2,61 +2,197 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
-    <title>House Cleaning Quote Calculator 2026 | Free Cost Estimator by Sq Ft</title>
-    <meta name="description" content="Instantly calculate professional house cleaning rates. Free square footage calculator for cleaners, housekeepers, and homeowners. Standard, deep clean, and move-out pricing.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Cleaning Quote Calculator 2026 | Free House Cleaning Estimate Tool</title>
+    <meta name="description" content="Calculate accurate house cleaning estimates instantly by square footage, bed/bath count, and service tier. Includes 2026 industry pricing benchmark tables and printable PDF quotes.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/cleaning-quote-calculator/">
     
-    <!-- 公共样式 -->
-    <link rel="stylesheet" href="../../css/style.css">
-    
-    <!-- Schema.org 结构化数据 -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cleaning Quote Calculator 2026 | Free House Cleaning Estimate Tool">
+    <meta property="og:description" content="Instant multi-factor cleaning rate calculator for solo cleaners and housekeeping businesses. Multi-currency, bed/bath weighting, add-ons, and SMS export.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/cleaning-quote-calculator/">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org WebApplication & FAQPage -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@graph": [
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Cleaning Quote Calculator",
+          "url": "https://tool.purewearspace.com/tools/cleaning-quote-calculator/",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "All",
+          "description": "Calculates real-time residential cleaning price quotes based on square footage, room counts, clutter condition, and frequency discounts."
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
             {
-                "@type": "WebApplication",
-                "name": "House Cleaning Quote Calculator",
-                "url": "https://tool.purewearspace.com/tools/cleaning-quote-calculator/",
-                "applicationCategory": "BusinessApplication",
-                "operatingSystem": "All",
-                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-                "description": "Calculate residential and commercial cleaning quotes by square footage, bedrooms, bathrooms, and add-on services."
+              "@type": "Question",
+              "name": "How much should I charge per square foot for house cleaning?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In 2026, standard maintenance house cleaning rates range from $0.09 to $0.15 per square foot. Deep cleaning services generally range from $0.15 to $0.22 per square foot, and move-in/move-out turnover cleans range from $0.20 to $0.28 per square foot."
+              }
             },
             {
-                "@type": "FAQPage",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "How much does house cleaning cost per square foot?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "In 2026, average house cleaning costs range between $0.10 and $0.15 per square foot for standard maintenance cleaning, $0.16 to $0.20 for deep cleaning, and $0.20 to $0.28 for move-in/move-out cleans."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "How do you calculate a house cleaning quote?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Multiply total square footage by your base rate per sq ft, add additional surcharges for extra bathrooms ($20-$30 each), factor in specialized appliances (oven/fridge), and apply recurring client discounts (10%-20% off for weekly or bi-weekly service)."
-                        }
-                    }
-                ]
+              "@type": "Question",
+              "name": "Should cleaning contractors charge hourly or flat rate?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Flat-rate pricing by square footage and room count is preferred by over 78% of homeowners because it eliminates billing surprises. It also rewards efficient cleaning crews who finish jobs quicker while maintaining quality standards."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much more should I charge for a first-time deep clean?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A first-time initial cleaning usually takes 40% to 60% longer due to built-up limescale, soap scum, grease on kitchen cabinets, and baseboard dust. Professional cleaners typically charge 1.4x to 1.6x their recurring maintenance price for the initial visit."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What frequency discounts should I offer to secure recurring cleaning clients?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Standard industry retention discounts are 20% off for weekly service, 15% off for bi-weekly service, and 10% off for monthly recurring service compared to one-time cleaning rates."
+              }
             }
-        ]
+          ]
+        }
+      ]
     }
     </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        .service-tier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .tier-card {
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            background: #ffffff;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+        }
+
+        .tier-card:hover {
+            border-color: var(--primary);
+            background: #f8fafc;
+        }
+
+        .tier-card.selected {
+            border-color: var(--primary);
+            background: var(--primary-subtle);
+            color: var(--primary-hover);
+            box-shadow: 0 2px 8px rgba(5, 150, 105, 0.15);
+        }
+
+        .tier-title {
+            font-size: 13px;
+            font-weight: 800;
+            display: block;
+        }
+
+        .tier-rate {
+            font-size: 11px;
+            color: var(--text-sub);
+            margin-top: 3px;
+            display: block;
+        }
+
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .addon-chip {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .addon-chip:hover {
+            border-color: var(--primary);
+            background: var(--primary-subtle);
+        }
+
+        .addon-chip.checked {
+            border-color: var(--primary);
+            background: var(--primary-subtle);
+        }
+
+        .addon-chip input[type="checkbox"] {
+            accent-color: var(--primary);
+            width: 16px;
+            height: 16px;
+        }
+
+        .addon-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .addon-price {
+            font-size: 11px;
+            color: var(--text-sub);
+            margin-left: auto;
+        }
+
+        .related-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .related-tool-item {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .related-tool-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+    </style>
 </head>
 <body>
 
     <!-- 顶部主店引流条 -->
     <div class="top-notice-bar">
-        <span>✨ Professional Workwear & Protective Gear for Cleaners:</span>
-        <a href="https://purewearspace.com" target="_blank" rel="noopener">Visit PureWear Official Shop →</a>
+        <span>👕 Premium Workwear, Aprons & Cleaning Uniforms:</span>
+        <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
     </div>
 
     <!-- 导航栏 -->
@@ -70,315 +206,619 @@
         </div>
     </nav>
 
-    <!-- 主容器 -->
-    <div class="main-container">
-        
-        <!-- 左侧主体 -->
-        <main>
-            <div class="card">
-                <div class="form-header">
-                    <h1>House Cleaning Quote Calculator</h1>
-                    <p>Instant pricing estimator based on square footage, room count, and job scope.</p>
-                </div>
-
-                <form id="calcForm" onsubmit="event.preventDefault();">
-                    <!-- 面积输入与滑动条 -->
-                    <div class="input-group">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                            <label for="sqft" style="margin-bottom: 0;">🏠 Square Footage (sq ft)</label>
-                            <span id="sqftDisplay" style="font-weight: 800; color: var(--primary); font-size: 15px;">1,500 sq ft</span>
-                        </div>
-                        <input type="range" id="sqftRange" min="200" max="5000" step="50" value="1500" class="range-slider" oninput="syncSqft(this.value)">
-                        <div class="slider-labels">
-                            <span>200 sq ft</span>
-                            <span>1,500 sq ft</span>
-                            <span>3,000 sq ft</span>
-                            <span>5,000+ sq ft</span>
-                        </div>
-                        <input type="number" id="sqft" class="form-control" style="margin-top: 10px;" value="1500" min="100" max="10000" oninput="syncSlider(this.value)">
-                    </div>
-
-                    <!-- 房间数量 (卧室与卫生间) -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;" class="input-group">
-                        <div>
-                            <label>🛏️ Bedrooms</label>
-                            <div class="stepper">
-                                <button type="button" onclick="adjustCount('beds', -1)">-</button>
-                                <input type="number" id="beds" value="3" min="1" max="10" readonly>
-                                <button type="button" onclick="adjustCount('beds', 1)">+</button>
-                            </div>
-                        </div>
-                        <div>
-                            <label>🚿 Bathrooms</label>
-                            <div class="stepper">
-                                <button type="button" onclick="adjustCount('baths', -1)">-</button>
-                                <input type="number" id="baths" value="2" min="1" max="8" readonly>
-                                <button type="button" onclick="adjustCount('baths', 1)">+</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 清洁类型 -->
-                    <div class="input-group">
-                        <label>🧹 Service Type</label>
-                        <select id="serviceType" class="form-select" onchange="recalculate()">
-                            <option value="0.11" selected>Standard Recurring Clean ($0.11/sq ft) - Upkeep & dusting</option>
-                            <option value="0.17">Deep Cleaning ($0.17/sq ft) - Detailed scrub & grime removal</option>
-                            <option value="0.22">Move-In / Move-Out Clean ($0.22/sq ft) - Complete empty home turnover</option>
-                            <option value="0.28">Post-Construction Clean ($0.28/sq ft) - Fine drywall dust & residue</option>
-                        </select>
-                    </div>
-
-                    <!-- 服务频次折扣 -->
-                    <div class="input-group">
-                        <label>📅 Cleaning Frequency Discount</label>
-                        <select id="frequency" class="form-select" onchange="recalculate()">
-                            <option value="1.0" selected>One-Time Cleaning (Standard Rate)</option>
-                            <option value="0.80">Weekly Service (Save 20%)</option>
-                            <option value="0.85">Bi-Weekly Service (Save 15% - Most Popular)</option>
-                            <option value="0.90">Monthly Service (Save 10%)</option>
-                        </select>
-                    </div>
-
-                    <!-- 附加自选服务 -->
-                    <div class="input-group">
-                        <label>✨ Optional Add-on Services</label>
-                        <div class="pill-grid">
-                            <div class="pill-card" onclick="toggleAddon(this, 35)">
-                                <div>🧊 Inside Fridge</div>
-                                <div style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">+$35.00</div>
-                            </div>
-                            <div class="pill-card" onclick="toggleAddon(this, 45)">
-                                <div>🔥 Inside Oven</div>
-                                <div style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">+$45.00</div>
-                            </div>
-                            <div class="pill-card" onclick="toggleAddon(this, 50)">
-                                <div>🪟 Interior Windows</div>
-                                <div style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">+$50.00</div>
-                            </div>
-                            <div class="pill-card" onclick="toggleAddon(this, 40)">
-                                <div>🪵 Baseboards Detail</div>
-                                <div style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">+$40.00</div>
-                            </div>
-                            <div class="pill-card" onclick="toggleAddon(this, 30)">
-                                <div>🐾 Pet Hair Detail</div>
-                                <div style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">+$30.00</div>
-                            </div>
-                            <div class="pill-card" onclick="toggleAddon(this, 15)">
-                                <div>🌿 Green / Eco Supplies</div>
-                                <div style="font-size: 11px; color: var(--text-sub); margin-top: 4px;">+$15.00</div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- 实时报价结果卡片 -->
-                <div id="resultBox" class="result-card">
-                    <div class="price-header">
-                        <div>
-                            <div class="price-title">Estimated Total Estimate</div>
-                            <div style="font-size: 13px; color: var(--text-sub);">Recommended market rate</div>
-                        </div>
-                        <div class="price-number" id="priceDisplay">$165.00</div>
-                    </div>
-
-                    <div class="breakdown-list">
-                        <div class="breakdown-row">
-                            <span>Base Square Footage Rate:</span>
-                            <span id="baseRateDisplay">$165.00</span>
-                        </div>
-                        <div class="breakdown-row">
-                            <span>Bathrooms Intensity Adjustment:</span>
-                            <span id="bathsDisplay">$0.00</span>
-                        </div>
-                        <div class="breakdown-row">
-                            <span>Selected Add-On Services:</span>
-                            <span id="addonsDisplay">$0.00</span>
-                        </div>
-                        <div class="breakdown-row">
-                            <span>Frequency Savings Applied:</span>
-                            <span id="discountDisplay" style="color: var(--primary); font-weight: 700;">$0.00</span>
-                        </div>
-                        <div class="breakdown-row total-row">
-                            <span>Estimated Labor Time:</span>
-                            <span id="timeEstDisplay">⏱️ ~3.0 - 4.0 Hours (1-2 Cleaners)</span>
-                        </div>
-                    </div>
-
-                    <div class="action-row">
-                        <button type="button" class="btn-primary" style="flex: 1;" onclick="window.print()">
-                            🖨️ Print / Save Quote PDF
-                        </button>
-                        <button type="button" class="btn-secondary" onclick="copyQuote()">
-                            📋 Copy Text for Client SMS
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEO 深度指南区 -->
-            <section class="seo-section">
-                <h2>How to Accurately Price House Cleaning Jobs in 2026</h2>
-                <p>
-                    Pricing cleaning services requires balancing profitability with competitive market rates. Charging too little burns out your staff, while charging too high drives clients to competitors.
-                </p>
-
-                <h3>1. Square Footage vs. Hourly Pricing</h3>
-                <p>
-                    Most professional cleaning businesses charge by <strong>square footage</strong> for regular recurring homes. It rewards speed and experienced teams:
-                </p>
-                <ul>
-                    <li><strong>Standard Upkeep ($0.10 - $0.15/sq ft):</strong> Ideal for homes cleaned every 1-2 weeks. Covers vacuuming, mopping, kitchen counters, and sanitizing bathrooms.</li>
-                    <li><strong>Deep Clean ($0.16 - $0.20/sq ft):</strong> For first-time clients or spring cleaning. Includes scrubbing grout, door frames, dusting ceiling fans, and scale removal.</li>
-                    <li><strong>Move-In/Move-Out ($0.20 - $0.28/sq ft):</strong> Empty residences requiring deep degreasing, wiping out cabinets, baseboards, and closet shelving.</li>
-                </ul>
-
-                <h3>2. Why Bathrooms Carry Surcharges</h3>
-                <p>
-                    Bathrooms consume over 40% of the total labor time in any residential job due to shower scum, toilets, and mirrors. If a home has more than 2 bathrooms, adding a <strong>$20 to $30 surcharge per extra bathroom</strong> protects your hourly margins.
-                </p>
-            </section>
-        </main>
-
-        <!-- 右侧侧边栏 (带入 Shopify 电商引流) -->
-        <aside class="sidebar">
-            <!-- 原生 Shopify 电商产品卡片 -->
-            <div class="shopify-promo-card">
-                <span class="shopify-tag">Professional Workwear</span>
-                <h3>Durable, Water-Repellent Cleaning Aprons</h3>
-                <p>
-                    Protect your clothes and keep spray bottles and microfiber cloths within arm's reach. Built specifically for commercial cleaners.
-                </p>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
-                    Explore PureWear Gear →
-                </a>
-            </div>
-
-            <!-- 行业建议卡片 -->
-            <div class="info-tip-card">
-                <h3>💡 Pro Estimating Tip</h3>
-                <p>
-                    Always clarify with first-time clients that deep cleaning is required before accepting recurring weekly maintenance rates.
-                </p>
-            </div>
-
-            <!-- 其他快捷工具链接 -->
-            <div class="info-tip-card">
-                <h3>🛠️ Related Tools</h3>
-                <ul style="list-style: none; padding: 0; font-size: 13px; display: flex; flex-direction: column; gap: 8px;">
-                    <li><a href="../schedule-generator/" style="color: var(--primary); text-decoration: none; font-weight: 600;">📅 Weekly Schedule Generator →</a></li>
-                    <li><a href="../tip-calculator/" style="color: var(--primary); text-decoration: none; font-weight: 600;">💵 Tip Distribution Calculator →</a></li>
-                    <li><a href="../hourly-pay-calculator/" style="color: var(--primary); text-decoration: none; font-weight: 600;">💰 Cleaner Hourly Wage Calculator →</a></li>
-                </ul>
-            </div>
-        </aside>
+    <!-- 页面标题 (哥飞 SEO TDH 规范: 突出 2026 最新行业计算基准) -->
+    <div class="page-header">
+        <h1>House Cleaning Quote Calculator (2026)</h1>
+        <p>Instant multi-factor pricing estimate for residential housekeepers, maid services, and cleaning contractors.</p>
     </div>
 
-    <!-- 底部版权 -->
+    <!-- 主布局网格 (桌面端左主右悬浮，移动端单列) -->
+    <div class="main-container">
+        
+        <!-- 左侧核心工具输入区 -->
+        <main>
+            <div class="card">
+                
+                <!-- 货币与面积单位全局切换器 -->
+                <div class="unit-switcher-row">
+                    <div class="switch-group">
+                        <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Currency:</span>
+                        <button type="button" class="switch-btn active" onclick="setCurrency('USD', '$', this)">$ USD</button>
+                        <button type="button" class="switch-btn" onclick="setCurrency('GBP', '£', this)">£ GBP</button>
+                        <button type="button" class="switch-btn" onclick="setCurrency('EUR', '€', this)">€ EUR</button>
+                        <button type="button" class="switch-btn" onclick="setCurrency('CAD', 'CA$', this)">CA$ CAD</button>
+                        <button type="button" class="switch-btn" onclick="setCurrency('AUD', 'AU$', this)">AU$ AUD</button>
+                    </div>
+
+                    <div class="switch-group">
+                        <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Unit:</span>
+                        <button type="button" class="switch-btn active" onclick="setAreaUnit('sqft', this)">Sq Ft (ft²)</button>
+                        <button type="button" class="switch-btn" onclick="setAreaUnit('sqm', this)">Sq Meters (m²)</button>
+                    </div>
+                </div>
+
+                <!-- 极速情景预设 (One-Click Scenario Presets) -->
+                <div>
+                    <label style="font-size: 12px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; margin-bottom: 6px; display: block;">⚡ Quick Home Presets:</label>
+                    <div class="scenario-presets">
+                        <div class="preset-card-btn" onclick="applyPreset(600, 1, 1, 'standard')">
+                            <span class="preset-card-title">🏢 Studio / 1-Bed</span>
+                            <span class="preset-card-meta">600 sq ft • 1b/1b</span>
+                        </div>
+                        <div class="preset-card-btn active" onclick="applyPreset(1600, 3, 2, 'standard')">
+                            <span class="preset-card-title">🏡 Typical House</span>
+                            <span class="preset-card-meta">1,600 sq ft • 3b/2b</span>
+                        </div>
+                        <div class="preset-card-btn" onclick="applyPreset(3000, 4, 3, 'standard')">
+                            <span class="preset-card-title">🏰 Large Estate</span>
+                            <span class="preset-card-meta">3,000 sq ft • 4b/3b</span>
+                        </div>
+                        <div class="preset-card-btn" onclick="applyPreset(1800, 3, 2, 'moveout')">
+                            <span class="preset-card-title">📦 Move-Out Turn</span>
+                            <span class="preset-card-meta">1,800 sq ft • Deep</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1. 房屋面积滑块 -->
+                <div class="input-group">
+                    <div class="slider-header">
+                        <label>📐 Property Size</label>
+                        <span class="slider-display"><span id="sqftDisplay">1,600</span> <span id="areaUnitLabel">sq ft</span></span>
+                    </div>
+                    <input type="range" id="sqftSlider" class="range-slider" min="200" max="6000" step="50" value="1600" oninput="syncSqftInput(this.value)">
+                </div>
+
+                <!-- 2. 卧室与卫生间数量 -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="input-group">
+                        <label>🛏️ Bedrooms</label>
+                        <div class="stepper-input">
+                            <button type="button" class="stepper-btn" onclick="adjustCount('beds', -1)">−</button>
+                            <input type="number" id="beds" class="stepper-val" value="3" min="0" max="10" inputmode="numeric" onchange="calculate()">
+                            <button type="button" class="stepper-btn" onclick="adjustCount('beds', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>🚿 Bathrooms</label>
+                        <div class="stepper-input">
+                            <button type="button" class="stepper-btn" onclick="adjustCount('baths', -1)">−</button>
+                            <input type="number" id="baths" class="stepper-val" value="2" min="1" max="10" inputmode="numeric" onchange="calculate()">
+                            <button type="button" class="stepper-btn" onclick="adjustCount('baths', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 清洁服务等级 -->
+                <div class="input-group">
+                    <label>🧹 Service Type / Tier</label>
+                    <div class="service-tier-grid">
+                        <div class="tier-card selected" onclick="setTier('standard', 0.11, this)">
+                            <span class="tier-title">Standard</span>
+                            <span class="tier-rate">Recurring upkeep</span>
+                        </div>
+                        <div class="tier-card" onclick="setTier('deep', 0.17, this)">
+                            <span class="tier-title">Deep Clean</span>
+                            <span class="tier-rate">Heavy grime / spring</span>
+                        </div>
+                        <div class="tier-card" onclick="setTier('moveout', 0.22, this)">
+                            <span class="tier-title">Move-In/Out</span>
+                            <span class="tier-rate">Empty property turn</span>
+                        </div>
+                        <div class="tier-card" onclick="setTier('postcon', 0.28, this)">
+                            <span class="tier-title">Post-Con</span>
+                            <span class="tier-rate">Dust & debris scrub</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. 清洁频次折扣 -->
+                <div class="input-group">
+                    <label>🔄 Recurring Frequency (Retention Discounts)</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px;">
+                        <div class="pill-card selected" onclick="setFrequency('onetime', 0, this)">One-Time</div>
+                        <div class="pill-card" onclick="setFrequency('weekly', 0.20, this)">Weekly (-20%)</div>
+                        <div class="pill-card" onclick="setFrequency('biweekly', 0.15, this)">Bi-Weekly (-15%)</div>
+                        <div class="pill-card" onclick="setFrequency('monthly', 0.10, this)">Monthly (-10%)</div>
+                    </div>
+                </div>
+
+                <!-- 5. 附加服务选项 -->
+                <div class="input-group" style="margin-bottom: 0;">
+                    <label>✨ Extra Add-on Services</label>
+                    <div class="addon-grid">
+                        <label class="addon-chip" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="35" onchange="calculate()">
+                            <span class="addon-title">Inside Oven</span>
+                            <span class="addon-price">+<span class="currSym">$</span>35</span>
+                        </label>
+                        <label class="addon-chip" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="35" onchange="calculate()">
+                            <span class="addon-title">Inside Fridge</span>
+                            <span class="addon-price">+<span class="currSym">$</span>35</span>
+                        </label>
+                        <label class="addon-chip" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="45" onchange="calculate()">
+                            <span class="addon-title">Interior Windows</span>
+                            <span class="addon-price">+<span class="currSym">$</span>45</span>
+                        </label>
+                        <label class="addon-chip" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="50" onchange="calculate()">
+                            <span class="addon-title">Inside Cabinets</span>
+                            <span class="addon-price">+<span class="currSym">$</span>50</span>
+                        </label>
+                        <label class="addon-chip" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="40" onchange="calculate()">
+                            <span class="addon-title">Pet Hair Treatment</span>
+                            <span class="addon-price">+<span class="currSym">$</span>40</span>
+                        </label>
+                        <label class="addon-chip" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="30" onchange="calculate()">
+                            <span class="addon-title">Load of Laundry</span>
+                            <span class="addon-price">+<span class="currSym">$</span>30</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 哥飞 SEO 板块 1: 2026 行业测算基准表格 (获得高排名的核心内容武器) -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">2026 House Cleaning Pricing Benchmarks</h2>
+                <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 14px;">
+                    Average national rates across standard residential homes, apartments, and deep turns:
+                </p>
+
+                <div class="benchmark-table-wrapper">
+                    <table class="benchmark-table">
+                        <thead>
+                            <tr>
+                                <th>Home Size / Layout</th>
+                                <th>Avg Square Footage</th>
+                                <th>Standard Clean</th>
+                                <th>Deep Clean</th>
+                                <th>Est. Crew Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Studio / 1-Bed Apartment</strong></td>
+                                <td>500 – 800 sq ft</td>
+                                <td>$90 – $130</td>
+                                <td>$140 – $190</td>
+                                <td>1.5 – 2.5 hrs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2-Bedroom, 2-Bath Home</strong></td>
+                                <td>1,000 – 1,400 sq ft</td>
+                                <td>$130 – $170</td>
+                                <td>$180 – $240</td>
+                                <td>2.5 – 3.5 hrs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3-Bedroom, 2-Bath Home</strong></td>
+                                <td>1,500 – 2,200 sq ft</td>
+                                <td>$160 – $220</td>
+                                <td>$240 – $320</td>
+                                <td>3.5 – 4.5 hrs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4-Bedroom, 3-Bath Home</strong></td>
+                                <td>2,300 – 3,200 sq ft</td>
+                                <td>$220 – $300</td>
+                                <td>$320 – $450</td>
+                                <td>4.5 – 6.0 hrs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5+ Bedroom Estate</strong></td>
+                                <td>3,300 – 5,000+ sq ft</td>
+                                <td>$300 – $480+</td>
+                                <td>$450 – $650+</td>
+                                <td>6.0 – 8.5+ hrs</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 哥飞 SEO 板块 2: 四步专业保洁报价方法论 (Step-by-step) -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 12px;">How to Quote House Cleaning: The 4-Step Formula</h2>
+                
+                <div style="display: flex; flex-direction: column; gap: 14px; font-size: 14px; line-height: 1.6; color: var(--text-body);">
+                    <div>
+                        <strong style="color: var(--primary); font-size: 15px;">Step 1: Calculate Base Square Footage Rate</strong><br>
+                        Most professional cleaning companies charge a baseline rate of <strong>$0.09 to $0.15 per square foot</strong> for routine recurring jobs.
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary); font-size: 15px;">Step 2: Factor in Bathrooms & Kitchens</strong><br>
+                        Bathrooms require 3x more labor than bedrooms due to grout descaling, glass treatment, and sanitization. Always add a $15–$25 per-bathroom labor surcharge.
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary); font-size: 15px;">Step 3: Charge 40%–60% More for Initial Deep Cleanings</strong><br>
+                        Never offer recurring discount pricing on the first appointment. The initial visit requires clearing months of accumulated dust and grease before routine maintenance can begin.
+                    </div>
+                    <div>
+                        <strong style="color: var(--primary); font-size: 15px;">Step 4: Lock In Long-Term Revenue with Frequency Discounts</strong><br>
+                        Offer 15% off for bi-weekly clients and 20% off for weekly clients. Recurring clients reduce travel costs and eliminate client acquisition expenses.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 哥飞 SEO 板块 3: 可折叠 FAQ (Schema.org 结构化支持) -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">Frequently Asked Questions</h2>
+                
+                <div class="faq-accordion">
+                    <details class="faq-item" open>
+                        <summary class="faq-question">How much should I charge per square foot for house cleaning?</summary>
+                        <div class="faq-answer">
+                            In 2026, standard maintenance cleaning averages <strong>$0.09 to $0.15 per square foot</strong>. Deep cleaning ranges from <strong>$0.15 to $0.22/sq ft</strong>, while move-in/move-out turns range between <strong>$0.20 and $0.28/sq ft</strong>.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">Should I charge hourly or flat rate for cleaning?</summary>
+                        <div class="faq-answer">
+                            Over 78% of homeowners prefer flat-rate quotes because there are no surprises on the invoice. Flat pricing also rewards fast, skilled cleaners who complete high-quality jobs without penalizing their hourly take-home pay.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">How do I quote extra dirty or hoarder homes?</summary>
+                        <div class="faq-answer">
+                            For extreme clutter or pet hair, apply a 25% to 50% condition surcharge. Always walk through the property or request video walk-throughs before finalizing quotes for first-time clients.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">Can I export and print this estimate for my customer?</summary>
+                        <div class="faq-answer">
+                            Yes! Click <strong>"📋 Copy SMS Quote"</strong> to send an immediate formatted text to your client, or click <strong>"🖨️ Print / Save PDF Quote"</strong> to generate a clean, professional invoice sheet without website menus or buttons.
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- 哥飞 SEO 板块 4: 内链闭环矩阵 (Related Tools) -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">Related Housekeeping Calculators</h2>
+                <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 12px;">Explore complementary tools to manage your cleaning company:</p>
+
+                <div class="related-tools-grid">
+                    <a href="../schedule-generator/" class="related-tool-item">
+                        <span style="font-size: 20px;">📅</span>
+                        <strong style="font-size: 14px; color: var(--text-main);">Weekly Schedule Planner</strong>
+                        <span style="font-size: 12px; color: var(--text-sub);">Assign cleaner shifts & print wall rosters.</span>
+                    </a>
+                    <a href="../tip-calculator/" class="related-tool-item">
+                        <span style="font-size: 20px;">💵</span>
+                        <strong style="font-size: 14px; color: var(--text-main);">Tip Split Calculator</strong>
+                        <span style="font-size: 12px; color: var(--text-sub);">Divide crew tips fairly by hours worked.</span>
+                    </a>
+                    <a href="../dilution-calculator/" class="related-tool-item">
+                        <span style="font-size: 20px;">🧪</span>
+                        <strong style="font-size: 14px; color: var(--text-main);">Chemical Dilution Tool</strong>
+                        <span style="font-size: 12px; color: var(--text-sub);">Calculate spray bottle & bucket ratios.</span>
+                    </a>
+                    <a href="../hourly-pay-calculator/" class="related-tool-item">
+                        <span style="font-size: 20px;">💰</span>
+                        <strong style="font-size: 14px; color: var(--text-main);">Hourly Wage & Overtime</strong>
+                        <span style="font-size: 12px; color: var(--text-sub);">Calculate cleaner paychecks & net pay.</span>
+                    </a>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- 右侧吸顶悬浮结果栏 (桌面端滚动吸顶 Sticky Sidebar) -->
+        <aside class="sidebar">
+            <div class="result-card" id="resultCardDesktop">
+                <div class="price-header">
+                    <div class="price-title">Estimated Quote Range</div>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--primary); background: #ffffff; padding: 2px 8px; border-radius: 999px;" id="currencyBadge">USD</span>
+                </div>
+
+                <div style="text-align: center; margin: 12px 0 20px;">
+                    <div class="price-number" id="priceRange" style="font-size: 34px;">$175 – $215</div>
+                    <div style="font-size: 13px; color: var(--text-sub); margin-top: 4px;" id="jobDuration">Est. Labor: 3.0 – 4.0 man-hours</div>
+                </div>
+
+                <div class="breakdown-list" style="border-top: 1px dashed rgba(5, 150, 105, 0.25); padding-top: 14px;">
+                    <div class="breakdown-item">
+                        <span>Base Rate (<span id="calcSqft">1,600</span> <span id="calcUnit">sq ft</span>):</span>
+                        <strong id="basePrice">$176.00</strong>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>Rooms Weight (3 Bed, 2 Bath):</span>
+                        <strong id="roomWeightPrice">+$30.00</strong>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>Add-on Services:</span>
+                        <strong id="addonPrice">+$0.00</strong>
+                    </div>
+                    <div class="breakdown-item" id="discountRow" style="display: none; color: var(--primary);">
+                        <span>Frequency Savings:</span>
+                        <strong id="discountValue">-$0.00</strong>
+                    </div>
+                    <div class="breakdown-item" style="border-top: 1.5px solid var(--border-color); padding-top: 10px; font-size: 16px; font-weight: 800;">
+                        <span>Target Final Quote:</span>
+                        <span style="color: var(--primary-hover);" id="targetPrice">$206.00</span>
+                    </div>
+                </div>
+
+                <div class="action-row" style="margin-top: 20px;">
+                    <button class="btn-primary" id="copyBtn" onclick="copyQuoteSMS()">📋 Copy SMS Quote</button>
+                    <button class="btn-secondary" onclick="window.print()">🖨️ Print / Save PDF Quote</button>
+                </div>
+            </div>
+
+            <!-- 哥飞规范：场景化定制的 Shopify 原生转化卡片 -->
+            <div class="shopify-promo-card cta-glow">
+                <span class="shopify-tag">PureWear Store</span>
+                <h3>Win Quotes with Professional Gear</h3>
+                <p>Clients choose cleaning services that look organized and reliable. Equip your cleaners with matching bleach-resistant PureWear uniforms today.</p>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
+                    Shop Housekeeping Uniforms →
+                </a>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- 移动端专属吸底浮动栏 (Mobile Sticky Bottom Bar) -->
+    <div class="mobile-sticky-bar" id="mobileStickyBar">
+        <div class="mobile-bar-info">
+            <span class="mobile-bar-label">Est. Quote Range</span>
+            <span class="mobile-bar-price" id="mobileBarPrice">$175 – $215</span>
+        </div>
+        <button type="button" class="mobile-bar-btn" onclick="copyQuoteSMS()">📋 Copy SMS</button>
+    </div>
+
+    <!-- Toast 轻提示组件 -->
+    <div class="toast-notification" id="toastBox">
+        <span id="toastIcon">✓</span>
+        <span id="toastMsg">Quote copied to clipboard!</span>
+    </div>
+
+    <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">✨ PureWear Space Tools</div>
             <div class="footer-links">
                 <a href="../../index.html">Home</a>
                 <a href="../index.html">All Tools</a>
-                <a href="../../resources.html">Resources</a>
+                <a href="../schedule-generator/">Schedule Generator</a>
+                <a href="../tip-calculator/">Tip Calculator</a>
                 <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free utilities for service industry professionals.</p>
+            <p>© 2026 PureWear Space. Free online quote and management calculators for house cleaners.</p>
         </div>
     </footer>
 
-    <!-- 交互计算引擎 -->
     <script>
-        let totalAddons = 0;
+        let currentCurrency = 'USD';
+        let currentSymbol = '$';
+        let currentUnit = 'sqft';
+        let currentRate = 0.11; // base rate per sq ft
+        let currentDiscount = 0;
+        let selectedTierName = 'Standard Cleaning';
 
-        function syncSqft(val) {
-            document.getElementById('sqft').value = val;
-            document.getElementById('sqftDisplay').innerText = Number(val).toLocaleString() + ' sq ft';
-            recalculate();
+        const CURRENCY_CONVERSION = {
+            USD: 1.0,
+            GBP: 0.78,
+            EUR: 0.92,
+            CAD: 1.36,
+            AUD: 1.52
+        };
+
+        function setCurrency(code, symbol, btn) {
+            currentCurrency = code;
+            currentSymbol = symbol;
+            document.querySelectorAll('.unit-switcher-row .switch-btn').forEach(b => {
+                if (b.innerText.includes(code)) b.classList.add('active');
+                else if (b.innerText.includes('USD') || b.innerText.includes('GBP') || b.innerText.includes('EUR') || b.innerText.includes('CAD') || b.innerText.includes('AUD')) b.classList.remove('active');
+            });
+            document.querySelectorAll('.currSym').forEach(el => el.innerText = symbol);
+            document.getElementById('currencyBadge').innerText = code;
+            calculate();
+            showToast(`Switched currency to ${code} (${symbol})`);
         }
 
-        function syncSlider(val) {
-            const num = Math.min(Math.max(val, 200), 5000);
-            document.getElementById('sqftRange').value = num;
-            document.getElementById('sqftDisplay').innerText = Number(val).toLocaleString() + ' sq ft';
-            recalculate();
+        function setAreaUnit(unit, btn) {
+            currentUnit = unit;
+            const slider = document.getElementById('sqftSlider');
+            if (unit === 'sqm') {
+                slider.min = 20;
+                slider.max = 600;
+                slider.step = 5;
+                slider.value = Math.round(slider.value * 0.0929) || 150;
+                document.getElementById('areaUnitLabel').innerText = 'm²';
+                document.getElementById('calcUnit').innerText = 'm²';
+            } else {
+                slider.min = 200;
+                slider.max = 6000;
+                slider.step = 50;
+                slider.value = Math.round(slider.value / 0.0929) || 1600;
+                document.getElementById('areaUnitLabel').innerText = 'sq ft';
+                document.getElementById('calcUnit').innerText = 'sq ft';
+            }
+            document.querySelectorAll('.unit-switcher-row .switch-btn').forEach(b => {
+                if (b.innerText.includes('Sq Ft') || b.innerText.includes('Sq Meters')) b.classList.remove('active');
+            });
+            btn.classList.add('active');
+            syncSqftInput(slider.value);
+            showToast(`Switched unit to ${unit === 'sqm' ? 'Square Meters' : 'Square Feet'}`);
+        }
+
+        function applyPreset(area, bed, bath, tier) {
+            const slider = document.getElementById('sqftSlider');
+            const targetArea = currentUnit === 'sqm' ? Math.round(area * 0.0929) : area;
+            slider.value = targetArea;
+            document.getElementById('beds').value = bed;
+            document.getElementById('baths').value = bath;
+
+            document.querySelectorAll('.preset-card-btn').forEach(b => b.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            if (tier === 'standard') {
+                const tierBtn = document.querySelectorAll('.tier-card')[0];
+                setTier('standard', 0.11, tierBtn);
+            } else if (tier === 'moveout') {
+                const tierBtn = document.querySelectorAll('.tier-card')[2];
+                setTier('moveout', 0.22, tierBtn);
+            }
+
+            syncSqftInput(targetArea);
+            showToast("Preset loaded successfully!");
+        }
+
+        function syncSqftInput(val) {
+            document.getElementById('sqftDisplay').innerText = Number(val).toLocaleString();
+            document.getElementById('calcSqft').innerText = Number(val).toLocaleString();
+            calculate();
         }
 
         function adjustCount(id, delta) {
             const input = document.getElementById(id);
-            let val = parseInt(input.value) + delta;
-            val = Math.max(val, parseInt(input.min));
-            val = Math.min(val, parseInt(input.max));
+            let val = parseInt(input.value) || 0;
+            const min = parseInt(input.min) || 0;
+            const max = parseInt(input.max) || 10;
+            val = Math.max(min, Math.min(max, val + delta));
             input.value = val;
-            recalculate();
+            calculate();
         }
 
-        function toggleAddon(el, cost) {
-            el.classList.toggle('selected');
-            if (el.classList.contains('selected')) {
-                totalAddons += cost;
-            } else {
-                totalAddons -= cost;
-            }
-            recalculate();
+        function setTier(tier, rate, element) {
+            currentRate = rate;
+            selectedTierName = tier === 'standard' ? 'Standard Cleaning' :
+                               tier === 'deep' ? 'Deep Cleaning' :
+                               tier === 'moveout' ? 'Move-In / Move-Out' : 'Post-Construction';
+            document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+            element.classList.add('selected');
+            calculate();
         }
 
-        function recalculate() {
-            const sqft = parseFloat(document.getElementById('sqft').value) || 0;
-            const rate = parseFloat(document.getElementById('serviceType').value);
-            const freqDiscount = parseFloat(document.getElementById('frequency').value);
+        function setFrequency(freq, discount, element) {
+            currentDiscount = discount;
+            document.querySelectorAll('.pill-card').forEach(p => p.classList.remove('selected'));
+            element.classList.add('selected');
+            calculate();
+        }
+
+        function toggleAddon(label) {
+            const cb = label.querySelector('input[type="checkbox"]');
+            if (cb.checked) label.classList.add('checked');
+            else label.classList.remove('checked');
+        }
+
+        function calculate() {
+            let area = parseFloat(document.getElementById('sqftSlider').value) || 1600;
+            const beds = parseInt(document.getElementById('beds').value) || 0;
             const baths = parseInt(document.getElementById('baths').value) || 1;
 
-            // 基础面积费用
-            const rawBasePrice = sqft * rate;
-            
-            // 额外浴室加收 (超过2个浴室每个加 $20)
-            const extraBathsCost = baths > 2 ? (baths - 2) * 20 : 0;
-            
-            // 未打折小计
-            const subtotal = rawBasePrice + extraBathsCost + totalAddons;
-            
-            // 折扣后总价
-            const finalPrice = subtotal * freqDiscount;
-            const discountSaved = subtotal - finalPrice;
+            // 如果是平方米，折算为平方英尺等效基准进行单价计算
+            let sqftEquivalent = currentUnit === 'sqm' ? (area / 0.092903) : area;
 
-            // 工时估算 (平均 450 sq ft / 工时)
-            const estimatedHours = (sqft / 450) + (totalAddons > 0 ? 1 : 0);
-            const minHours = (estimatedHours * 0.9).toFixed(1);
-            const maxHours = (estimatedHours * 1.2).toFixed(1);
+            const currencyMultiplier = CURRENCY_CONVERSION[currentCurrency] || 1.0;
 
-            // 更新显示
-            document.getElementById('priceDisplay').innerText = '$' + finalPrice.toFixed(2);
-            document.getElementById('baseRateDisplay').innerText = '$' + rawBasePrice.toFixed(2);
-            document.getElementById('bathsDisplay').innerText = '+$' + extraBathsCost.toFixed(2);
-            document.getElementById('addonsDisplay').innerText = '+$' + totalAddons.toFixed(2);
-            document.getElementById('discountDisplay').innerText = discountSaved > 0 ? '-$' + discountSaved.toFixed(2) : '$0.00';
-            document.getElementById('timeEstDisplay').innerText = `⏱️ ~${minHours} - ${maxHours} Hours (Est. Team)`;
+            // 基础面积计价
+            let base = sqftEquivalent * currentRate;
+
+            // 房间权重补足
+            let roomSurcharge = (beds * 10) + (baths * 20);
+
+            // 附加服务累加
+            let addonTotal = 0;
+            document.querySelectorAll('.addon-grid input[type="checkbox"]:checked').forEach(cb => {
+                addonTotal += parseFloat(cb.value) || 0;
+            });
+
+            let subtotal = (base + roomSurcharge + addonTotal) * currencyMultiplier;
+            let discountAmount = subtotal * currentDiscount;
+            let finalTarget = subtotal - discountAmount;
+
+            let lowEstimate = Math.round(finalTarget * 0.90);
+            let highEstimate = Math.round(finalTarget * 1.10);
+
+            // 工时测算 (基准: 450 sq ft/人时)
+            let baseLaborHours = 1.0 + (sqftEquivalent / 500) + (baths * 0.4) + (beds * 0.2);
+            if (currentRate >= 0.20) baseLaborHours *= 1.4; // 深度/退房清洁系数
+            let lowHours = (baseLaborHours * 0.85).toFixed(1);
+            let highHours = (baseLaborHours * 1.15).toFixed(1);
+
+            // 更新 UI
+            const sym = currentSymbol;
+            const priceEl = document.getElementById('priceRange');
+            priceEl.innerText = `${sym}${lowEstimate} – ${sym}${highEstimate}`;
+            priceEl.classList.remove('value-pulse');
+            void priceEl.offsetWidth; // 触发 reflow 产生轻微呼吸动效
+            priceEl.classList.add('value-pulse');
+
+            document.getElementById('jobDuration').innerText = `Est. Labor: ${lowHours} – ${highHours} man-hours`;
+            document.getElementById('basePrice').innerText = `${sym}${(base * currencyMultiplier).toFixed(2)}`;
+            document.getElementById('roomWeightPrice').innerText = `+${sym}${(roomSurcharge * currencyMultiplier).toFixed(2)}`;
+            document.getElementById('addonPrice').innerText = `+${sym}${(addonTotal * currencyMultiplier).toFixed(2)}`;
+            document.getElementById('targetPrice').innerText = `${sym}${Math.round(finalTarget).toFixed(2)}`;
+
+            // 移动端浮动栏同步
+            document.getElementById('mobileBarPrice').innerText = `${sym}${lowEstimate} – ${sym}${highEstimate}`;
+
+            if (currentDiscount > 0) {
+                document.getElementById('discountRow').style.display = 'flex';
+                document.getElementById('discountValue').innerText = `-${sym}${(discountAmount).toFixed(2)}`;
+            } else {
+                document.getElementById('discountRow').style.display = 'none';
+            }
         }
 
-        function copyQuote() {
-            const price = document.getElementById('priceDisplay').innerText;
-            const sqft = document.getElementById('sqft').value;
+        function copyQuoteSMS() {
+            const price = document.getElementById('priceRange').innerText;
+            const area = document.getElementById('sqftDisplay').innerText;
+            const unit = document.getElementById('areaUnitLabel').innerText;
             const beds = document.getElementById('beds').value;
             const baths = document.getElementById('baths').value;
-            const time = document.getElementById('timeEstDisplay').innerText;
+            const hours = document.getElementById('jobDuration').innerText;
 
-            const text = `Hi! Here is your custom cleaning quote from PureWear Space:
-- Size: ${sqft} sq ft (${beds} Beds, ${baths} Baths)
-- Total Estimate: ${price}
-- Estimated Duration: ${time}
-Let us know if you would like to book your preferred time slot!`;
+            let addons = [];
+            document.querySelectorAll('.addon-grid label.checked .addon-title').forEach(t => addons.push(t.innerText));
+            const addonStr = addons.length > 0 ? `\n• Included Add-ons: ${addons.join(', ')}` : '';
 
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Quote summary copied to clipboard! You can paste it into SMS or WhatsApp.");
+            const smsText = `Hi! Here is your cleaning estimate:\n` +
+                            `• Service: ${selectedTierName}\n` +
+                            `• Home: ${area} ${unit} (${beds} Bed, ${baths} Bath)\n` +
+                            `• Estimated Price: ${price}\n` +
+                            `• Expected Duration: ${hours}${addonStr}\n\n` +
+                            `All eco-friendly supplies and equipment provided. Reply to this text to book your preferred day!`;
+
+            navigator.clipboard.writeText(smsText).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.innerText = "✓ Copied Quote!";
+                btn.style.background = "#047857";
+                setTimeout(() => {
+                    btn.innerText = "📋 Copy SMS Quote";
+                    btn.style.background = "";
+                }, 2000);
+                showToast("✓ SMS quote copied to clipboard!");
+            }).catch(() => {
+                showToast("Failed to copy. Please manually copy the breakdown.");
             });
         }
 
-        // 页面初始化自动计算一次
-        recalculate();
+        function showToast(msg) {
+            const toast = document.getElementById('toastBox');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // 初始化
+        window.addEventListener('DOMContentLoaded', calculate);
     </script>
 </body>
 </html>

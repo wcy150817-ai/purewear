@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hourly Pay & Overtime Calculator | PureWear Space</title>
-    <meta name="description" content="Free hourly wage calculator for cleaners and contractors. Calculate regular pay, 1.5x overtime, bi-weekly earnings, and estimated take-home pay.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Hourly Pay & Overtime Calculator 2026 | Free Wage Calculator</title>
+    <meta name="description" content="Calculate hourly wages, 1.5x/2.0x overtime pay, gross earnings, and estimated take-home pay. Includes 2026 cleaning and service industry wage benchmark tables.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/hourly-pay-calculator/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Hourly Pay & Overtime Calculator | PureWear Space">
+    <meta property="og:title" content="Hourly Pay & Overtime Calculator 2026 | Free Wage Calculator">
     <meta property="og:description" content="Calculate wages, 1.5x/2.0x overtime, bi-weekly checks, and take-home pay with our free hourly wage calculator.">
     <meta property="og:url" content="https://tool.purewearspace.com/tools/hourly-pay-calculator/">
     <meta property="og:type" content="website">
@@ -17,12 +17,45 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Hourly Pay & Overtime Calculator",
-      "url": "https://tool.purewearspace.com/tools/hourly-pay-calculator/",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "description": "Calculates hourly wages, overtime pay, gross earnings, and net take-home estimates for workers and contractors."
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Hourly Pay & Overtime Calculator",
+          "url": "https://tool.purewearspace.com/tools/hourly-pay-calculator/",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "All",
+          "description": "Calculates hourly wages, overtime pay, gross earnings, and net take-home estimates for workers and contractors."
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How is 1.5x overtime calculated?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Overtime is calculated by multiplying your regular hourly rate by 1.5, and then multiplying that overtime rate by the number of hours worked beyond 40 in a single workweek."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the average hourly wage for a residential cleaner in 2026?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In 2026, independent residential housekeepers earn between $20.00 and $32.00 per hour depending on geographic location and experience. Commercial janitorial cleaners earn between $17.50 and $24.00 per hour."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between gross pay and net pay?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Gross pay is the total amount earned before any taxes or deductions are subtracted. Net pay (also known as take-home pay) is the final amount deposited into your bank account after federal/state income taxes, FICA, and deductions."
+              }
+            }
+          ]
+        }
+      ]
     }
     </script>
 
@@ -93,12 +126,29 @@
             border-bottom: none;
         }
 
-        .highlight-box {
-            background: var(--bg-surface);
+        .related-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .related-tool-item {
+            background: #ffffff;
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             padding: 16px;
-            margin-top: 16px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .related-tool-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
         }
     </style>
 </head>
@@ -123,8 +173,8 @@
 
     <!-- 页面标题 -->
     <div class="page-header">
-        <h1>Hourly Pay & Overtime Calculator</h1>
-        <p>Accurately calculate regular wages, time-and-a-half overtime, bi-weekly paychecks, and estimated net pay.</p>
+        <h1>Hourly Pay & Overtime Calculator (2026)</h1>
+        <p>Calculate regular wages, 1.5x/2.0x overtime, bi-weekly paychecks, and estimated net take-home pay.</p>
     </div>
 
     <!-- 主布局网格 -->
@@ -133,23 +183,37 @@
         <!-- 左侧输入表单 -->
         <main>
             <div class="card">
-                <h2 style="font-size: 18px; margin-bottom: 16px;">Wage & Hours Input</h2>
+                
+                <!-- 货币切换器 -->
+                <div class="unit-switcher-row">
+                    <div class="switch-group">
+                        <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Currency:</span>
+                        <button type="button" class="switch-btn active" onclick="setWageCurrency('USD', '$', this)">$ USD</button>
+                        <button type="button" class="switch-btn" onclick="setWageCurrency('GBP', '£', this)">£ GBP</button>
+                        <button type="button" class="switch-btn" onclick="setWageCurrency('EUR', '€', this)">€ EUR</button>
+                        <button type="button" class="switch-btn" onclick="setWageCurrency('CAD', 'CA$', this)">CA$ CAD</button>
+                        <button type="button" class="switch-btn" onclick="setWageCurrency('AUD', 'AU$', this)">AU$ AUD</button>
+                    </div>
+                    <span style="font-size: 12px; color: var(--text-sub); font-weight: 600;">⚡ Instant Real-Time Calculation</span>
+                </div>
+
+                <h2 style="font-size: 18px; margin-bottom: 16px;">Wage & Hours Parameters</h2>
 
                 <!-- 1. 时薪输入 -->
                 <div class="input-group">
-                    <label>💰 Hourly Base Rate ($ / hour)</label>
+                    <label>💰 Hourly Base Rate (<span class="wageSym">$</span> / hour)</label>
                     <div class="stepper-input">
                         <button type="button" class="stepper-btn" onclick="adjustRate(-1)">−</button>
-                        <input type="number" id="hourlyRate" class="stepper-val" value="20.00" step="0.5" min="1" max="500" oninput="calculatePay()">
+                        <input type="number" id="hourlyRate" class="stepper-val" value="22.00" step="0.5" min="1" max="500" inputmode="decimal" oninput="calculatePay()">
                         <button type="button" class="stepper-btn" onclick="adjustRate(1)">+</button>
                     </div>
                     <div class="rate-presets">
-                        <span style="font-size: 12px; color: var(--text-muted); align-self: center;">Quick Set:</span>
-                        <button type="button" class="rate-preset-btn" onclick="setRate(15)">$15/hr</button>
+                        <span style="font-size: 12px; color: var(--text-muted); align-self: center;">Quick Presets:</span>
                         <button type="button" class="rate-preset-btn" onclick="setRate(18)">$18/hr</button>
-                        <button type="button" class="rate-preset-btn" onclick="setRate(20)">$20/hr</button>
+                        <button type="button" class="rate-preset-btn" onclick="setRate(22)">$22/hr</button>
                         <button type="button" class="rate-preset-btn" onclick="setRate(25)">$25/hr</button>
                         <button type="button" class="rate-preset-btn" onclick="setRate(30)">$30/hr</button>
+                        <button type="button" class="rate-preset-btn" onclick="setRate(35)">$35/hr</button>
                     </div>
                 </div>
 
@@ -175,42 +239,150 @@
                 <div class="input-group">
                     <label>⚡ Overtime Multiplier</label>
                     <select id="overtimeMultiplier" class="form-control" onchange="calculatePay()">
-                        <option value="1.5" selected>1.5x — Standard Time & a Half (Over 40 hrs/wk)</option>
-                        <option value="2.0">2.0x — Double Time (Holidays / Special Shifts)</option>
-                        <option value="1.0">1.0x — Straight Time (No Overtime Premium)</option>
+                        <option value="1.5" selected>1.5x — Standard Time & a Half (FLSA Over 40 hrs/wk)</option>
+                        <option value="2.0">2.0x — Double Time (Holidays / Weekend Emergency)</option>
+                        <option value="1.0">1.0x — Straight Time (Contract / Non-Overtime Rate)</option>
                     </select>
                 </div>
 
-                <!-- 5. 预估税率与扣除比例 (可选) -->
+                <!-- 5. 预估税率与扣除比例 -->
                 <div class="input-group" style="margin-bottom: 0;">
                     <div class="slider-header">
-                        <label>🧾 Estimated Tax & Deductions (Optional)</label>
+                        <label>🧾 Estimated Taxes & Withholding (Optional)</label>
                         <span class="slider-display"><span id="taxRateDisplay">15</span>%</span>
                     </div>
                     <input type="range" id="taxRate" class="range-slider" min="0" max="40" value="15" step="1" oninput="syncTaxRate(this.value)">
-                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Used to estimate net take-home earnings. Set to 0% for pure gross wages.</p>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Used to estimate net take-home earnings. Set to 0% for pure gross earnings.</p>
                 </div>
             </div>
 
-            <!-- SEO 说明卡片 -->
+            <!-- 哥飞 SEO 板块 1: 2026 行业工资基准对比表 -->
             <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 12px;">How Overtime Pay is Calculated</h2>
+                <h2 style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">2026 Cleaning Industry Wage Benchmarks</h2>
+                <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 14px;">
+                    Average hourly rates and overtime premiums across cleaning and housekeeping positions:
+                </p>
+
+                <div class="benchmark-table-wrapper">
+                    <table class="benchmark-table">
+                        <thead>
+                            <tr>
+                                <th>Position / Specialty</th>
+                                <th>Base Hourly Rate</th>
+                                <th>1.5x Overtime Rate</th>
+                                <th>Typical Weekly Gross</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Residential Housekeeper</strong></td>
+                                <td>$18.00 – $24.00/hr</td>
+                                <td>$27.00 – $36.00/hr</td>
+                                <td>$720 – $1,050</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Independent Solo Cleaner</strong></td>
+                                <td>$25.00 – $35.00/hr</td>
+                                <td>$37.50 – $52.50/hr</td>
+                                <td>$1,000 – $1,500</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Commercial Janitor / Custodian</strong></td>
+                                <td>$17.50 – $22.00/hr</td>
+                                <td>$26.25 – $33.00/hr</td>
+                                <td>$700 – $950</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deep Clean Specialist</strong></td>
+                                <td>$24.00 – $32.00/hr</td>
+                                <td>$36.00 – $48.00/hr</td>
+                                <td>$960 – $1,350</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Crew Lead / Field Supervisor</strong></td>
+                                <td>$26.00 – $35.00/hr</td>
+                                <td>$39.00 – $52.50/hr</td>
+                                <td>$1,040 – $1,550</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 哥飞 SEO 板块 2: 加班费法定测算逻辑 -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 12px;">How Overtime Pay is Calculated</h2>
                 <p style="font-size: 14px; color: var(--text-sub); line-height: 1.6; margin-bottom: 12px;">
-                    Under the <strong>U.S. Fair Labor Standards Act (FLSA)</strong> and labor regulations in most jurisdictions, covered non-exempt employees must receive overtime pay for hours worked over 40 in a workweek at a rate not less than <strong>one and one-half times (1.5x)</strong> their regular rate of pay.
+                    Under the <strong>U.S. Fair Labor Standards Act (FLSA)</strong> and labor regulations in most countries, covered non-exempt hourly employees must receive overtime pay for hours worked over 40 in a workweek at a rate not less than <strong>one and one-half times (1.5x)</strong> their regular rate of pay.
                 </p>
                 
                 <h3 style="font-size: 16px; margin: 16px 0 8px;">Calculation Formula:</h3>
-                <div style="background: var(--bg-surface); padding: 12px 16px; border-radius: var(--radius-sm); font-family: monospace; font-size: 13px; color: var(--text-main); margin-bottom: 16px;">
-                    Total Gross Pay = (Regular Hours × Base Rate) + (Overtime Hours × Base Rate × Multiplier)
+                <div style="background: var(--bg-surface); padding: 12px 16px; border-radius: var(--radius-sm); font-family: monospace; font-size: 13px; color: var(--text-main); margin-bottom: 16px; line-height: 1.6;">
+                    Regular Pay = Regular Hours × Base Hourly Rate<br>
+                    Overtime Pay = Overtime Hours × Base Hourly Rate × Multiplier (1.5)<br>
+                    Total Gross Earnings = Regular Pay + Overtime Pay<br>
+                    Estimated Net Pay = Gross Earnings − (Gross Earnings × Tax Rate %)
                 </div>
-
-                <p style="font-size: 14px; color: var(--text-sub); line-height: 1.6;">
-                    For cleaning companies, calculating accurate overtime is essential when billing clients for emergency jobs, post-construction cleans, or weekend commercial maintenance.
-                </p>
             </div>
+
+            <!-- 哥飞 SEO 板块 3: 可折叠 FAQ -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">Frequently Asked Questions</h2>
+                
+                <div class="faq-accordion">
+                    <details class="faq-item" open>
+                        <summary class="faq-question">How is 1.5x overtime calculated?</summary>
+                        <div class="faq-answer">
+                            Multiply your hourly base rate by 1.5. For example, if you earn $20.00/hour, your overtime rate is $30.00/hour ($20 × 1.5). If you work 5 overtime hours, your overtime earnings equal $150.00 ($30 × 5).
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">Can an employer average hours across two weeks to avoid paying overtime?</summary>
+                        <div class="faq-answer">
+                            No. Under FLSA rules, each workweek stands alone. An employer cannot average 50 hours in Week 1 and 30 hours in Week 2 to claim an 80-hour bi-weekly period without paying 10 hours of overtime for Week 1.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">How do tips affect cleaner paychecks?</summary>
+                        <div class="faq-answer">
+                            Tips are treated as supplemental income. While employers cannot take employee tips to satisfy base wages, tips must be reported for income tax purposes. Use our <a href="../tip-calculator/" style="color: var(--primary); font-weight: 700;">Tip Split Calculator</a> to divide team tips fairly.
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- 哥飞 SEO 板块 4: 内链闭环矩阵 -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">Related Management & Financial Tools</h2>
+                <div class="related-tools-grid">
+                    <a href="../tip-calculator/" class="related-tool-item">
+                        <span style="font-size: 20px;">💵</span>
+                        <strong style="font-size: 14px; color: var(--text-main);">Tip Split Calculator</strong>
+                        <span style="font-size: 12px; color: var(--text-sub);">Split customer tips by hours worked.</span>
+                    </a>
+                    <a href="../schedule-generator/" class="related-tool-item">
+                        <span style="font-size: 20px;">📅</span>
+                        <strong style="font-size: 14px; color: var(--text-main);">Weekly Shift Planner</strong>
+                        <span style="font-size: 12px; color: var(--text-sub);">Track cleaner shifts & total hours.</span>
+                    </a>
+                    <a href="../expense-tracker/" class="related-tool-item">
+                        <span style="font-size: 20px;">📊</span>
+                        <strong style="font-size: 14px; color: var(--text-main);">Income & Expense Tracker</strong>
+                        <span style="font-size: 12px; color: var(--text-sub);">Track revenue, expenses & profit.</span>
+                    </a>
+                    <a href="../cleaning-quote-calculator/" class="related-tool-item">
+                        <span style="font-size: 20px;">🧹</span>
+                        <strong style="font-size: 14px; color: var(--text-main);">Cleaning Quote Calculator</strong>
+                        <span style="font-size: 12px; color: var(--text-sub);">Estimate pricing by square footage.</span>
+                    </a>
+                </div>
+            </div>
+
         </main>
 
-        <!-- 右侧结果栏 -->
+        <!-- 右侧吸顶悬浮结果栏 (桌面端 Sticky Sidebar) -->
         <aside class="sidebar">
             <div class="result-card">
                 <div class="price-title">Estimated Earnings</div>
@@ -226,7 +398,7 @@
                 <!-- 核心大字展示 -->
                 <div style="text-align: center; margin-bottom: 20px;">
                     <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Gross Total Pay</div>
-                    <div class="price-number" id="totalGrossPay" style="font-size: 40px; margin: 4px 0;">$950.00</div>
+                    <div class="price-number" id="totalGrossPay" style="font-size: 38px; margin: 4px 0;">$1,045.00</div>
                     <div style="font-size: 13px; color: var(--text-sub);" id="periodLabel">for 45 hours worked / week</div>
                 </div>
 
@@ -234,44 +406,59 @@
                 <div style="border-top: 1px solid var(--border-color); padding-top: 14px;">
                     <div class="breakdown-row">
                         <span style="color: var(--text-sub);">Regular Wages:</span>
-                        <strong id="regularPayBreakdown">$800.00</strong>
+                        <strong id="regularPayBreakdown">$880.00</strong>
                     </div>
                     <div class="breakdown-row">
                         <span style="color: var(--text-sub);">Overtime Pay:</span>
-                        <strong style="color: var(--primary);" id="overtimePayBreakdown">$150.00</strong>
+                        <strong style="color: var(--primary);" id="overtimePayBreakdown">$165.00</strong>
                     </div>
                     <div class="breakdown-row">
                         <span style="color: var(--text-sub);">Effective Hourly Rate:</span>
-                        <strong id="effectiveRate">$21.11 / hr</strong>
+                        <strong id="effectiveRate">$23.22 / hr</strong>
                     </div>
                     <div class="breakdown-row" id="taxRow">
                         <span style="color: var(--text-sub);">Est. Deductions (<span id="taxPercentLabel">15</span>%):</span>
-                        <span style="color: var(--danger);" id="taxDeduction">-$142.50</span>
+                        <span style="color: var(--danger);" id="taxDeduction">-$156.75</span>
                     </div>
                     <div class="breakdown-row" style="font-size: 16px; font-weight: 800; border-top: 2px solid var(--border-color); margin-top: 8px; padding-top: 12px;">
                         <span>Est. Take-Home (Net):</span>
-                        <span style="color: var(--primary-hover);" id="netPay">$807.50</span>
+                        <span style="color: var(--primary-hover);" id="netPay">$888.25</span>
                     </div>
                 </div>
 
                 <!-- 操作按钮 -->
                 <div class="action-row" style="margin-top: 24px;">
-                    <button class="btn-primary" onclick="copyWageSummary()">📋 Copy Pay Summary</button>
+                    <button class="btn-primary" id="copyWageBtn" onclick="copyWageSummary()">📋 Copy Pay Summary</button>
                     <button class="btn-secondary" onclick="window.print()">🖨️ Print Pay Stub</button>
                 </div>
             </div>
 
             <!-- Shopify 电商推荐卡片 -->
-            <div class="shopify-promo-card">
+            <div class="shopify-promo-card cta-glow">
                 <span class="shopify-tag">PureWear Store</span>
-                <h3>Durable Uniforms for Hardworking Pros</h3>
-                <p>Designed for long shifts, chemical resistance, and maximum ease of movement. Protect your clothes on the job.</p>
+                <h3>Workwear That Is 100% Tax-Deductible</h3>
+                <p>Did you know? Work uniforms and protective aprons used exclusively for cleaning can be deducted as business expenses on your taxes.</p>
                 <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
-                    Shop Professional Workwear →
+                    Shop Tax-Deductible Gear →
                 </a>
             </div>
         </aside>
 
+    </div>
+
+    <!-- 移动端吸底浮窗 -->
+    <div class="mobile-sticky-bar" id="mobileWageBar">
+        <div class="mobile-bar-info">
+            <span class="mobile-bar-label">Total Gross Earnings</span>
+            <span class="mobile-bar-price" id="mobileGrossDisplay">$1,045.00</span>
+        </div>
+        <button type="button" class="mobile-bar-btn" onclick="copyWageSummary()">📋 Copy Pay</button>
+    </div>
+
+    <!-- Toast 轻提示 -->
+    <div class="toast-notification" id="toastBox">
+        <span id="toastIcon">✓</span>
+        <span id="toastMsg">Pay summary copied!</span>
     </div>
 
     <!-- 页脚 -->
@@ -293,6 +480,18 @@
 
     <script>
         let currentPeriod = 'weekly';
+        let currentWageSym = '$';
+
+        function setWageCurrency(code, sym, btn) {
+            currentWageSym = sym;
+            document.querySelectorAll('.unit-switcher-row .switch-btn').forEach(b => {
+                if (b.innerText.includes(code)) b.classList.add('active');
+                else b.classList.remove('active');
+            });
+            document.querySelectorAll('.wageSym').forEach(el => el.innerText = sym);
+            calculatePay();
+            showToast(`Currency changed to ${code} (${sym})`);
+        }
 
         function adjustRate(delta) {
             const input = document.getElementById('hourlyRate');
@@ -305,6 +504,7 @@
         function setRate(val) {
             document.getElementById('hourlyRate').value = val.toFixed(2);
             calculatePay();
+            showToast(`Base rate set to ${currentWageSym}${val}/hr`);
         }
 
         function syncRegularHours(val) {
@@ -331,6 +531,7 @@
         }
 
         function calculatePay() {
+            const sym = currentWageSym;
             const rate = parseFloat(document.getElementById('hourlyRate').value) || 0;
             const regHours = parseFloat(document.getElementById('regularHours').value) || 0;
             const otHours = parseFloat(document.getElementById('overtimeHours').value) || 0;
@@ -342,7 +543,6 @@
             const weeklyGross = weeklyRegPay + weeklyOtPay;
             const weeklyHours = regHours + otHours;
 
-            // 周期倍数转换
             let periodMultiplier = 1;
             let periodLabelText = `for ${weeklyHours} hours worked / week`;
 
@@ -350,7 +550,7 @@
                 periodMultiplier = 2;
                 periodLabelText = `for ${weeklyHours * 2} hours worked / 2 weeks`;
             } else if (currentPeriod === 'monthly') {
-                periodMultiplier = 52 / 12; // 4.333 周
+                periodMultiplier = 52 / 12;
                 periodLabelText = `estimated per month (~${Math.round(weeklyHours * 4.333)} hrs)`;
             } else if (currentPeriod === 'annual') {
                 periodMultiplier = 52;
@@ -364,17 +564,23 @@
             const netPayTotal = grossTotal - taxDeductionTotal;
             const effectiveHourly = weeklyHours > 0 ? (weeklyGross / weeklyHours) : rate;
 
-            // 更新 UI
-            document.getElementById('totalGrossPay').innerText = '$' + grossTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const grossEl = document.getElementById('totalGrossPay');
+            grossEl.innerText = sym + grossTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            grossEl.classList.remove('value-pulse');
+            void grossEl.offsetWidth;
+            grossEl.classList.add('value-pulse');
+
+            document.getElementById('mobileGrossDisplay').innerText = grossEl.innerText;
             document.getElementById('periodLabel').innerText = periodLabelText;
-            document.getElementById('regularPayBreakdown').innerText = '$' + regPayTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('overtimePayBreakdown').innerText = '$' + otPayTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('effectiveRate').innerText = '$' + effectiveHourly.toFixed(2) + ' / hr';
-            document.getElementById('taxDeduction').innerText = '-$' + taxDeductionTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('netPay').innerText = '$' + netPayTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('regularPayBreakdown').innerText = sym + regPayTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('overtimePayBreakdown').innerText = sym + otPayTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('effectiveRate').innerText = sym + effectiveHourly.toFixed(2) + ' / hr';
+            document.getElementById('taxDeduction').innerText = '-' + sym + taxDeductionTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('netPay').innerText = sym + netPayTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
 
         function copyWageSummary() {
+            const sym = currentWageSym;
             const gross = document.getElementById('totalGrossPay').innerText;
             const net = document.getElementById('netPay').innerText;
             const regPay = document.getElementById('regularPayBreakdown').innerText;
@@ -384,7 +590,7 @@
             const otHrs = document.getElementById('overtimeHours').value;
 
             const text = `💰 Pay Summary (${currentPeriod.toUpperCase()}):\n` +
-                         `Base Rate: $${rate}/hr\n` +
+                         `Base Rate: ${sym}${rate}/hr\n` +
                          `Regular Hours: ${regHrs} hrs (${regPay})\n` +
                          `Overtime Hours: ${otHrs} hrs (${otPay})\n` +
                          `Gross Earnings: ${gross}\n` +
@@ -392,13 +598,24 @@
                          `Generated via PureWear Space: https://tool.purewearspace.com/tools/hourly-pay-calculator/`;
 
             navigator.clipboard.writeText(text).then(() => {
-                alert("✅ Pay summary copied to clipboard!");
+                const btn = document.getElementById('copyWageBtn');
+                btn.innerText = "✓ Copied Summary!";
+                setTimeout(() => btn.innerText = "📋 Copy Pay Summary", 2000);
+                showToast("✓ Pay summary copied to clipboard!");
             }).catch(() => {
-                alert("Failed to copy. Please manually copy the breakdown.");
+                showToast("Failed to copy. Please manually copy the breakdown.");
             });
         }
 
-        // 初始化运行
+        function showToast(msg) {
+            const toast = document.getElementById('toastBox');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
         window.addEventListener('DOMContentLoaded', calculatePay);
     </script>
 </body>

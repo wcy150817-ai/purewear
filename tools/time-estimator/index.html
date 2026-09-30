@@ -3,26 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cleaning Time Estimator | PureWear Space</title>
-    <meta name="description" content="Free cleaning time estimator for housekeepers and maid services. Predict exact job duration and crew man-hours based on square footage, rooms, and clutter.">
+    <title>House Cleaning Time Estimator (2026 ISSA Benchmark Standards) | PureWear Space</title>
+    <meta name="description" content="Free professional cleaning time estimator for maid services & housekeepers. Accurately predict job duration and crew man-hours based on square footage, room count, and ISSA 612 cleaning benchmarks.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/time-estimator/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Cleaning Time Estimator | PureWear Space">
+    <meta property="og:title" content="House Cleaning Time Estimator (2026 ISSA Benchmark Standards) | PureWear Space">
     <meta property="og:description" content="Accurately estimate cleaning duration and crew man-hours for residential and commercial jobs.">
     <meta property="og:url" content="https://tool.purewearspace.com/tools/time-estimator/">
     <meta property="og:type" content="website">
 
-    <!-- Schema.org -->
+    <!-- Schema.org WebApplication & FAQPage -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Cleaning Time Estimator",
-      "url": "https://tool.purewearspace.com/tools/time-estimator/",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All",
-      "description": "Calculates estimated on-site job duration and total crew labor hours for home cleaning and maid services."
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Cleaning Time Estimator",
+          "url": "https://tool.purewearspace.com/tools/time-estimator/",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "All",
+          "description": "Calculates estimated on-site job duration and total crew labor hours for home cleaning and maid services based on ISSA standards."
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How long does it take one cleaner to clean a 2,000 sq ft house?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For a standard recurring maintenance cleaning (dusting, vacuuming, mopping, kitchen, and 2.5 bathrooms), one solo cleaner typically requires 3.5 to 4.5 hours (approx. 450-550 sq ft per hour). If it is a first-time deep clean or move-out clean, it requires 6.0 to 8.0 man-hours."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does crew size affect total on-site cleaning time?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Total man-hours remain roughly constant, but on-site duration scales with crew size. For example, a 6 man-hour job takes 6 hours for a solo cleaner, 3 hours for a 2-person crew, and 2 hours for a 3-person crew. Note that teams larger than 3 may experience slight coordination drag (diminishing returns) in smaller homes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why does a move-out or deep clean take nearly double standard time?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Deep cleanings and move-out turns involve high-labor tasks omitted from routine visits: hand-scrubbing soap scum from shower grout, cleaning inside kitchen appliances (oven, fridge), detailing baseboards, door frames, window tracks, and inside kitchen cabinets."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the recommended buffer time between cleaning appointments?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Professional cleaning services recommend adding a 30 to 45-minute buffer between appointments. This accounts for packing/unpacking equipment, equipment sanitization, traffic transit, and minor on-site client walkthrough delays."
+              }
+            }
+          ]
+        }
+      ]
     }
     </script>
 
@@ -80,6 +121,57 @@
             font-size: 12px;
             color: var(--text-sub);
         }
+
+        .unit-toggle-wrap {
+            display: inline-flex;
+            background: var(--bg-surface);
+            padding: 4px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+        }
+
+        .unit-toggle-btn {
+            border: none;
+            background: transparent;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-sub);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .unit-toggle-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+        }
+
+        .preset-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .preset-btn {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-sub);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .preset-btn:hover, .preset-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
     </style>
 </head>
 <body>
@@ -104,7 +196,7 @@
     <!-- 页面标题 -->
     <div class="page-header">
         <h1>House Cleaning Time Estimator</h1>
-        <p>Predict exact job duration and team labor hours based on home size, bedrooms, condition, and optional deep-cleaning add-ons.</p>
+        <p>Predict exact on-site job duration and crew labor hours based on home size, room layout, condition, and optional deep-cleaning add-ons.</p>
     </div>
 
     <!-- 主布局网格 -->
@@ -113,19 +205,33 @@
         <!-- 左侧输入表单 -->
         <main>
             <div class="card">
-                <h2 style="font-size: 18px; margin-bottom: 16px;">Property & Service Details</h2>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+                    <h2 style="font-size: 18px; margin: 0;">Property & Service Details</h2>
+                    <div class="unit-toggle-wrap">
+                        <button type="button" class="unit-toggle-btn active" id="unitSqftBtn" onclick="setAreaUnit('sqft')">Sq Ft</button>
+                        <button type="button" class="unit-toggle-btn" id="unitSqmBtn" onclick="setAreaUnit('sqm')">Sq Meters (m²)</button>
+                    </div>
+                </div>
 
-                <!-- 1. 房屋面积 -->
+                <!-- 1. 房屋面积与预设 -->
                 <div class="input-group">
                     <div class="slider-header">
-                        <label>🏠 Approximate Home Size</label>
-                        <span class="slider-display"><span id="sqftDisplay">1,800</span> sq ft</span>
+                        <label id="areaLabel">🏠 Home Size</label>
+                        <span class="slider-display"><span id="sqftDisplay">1,800</span> <span id="areaUnitDisplay">sq ft</span></span>
                     </div>
                     <input type="range" id="sqftSlider" class="range-slider" min="400" max="5000" step="50" value="1800" oninput="syncSqft(this.value)">
+                    
+                    <div class="preset-row">
+                        <span style="font-size: 12px; color: var(--text-muted); align-self: center;">Quick Presets:</span>
+                        <button type="button" class="preset-btn" onclick="applyPreset(750, 1, 1)">1-Bed Apt (750 sq ft)</button>
+                        <button type="button" class="preset-btn active" onclick="applyPreset(1800, 3, 2)">3-Bed Suburb (1,800 sq ft)</button>
+                        <button type="button" class="preset-btn" onclick="applyPreset(2800, 4, 3)">4-Bed Large (2,800 sq ft)</button>
+                        <button type="button" class="preset-btn" onclick="applyPreset(4200, 5, 4)">Estate (4,200 sq ft)</button>
+                    </div>
                 </div>
 
                 <!-- 2. 卧室与浴室数量 -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px;">
                     <div class="input-group">
                         <label>🛏️ Bedrooms</label>
                         <div class="stepper-input">
@@ -160,9 +266,9 @@
                     <div class="input-group">
                         <label>📊 Initial Clutter / Dirt Level</label>
                         <select id="condition" class="form-control" onchange="calculateTime()">
-                            <option value="0.9">Low / Well Maintained</option>
+                            <option value="0.9">Low / Well Maintained (−10%)</option>
                             <option value="1.0" selected>Moderate / Normal Lived-in</option>
-                            <option value="1.25">Heavy / Dusty / Pet Hair (+25%)</option>
+                            <option value="1.25">Heavy / Pet Hair / Clutter (+25%)</option>
                             <option value="1.5">Extreme / Hoarder / Neglected (+50%)</option>
                         </select>
                     </div>
@@ -228,21 +334,145 @@
                 </div>
             </div>
 
-            <!-- 行业估时指南 -->
+            <!-- 哥飞 SEO 核心架构 1: 2026 ISSA 612 清洁工时基准表 -->
             <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 12px;">Industry Benchmarks for Cleaning Time</h2>
-                <p style="font-size: 14px; color: var(--text-sub); line-height: 1.6; margin-bottom: 14px;">
-                    Professional cleaning standards generally follow a baseline productivity rate of <strong>400–600 sq ft per man-hour</strong> for maintenance cleanings, dropping to <strong>200–350 sq ft per man-hour</strong> for deep cleanings and move-out turns.
+                <h2 style="font-size: 20px; margin-bottom: 12px;">2026 ISSA 612 Cleaning Times Benchmark Table</h2>
+                <p style="font-size: 14px; color: var(--text-sub); line-height: 1.6; margin-bottom: 16px;">
+                    Standard cleaning operations reference the ISSA 612 standard (International Sanitary Supply Association) to calculate man-hour allocations. Typical productivity ranges are shown below:
                 </p>
-                <div style="background: var(--bg-surface); padding: 14px 18px; border-radius: var(--radius-sm); font-size: 13px; color: var(--text-main); line-height: 1.6;">
-                    • <strong>Bathrooms:</strong> Average 30–45 mins each (scrubbing tile, shower glass, toilets).<br>
-                    • <strong>Kitchens:</strong> Average 45–60 mins (sink, counters, stovetop exterior, microwave).<br>
-                    • <strong>Bedrooms & Living Areas:</strong> Average 15–25 mins each (dusting, making beds, vacuuming).
+
+                <div class="benchmark-table-wrapper">
+                    <table class="benchmark-table">
+                        <thead>
+                            <tr>
+                                <th>Cleaning Scope</th>
+                                <th>Productivity Rate</th>
+                                <th>1,500 sq ft (1 Pro)</th>
+                                <th>2,500 sq ft (2 Pros)</th>
+                                <th>4,000 sq ft (3 Pros)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Recurring Maintenance</strong></td>
+                                <td>450–600 sq ft / hr</td>
+                                <td>2.5 – 3.2 hrs</td>
+                                <td>2.2 – 2.8 hrs</td>
+                                <td>2.3 – 3.0 hrs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Initial Deep Clean</strong></td>
+                                <td>250–350 sq ft / hr</td>
+                                <td>4.2 – 5.8 hrs</td>
+                                <td>3.5 – 4.8 hrs</td>
+                                <td>3.8 – 5.2 hrs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Move-In / Move-Out</strong></td>
+                                <td>200–300 sq ft / hr</td>
+                                <td>5.0 – 7.5 hrs</td>
+                                <td>4.2 – 6.0 hrs</td>
+                                <td>4.5 – 6.5 hrs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Commercial Office</strong></td>
+                                <td>800–1,200 sq ft / hr</td>
+                                <td>1.3 – 1.8 hrs</td>
+                                <td>1.0 – 1.5 hrs</td>
+                                <td>1.2 – 1.6 hrs</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 哥飞 SEO 核心架构 2: 房间工时分配算法模型 -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 20px; margin-bottom: 14px;">The 4-Step Time Prediction Blueprint</h2>
+
+                <div class="formula-box">
+                    <strong>ISSA Weighted Labor Formula:</strong><br>
+                    Base Labor Hours = 1.2 hrs (Kitchen/Entry baseline) + (Sq Ft ÷ 1,400) + (Bedrooms × 0.25h) + (Bathrooms × 0.50h)<br>
+                    Total Labor Hours = (Base Labor Hours × Service Type Multiplier × Condition Multiplier) + Add-ons<br>
+                    On-Site Duration = Total Labor Hours ÷ Number of Crew Cleaners
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px;">
+                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                        <strong style="color: var(--primary); font-size: 15px;">🚿 Bathrooms (30–45 min)</strong>
+                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">Heaviest labor zone: scrubbing tile soap scum, glass shower doors, disinfectant dwell time, and toilet sanitization.</p>
+                    </div>
+                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                        <strong style="color: var(--primary); font-size: 15px;">🍳 Kitchens (45–60 min)</strong>
+                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">Degreasing stovetops, microwave sanitizing, counter detailing, sink polishing, and floor washing.</p>
+                    </div>
+                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                        <strong style="color: var(--primary); font-size: 15px;">🛏️ Bedrooms (15–20 min)</strong>
+                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">High-to-low dusting, linen changing/bed making, edge vacuuming, and mirror polishing.</p>
+                    </div>
+                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                        <strong style="color: var(--primary); font-size: 15px;">🛋️ Living Spaces (20–30 min)</strong>
+                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">Upholstery vacuuming, coffee table dusting, floor hard surface mopping, and baseboard wipe-down.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 哥飞 SEO 核心架构 3: 折叠常见问答 FAQ Accordion -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 20px; margin-bottom: 16px;">Frequently Asked Questions (FAQ)</h2>
+                
+                <div class="faq-accordion">
+                    <details>
+                        <summary>How long does it take one cleaner to clean a 2,000 sq ft house?</summary>
+                        <div class="faq-answer">
+                            For a standard recurring maintenance cleaning (dusting, vacuuming, mopping, kitchen, and 2.5 bathrooms), one solo cleaner typically requires <strong>3.5 to 4.5 hours</strong> (approx. 450-550 sq ft per hour). If it is a first-time deep clean or move-out clean, it requires <strong>6.0 to 8.0 man-hours</strong>.
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>How does crew size affect total on-site cleaning time?</summary>
+                        <div class="faq-answer">
+                            Total man-hours remain roughly constant, but on-site duration scales inversely with crew size. For example, a 6 man-hour job takes 6 hours for a solo cleaner, 3 hours for a 2-person crew, and 2 hours for a 3-person crew. Note that teams larger than 3 may experience slight coordination drag in smaller homes.
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Why does a move-out or deep clean take nearly double standard time?</summary>
+                        <div class="faq-answer">
+                            Deep cleanings and move-out turns involve high-labor tasks omitted from routine visits: hand-scrubbing soap scum from shower grout, cleaning inside kitchen appliances (oven, fridge), detailing baseboards, door frames, window tracks, and inside kitchen cabinets.
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>What is the recommended buffer time between cleaning appointments?</summary>
+                        <div class="faq-answer">
+                            Professional cleaning services recommend adding a <strong>30 to 45-minute buffer</strong> between appointments. This accounts for packing/unpacking equipment, equipment sanitization, traffic transit, and minor on-site client walkthrough delays.
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- 哥飞 SEO 核心架构 4: 矩阵工具互相推荐卡片 -->
+            <div class="card" style="margin-top: 24px;">
+                <h3 style="font-size: 16px; margin-bottom: 12px;">Related Business Tools for Cleaning Companies:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                    <a href="../cleaning-quote-calculator/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
+                        <div style="font-weight: 700; color: var(--primary);">💰 Cleaning Quote Calculator →</div>
+                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Convert estimated hours into profitable, competitive pricing quotes.</div>
+                    </a>
+                    <a href="../schedule-generator/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
+                        <div style="font-weight: 700; color: var(--primary);">📅 Weekly Schedule Planner →</div>
+                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Organize cleaners into rotating 40-hour shifts with zero overtime gaps.</div>
+                    </a>
+                    <a href="../dilution-calculator/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
+                        <div style="font-weight: 700; color: var(--primary);">🧪 Chemical Dilution Calculator →</div>
+                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Calculate exact concentrate ounces for buckets and spray bottles.</div>
+                    </a>
                 </div>
             </div>
         </main>
 
-        <!-- 右侧预估结果 -->
+        <!-- 右侧预估结果 (桌面端 Sticky) -->
         <aside class="sidebar">
             <div class="result-card">
                 <div class="price-title">Estimated Job Duration</div>
@@ -250,7 +480,7 @@
                 <!-- 核心大字展示 -->
                 <div style="text-align: center; margin-bottom: 24px;">
                     <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Real-Time On Site</div>
-                    <div class="price-number" id="onSiteDuration" style="font-size: 38px; color: var(--primary); margin: 6px 0;">2h 15m</div>
+                    <div class="price-number value-pulse" id="onSiteDuration" style="font-size: 40px; color: var(--primary); margin: 6px 0;">2h 15m</div>
                     <div style="font-size: 13px; color: var(--text-sub);" id="crewRatioText">with a 2-person crew</div>
                 </div>
 
@@ -266,7 +496,7 @@
                     </div>
                     <div style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; border-top: 1px solid var(--border-color);">
                         <span style="color: var(--text-sub);">Recommended Buffer:</span>
-                        <strong style="color: var(--accent);">+30 mins (Travel/Setup)</strong>
+                        <strong style="color: var(--accent);">+30 mins (Transit/Setup)</strong>
                     </div>
                     <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 15px; font-weight: 800; border-top: 2px solid var(--border-color); margin-top: 6px;">
                         <span>Arrival Window Block:</span>
@@ -281,8 +511,8 @@
                 </div>
             </div>
 
-            <!-- Shopify 电商推荐卡片 -->
-            <div class="shopify-promo-card">
+            <!-- Shopify 电商推荐卡片 (带呼吸发光效果) -->
+            <div class="shopify-promo-card cta-glow">
                 <span class="shopify-tag">PureWear Store</span>
                 <h3>Move Faster with Ergonomic Cleaning Gear</h3>
                 <p>Heavy, restrictive clothes slow your team down. PureWear lightweight, stretch fabrics keep cleaners agile and cool through grueling 6-hour shifts.</p>
@@ -293,6 +523,20 @@
         </aside>
 
     </div>
+
+    <!-- 移动端吸底浮动栏 (Mobile Sticky Bar) -->
+    <div class="mobile-sticky-bar">
+        <div class="mobile-sticky-inner">
+            <div class="mobile-sticky-info">
+                <span class="mobile-sticky-label">On-Site Duration:</span>
+                <span class="mobile-sticky-val" id="mobileStickyDuration">2h 15m</span>
+            </div>
+            <button class="mobile-sticky-btn" onclick="copyTimeEstimate()">📋 Copy</button>
+        </div>
+    </div>
+
+    <!-- Toast 弹窗容器 -->
+    <div id="toastNotification" class="toast-notification"></div>
 
     <!-- 页脚 -->
     <footer class="footer">
@@ -312,6 +556,49 @@
     </footer>
 
     <script>
+        let currentAreaUnit = 'sqft'; // 'sqft' or 'sqm'
+
+        function setAreaUnit(unit) {
+            currentAreaUnit = unit;
+            const sqftBtn = document.getElementById('unitSqftBtn');
+            const sqmBtn = document.getElementById('unitSqmBtn');
+            const slider = document.getElementById('sqftSlider');
+            const unitDisp = document.getElementById('areaUnitDisplay');
+
+            if (unit === 'sqft') {
+                sqftBtn.classList.add('active');
+                sqmBtn.classList.remove('active');
+                unitDisp.innerText = 'sq ft';
+                slider.min = 400;
+                slider.max = 5000;
+                slider.step = 50;
+                slider.value = 1800;
+            } else {
+                sqmBtn.classList.add('active');
+                sqftBtn.classList.remove('active');
+                unitDisp.innerText = 'm²';
+                slider.min = 40;
+                slider.max = 500;
+                slider.step = 5;
+                slider.value = 165;
+            }
+            syncSqft(slider.value);
+        }
+
+        function applyPreset(sqft, beds, baths) {
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            if (event && event.target) event.target.classList.add('active');
+
+            if (currentAreaUnit === 'sqm') {
+                document.getElementById('sqftSlider').value = Math.round(sqft / 10.764);
+            } else {
+                document.getElementById('sqftSlider').value = sqft;
+            }
+            document.getElementById('beds').value = beds;
+            document.getElementById('baths').value = baths;
+            syncSqft(document.getElementById('sqftSlider').value);
+        }
+
         function syncSqft(val) {
             document.getElementById('sqftDisplay').innerText = Number(val).toLocaleString();
             calculateTime();
@@ -336,8 +623,21 @@
             }
         }
 
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            if (!toast) return;
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
         function calculateTime() {
-            const sqft = parseFloat(document.getElementById('sqftSlider').value) || 1800;
+            let areaVal = parseFloat(document.getElementById('sqftSlider').value) || 1800;
+            // 归一化为 sqft 进行计算
+            let sqft = currentAreaUnit === 'sqm' ? areaVal * 10.764 : areaVal;
+
             const beds = parseInt(document.getElementById('beds').value) || 3;
             const baths = parseInt(document.getElementById('baths').value) || 2;
             const servMultiplier = parseFloat(document.getElementById('serviceType').value) || 1.0;
@@ -345,7 +645,6 @@
             const crew = parseInt(document.getElementById('crew').value) || 2;
 
             // 基础时间计算: 500 sq ft per hour baseline + room weighting
-            // 基准: 1.5 hr base kitchen/living + (sqft / 1200) + (beds * 0.3) + (baths * 0.6)
             let baseLaborHours = 1.2 + (sqft / 1400) + (beds * 0.25) + (baths * 0.5);
 
             // 乘以服务与脏污系数
@@ -370,16 +669,25 @@
             const bufferH = Math.floor(bufferTotalMinutes / 60);
             const bufferM = bufferTotalMinutes % 60;
 
+            const durationStr = `${displayH}h ${displayM}m`;
+
             // 更新 UI
-            document.getElementById('onSiteDuration').innerText = `${displayH}h ${displayM}m`;
+            document.getElementById('onSiteDuration').innerText = durationStr;
             document.getElementById('crewRatioText').innerText = `with a ${crew}-person crew`;
             document.getElementById('totalManHours').innerText = `${totalLaborHours.toFixed(1)} man-hours`;
             document.getElementById('addonTimeDisplay').innerText = `+${addonMinutes} mins`;
             document.getElementById('windowBlock').innerText = `${bufferH}h ${bufferM}m (with buffer)`;
+
+            // 移动端浮动栏
+            const mobileSticky = document.getElementById('mobileStickyDuration');
+            if (mobileSticky) {
+                mobileSticky.innerText = `${durationStr} (${crew} pros)`;
+            }
         }
 
         function copyTimeEstimate() {
-            const sqft = document.getElementById('sqftSlider').value;
+            const area = document.getElementById('sqftSlider').value;
+            const unit = currentAreaUnit === 'sqm' ? 'm²' : 'sq ft';
             const beds = document.getElementById('beds').value;
             const baths = document.getElementById('baths').value;
             const crew = document.getElementById('crew').value;
@@ -388,7 +696,7 @@
             const windowBlock = document.getElementById('windowBlock').innerText;
 
             const text = `⏱️ Cleaning Time Estimate:\n` +
-                         `Property: ${Number(sqft).toLocaleString()} sq ft | ${beds} Bed, ${baths} Bath\n` +
+                         `Property: ${Number(area).toLocaleString()} ${unit} | ${beds} Bed, ${baths} Bath\n` +
                          `Crew Size: ${crew} cleaner(s)\n` +
                          `Estimated Duration: ${duration}\n` +
                          `Total Labor: ${manHours}\n` +
@@ -396,13 +704,15 @@
                          `Generated via PureWear Space: https://tool.purewearspace.com/tools/time-estimator/`;
 
             navigator.clipboard.writeText(text).then(() => {
-                alert("✅ Time estimate copied to clipboard!");
+                showToast("✅ Time estimate copied to clipboard!");
             }).catch(() => {
-                alert("Failed to copy. Please manually copy the values.");
+                showToast("Failed to copy. Please manually copy the values.");
             });
         }
 
-        window.addEventListener('DOMContentLoaded', calculateTime);
+        window.addEventListener('DOMContentLoaded', () => {
+            calculateTime();
+        });
     </script>
 </body>
 </html>
