@@ -4,144 +4,405 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cleaning Time Estimator | PureWear Space</title>
-    <meta name="description" content="Calculate estimated cleaning time for housekeeping jobs.">
+    <meta name="description" content="Free cleaning time estimator for housekeepers and maid services. Predict exact job duration and crew man-hours based on square footage, rooms, and clutter.">
+    <link rel="canonical" href="https://tool.purewearspace.com/tools/time-estimator/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cleaning Time Estimator | PureWear Space">
+    <meta property="og:description" content="Accurately estimate cleaning duration and crew man-hours for residential and commercial jobs.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/time-estimator/">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Cleaning Time Estimator",
+      "url": "https://tool.purewearspace.com/tools/time-estimator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Calculates estimated on-site job duration and total crew labor hours for home cleaning and maid services."
+    }
+    </script>
+
     <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .addon-item {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .addon-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-subtle);
+        }
+
+        .addon-item.selected {
+            border-color: var(--primary);
+            background: var(--primary-subtle);
+        }
+
+        .addon-item input[type="checkbox"] {
+            accent-color: var(--primary);
+            width: 18px;
+            height: 18px;
+        }
+
+        .addon-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .addon-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .addon-time {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+    </style>
 </head>
 <body>
+
+    <!-- 顶部主店引流条 -->
+    <div class="top-notice-bar">
+        <span>👕 High-Mobility Cleaning Uniforms & Protective Aprons:</span>
+        <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
+    </div>
 
     <!-- 导航栏 -->
     <nav class="navbar">
         <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../index.html" class="nav-link active">All Tools</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
-            <a href="../../about.html" class="nav-link">About</a>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 主容器 -->
+    <!-- 页面标题 -->
+    <div class="page-header">
+        <h1>House Cleaning Time Estimator</h1>
+        <p>Predict exact job duration and team labor hours based on home size, bedrooms, condition, and optional deep-cleaning add-ons.</p>
+    </div>
+
+    <!-- 主布局网格 -->
     <div class="main-container">
+        
+        <!-- 左侧输入表单 -->
         <main>
             <div class="card">
-                <div class="form-header">
-                    <h1>Cleaning Time Estimator</h1>
-                    <p>Predict how long your cleaning job will take to optimize your schedule.</p>
+                <h2 style="font-size: 18px; margin-bottom: 16px;">Property & Service Details</h2>
+
+                <!-- 1. 房屋面积 -->
+                <div class="input-group">
+                    <div class="slider-header">
+                        <label>🏠 Approximate Home Size</label>
+                        <span class="slider-display"><span id="sqftDisplay">1,800</span> sq ft</span>
+                    </div>
+                    <input type="range" id="sqftSlider" class="range-slider" min="400" max="5000" step="50" value="1800" oninput="syncSqft(this.value)">
                 </div>
 
-                <form id="timeForm">
+                <!-- 2. 卧室与浴室数量 -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                     <div class="input-group">
-                        <label>🏠 Property Size</label>
-                        <select id="propertySize" class="form-control">
-                            <option value="0.5">Small (Studio / 1 Bed / 1 Bath)</option>
-                            <option value="1" selected>Medium (2 Bed / 2 Bath)</option>
-                            <option value="1.5">Large (3 Bed / 2 Bath)</option>
-                            <option value="2">X-Large (4+ Bed / 3+ Bath)</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label>🧹 Condition of Property</label>
-                        <select id="condition" class="form-control">
-                            <option value="1">Standard (Maintained)</option>
-                            <option value="1.3">A Bit Dusty</option>
-                            <option value="1.6">Messy (Cluttered)</option>
-                            <option value="2">Very Dirty / Deep Clean Needed</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label>🧽 Service Type</label>
-                        <select id="serviceType" class="form-control">
-                            <option value="1">Standard Cleaning</option>
-                            <option value="1.5">Deep Cleaning</option>
-                            <option value="1.8">Move-In / Move-Out</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label>👥 Number of Cleaners</label>
-                        <select id="cleaners" class="form-control">
-                            <option value="1">1 Person</option>
-                            <option value="2">2 People (Team)</option>
-                            <option value="3">3 People (Team)</option>
-                        </select>
-                    </div>
-
-                    <div class="ad-container ad-in-content">Advertisement</div>
-
-                    <button type="button" class="btn-submit" onclick="calculateTime()">ESTIMATE TIME</button>
-                </form>
-
-                <!-- 结果 -->
-                <div id="resultBox" class="result-box">
-                    <div style="font-size: 14px; color: var(--accent); text-transform: uppercase; font-weight: 800; margin-bottom: 15px;">Estimated Duration</div>
-                    
-                    <div class="price-value" id="totalTime">0 Hours</div>
-                    
-                    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--border-color); text-align: left;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                            <span style="color: var(--text-sub);">Total Man-Hours:</span>
-                            <span id="manHours" style="font-weight: 700;">0 hours</span>
+                        <label>🛏️ Bedrooms</label>
+                        <div class="stepper-input">
+                            <button type="button" class="stepper-btn" onclick="adjustCount('beds', -1)">−</button>
+                            <input type="number" id="beds" class="stepper-val" value="3" min="0" max="10" readonly>
+                            <button type="button" class="stepper-btn" onclick="adjustCount('beds', 1)">+</button>
                         </div>
-                        <p style="font-size: 12px; color: var(--text-sub); margin-top: 10px;">
-                            *Actual time may vary based on specific requests and clutter levels.
-                        </p>
                     </div>
+
+                    <div class="input-group">
+                        <label>🚿 Bathrooms</label>
+                        <div class="stepper-input">
+                            <button type="button" class="stepper-btn" onclick="adjustCount('baths', -1)">−</button>
+                            <input type="number" id="baths" class="stepper-val" value="2" min="1" max="10" readonly>
+                            <button type="button" class="stepper-btn" onclick="adjustCount('baths', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 清洁类型与脏污状况 -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="input-group">
+                        <label>🧹 Service Type</label>
+                        <select id="serviceType" class="form-control" onchange="calculateTime()">
+                            <option value="1.0" selected>Standard Recurring Clean</option>
+                            <option value="1.45">Deep Initial Clean (+45%)</option>
+                            <option value="1.65">Move-In / Move-Out (+65%)</option>
+                            <option value="1.85">Post-Construction (+85%)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>📊 Initial Clutter / Dirt Level</label>
+                        <select id="condition" class="form-control" onchange="calculateTime()">
+                            <option value="0.9">Low / Well Maintained</option>
+                            <option value="1.0" selected>Moderate / Normal Lived-in</option>
+                            <option value="1.25">Heavy / Dusty / Pet Hair (+25%)</option>
+                            <option value="1.5">Extreme / Hoarder / Neglected (+50%)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 4. 清洁人员数量 -->
+                <div class="input-group">
+                    <label>👥 Crew Size (Cleaners on Job)</label>
+                    <div class="stepper-input">
+                        <button type="button" class="stepper-btn" onclick="adjustCount('crew', -1)">−</button>
+                        <input type="number" id="crew" class="stepper-val" value="2" min="1" max="6" readonly>
+                        <button type="button" class="stepper-btn" onclick="adjustCount('crew', 1)">+</button>
+                    </div>
+                </div>
+
+                <!-- 5. 附加耗时服务 -->
+                <div class="input-group" style="margin-bottom: 0;">
+                    <label>✨ Optional Extra Add-ons</label>
+                    <div class="addon-grid">
+                        <label class="addon-item" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="30" onchange="calculateTime()">
+                            <div class="addon-info">
+                                <span class="addon-name">Inside Oven</span>
+                                <span class="addon-time">+30 min</span>
+                            </div>
+                        </label>
+                        <label class="addon-item" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="30" onchange="calculateTime()">
+                            <div class="addon-info">
+                                <span class="addon-name">Inside Fridge</span>
+                                <span class="addon-time">+30 min</span>
+                            </div>
+                        </label>
+                        <label class="addon-item" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="45" onchange="calculateTime()">
+                            <div class="addon-info">
+                                <span class="addon-name">Interior Windows</span>
+                                <span class="addon-time">+45 min</span>
+                            </div>
+                        </label>
+                        <label class="addon-item" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="45" onchange="calculateTime()">
+                            <div class="addon-info">
+                                <span class="addon-name">Inside Cabinets</span>
+                                <span class="addon-time">+45 min</span>
+                            </div>
+                        </label>
+                        <label class="addon-item" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="40" onchange="calculateTime()">
+                            <div class="addon-info">
+                                <span class="addon-name">Detail Baseboards</span>
+                                <span class="addon-time">+40 min</span>
+                            </div>
+                        </label>
+                        <label class="addon-item" onclick="toggleAddon(this)">
+                            <input type="checkbox" value="30" onchange="calculateTime()">
+                            <div class="addon-info">
+                                <span class="addon-name">Blinds / Shutters</span>
+                                <span class="addon-time">+30 min</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 行业估时指南 -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 20px; margin-bottom: 12px;">Industry Benchmarks for Cleaning Time</h2>
+                <p style="font-size: 14px; color: var(--text-sub); line-height: 1.6; margin-bottom: 14px;">
+                    Professional cleaning standards generally follow a baseline productivity rate of <strong>400–600 sq ft per man-hour</strong> for maintenance cleanings, dropping to <strong>200–350 sq ft per man-hour</strong> for deep cleanings and move-out turns.
+                </p>
+                <div style="background: var(--bg-surface); padding: 14px 18px; border-radius: var(--radius-sm); font-size: 13px; color: var(--text-main); line-height: 1.6;">
+                    • <strong>Bathrooms:</strong> Average 30–45 mins each (scrubbing tile, shower glass, toilets).<br>
+                    • <strong>Kitchens:</strong> Average 45–60 mins (sink, counters, stovetop exterior, microwave).<br>
+                    • <strong>Bedrooms & Living Areas:</strong> Average 15–25 mins each (dusting, making beds, vacuuming).
                 </div>
             </div>
         </main>
 
-        <!-- 侧边栏 -->
+        <!-- 右侧预估结果 -->
         <aside class="sidebar">
-            <div class="info-card">
-                <h3>💡 Scheduling Tip</h3>
-                <p>Always add 15-30 minutes buffer between jobs for travel and unexpected delays.</p>
+            <div class="result-card">
+                <div class="price-title">Estimated Job Duration</div>
+
+                <!-- 核心大字展示 -->
+                <div style="text-align: center; margin-bottom: 24px;">
+                    <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Real-Time On Site</div>
+                    <div class="price-number" id="onSiteDuration" style="font-size: 38px; color: var(--primary); margin: 6px 0;">2h 15m</div>
+                    <div style="font-size: 13px; color: var(--text-sub);" id="crewRatioText">with a 2-person crew</div>
+                </div>
+
+                <!-- 明细参数 -->
+                <div style="border-top: 1px solid var(--border-color); padding-top: 14px;">
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px;">
+                        <span style="color: var(--text-sub);">Total Crew Labor:</span>
+                        <strong id="totalManHours">4.5 man-hours</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; border-top: 1px solid var(--border-color);">
+                        <span style="color: var(--text-sub);">Add-on Time:</span>
+                        <strong id="addonTimeDisplay">+0 mins</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; border-top: 1px solid var(--border-color);">
+                        <span style="color: var(--text-sub);">Recommended Buffer:</span>
+                        <strong style="color: var(--accent);">+30 mins (Travel/Setup)</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 15px; font-weight: 800; border-top: 2px solid var(--border-color); margin-top: 6px;">
+                        <span>Arrival Window Block:</span>
+                        <span style="color: var(--text-main);" id="windowBlock">2h 45m</span>
+                    </div>
+                </div>
+
+                <!-- 操作按钮 -->
+                <div class="action-row" style="margin-top: 24px;">
+                    <button class="btn-primary" onclick="copyTimeEstimate()">📋 Copy Time Estimate</button>
+                    <button class="btn-secondary" onclick="window.print()">🖨️ Print Job Sheet</button>
+                </div>
             </div>
-            
-            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+
+            <!-- Shopify 电商推荐卡片 -->
+            <div class="shopify-promo-card">
+                <span class="shopify-tag">PureWear Store</span>
+                <h3>Move Faster with Ergonomic Cleaning Gear</h3>
+                <p>Heavy, restrictive clothes slow your team down. PureWear lightweight, stretch fabrics keep cleaners agile and cool through grueling 6-hour shifts.</p>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
+                    Shop Performance Workwear →
+                </a>
+            </div>
         </aside>
+
     </div>
 
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">All Tools</a>
+                <a href="../cleaning-quote-calculator/">Quote Calculator</a>
+                <a href="../schedule-generator/">Schedule Planner</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 PureWear Space. Free cleaning business calculators and productivity tools.</p>
+        </div>
+    </footer>
+
     <script>
-        function calculateTime() {
-            // 1. 获取参数
-            const sizeVal = parseFloat(document.getElementById('propertySize').value);
-            const condVal = parseFloat(document.getElementById('condition').value);
-            const servVal = parseFloat(document.getElementById('serviceType').value);
-            const cleaners = parseInt(document.getElementById('cleaners').value);
-
-            // 2. 计算逻辑
-            // 基础时间：以标准2室2卫为基准，假设需要 3 小时 (基准值设为3)
-            // 实际上上面的 sizeVal 是系数，比如 0.5 (小房子), 1 (中房子)
-            // 基础工时 = 3小时 * 面积系数
-            const baseManHours = 3 * sizeVal;
-
-            // 调整后的总工时 = 基础工时 * 脏乱系数 * 服务类型系数
-            let totalManHours = baseManHours * condVal * servVal;
-
-            // 四舍五入保留一位小数
-            totalManHours = Math.round(totalManHours * 2) / 2; // 向上取整到0.5小时
-
-            // 3. 计算实际耗时（如果是多人团队）
-            const actualDuration = totalManHours / cleaners;
-
-            // 4. 显示结果
-            // 格式化显示
-            let displayTime = "";
-            if(actualDuration < 1) {
-                displayTime = Math.round(actualDuration * 60) + " Minutes";
-            } else {
-                const hours = Math.floor(actualDuration);
-                const minutes = Math.round((actualDuration - hours) * 60);
-                displayTime = hours + " Hour" + (hours > 1 ? "s" : "") + (minutes > 0 ? " " + minutes + " Min" : "");
-            }
-
-            document.getElementById('totalTime').innerText = displayTime;
-            document.getElementById('manHours').innerText = totalManHours.toFixed(1) + " hours";
-            
-            document.getElementById('resultBox').style.display = 'block';
+        function syncSqft(val) {
+            document.getElementById('sqftDisplay').innerText = Number(val).toLocaleString();
+            calculateTime();
         }
+
+        function adjustCount(id, delta) {
+            const input = document.getElementById(id);
+            let val = parseInt(input.value) || 0;
+            const min = parseInt(input.min) || 0;
+            const max = parseInt(input.max) || 20;
+            val = Math.max(min, Math.min(max, val + delta));
+            input.value = val;
+            calculateTime();
+        }
+
+        function toggleAddon(label) {
+            const checkbox = label.querySelector('input[type="checkbox"]');
+            if (checkbox.checked) {
+                label.classList.add('selected');
+            } else {
+                label.classList.remove('selected');
+            }
+        }
+
+        function calculateTime() {
+            const sqft = parseFloat(document.getElementById('sqftSlider').value) || 1800;
+            const beds = parseInt(document.getElementById('beds').value) || 3;
+            const baths = parseInt(document.getElementById('baths').value) || 2;
+            const servMultiplier = parseFloat(document.getElementById('serviceType').value) || 1.0;
+            const condMultiplier = parseFloat(document.getElementById('condition').value) || 1.0;
+            const crew = parseInt(document.getElementById('crew').value) || 2;
+
+            // 基础时间计算: 500 sq ft per hour baseline + room weighting
+            // 基准: 1.5 hr base kitchen/living + (sqft / 1200) + (beds * 0.3) + (baths * 0.6)
+            let baseLaborHours = 1.2 + (sqft / 1400) + (beds * 0.25) + (baths * 0.5);
+
+            // 乘以服务与脏污系数
+            let totalLaborHours = baseLaborHours * servMultiplier * condMultiplier;
+
+            // 计算附加服务增量时间 (分钟)
+            let addonMinutes = 0;
+            document.querySelectorAll('.addon-grid input[type="checkbox"]:checked').forEach(cb => {
+                addonMinutes += parseInt(cb.value) || 0;
+            });
+            const addonLaborHours = addonMinutes / 60;
+            totalLaborHours += addonLaborHours;
+
+            // 实际在场工时 (除以清洁人数)
+            const onSiteHours = totalLaborHours / crew;
+            const onSiteTotalMinutes = Math.round(onSiteHours * 60);
+
+            const displayH = Math.floor(onSiteTotalMinutes / 60);
+            const displayM = onSiteTotalMinutes % 60;
+
+            const bufferTotalMinutes = onSiteTotalMinutes + 30;
+            const bufferH = Math.floor(bufferTotalMinutes / 60);
+            const bufferM = bufferTotalMinutes % 60;
+
+            // 更新 UI
+            document.getElementById('onSiteDuration').innerText = `${displayH}h ${displayM}m`;
+            document.getElementById('crewRatioText').innerText = `with a ${crew}-person crew`;
+            document.getElementById('totalManHours').innerText = `${totalLaborHours.toFixed(1)} man-hours`;
+            document.getElementById('addonTimeDisplay').innerText = `+${addonMinutes} mins`;
+            document.getElementById('windowBlock').innerText = `${bufferH}h ${bufferM}m (with buffer)`;
+        }
+
+        function copyTimeEstimate() {
+            const sqft = document.getElementById('sqftSlider').value;
+            const beds = document.getElementById('beds').value;
+            const baths = document.getElementById('baths').value;
+            const crew = document.getElementById('crew').value;
+            const duration = document.getElementById('onSiteDuration').innerText;
+            const manHours = document.getElementById('totalManHours').innerText;
+            const windowBlock = document.getElementById('windowBlock').innerText;
+
+            const text = `⏱️ Cleaning Time Estimate:\n` +
+                         `Property: ${Number(sqft).toLocaleString()} sq ft | ${beds} Bed, ${baths} Bath\n` +
+                         `Crew Size: ${crew} cleaner(s)\n` +
+                         `Estimated Duration: ${duration}\n` +
+                         `Total Labor: ${manHours}\n` +
+                         `Recommended Booking Block: ${windowBlock}\n` +
+                         `Generated via PureWear Space: https://tool.purewearspace.com/tools/time-estimator/`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert("✅ Time estimate copied to clipboard!");
+            }).catch(() => {
+                alert("Failed to copy. Please manually copy the values.");
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', calculateTime);
     </script>
 </body>
 </html>

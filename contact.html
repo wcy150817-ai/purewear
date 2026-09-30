@@ -4,130 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | PureWear Space</title>
-    <meta name="description" content="Get in touch with the PureWear Space team. We'd love to hear from you.">
+    <meta name="description" content="Get in touch with the PureWear Space team for tool feature requests, business inquiries, or support.">
+    <link rel="canonical" href="https://tool.purewearspace.com/contact.html">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <!-- 顶部主店引流条 -->
+    <div class="top-notice-bar">
+        <span>👕 Professional Housekeeping Uniforms & Workwear:</span>
+        <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
+    </div>
+
     <!-- 导航栏 -->
     <nav class="navbar">
-        <a href="index.html" class="brand">
-            <span>✨</span>
-            <span>PureWear Space</span>
-        </a>
+        <a href="index.html" class="brand">✨ Pure<span>Wear Space</span></a>
         <div class="nav-menu">
             <a href="index.html" class="nav-link">Home</a>
-            <a href="tools/index.html" class="nav-link">Tools</a>
+            <a href="tools/index.html" class="nav-link">All Tools</a>
             <a href="resources.html" class="nav-link">Resources</a>
             <a href="about.html" class="nav-link">About</a>
             <a href="contact.html" class="nav-link active">Contact</a>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
-        <button class="mobile-menu-btn">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-        </button>
     </nav>
 
     <!-- 页面标题 -->
     <div class="page-header">
-        <h1>Contact Us</h1>
-        <p>Have a question or suggestion? We'd love to hear from you.</p>
+        <h1>Contact PureWear Space</h1>
+        <p>Have an idea for a new cleaning calculator, feature suggestion, or bulk workwear inquiry? We'd love to hear from you.</p>
     </div>
 
-    <!-- 主内容区：居中布局 -->
-    <div class="main-content" style="max-width: 800px;">
+    <!-- 主内容区 -->
+    <main style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
         
-        <!-- 核心表单卡片 -->
-        <div class="contact-form" style="margin-bottom: 40px;">
-            
-            <!-- 重要：action 填你的邮箱，method 必须是 POST -->
+        <div class="card" style="padding: 32px;">
             <form action="https://formsubmit.co/zansiok1127@gmail.com" method="POST">
-                
-                <!-- 隐藏字段：防垃圾邮件 -->
+                <!-- 隐藏字段 -->
                 <input type="text" name="_honey" style="display:none">
-                <!-- 隐藏字段：提交成功后跳转回首页 -->
-                <input type="hidden" name="_next" value="https://purewearspace.com/index.html">
+                <input type="hidden" name="_next" value="https://tool.purewearspace.com/contact.html?submitted=true">
 
-                <div class="form-group">
-                    <label class="form-label">Your Name</label>
-                    <!-- 使用了 .form-input 类，样式美观 -->
-                    <input type="text" name="name" class="form-input" placeholder="John Doe" required>
+                <div class="input-group">
+                    <label>Your Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="e.g. Maria Gonzalez" required>
                 </div>
                 
-                <div class="form-group">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" name="email" class="form-input" placeholder="john@example.com" required>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" class="form-control" placeholder="maria@example.com" required>
                 </div>
                 
-                <div class="form-group">
-                    <label class="form-label">Subject</label>
-                    <select name="subject" class="form-input">
-                        <option>General Question</option>
-                        <option>Tool Suggestion</option>
-                        <option>Bug Report</option>
-                        <option>Partnership</option>
-                        <option>Other</option>
+                <div class="input-group">
+                    <label>Subject</label>
+                    <select name="subject" class="form-control">
+                        <option>New Tool Suggestion</option>
+                        <option>Bulk Workwear Inquiry</option>
+                        <option>Feedback / Bug Report</option>
+                        <option>Partnership / Sponsorship</option>
+                        <option>Other Question</option>
                     </select>
                 </div>
                 
-                <div class="form-group">
-                    <label class="form-label">Message</label>
-                    <!-- 使用了 .form-textarea 类 -->
-                    <textarea name="message" class="form-input form-textarea" placeholder="Write your message here..." required></textarea>
+                <div class="input-group">
+                    <label>Message</label>
+                    <textarea name="message" class="form-control" rows="5" placeholder="Tell us how we can help..." required></textarea>
                 </div>
                 
-                <!-- 使用了 .btn-submit 类，带渐变色和悬停效果 -->
-                <button type="submit" class="btn-submit">Send Message</button>
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 14px; font-size: 15px;">Send Message →</button>
             </form>
         </div>
 
-        <!-- 广告位 -->
-        <div class="ad-container ad-rectangle">Advertisement</div>
-
-        <!-- 底部联系信息卡片 -->
         <div class="card-grid" style="margin-top: 40px;">
             <div class="card about-card">
                 <div class="card-icon">📧</div>
-                <div class="card-title">Email Us</div>
+                <div class="card-title">Direct Email</div>
                 <div class="card-desc">support@purewearspace.com</div>
             </div>
 
             <div class="card about-card">
                 <div class="card-icon">💬</div>
-                <div class="card-title">Response Time</div>
-                <div class="card-desc">We typically reply within 24 hours.</div>
+                <div class="card-title">Quick Reply</div>
+                <div class="card-desc">We respond to inquiries within 24 business hours.</div>
             </div>
 
             <div class="card about-card">
-                <div class="card-icon">🌍</div>
-                <div class="card-title">Global Support</div>
-                <div class="card-desc">We serve users worldwide.</div>
+                <div class="card-icon">🛍️</div>
+                <div class="card-title">Store Support</div>
+                <div class="card-desc">Order tracking & returns available at purewearspace.com</div>
             </div>
         </div>
 
-    </div>
+    </main>
 
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>PureWear Space</h3>
-                <p style="font-size: 14px; color: #B2BEC3;">Free tools for professionals.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="tools/index.html">Tools</a></li>
-                    <li><a href="about.html">About</a></li>
-                </ul>
+            <div class="footer-brand">✨ PureWear Space</div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="tools/index.html">All Tools</a>
+                <a href="resources.html">Resources</a>
+                <a href="about.html">About</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2024 PureWear Space. All rights reserved.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals.</p>
         </div>
     </footer>
 

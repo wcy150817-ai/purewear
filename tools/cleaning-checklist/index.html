@@ -3,260 +3,505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cleaning Checklist Generator | PureWear Space</title>
-    <meta name="description" content="Generate and print custom cleaning checklists for housekeepers and maids.">
-    <link rel="stylesheet" href="../../css/style.css">
+    <title>Professional Cleaning Checklist Generator | PureWear Space</title>
+    <meta name="description" content="Free printable cleaning checklist generator for housekeepers and maid services. Customize room-by-room tasks, track completion live, or print inspection sheets.">
+    <link rel="canonical" href="https://tool.purewearspace.com/tools/cleaning-checklist/">
     
-    <!-- 打印专用样式：打印时隐藏不需要的元素 -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Professional Cleaning Checklist Generator | PureWear Space">
+    <meta property="og:description" content="Generate, customize, and print inspection checklists for residential and deep cleaning jobs.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/cleaning-checklist/">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Cleaning Checklist Generator",
+      "url": "https://tool.purewearspace.com/tools/cleaning-checklist/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Generates customizable, printable room-by-room cleaning checklists and quality inspection forms."
+    }
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
     <style>
-        @media print {
-            body * {
-                visibility: hidden;
-            }
-            #printArea, #printArea * {
-                visibility: visible;
-            }
-            #printArea {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                padding: 20px;
-            }
-            .no-print {
-                display: none !important;
-            }
-            .checklist-item {
-                border-bottom: 1px solid #eee !important;
-                page-break-inside: avoid;
-            }
+        .room-toggle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin: 16px 0 24px;
         }
-        
-        /* 清单样式 */
-        .checklist-container {
-            background: #fff;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        .checklist-header {
+
+        .room-pill {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-sub);
+            cursor: pointer;
             text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 10px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
-        .checklist-room {
-            font-weight: 800;
-            font-size: 18px;
+
+        .room-pill:hover {
+            border-color: var(--primary);
             color: var(--primary);
-            margin-top: 20px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
         }
+
+        .room-pill.active {
+            background: var(--primary-subtle);
+            border-color: var(--primary);
+            color: var(--primary-hover);
+            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.15);
+        }
+
+        .task-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .task-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary-subtle);
+            margin-bottom: 14px;
+        }
+
+        .task-card-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .checklist-item {
             display: flex;
             align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px dashed #eee;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
         }
-        .checkbox {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--text-sub);
-            margin-right: 15px;
-            border-radius: 4px;
-            flex-shrink: 0;
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .checklist-item.done span {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .custom-task-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .custom-task-input {
+            flex-grow: 1;
+            padding: 8px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            outline: none;
+        }
+
+        .custom-task-input:focus {
+            border-color: var(--primary);
+        }
+
+        .progress-container {
+            margin: 20px 0;
+        }
+
+        .progress-bar-bg {
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* 打印样式 */
+        @media print {
+            .no-print, .navbar, .top-notice-bar, .footer, .sidebar, .room-toggle-grid, .custom-task-row {
+                display: none !important;
+            }
+            .main-container {
+                display: block !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .card {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
+            .task-card {
+                border: 1px solid #ccc !important;
+                page-break-inside: avoid;
+                margin-bottom: 16px !important;
+            }
+            .print-header-sheet {
+                display: block !important;
+                margin-bottom: 24px;
+                border-bottom: 2px solid #000;
+                padding-bottom: 12px;
+            }
+        }
+
+        .print-header-sheet {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- 导航栏 (打印时隐藏) -->
+    <!-- 顶部主店引流条 -->
+    <div class="top-notice-bar no-print">
+        <span>👕 Professional Housekeeping Uniforms & Water-Resistant Aprons:</span>
+        <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
+    </div>
+
+    <!-- 导航栏 -->
     <nav class="navbar no-print">
         <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../index.html" class="nav-link active">All Tools</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
-            <a href="../../about.html" class="nav-link">About</a>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 主容器 -->
-    <div class="main-container">
-        <main>
-            <div class="card no-print">
-                <div class="form-header">
-                    <h1>Cleaning Checklist</h1>
-                    <p>Select areas to clean, then generate a printable list.</p>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <!-- 房间选择按钮 -->
-                    <button onclick="toggleRoom('kitchen')" id="btn-kitchen" class="room-btn active">🍳 Kitchen</button>
-                    <button onclick="toggleRoom('bathroom')" id="btn-bathroom" class="room-btn active">🚿 Bathroom</button>
-                    <button onclick="toggleRoom('bedroom')" id="btn-bedroom" class="room-btn active">🛏️ Bedroom</button>
-                    <button onclick="toggleRoom('living')" id="btn-living" class="room-btn active">🛋️ Living Room</button>
-                    <button onclick="toggleRoom('office')" id="btn-office" class="room-btn">💼 Office</button>
-                    <button onclick="toggleRoom('general')" id="btn-general" class="room-btn active">✨ General</button>
-                </div>
-                <style>
-                    .room-btn {
-                        padding: 15px;
-                        border: 2px solid var(--border-color);
-                        background: #fff;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        font-weight: 600;
-                        transition: all 0.2s;
-                    }
-                    .room-btn.active {
-                        border-color: var(--primary);
-                        background: #fff0f0;
-                        color: var(--primary);
-                    }
-                </style>
-
-                <div class="ad-container ad-in-content no-print">Advertisement</div>
-
-                <div style="display: flex; gap: 10px; margin-top: 20px;">
-                    <button onclick="generateList()" class="btn-submit" style="flex: 2;">GENERATE LIST</button>
-                    <button onclick="window.print()" class="btn-submit" style="flex: 1; background: var(--text-main);">PRINT</button>
-                </div>
-            </div>
-
-            <!-- 打印区域 (这里的内容会被打印) -->
-            <div id="printArea">
-                <!-- 默认隐藏，生成后显示 -->
-                <div id="checklistOutput" style="display:none;"></div>
-            </div>
-
-        </main>
-
-        <!-- 侧边栏 (打印时隐藏) -->
-        <aside class="sidebar no-print">
-            <div class="info-card">
-                <h3>💡 Why Checklists?</h3>
-                <p>Using a checklist ensures consistent quality and helps clients see exactly what was done.</p>
-            </div>
-            
-            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
-        </aside>
+    <!-- 页面标题 -->
+    <div class="page-header no-print">
+        <h1>Professional Cleaning Checklist Generator</h1>
+        <p>Customize room-by-room tasks, check off completed chores on your phone, or print client inspection sign-off sheets.</p>
     </div>
 
+    <!-- 主布局网格 -->
+    <div class="main-container">
+        
+        <!-- 左侧清单生成器 -->
+        <main>
+            <!-- 打印专属表头 (仅在打印时可见) -->
+            <div class="print-header-sheet">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <h2 style="font-size: 24px; margin: 0;">Residential Cleaning Quality Inspection Checklist</h2>
+                    <span style="font-size: 13px;">Date: _______________</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 12px; font-size: 13px;">
+                    <div><strong>Client Name:</strong> _____________________</div>
+                    <div><strong>Service Address:</strong> _____________________</div>
+                    <div><strong>Cleaner Assigned:</strong> _____________________</div>
+                </div>
+            </div>
+
+            <!-- 控制卡片 (房间选择) -->
+            <div class="card no-print">
+                <h2 style="font-size: 18px; margin-bottom: 6px;">Select Areas to Include in Checklist</h2>
+                <p style="font-size: 13px; color: var(--text-sub);">Click rooms to add or remove them from your inspection sheet.</p>
+
+                <div class="room-toggle-grid">
+                    <button type="button" class="room-pill active" onclick="toggleRoom('kitchen', this)">🍳 Kitchen</button>
+                    <button type="button" class="room-pill active" onclick="toggleRoom('bathrooms', this)">🚿 Bathrooms</button>
+                    <button type="button" class="room-pill active" onclick="toggleRoom('bedrooms', this)">🛏️ Bedrooms</button>
+                    <button type="button" class="room-pill active" onclick="toggleRoom('living', this)">🛋️ Living & Dining</button>
+                    <button type="button" class="room-pill" onclick="toggleRoom('deepclean', this)">✨ Deep Add-ons</button>
+                    <button type="button" class="room-pill" onclick="toggleRoom('moveout', this)">📦 Move-Out Turn</button>
+                </div>
+
+                <!-- 进度指示器 -->
+                <div class="progress-container">
+                    <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 6px;">
+                        <span>Tasks Completed</span>
+                        <span id="progressText">0 / 0 (0%)</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="progressBar" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 动态房间任务卡片容器 -->
+            <div id="checklistContainer"></div>
+
+            <!-- 打印专属客户签字栏 -->
+            <div class="print-header-sheet" style="margin-top: 30px; border-top: 1px dashed #000; border-bottom: none; padding-top: 16px;">
+                <div style="display: flex; justify-content: space-between; font-size: 13px;">
+                    <div>Cleaner Signature: ___________________________</div>
+                    <div>Client Satisfaction Signature: ___________________________</div>
+                </div>
+                <div style="font-size: 11px; color: #666; margin-top: 8px;">Quality guaranteed. Please report any oversights within 24 hours.</div>
+            </div>
+        </main>
+
+        <!-- 右侧操作与建议栏 -->
+        <aside class="sidebar no-print">
+            <div class="result-card">
+                <div class="price-title">Checklist Actions</div>
+                <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 16px;">
+                    Print a clean copy to leave on the client's kitchen counter, or copy task bullet points directly into SMS or WhatsApp.
+                </p>
+
+                <div class="action-row">
+                    <button class="btn-primary" onclick="window.print()">🖨️ Print Inspection Sheet</button>
+                    <button class="btn-secondary" onclick="copyChecklistText()">📋 Copy SMS Checklist</button>
+                </div>
+            </div>
+
+            <!-- Shopify 电商推荐卡片 -->
+            <div class="shopify-promo-card">
+                <span class="shopify-tag">PureWear Store</span>
+                <h3>Keep Your Team Looking Sharp</h3>
+                <p>Clients judge cleaning quality starting from your crew's uniform. Upgrade to stain-resistant, professional PureWear apparel today.</p>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
+                    Shop Housekeeping Uniforms →
+                </a>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer no-print">
+        <div class="footer-content">
+            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">All Tools</a>
+                <a href="../time-estimator/">Time Estimator</a>
+                <a href="../schedule-generator/">Weekly Schedule</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 PureWear Space. Free cleaning inspection & business checklists.</p>
+        </div>
+    </footer>
+
     <script>
-        // 定义每个房间的任务列表
-        const tasks = {
-            kitchen: [
-                "Clean and sanitize countertops",
-                "Clean inside and outside of microwave",
-                "Wipe down appliances (fridge, oven, dishwasher)",
-                "Clean sink and faucet",
-                "Mop floor",
-                "Take out trash and replace bag"
-            ],
-            bathroom: [
-                "Clean and sanitize toilet (bowl, seat, tank)",
-                "Clean shower/tub and tiles",
-                "Clean mirrors",
-                "Wipe countertops and sink",
-                "Mop floor",
-                "Restock toilet paper and towels"
-            ],
-            bedroom: [
-                "Change bed linens",
-                "Dust all surfaces (nightstands, dressers)",
-                "Vacuum floor/carpet",
-                "Clean mirrors",
-                "Empty trash bins"
-            ],
-            living: [
-                "Dust all furniture and surfaces",
-                "Vacuum carpet/mop floor",
-                "Clean glass tables",
-                "Fluff pillows and fold blankets",
-                "Wipe down electronics (TV screen)"
-            ],
-            office: [
-                "Dust desk and monitors",
-                "Organize papers",
-                "Vacuum floor",
-                "Empty trash"
-            ],
-            general: [
-                "Dust baseboards",
-                "Dust window blinds",
-                "Clean interior windows",
-                "Check for cobwebs",
-                "Turn off lights and lock doors"
-            ]
+        const ROOM_DATABASE = {
+            kitchen: {
+                title: "🍳 Kitchen",
+                tasks: [
+                    "Sanitize and wipe all countertops and backsplashes",
+                    "Scrub and polish sink and faucet fixtures",
+                    "Wipe exterior of large appliances (fridge, oven, dishwasher)",
+                    "Clean inside and outside of microwave",
+                    "Degrease stovetop burners and control knobs",
+                    "Wipe cabinet exteriors and handles",
+                    "Empty trash can and replace liner",
+                    "Vacuum and damp mop kitchen floor"
+                ]
+            },
+            bathrooms: {
+                title: "🚿 Bathrooms",
+                tasks: [
+                    "Scrub and disinfect toilet (bowl, seat, hinge, base)",
+                    "Clean shower walls, glass doors, and tub basin",
+                    "Remove soap scum, limescale, and mildew",
+                    "Polish mirrors and chrome fixtures to a streak-free shine",
+                    "Disinfect vanity countertop and wash sink basin",
+                    "Wipe switch plates, towel bars, and cabinet fronts",
+                    "Empty wastebasket",
+                    "Hand-scrub and mop tile floors"
+                ]
+            },
+            bedrooms: {
+                title: "🛏️ Bedrooms",
+                tasks: [
+                    "Make beds and change linens (if fresh set provided)",
+                    "Dust furniture tops, nightstands, and dressers",
+                    "Dust picture frames, lamp shades, and decorative items",
+                    "Clean interior mirrors",
+                    "Empty trash bins",
+                    "Vacuum carpet thoroughly under reachable edges",
+                    "Mop hard surface flooring"
+                ]
+            },
+            living: {
+                title: "🛋️ Living & Dining Areas",
+                tasks: [
+                    "Dust coffee tables, bookshelves, and entertainment centers",
+                    "Wipe down dining table and chair surfaces",
+                    "Vacuum upholstered sofas and cushions",
+                    "Dust ceiling fans and light fixtures within reach",
+                    "Clean glass tabletops and sliding door glass",
+                    "Straighten pillows and fold throw blankets",
+                    "Vacuum all rugs and damp mop flooring"
+                ]
+            },
+            deepclean: {
+                title: "✨ Deep Cleaning Add-ons",
+                tasks: [
+                    "Deep clean interior oven with degreaser",
+                    "Defrost, pull shelves, and sanitize interior refrigerator",
+                    "Wipe all interior window sills and window tracks",
+                    "Hand-wipe baseboards and door casings",
+                    "Vacuum air vent covers and return grilles",
+                    "Disinfect interior trash cans"
+                ]
+            },
+            moveout: {
+                title: "📦 Move-Out Turnover Spec",
+                tasks: [
+                    "Wipe clean inside all kitchen drawers and pantry shelves",
+                    "Clean inside all bathroom vanity drawers and medicine cabinets",
+                    "Wipe inside bedroom closets and wire shelving",
+                    "Spot-clean scuffs on interior walls and switch plates",
+                    "Vacuum interior garage or utility room entry"
+                ]
+            }
         };
 
-        // 记录当前选中的房间
-        let activeRooms = ['kitchen', 'bathroom', 'bedroom', 'living', 'general'];
+        const activeRooms = new Set(['kitchen', 'bathrooms', 'bedrooms', 'living']);
+        const customTasks = {};
 
-        function toggleRoom(room) {
-            const btn = document.getElementById('btn-' + room);
-            const index = activeRooms.indexOf(room);
-
-            if (index > -1) {
-                activeRooms.splice(index, 1); // 移除
+        function toggleRoom(roomId, btn) {
+            if (activeRooms.has(roomId)) {
+                activeRooms.delete(roomId);
                 btn.classList.remove('active');
             } else {
-                activeRooms.push(room); // 添加
+                activeRooms.add(roomId);
                 btn.classList.add('active');
             }
+            renderChecklists();
         }
 
-        function generateList() {
-            if(activeRooms.length === 0) {
-                alert("Please select at least one room.");
-                return;
+        function renderChecklists() {
+            const container = document.getElementById('checklistContainer');
+            let html = '';
+
+            for (let roomId of activeRooms) {
+                const room = ROOM_DATABASE[roomId];
+                if (!room) continue;
+
+                const customs = customTasks[roomId] || [];
+
+                html += `
+                    <div class="task-card" id="card-${roomId}">
+                        <div class="task-card-header">
+                            <div class="task-card-title">${room.title}</div>
+                            <span style="font-size: 12px; font-weight: 700; color: var(--text-sub);">
+                                ${room.tasks.length + customs.length} tasks
+                            </span>
+                        </div>
+                        <div class="task-list">
+                            ${room.tasks.map((task, i) => `
+                                <label class="checklist-item" onclick="handleTaskToggle(this)">
+                                    <input type="checkbox" onchange="updateProgress()">
+                                    <span>${task}</span>
+                                </label>
+                            `).join('')}
+                            ${customs.map((task, i) => `
+                                <label class="checklist-item" onclick="handleTaskToggle(this)">
+                                    <input type="checkbox" onchange="updateProgress()">
+                                    <span>⭐ ${task}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                        <div class="custom-task-row no-print">
+                            <input type="text" id="customInput-${roomId}" class="custom-task-input" placeholder="Add custom task (e.g. Wash patio chairs)..." onkeydown="if(event.key==='Enter') addCustomTask('${roomId}')">
+                            <button type="button" class="btn-primary" style="padding: 6px 14px; font-size: 13px;" onclick="addCustomTask('${roomId}')">+ Add</button>
+                        </div>
+                    </div>
+                `;
             }
 
-            let html = `
-                <div class="checklist-container">
-                    <div class="checklist-header">
-                        <h1 style="margin:0; font-size: 24px;">CLEANING CHECKLIST</h1>
-                        <p style="margin:5px 0 0; color: #666;">Date: ___________ &nbsp;&nbsp; Staff: ___________</p>
-                    </div>
-            `;
+            container.innerHTML = html;
+            updateProgress();
+        }
 
-            activeRooms.forEach(roomKey => {
-                const roomName = {
-                    kitchen: 'Kitchen', 
-                    bathroom: 'Bathroom', 
-                    bedroom: 'Bedroom', 
-                    living: 'Living Room', 
-                    office: 'Office', 
-                    general: 'General Areas'
-                }[roomKey];
+        function handleTaskToggle(label) {
+            const cb = label.querySelector('input[type="checkbox"]');
+            if (cb.checked) {
+                label.classList.add('done');
+            } else {
+                label.classList.remove('done');
+            }
+        }
 
-                html += `<div class="checklist-room">${roomName}</div>`;
-                
-                tasks[roomKey].forEach(task => {
-                    html += `
-                        <div class="checklist-item">
-                            <div class="checkbox"></div>
-                            <div>${task}</div>
-                        </div>
-                    `;
-                });
+        function addCustomTask(roomId) {
+            const input = document.getElementById(`customInput-${roomId}`);
+            const text = input.value.trim();
+            if (!text) return;
+
+            if (!customTasks[roomId]) customTasks[roomId] = [];
+            customTasks[roomId].push(text);
+            input.value = '';
+            renderChecklists();
+        }
+
+        function updateProgress() {
+            const allCheckboxes = document.querySelectorAll('.task-list input[type="checkbox"]');
+            const total = allCheckboxes.length;
+            let checked = 0;
+            allCheckboxes.forEach(cb => {
+                if (cb.checked) checked++;
             });
 
-            html += `
-                <div style="margin-top: 40px; border-top: 2px solid #eee; padding-top: 20px; text-align: center; color: #999; font-size: 12px;">
-                    Generated by PureWear Space
-                </div>
-            </div>`;
-
-            document.getElementById('checklistOutput').innerHTML = html;
-            document.getElementById('checklistOutput').style.display = 'block';
-            
-            // 滚动到清单位置
-            document.getElementById('checklistOutput').scrollIntoView({ behavior: 'smooth' });
+            const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+            document.getElementById('progressText').innerText = `${checked} / ${total} (${pct}%)`;
+            document.getElementById('progressBar').style.width = pct + '%';
         }
+
+        function copyChecklistText() {
+            let output = '📋 CLEANING COMPLETION REPORT:\n\n';
+            for (let roomId of activeRooms) {
+                const room = ROOM_DATABASE[roomId];
+                if (!room) continue;
+                output += `${room.title.toUpperCase()}:\n`;
+                const customs = customTasks[roomId] || [];
+                const all = [...room.tasks, ...customs];
+                all.forEach(t => output += ` [x] ${t}\n`);
+                output += '\n';
+            }
+            output += 'All areas inspected and sanitized. Thank you for choosing our service!\nPureWear Space: https://tool.purewearspace.com/tools/cleaning-checklist/';
+
+            navigator.clipboard.writeText(output).then(() => {
+                alert("✅ Checklist copied to clipboard!");
+            }).catch(() => {
+                alert("Failed to copy. Please manually copy the checklist.");
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', renderChecklists);
     </script>
 </body>
 </html>

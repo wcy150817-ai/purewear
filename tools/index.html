@@ -3,46 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Tools | PureWear Space</title>
+    <title>All Free Cleaning & Business Tools | PureWear Space</title>
+    <meta name="description" content="Free collection of online calculators, schedule planners, tip splitters, and chemical dilution tools for professional cleaners and housekeepers.">
+    <link rel="canonical" href="https://tool.purewearspace.com/tools/">
+    
     <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .filter-search-bar {
+            max-width: 600px;
+            margin: 0 auto 32px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .filter-pill {
+            padding: 8px 16px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-sub);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-pill:hover, .filter-pill.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+        }
+    </style>
 </head>
 <body>
+
+    <!-- 顶部主店引流条 -->
+    <div class="top-notice-bar">
+        <span>👕 Premium Workwear, Aprons & Cleaning Uniforms:</span>
+        <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
+    </div>
 
     <!-- 导航栏 -->
     <nav class="navbar">
         <a href="../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
         <div class="nav-menu">
             <a href="../index.html" class="nav-link">Home</a>
-            <a href="index.html" class="nav-link active">Tools</a>
+            <a href="index.html" class="nav-link active">All Tools</a>
             <a href="../resources.html" class="nav-link">Resources</a>
-            <a href="../about.html" class="nav-link">About</a>
-            <a href="../contact.html" class="nav-link">Contact</a>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
     <!-- 页面标题 -->
     <div class="page-header">
-        <h1>All Tools</h1>
-        <p>Browse all free tools for cleaning professionals.</p>
+        <h1>All Tools & Calculators</h1>
+        <p>14 free professional calculators, shift planners, and utility generators for home cleaners, maids, and facility managers.</p>
     </div>
 
     <!-- 主内容区 -->
-    <div class="main-content">
-        <!-- 卡片容器：自动显示所有工具 -->
-        <div id="all-tools-container" class="card-grid">
-            <!-- 这里不用写代码，脚本会自动填入 -->
+    <main style="max-width: 1140px; margin: 40px auto; padding: 0 20px; width: 100%;">
+        
+        <!-- 搜索栏 -->
+        <div class="filter-search-bar">
+            <input type="text" id="toolSearch" class="form-control" placeholder="Search calculators (e.g., quote, schedule, tips, wage)..." oninput="filterTools()">
         </div>
-    </div>
+
+        <!-- 标签筛选器 -->
+        <div class="filter-tags">
+            <button class="filter-pill active" onclick="setCategoryFilter('all', this)">🔥 All Tools</button>
+            <button class="filter-pill" onclick="setCategoryFilter('popular', this)">⭐ Popular</button>
+            <button class="filter-pill" onclick="setCategoryFilter('pricing', this)">💵 Pricing & Money</button>
+            <button class="filter-pill" onclick="setCategoryFilter('team', this)">👥 Crew & Scheduling</button>
+        </div>
+
+        <!-- 工具卡片容器 -->
+        <div id="all-tools-container" class="card-grid">
+            <!-- 由 tools-data.js 和 render-tools.js 自动生成 -->
+        </div>
+
+        <!-- 底部电商带货推荐横幅 -->
+        <div class="shopify-promo-card" style="margin-top: 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; gap: 24px;">
+            <div>
+                <span class="shopify-tag">PureWear Store</span>
+                <h3 style="font-size: 22px;">Upgrade Your Team's Daily Uniforms</h3>
+                <p style="margin-bottom: 0; max-width: 600px;">
+                    Lightweight, breathable, and chemical-resistant workwear designed specifically for cleaning professionals and housekeeping crews.
+                </p>
+            </div>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn" style="width: auto; padding: 14px 28px; white-space: nowrap;">
+                Shop Cleaning Gear →
+            </a>
+        </div>
+    </main>
 
     <!-- 页脚 -->
     <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="index.html">All Tools</a>
+                <a href="../resources.html">Resources</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+            </div>
+        </div>
         <div class="footer-bottom">
-            <p>© 2024 PureWear Space.</p>
+            <p>© 2026 PureWear Space. Free tools for cleaning professionals.</p>
         </div>
     </footer>
 
-    <!-- 关键：引入脚本文件 (注意路径多了 ../) -->
+    <!-- 数据与渲染脚本 -->
     <script src="../js/tools-data.js"></script>
     <script src="../js/render-tools.js"></script>
+    <script>
+        let activeCat = 'all';
+
+        function setCategoryFilter(cat, btn) {
+            activeCat = cat;
+            document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterTools();
+        }
+
+        function filterTools() {
+            const query = document.getElementById('toolSearch').value.toLowerCase().trim();
+            const container = document.getElementById('all-tools-container');
+            
+            const filtered = TOOLS_DATA.filter(tool => {
+                const matchesQuery = tool.title.toLowerCase().includes(query) || tool.desc.toLowerCase().includes(query);
+                
+                if (activeCat === 'all') return matchesQuery;
+                if (activeCat === 'popular') return matchesQuery && (tool.featured || tool.tag === 'Popular');
+                if (activeCat === 'pricing') return matchesQuery && (tool.id.includes('calculator') || tool.id.includes('pay') || tool.id.includes('tip') || tool.id.includes('expense'));
+                if (activeCat === 'team') return matchesQuery && (tool.id.includes('schedule') || tool.id.includes('review') || tool.id.includes('agreement') || tool.id.includes('template'));
+                return matchesQuery;
+            });
+
+            container.innerHTML = filtered.map(tool => createToolCard(tool, tool.featured)).join('');
+            
+            if (filtered.length === 0) {
+                container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-sub);">No tools found matching "${query}". Try another keyword!</div>`;
+            }
+        }
+    </script>
 </body>
 </html>

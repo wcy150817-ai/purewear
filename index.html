@@ -3,62 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PureWear Space | Free Tools for Cleaners</title>
-    <meta name="description" content="Free online tools for cleaning professionals.">
+    <title>PureWear Space | Free Calculators & Tools for Cleaning Businesses</title>
+    <meta name="description" content="Free suite of online cleaning quote calculators, weekly staff schedule generators, tip splitters, and dilution guides built for housekeepers, maids, and cleaning contractors.">
+    <link rel="canonical" href="https://tool.purewearspace.com/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="PureWear Space | Free Calculators & Tools for Cleaners">
+    <meta property="og:description" content="100% free professional calculators, weekly shift planners, and utility generators for home cleaners and housekeeping businesses.">
+    <meta property="og:url" content="https://tool.purewearspace.com/">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .hero-search-wrapper {
+            max-width: 680px;
+            margin: 28px auto 0;
+            position: relative;
+        }
+
+        .hero-search-input {
+            width: 100%;
+            padding: 16px 20px 16px 52px;
+            font-size: 16px;
+            border-radius: 999px;
+            border: 2px solid var(--border-color);
+            background: #ffffff;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .hero-search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(5, 150, 105, 0.2);
+        }
+
+        .hero-search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            pointer-events: none;
+            color: var(--text-sub);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-sub);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .view-all-link {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .view-all-link:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        .feature-grid-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .hero-featured-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-featured-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-featured-card.highlight {
+            border-color: var(--primary-light);
+            background: linear-gradient(180deg, #ffffff 0%, var(--primary-subtle) 100%);
+        }
+
+        .tag-pill {
+            align-self: flex-start;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .tag-pill.green {
+            background: var(--primary-subtle);
+            color: var(--primary-hover);
+            border: 1px solid var(--primary-light);
+        }
+
+        .tag-pill.blue {
+            background: var(--accent-light);
+            color: var(--accent-hover);
+            border: 1px solid #bfdbfe;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- 顶部主店引流条 -->
+    <div class="top-notice-bar">
+        <span>👕 Premium Workwear, Aprons & Cleaning Uniforms:</span>
+        <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
+    </div>
 
     <!-- 导航栏 -->
     <nav class="navbar">
         <a href="index.html" class="brand">✨ Pure<span>Wear Space</span></a>
         <div class="nav-menu">
             <a href="index.html" class="nav-link active">Home</a>
-            <a href="tools/index.html" class="nav-link">Tools</a>
+            <a href="tools/index.html" class="nav-link">All Tools</a>
             <a href="resources.html" class="nav-link">Resources</a>
-            <a href="about.html" class="nav-link">About</a>
-            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
     <!-- Hero 区域 -->
     <section class="hero">
-        <div class="hero-content">
+        <div class="hero-content" style="max-width: 800px; margin: 0 auto;">
+            <div style="display: inline-flex; align-items: center; gap: 6px; background: var(--primary-subtle); color: var(--primary-hover); border: 1px solid var(--primary-light); padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 16px;">
+                ⭐ 100% Free Calculators for Cleaning Businesses
+            </div>
             <h1>Tools That Work As Hard As You Do</h1>
-            <p>Free online calculators and tools for cleaning professionals.</p>
-            <a href="tools/index.html" class="hero-btn">Explore Tools →</a>
+            <p>Fast, accurate quote calculators, staff shift planners, tip splitters, and chemical mixing guides. Built specifically for residential cleaners, maids, and cleaning contractors.</p>
+            
+            <!-- 快捷搜索框 -->
+            <div class="hero-search-wrapper">
+                <span class="hero-search-icon">🔍</span>
+                <input type="text" id="homeSearch" class="hero-search-input" placeholder="Search calculators (e.g. quote, schedule, tips, wages)..." oninput="filterHomeTools()">
+            </div>
+
+            <!-- 信任标签 -->
+            <div class="trust-badges">
+                <span class="trust-badge-item">⚡ 100% Free Forever</span>
+                <span class="trust-badge-item">🔒 No Sign-up Required</span>
+                <span class="trust-badge-item">📱 Mobile & Tablet Friendly</span>
+                <span class="trust-badge-item">🖨️ PDF & Print Ready</span>
+            </div>
         </div>
     </section>
 
     <!-- 主内容区 -->
-    <div class="main-content">
+    <main style="max-width: 1140px; margin: 40px auto; padding: 0 20px; width: 100%;">
         
-        <!-- 卡片容器：这里会自动显示工具 -->
-        <h2 class="section-title">Popular Tools</h2>
-        <div id="home-tools-container" class="card-grid">
-            <!-- 这里不用写代码，脚本会自动填入 -->
+        <!-- 核心推荐工具 (Featured Top Drivers) -->
+        <div class="section-header-row">
+            <div>
+                <h2 style="font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">Featured Business Tools</h2>
+                <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 0;">Our most popular calculators used daily by cleaning pros.</p>
+            </div>
+            <a href="tools/index.html" class="view-all-link">Browse All 14+ Tools →</a>
         </div>
 
-        <!-- 广告位 -->
-        <div class="ad-container ad-banner">Advertisement</div>
+        <div class="feature-grid-top">
+            <a href="tools/cleaning-quote-calculator/" class="hero-featured-card highlight">
+                <div>
+                    <span class="tag-pill green">🔥 Top Rated</span>
+                    <div class="card-icon">🧹</div>
+                    <div class="card-title">Cleaning Quote Calculator</div>
+                    <div class="card-desc">Estimate house cleaning rates by square footage, bed/bath count, and service tier with instant PDF & SMS export.</div>
+                </div>
+                <div style="font-size: 13px; font-weight: 700; color: var(--primary); margin-top: 16px;">Calculate Quote →</div>
+            </a>
 
-    </div>
+            <a href="tools/schedule-generator/" class="hero-featured-card highlight">
+                <div>
+                    <span class="tag-pill green">⭐ #1 Staff Planner</span>
+                    <div class="card-icon">📅</div>
+                    <div class="card-title">Weekly Schedule Generator</div>
+                    <div class="card-desc">Generate, edit, and print clean weekly shift rosters for your housekeeping crew in under 60 seconds.</div>
+                </div>
+                <div style="font-size: 13px; font-weight: 700; color: var(--primary); margin-top: 16px;">Build Schedule →</div>
+            </a>
+
+            <a href="tools/tip-calculator/" class="hero-featured-card">
+                <div>
+                    <span class="tag-pill blue">💵 Payroll & Tips</span>
+                    <div class="card-icon">💵</div>
+                    <div class="card-title">Tip Calculator (Weighted & Equal)</div>
+                    <div class="card-desc">Split tips fairly by hours worked per cleaner or equal team shares. Includes instant payroll copy.</div>
+                </div>
+                <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-top: 16px;">Split Tips →</div>
+            </a>
+
+            <a href="tools/hourly-pay-calculator/" class="hero-featured-card">
+                <div>
+                    <span class="tag-pill blue">💰 Wage Calculator</span>
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">Hourly Pay & Overtime Calculator</div>
+                    <div class="card-desc">Calculate regular wages, 1.5x/2.0x overtime, gross earnings, and estimated net take-home pay.</div>
+                </div>
+                <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-top: 16px;">Calculate Wage →</div>
+            </a>
+        </div>
+
+        <!-- 动态工具网格区 (全集) -->
+        <div class="section-header-row" style="margin-top: 48px;">
+            <div>
+                <h2 style="font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">All Cleaning Utilities</h2>
+                <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 0;">Calculators, safety checkers, and business agreement templates.</p>
+            </div>
+        </div>
+
+        <div id="home-tools-container" class="card-grid">
+            <!-- 由 tools-data.js 和 render-tools.js 自动生成 -->
+        </div>
+
+        <!-- 电商主站带货推荐横幅 (替代原有广告位) -->
+        <div class="shopify-promo-card" style="margin-top: 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+            <div>
+                <span class="shopify-tag">PureWear Store</span>
+                <h3 style="font-size: 22px;">Dress Your Cleaning Crew for Success</h3>
+                <p style="margin-bottom: 0; max-width: 600px;">
+                    Professional, bleach-resistant, and high-mobility workwear designed specifically for housekeepers, custodians, and residential cleaners.
+                </p>
+            </div>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn" style="width: auto; padding: 14px 28px; white-space: nowrap;">
+                Shop Cleaning Gear →
+            </a>
+        </div>
+
+    </main>
 
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>PureWear Space</h3>
-                <p style="font-size: 14px; color: #B2BEC3;">Free tools for professionals.</p>
+            <div class="footer-brand">✨ PureWear Space</div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="tools/index.html">All Tools</a>
+                <a href="resources.html">Resources</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Workwear Store</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2024 PureWear Space.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals.</p>
         </div>
     </footer>
 
-    <!-- 关键：引入脚本文件 -->
+    <!-- 关键脚本 -->
     <script src="js/tools-data.js"></script>
     <script src="js/render-tools.js"></script>
+    <script>
+        function filterHomeTools() {
+            const query = document.getElementById('homeSearch').value.toLowerCase().trim();
+            const container = document.getElementById('home-tools-container');
+            
+            const filtered = TOOLS_DATA.filter(tool => {
+                return tool.title.toLowerCase().includes(query) || tool.desc.toLowerCase().includes(query);
+            });
+
+            container.innerHTML = filtered.map(tool => createToolCard(tool, tool.featured)).join('');
+            
+            if (filtered.length === 0) {
+                container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-sub);">No tools found matching "${query}". Try another keyword!</div>`;
+            }
+        }
+    </script>
 </body>
 </html>

@@ -3,261 +3,442 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chemical Safety Checker | PureWear Space</title>
-    <meta name="description" content="Can I mix these two cleaning products? Check safety instantly.">
-    <link rel="stylesheet" href="../../css/style.css">
+    <title>Cleaning Chemical Safety & Mixing Checker | PureWear Space</title>
+    <meta name="description" content="Free cleaning chemical safety checker. Check if mixing two cleaning products (bleach, vinegar, ammonia, peroxide, alcohol) creates toxic fumes or explosive reactions.">
+    <link rel="canonical" href="https://tool.purewearspace.com/tools/chemical-safety-checker/">
     
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cleaning Chemical Safety & Mixing Checker | PureWear Space">
+    <meta property="og:description" content="Instantly test if two cleaning chemicals are safe to mix or create hazardous toxic gases.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/chemical-safety-checker/">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org WebApplication & FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Cleaning Chemical Safety Checker",
+      "url": "https://tool.purewearspace.com/tools/chemical-safety-checker/",
+      "applicationCategory": "SafetyApplication",
+      "operatingSystem": "All",
+      "description": "Checks safety and chemical compatibility between common household and commercial cleaning chemicals."
+    }
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
     <style>
-        /* 自定义下拉选项样式 */
-        .brand-select {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 16px;
-            background: #fff;
-            cursor: pointer;
-            appearance: none; /* 去掉默认箭头 */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23636e72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 16px;
-        }
-        .brand-select:focus {
-            border-color: var(--primary);
-            outline: none;
+        .mix-selector-row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 16px;
+            margin: 20px 0;
         }
 
-        /* 结果展示样式 */
-        .result-safety {
-            padding: 30px;
-            border-radius: 12px;
+        @media (max-width: 640px) {
+            .mix-selector-row {
+                grid-template-columns: 1fr;
+            }
+            .mix-plus {
+                margin: -8px auto;
+            }
+        }
+
+        .mix-plus {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-surface);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-sub);
+        }
+
+        .product-select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: 600;
+            background: #ffffff;
+            color: var(--text-main);
+            outline: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .product-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .safety-result-card {
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
             text-align: center;
-            margin-top: 20px;
-            display: none;
+            margin-top: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .result-safe {
-            background: #e8f5e9;
-            border: 2px solid #4caf50;
-            color: #2e7d32;
+
+        .status-danger {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
         }
-        .result-danger {
-            background: #ffebee;
-            border: 2px solid #f44336;
-            color: #c62828;
+
+        .status-warning {
+            background: #fffbeb;
+            border: 2px solid #f59e0b;
+            color: #92400e;
         }
-        .result-icon {
-            font-size: 60px;
-            margin-bottom: 10px;
+
+        .status-neutral {
+            background: #eff6ff;
+            border: 2px solid #3b82f6;
+            color: #1e40af;
+        }
+
+        .status-safe {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            color: #065f46;
+        }
+
+        .safety-icon {
+            font-size: 54px;
+            margin-bottom: 12px;
             line-height: 1;
         }
-        .result-title {
-            font-size: 28px;
-            font-weight: 800;
+
+        .safety-title {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
             margin-bottom: 10px;
             text-transform: uppercase;
         }
-        .result-desc {
-            font-size: 16px;
-            line-height: 1.5;
+
+        .safety-desc {
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .plus-sign {
-            text-align: center; 
-            font-size: 30px; 
-            color: var(--text-sub); 
-            margin: 10px 0;
+
+        .cheat-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 16px;
+        }
+
+        .cheat-table th, .cheat-table td {
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .cheat-table th {
+            background: var(--bg-surface);
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .cheat-pill {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .cheat-pill.fatal {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .cheat-pill.toxic {
+            background: #fef3c7;
+            color: #b45309;
         }
     </style>
 </head>
 <body>
+
+    <!-- 顶部主店引流条 -->
+    <div class="top-notice-bar">
+        <span>👕 Chemical-Resistant Cleaning Uniforms & Heavy-Duty Aprons:</span>
+        <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
+    </div>
 
     <!-- 导航栏 -->
     <nav class="navbar">
         <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../index.html" class="nav-link active">All Tools</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
-            <a href="../../about.html" class="nav-link">About</a>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 主容器 -->
+    <!-- 页面标题 -->
+    <div class="page-header">
+        <h1>Cleaning Chemical Safety & Mixing Checker</h1>
+        <p>Select two cleaning agents or household chemicals to instantly verify whether combining them produces hazardous fumes or toxic reactions.</p>
+    </div>
+
+    <!-- 主布局网格 -->
     <div class="main-container">
+        
+        <!-- 左侧核心检查工具 -->
         <main>
             <div class="card">
-                <div class="form-header">
-                    <h1>Chemical Safety Checker</h1>
-                    <p>Select two products to check if they are safe to mix.</p>
+                <h2 style="font-size: 18px; margin-bottom: 8px;">Select Two Products or Ingredients</h2>
+                <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 20px;">Safety status will update automatically in real-time.</p>
+
+                <!-- 两个产品选择器 -->
+                <div class="mix-selector-row">
+                    <div>
+                        <label style="font-size: 13px; font-weight: 700; color: var(--text-sub); margin-bottom: 6px; display: block;">🍾 Product A</label>
+                        <select id="prod1" class="product-select" onchange="runSafetyCheck()">
+                            <option value="bleach" selected>Chlorine Bleach (Sodium Hypochlorite)</option>
+                            <option value="ammonia">Ammonia (Windex / Glass Cleaners)</option>
+                            <option value="vinegar">White Vinegar (Acetic Acid)</option>
+                            <option value="peroxide">Hydrogen Peroxide</option>
+                            <option value="alcohol">Rubbing Alcohol (Isopropyl)</option>
+                            <option value="toilet_acid">Toilet Bowl Cleaner (Hydrochloric Acid)</option>
+                            <option value="drain_cleaner">Drain Cleaner (Lye / Sodium Hydroxide)</option>
+                            <option value="baking_soda">Baking Soda (Sodium Bicarbonate)</option>
+                            <option value="dish_soap">Mild Dish Soap (Neutral Surfactant)</option>
+                        </select>
+                    </div>
+
+                    <div class="mix-plus">+</div>
+
+                    <div>
+                        <label style="font-size: 13px; font-weight: 700; color: var(--text-sub); margin-bottom: 6px; display: block;">🧴 Product B</label>
+                        <select id="prod2" class="product-select" onchange="runSafetyCheck()">
+                            <option value="bleach">Chlorine Bleach (Sodium Hypochlorite)</option>
+                            <option value="ammonia">Ammonia (Windex / Glass Cleaners)</option>
+                            <option value="vinegar" selected>White Vinegar (Acetic Acid)</option>
+                            <option value="peroxide">Hydrogen Peroxide</option>
+                            <option value="alcohol">Rubbing Alcohol (Isopropyl)</option>
+                            <option value="toilet_acid">Toilet Bowl Cleaner (Hydrochloric Acid)</option>
+                            <option value="drain_cleaner">Drain Cleaner (Lye / Sodium Hydroxide)</option>
+                            <option value="baking_soda">Baking Soda (Sodium Bicarbonate)</option>
+                            <option value="dish_soap">Mild Dish Soap (Neutral Surfactant)</option>
+                        </select>
+                    </div>
                 </div>
 
-                <form id="checkForm">
-                    <!-- 产品 1 -->
-                    <div class="input-group">
-                        <label>🍾 Product 1</label>
-                        <select id="product1" class="brand-select">
-                            <option value="">-- Select Brand --</option>
-                            <option value="clorox_bleach">Clorox Regular Bleach</option>
-                            <option value="lysol_disinfectant">Lysol Disinfectant</option>
-                            <option value="windex">Windex (Glass Cleaner)</option>
-                            <option value="vinegar">White Vinegar</option>
-                            <option value="ammonia">Ammonia Cleaner</option>
-                            <option value="rubbing_alcohol">Rubbing Alcohol</option>
-                            <option value="hydrogen_peroxide">Hydrogen Peroxide</option>
-                            <option value="toilet_bowl_cleaner">Toilet Bowl Cleaner (Acidic)</option>
-                            <option value="drain_cleaner">Drain Cleaner</option>
-                        </select>
+                <!-- 实时安全结果卡片 -->
+                <div id="safetyCard" class="safety-result-card status-danger">
+                    <div class="safety-icon" id="statusIcon">☠️</div>
+                    <div class="safety-title" id="statusTitle">DEADLY COMBINATION — DO NOT MIX!</div>
+                    <div class="safety-desc" id="statusDesc">
+                        Mixing <strong>Bleach</strong> and <strong>Vinegar (Acid)</strong> releases <strong>Chlorine Gas</strong>. Inhaling chlorine gas causes chemical burns to the eyes, nose, throat, and lungs, and can be fatal even in moderate concentrations.
                     </div>
-
-                    <div class="plus-sign">+</div>
-
-                    <!-- 产品 2 -->
-                    <div class="input-group">
-                        <label>🍾 Product 2</label>
-                        <select id="product2" class="brand-select">
-                            <option value="">-- Select Brand --</option>
-                            <option value="clorox_bleach">Clorox Regular Bleach</option>
-                            <option value="lysol_disinfectant">Lysol Disinfectant</option>
-                            <option value="windex">Windex (Glass Cleaner)</option>
-                            <option value="vinegar">White Vinegar</option>
-                            <option value="ammonia">Ammonia Cleaner</option>
-                            <option value="rubbing_alcohol">Rubbing Alcohol</option>
-                            <option value="hydrogen_peroxide">Hydrogen Peroxide</option>
-                            <option value="toilet_bowl_cleaner">Toilet Bowl Cleaner (Acidic)</option>
-                            <option value="drain_cleaner">Drain Cleaner</option>
-                        </select>
-                    </div>
-
-                    <div class="ad-container ad-in-content">Advertisement</div>
-
-                    <button type="button" class="btn-submit" onclick="checkSafety()">CHECK SAFETY</button>
-                </form>
-
-                <!-- 结果区域 -->
-                <div id="resultBox" class="result-safety">
-                    <div class="result-icon" id="resIcon"></div>
-                    <div class="result-title" id="resTitle"></div>
-                    <div class="result-desc" id="resDesc"></div>
                 </div>
             </div>
 
-            <!-- SEO 区域 -->
-            <div class="card" style="margin-top: 20px; padding: 20px;">
-                <h2 style="font-size: 18px; margin-bottom: 10px;">⚠️ General Safety Rule</h2>
-                <p style="color: var(--text-sub); font-size: 14px; line-height: 1.6;">
-                    Never mix different cleaning products unless you are sure they are compatible. Mixing bleach with ammonia or acids creates deadly gases. Always read the label on the bottle.
-                </p>
+            <!-- 危险反应速查速记表 -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 20px; margin-bottom: 8px;">Deadly Combinations Quick Reference</h2>
+                <p style="font-size: 13px; color: var(--text-sub);">Every professional housekeeper and custodian must memorize these 4 lethal interactions:</p>
+
+                <div style="overflow-x: auto;">
+                    <table class="cheat-table">
+                        <thead>
+                            <tr>
+                                <th>Combination</th>
+                                <th>Hazardous Reaction</th>
+                                <th>Severity</th>
+                                <th>Physical Symptoms</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Bleach + Vinegar / Acids</strong></td>
+                                <td>Produces <strong>Chlorine Gas</strong></td>
+                                <td><span class="cheat-pill fatal">FATAL</span></td>
+                                <td>Severe coughing, fluid in lungs, chemical burns</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bleach + Ammonia</strong></td>
+                                <td>Produces <strong>Chloramine Gas</strong></td>
+                                <td><span class="cheat-pill fatal">FATAL</span></td>
+                                <td>Shortness of breath, chest pain, coma</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bleach + Rubbing Alcohol</strong></td>
+                                <td>Produces <strong>Chloroform</strong> & Acetone</td>
+                                <td><span class="cheat-pill toxic">TOXIC</span></td>
+                                <td>Dizziness, loss of consciousness, organ damage</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bleach + Hydrogen Peroxide</strong></td>
+                                <td>Violent <strong>Oxygen Off-Gassing</strong></td>
+                                <td><span class="cheat-pill toxic">EXPLOSIVE</span></td>
+                                <td>Sealed bottle ruptures/bursts, severe chemical splash</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
 
-        <!-- 侧边栏 -->
+        <!-- 右侧应急与防护指南 -->
         <aside class="sidebar">
-            <div class="info-card">
-                <h3>☠️ DANGER</h3>
-                <p>Mixing bleach with vinegar or ammonia creates toxic gas that can hurt your lungs or even kill you.</p>
+            <div class="result-card" style="border-color: #ef4444; background: #fff;">
+                <div class="price-title" style="color: #ef4444;">🚨 Accidental Exposure Protocol</div>
+                <div style="font-size: 13px; line-height: 1.6; color: var(--text-body); margin-top: 10px;">
+                    If toxic fumes are accidentally released during a clean:
+                    <ol style="padding-left: 20px; margin: 10px 0;">
+                        <li><strong>Evacuate immediately:</strong> Get all occupants and pets into fresh outdoor air.</li>
+                        <li><strong>Do not stay to clean up:</strong> Opening windows is only advised if you can do so on your way out without inhaling vapors.</li>
+                        <li><strong>Call Emergency:</strong> In the US, call <strong>Poison Control (1-800-222-1222)</strong> or <strong>911</strong> immediately.</li>
+                    </ol>
+                </div>
             </div>
-            
-            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+
+            <!-- Shopify 电商推荐卡片 -->
+            <div class="shopify-promo-card">
+                <span class="shopify-tag">PureWear Store</span>
+                <h3>Chemical-Resistant Workwear & Aprons</h3>
+                <p>Accidental splashes of concentrated bleach or caustic cleaners instantly ruin clothing. PureWear heavy-duty aprons keep your team safe and dry.</p>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
+                    Explore Protective Aprons →
+                </a>
+            </div>
         </aside>
+
     </div>
 
-    <script>
-        // 品牌对应的化学成分数据库
-        // B: Bleach (漂白剂/次氯酸钠)
-        // A: Ammonia (氨水)
-        // Ac: Acid (酸，如醋、洁厕灵)
-        // Al: Alcohol (酒精)
-        // P: Peroxide (双氧水)
-        // O: Other (其他)
-        const chemicalMap = {
-            'clorox_bleach': { name: 'Bleach', chem: 'B' },
-            'lysol_disinfectant': { name: 'Lysol', chem: 'O' }, // 大部分含烷基二甲基苄基氯化铵
-            'windex': { name: 'Windex', chem: 'A' }, // 传统Windex含氨
-            'vinegar': { name: 'Vinegar', chem: 'Ac' },
-            'ammonia': { name: 'Ammonia', chem: 'A' },
-            'rubbing_alcohol': { name: 'Rubbing Alcohol', chem: 'Al' },
-            'hydrogen_peroxide': { name: 'Hydrogen Peroxide', chem: 'P' },
-            'toilet_bowl_cleaner': { name: 'Toilet Bowl Cleaner', chem: 'Ac' }, // 通常含酸
-            'drain_cleaner': { name: 'Drain Cleaner', chem: 'S' } // 强碱
-        };
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">All Tools</a>
+                <a href="../dilution-calculator/">Dilution Calculator</a>
+                <a href="../cleaning-quote-calculator/">Quote Calculator</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 PureWear Space. Free safety and management tools for cleaning professionals.</p>
+        </div>
+    </footer>
 
-        // 危险反应规则库
-        // B+A: 漂白剂+氨水 = 氯胺 (有毒)
-        // B+Ac: 漂白剂+酸 = 氯气 (剧毒致命)
-        // B+Al: 漂白剂+酒精 = 氯仿/乙酸 (有毒)
-        // B+P: 漂白剂+双氧水 = 氧气爆炸
-        const dangerReactions = [
-            { 
-                combo: ['B', 'A'], 
-                title: 'DANGEROUS!',
-                desc: 'Mixing Bleach and Ammonia creates <strong>Chloramine Vapors</strong>. This can cause severe damage to your lungs and throat. DO NOT MIX.'
+    <script>
+        const reactions = [
+            {
+                pair: ['bleach', 'vinegar'],
+                type: 'danger',
+                icon: '☠️',
+                title: 'DEADLY! TOXIC CHLORINE GAS',
+                desc: 'Mixing <strong>Bleach</strong> with <strong>Vinegar</strong> releases toxic <strong>Chlorine Gas</strong> (Cl₂). It causes immediate chemical burns to eyes, throat, and lungs, and can be fatal in enclosed spaces like bathrooms. <strong>NEVER MIX.</strong>'
             },
-            { 
-                combo: ['B', 'Ac'], 
-                title: 'DEADLY!',
-                desc: 'Mixing Bleach and Acid (Vinegar/Toilet Cleaner) creates <strong>Chlorine Gas</strong>. This was used as a chemical weapon in WWI. It can be FATAL.'
+            {
+                pair: ['bleach', 'toilet_acid'],
+                type: 'danger',
+                icon: '☠️',
+                title: 'DEADLY! TOXIC CHLORINE GAS',
+                desc: 'Toilet bowl cleaners contain concentrated hydrochloric or phosphoric acid. Mixing with <strong>Bleach</strong> creates dense <strong>Chlorine Gas</strong> immediately. <strong>NEVER MIX.</strong>'
             },
-            { 
-                combo: ['B', 'Al'], 
-                title: 'TOXIC',
-                desc: 'Mixing Bleach and Alcohol can produce <strong>Chloroform</strong> and other toxic compounds. It can knock you out or damage your liver.'
+            {
+                pair: ['bleach', 'ammonia'],
+                type: 'danger',
+                icon: '☠️',
+                title: 'DEADLY! TOXIC CHLORAMINE VAPORS',
+                desc: 'Mixing <strong>Bleach</strong> and <strong>Ammonia</strong> creates lethal <strong>Chloramine Gas</strong> (NH₂Cl) and hydrazine. Causes acute respiratory distress, throat inflammation, and permanent lung injury. <strong>NEVER MIX.</strong>'
             },
-            { 
-                combo: ['B', 'P'], 
-                title: 'EXPLOSIVE',
-                desc: 'Mixing Bleach and Hydrogen Peroxide can cause a rapid chemical reaction creating oxygen gas, which may cause the container to <strong>explode</strong>.'
+            {
+                pair: ['bleach', 'alcohol'],
+                type: 'warning',
+                icon: '☣️',
+                title: 'DANGEROUS! PRODUCES CHLOROFORM',
+                desc: 'Combining <strong>Bleach</strong> with <strong>Rubbing Alcohol</strong> (Isopropyl or Ethanol) produces <strong>Chloroform</strong> and hydrochloric acid. Inhaling vapors causes dizziness, unconsciousness, and liver toxicity.'
+            },
+            {
+                pair: ['bleach', 'peroxide'],
+                type: 'warning',
+                icon: '💥',
+                title: 'EXPLOSIVE! RAPID OXYGEN RELEASE',
+                desc: 'Bleach and <strong>Hydrogen Peroxide</strong> react violently to release pure oxygen gas and intense heat. If mixed in a closed container or spray bottle, pressure will cause the bottle to <strong>burst or explode</strong> with caustic spray.'
+            },
+            {
+                pair: ['vinegar', 'peroxide'],
+                type: 'warning',
+                icon: '⚠️',
+                title: 'HAZARDOUS! CREATES PERACETIC ACID',
+                desc: 'Mixing <strong>Vinegar</strong> and <strong>Hydrogen Peroxide</strong> in the same bottle creates <strong>Peracetic Acid</strong>, a corrosive chemical that irritates the eyes, skin, and mucous membranes.'
+            },
+            {
+                pair: ['vinegar', 'baking_soda'],
+                type: 'neutral',
+                icon: 'ℹ️',
+                title: 'INEFFECTIVE! NEUTRALIZES CLEANING POWER',
+                desc: 'Vinegar is an acid and baking soda is a base. When mixed, they react to produce carbon dioxide fizz and turn mostly into <strong>salt water (sodium acetate)</strong>. While not toxic, it cancels out the grease-cutting power of both ingredients.'
+            },
+            {
+                pair: ['drain_cleaner', 'bleach'],
+                type: 'danger',
+                icon: '☠️',
+                title: 'HIGH RISK OF BURNS & TOXIC GAS',
+                desc: 'Commercial drain cleaners contain strong acids or highly concentrated lye. Pouring bleach down a drain with drain cleaner can trigger violent boiling, corrosive splatter, or toxic gas.'
             }
         ];
 
-        function checkSafety() {
-            const p1Key = document.getElementById('product1').value;
-            const p2Key = document.getElementById('product2').value;
-            
-            if (!p1Key || !p2Key) {
-                alert("Please select both products.");
+        function runSafetyCheck() {
+            const p1 = document.getElementById('prod1').value;
+            const p2 = document.getElementById('prod2').value;
+            const card = document.getElementById('safetyCard');
+            const icon = document.getElementById('statusIcon');
+            const title = document.getElementById('statusTitle');
+            const desc = document.getElementById('statusDesc');
+
+            if (p1 === p2) {
+                card.className = 'safety-result-card status-safe';
+                icon.innerText = 'ℹ️';
+                title.innerText = 'SAME PRODUCT SELECTED';
+                desc.innerHTML = 'You have selected the same chemical in both slots. Mixing a product with itself does not cause a chemical reaction.';
                 return;
             }
 
-            if (p1Key === p2Key) {
-                alert("Please select two different products.");
-                return;
-            }
-
-            const chem1 = chemicalMap[p1Key].chem;
-            const chem2 = chemicalMap[p2Key].chem;
-            
-            // 检查是否存在危险反应
-            let isDanger = false;
-            let dangerInfo = null;
-
-            for (let reaction of dangerReactions) {
-                if (reaction.combo.includes(chem1) && reaction.combo.includes(chem2)) {
-                    isDanger = true;
-                    dangerInfo = reaction;
+            // 查找危险库
+            let match = null;
+            for (let r of reactions) {
+                if (r.pair.includes(p1) && r.pair.includes(p2)) {
+                    match = r;
                     break;
                 }
             }
 
-            const resultBox = document.getElementById('resultBox');
-            const resIcon = document.getElementById('resIcon');
-            const resTitle = document.getElementById('resTitle');
-            const resDesc = document.getElementById('resDesc');
-
-            resultBox.style.display = 'block';
-
-            if (isDanger) {
-                resultBox.className = 'result-safety result-danger';
-                resIcon.innerText = '☠️';
-                resTitle.innerText = dangerInfo.title;
-                resDesc.innerHTML = dangerInfo.desc;
+            if (match) {
+                card.className = `safety-result-card status-${match.type}`;
+                icon.innerText = match.icon;
+                title.innerText = match.title;
+                desc.innerHTML = match.desc;
             } else {
-                // 即使数据库没有显示危险，也提示谨慎
-                resultBox.className = 'result-safety result-safe';
-                resIcon.innerText = '✅';
-                resTitle.innerText = 'SAFE TO MIX?';
-                resDesc.innerHTML = "According to our data, there are no known dangerous reactions between these main ingredients. However, <strong>always use caution</strong> and test in small amounts first. Never mix chemicals you don't know.";
+                // 安全或无致命已知反应
+                card.className = 'safety-result-card status-safe';
+                icon.innerText = '✅';
+                title.innerText = 'NO KNOWN HAZARDOUS REACTION';
+                desc.innerHTML = 'There are no documented toxic or explosive reactions between these two specific ingredients. However, <strong>always practice safety:</strong> do not mix concentrated chemicals without manufacturer guidance, and ensure good ventilation.';
             }
         }
+
+        window.addEventListener('DOMContentLoaded', runSafetyCheck);
     </script>
 </body>
 </html>

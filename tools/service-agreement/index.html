@@ -3,251 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Agreement Generator | PureWear Space</title>
-    <meta name="description" content="Generate simple cleaning service agreements and contracts.">
-    <link rel="stylesheet" href="../../css/style.css">
+    <title>Cleaning Service Agreement & Contract Generator | PureWear Space</title>
+    <meta name="description" content="Free cleaning service contract generator. Create legally sound residential or commercial cleaning agreements with custom cancellation, pet, and payment clauses.">
+    <link rel="canonical" href="https://tool.purewearspace.com/tools/service-agreement/">
     
-    <!-- 合同打印样式 -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cleaning Service Agreement Generator | PureWear Space">
+    <meta property="og:description" content="Generate and print simple, professional cleaning contracts to protect your business.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/service-agreement/">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Cleaning Service Agreement Generator",
+      "url": "https://tool.purewearspace.com/tools/service-agreement/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Generates professional cleaning service contracts and service agreements for housekeeping contractors."
+    }
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
     <style>
-        /* 打印时隐藏网站其他元素 */
-        @media print {
-            body * {
-                visibility: hidden;
-            }
-            #printArea, #printArea * {
-                visibility: visible;
-            }
-            #printArea {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-            }
-            .no-print {
-                display: none !important;
-            }
+        .clause-checkbox-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
         }
 
-        /* 合同文档样式 */
-        .contract-container {
-            background: #fff;
-            padding: 40px;
+        .clause-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-body);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .clause-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
+        }
+
+        /* 打印及合同样式 */
+        .contract-paper {
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-top: 20px;
-            font-family: 'Times New Roman', Times, serif; /* 合同通常用衬线字体 */
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
             line-height: 1.6;
         }
-        
-        .contract-title {
+
+        .contract-header {
             text-align: center;
-            font-size: 24px;
-            font-weight: 700;
+            border-bottom: 2px solid #0f172a;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+
+        .contract-title {
+            font-size: 22px;
+            font-weight: 800;
             text-transform: uppercase;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #000;
-            padding-bottom: 10px;
+            letter-spacing: 0.5px;
+            color: #0f172a;
         }
 
         .contract-section {
             margin-bottom: 20px;
         }
-        
+
         .contract-section h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 5px;
-            text-decoration: underline;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #0f172a;
+            margin-bottom: 6px;
         }
 
-        .contract-field {
-            border-bottom: 1px solid #000;
-            display: inline-block;
-            min-width: 200px;
-            text-align: center;
-            font-weight: 600;
+        .contract-section p {
+            font-size: 13px;
+            color: #334155;
+            margin-bottom: 4px;
+        }
+
+        .contract-highlight {
+            font-weight: 700;
             color: var(--primary);
         }
 
-        .signature-box {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 60px;
+        .signature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px dashed var(--border-color);
         }
-        
-        .signature-line {
-            width: 45%;
+
+        .sig-block {
             text-align: center;
         }
-        
-        .signature-line hr {
-            border: none;
-            border-bottom: 1px solid #000;
-            margin-bottom: 5px;
+
+        .sig-line {
+            border-bottom: 1.5px solid #0f172a;
+            height: 40px;
+            margin-bottom: 8px;
+        }
+
+        .sig-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #475569;
+        }
+
+        @media print {
+            .no-print, .navbar, .top-notice-bar, .footer, .sidebar {
+                display: none !important;
+            }
+            .main-container {
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+            .contract-paper {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- 顶部主店引流条 -->
+    <div class="top-notice-bar no-print">
+        <span>👕 Professional Housekeeping Uniforms & Cleaning Workwear:</span>
+        <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
+    </div>
 
     <!-- 导航栏 -->
     <nav class="navbar no-print">
         <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../index.html" class="nav-link active">All Tools</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
-            <a href="../../about.html" class="nav-link">About</a>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 主容器 -->
-    <div class="main-container">
-        <main>
-            <div class="card no-print">
-                <div class="form-header">
-                    <h1>Service Agreement</h1>
-                    <p>Fill in the details below to generate a simple service contract.</p>
-                </div>
-
-                <form id="contractForm">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div class="input-group">
-                            <label>Service Provider Name</label>
-                            <input type="text" id="providerName" class="form-control" placeholder="Your Name / Business Name">
-                        </div>
-                        <div class="input-group">
-                            <label>Client Name</label>
-                            <input type="text" id="clientName" class="form-control" placeholder="Client's Name">
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label>Service Address</label>
-                        <input type="text" id="serviceAddress" class="form-control" placeholder="e.g. 123 Main St, City">
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div class="input-group">
-                            <label>Service Frequency</label>
-                            <select id="frequency" class="form-control">
-                                <option>One-Time Cleaning</option>
-                                <option>Weekly</option>
-                                <option>Bi-Weekly</option>
-                                <option>Monthly</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <label>Service Rate ($)</label>
-                            <input type="number" id="rate" class="form-control" placeholder="e.g. 150">
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label>Date</label>
-                        <input type="date" id="serviceDate" class="form-control">
-                    </div>
-
-                    <div class="ad-container ad-in-content no-print">Advertisement</div>
-
-                    <div style="display: flex; gap: 10px;">
-                        <button type="button" class="btn-submit" onclick="generateContract()">GENERATE CONTRACT</button>
-                        <button type="button" onclick="window.print()" class="btn-submit" style="background: var(--text-main); flex: 1;">PRINT</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- 打印区域 -->
-            <div id="printArea">
-                <div id="contractOutput" style="display:none;"></div>
-            </div>
-
-        </main>
-
-        <!-- 侧边栏 -->
-        <aside class="sidebar no-print">
-            <div class="info-card">
-                <h3>⚠️ Disclaimer</h3>
-                <p>This is a basic template for simple jobs. For complex legal needs, consult a professional.</p>
-            </div>
-            
-            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
-        </aside>
+    <!-- 页面标题 -->
+    <div class="page-header no-print">
+        <h1>Cleaning Service Agreement Generator</h1>
+        <p>Generate clean, professional service contracts with transparent cancellation, pet, liability, and payment clauses.</p>
     </div>
 
-    <script>
-        function generateContract() {
-            // 获取输入值
-            const provider = document.getElementById('providerName').value || '________________________';
-            const client = document.getElementById('clientName').value || '________________________';
-            const address = document.getElementById('serviceAddress').value || '________________________';
-            const frequency = document.getElementById('frequency').value;
-            const rate = document.getElementById('rate').value || '______';
-            const date = document.getElementById('serviceDate').value || new Date().toISOString().split('T')[0];
-            const today = new Date().toLocaleDateString('en-US');
+    <!-- 主布局网格 -->
+    <div class="main-container">
+        
+        <!-- 左侧输入表单 -->
+        <main>
+            <div class="card no-print">
+                <h2 style="font-size: 18px; margin-bottom: 16px;">Contract Parameters</h2>
 
-            // 合同模板
-            const html = `
-                <div class="contract-container">
-                    <div class="contract-title">Cleaning Service Agreement</div>
-                    
-                    <p>This Agreement is entered into on <strong>${today}</strong>.</p>
-
-                    <div class="contract-section">
-                        <h3>1. Parties</h3>
-                        <p><strong>Service Provider:</strong> <span class="contract-field">${provider}</span></p>
-                        <p><strong>Client:</strong> <span class="contract-field">${client}</span></p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="input-group">
+                        <label>🏢 Cleaning Company / Provider Name</label>
+                        <input type="text" id="providerName" class="form-control" value="Pure Sparkle Cleaning LLC" placeholder="e.g. Elena Cleaning Services" oninput="updateContract()">
                     </div>
 
-                    <div class="contract-section">
-                        <h3>2. Scope of Services</h3>
-                        <p>The Provider agrees to perform standard cleaning services at the property located at:</p>
-                        <p style="font-weight: bold; text-align: center;">${address}</p>
-                        <p><strong>Frequency:</strong> ${frequency}.</p>
-                        <p><strong>Date of Service:</strong> ${date}.</p>
-                    </div>
-
-                    <div class="contract-section">
-                        <h3>3. Payment Terms</h3>
-                        <p>The Client agrees to pay the Provider a total of <strong>$${rate}</strong> upon completion of the service.</p>
-                        <p>Payment can be made via Cash, Check, or Venmo (as agreed).</p>
-                    </div>
-
-                    <div class="contract-section">
-                        <h3>4. Cancellation Policy</h3>
-                        <p>Both parties agree to provide at least 24 hours notice for cancellations or rescheduling.</p>
-                    </div>
-
-                    <div class="contract-section">
-                        <h3>5. Liability</h3>
-                        <p>The Provider is not responsible for pre-existing damage or wear and tear. The Provider carries basic liability insurance (optional: verify if applicable).</p>
-                    </div>
-
-                    <div class="signature-box">
-                        <div class="signature-line">
-                            <hr>
-                            <div>Provider Signature</div>
-                            <div style="font-size: 12px; color: #666;">Date: ${today}</div>
-                        </div>
-                        <div class="signature-line">
-                            <hr>
-                            <div>Client Signature</div>
-                            <div style="font-size: 12px; color: #666;">Date: __________</div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 40px; text-align: center; font-size: 12px; color: #999;">
-                        Generated via PureWear Space
+                    <div class="input-group">
+                        <label>👤 Client Full Name</label>
+                        <input type="text" id="clientName" class="form-control" value="Michael Anderson" placeholder="e.g. John Doe" oninput="updateContract()">
                     </div>
                 </div>
-            `;
 
-            // 输出到页面
-            document.getElementById('contractOutput').innerHTML = html;
-            document.getElementById('contractOutput').style.display = 'block';
-            
-            // 滚动到合同位置
-            document.getElementById('contractOutput').scrollIntoView({ behavior: 'smooth' });
+                <div class="input-group">
+                    <label>📍 Service Address</label>
+                    <input type="text" id="serviceAddress" class="form-control" value="742 Evergreen Terrace, Springfield, IL" placeholder="e.g. 123 Main St" oninput="updateContract()">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+                    <div class="input-group">
+                        <label>🔄 Frequency</label>
+                        <select id="frequency" class="form-control" onchange="updateContract()">
+                            <option value="Bi-Weekly Recurring Service" selected>Bi-Weekly</option>
+                            <option value="Weekly Recurring Service">Weekly</option>
+                            <option value="Monthly Recurring Service">Monthly</option>
+                            <option value="One-Time Deep Cleaning">One-Time Clean</option>
+                            <option value="Move-In / Move-Out Turnover">Move-Out Clean</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>💵 Rate Per Clean ($)</label>
+                        <input type="text" id="rate" class="form-control" value="$160.00" placeholder="e.g. $160" oninput="updateContract()">
+                    </div>
+
+                    <div class="input-group">
+                        <label>📅 Start Date</label>
+                        <input type="date" id="startDate" class="form-control" onchange="updateContract()">
+                    </div>
+                </div>
+
+                <!-- 选填附加条款 -->
+                <div class="input-group" style="margin-bottom: 0;">
+                    <label>⚖️ Standard Business Protection Clauses</label>
+                    <div class="clause-checkbox-list">
+                        <label class="clause-item">
+                            <input type="checkbox" id="clauseCancel" checked onchange="updateContract()">
+                            <span><strong>24-Hour Cancellation Notice:</strong> Client agrees to give 24-hr notice or incur a 50% lock-out / late cancellation fee.</span>
+                        </label>
+                        <label class="clause-item">
+                            <input type="checkbox" id="clausePets" checked onchange="updateContract()">
+                            <span><strong>Pets & Access:</strong> Friendly pets are welcome, but aggressive animals must be safely secured during cleaning.</span>
+                        </label>
+                        <label class="clause-item">
+                            <input type="checkbox" id="clauseLiability" checked onchange="updateContract()">
+                            <span><strong>Limitation of Liability:</strong> Provider is not responsible for unanchored heavy art, pre-existing grout wear, or antique heirlooms.</span>
+                        </label>
+                        <label class="clause-item">
+                            <input type="checkbox" id="clausePayment" checked onchange="updateContract()">
+                            <span><strong>Payment Terms:</strong> Balance due upon completion of each service visit via Cash, Card, or Electronic Transfer.</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 合同预览与打印展示区域 -->
+            <div class="contract-paper" id="contractView" style="margin-top: 24px;">
+                <div class="contract-header">
+                    <div class="contract-title">Residential Cleaning Service Agreement</div>
+                    <p style="font-size: 12px; color: #64748b; margin-top: 4px;">Effective Date: <span id="contractDateSpan"></span></p>
+                </div>
+
+                <div class="contract-section">
+                    <h3>1. Parties & Property</h3>
+                    <p>This Cleaning Service Agreement is made between <strong id="cProvider"></strong> ("Provider") and <strong id="cClient"></strong> ("Client").</p>
+                    <p>The service will be performed at the following residential premises: <strong id="cAddress"></strong>.</p>
+                </div>
+
+                <div class="contract-section">
+                    <h3>2. Service Scope & Frequency</h3>
+                    <p>The Provider agrees to furnish standard professional cleaning supplies and labor for scheduled visits on a <strong id="cFreq" class="contract-highlight"></strong> basis commencing on <strong id="cStart"></strong>.</p>
+                </div>
+
+                <div class="contract-section">
+                    <h3>3. Compensation & Billing</h3>
+                    <p>The Client agrees to pay the Provider <strong id="cRate" class="contract-highlight"></strong> per completed cleaning visit.</p>
+                    <p id="cPaymentClause">Payment is due upon completion of each visit unless a monthly invoicing term has been pre-authorized in writing.</p>
+                </div>
+
+                <div class="contract-section" id="cCancelSection">
+                    <h3>4. Cancellation & Lockout Policy</h3>
+                    <p>Because schedule slots are reserved in advance, Client agrees to provide at least 24 hours advance notice to cancel or reschedule. Cancellations made with less than 24 hours notice or inability to access the property may be subject to a 50% lockout fee.</p>
+                </div>
+
+                <div class="contract-section" id="cPetsSection">
+                    <h3>5. Safe Access & Pets</h3>
+                    <p>Client is responsible for providing safe access (key, lockbox, or presence). If pets are in the residence, friendly animals are permitted but aggressive pets must be confined in a secure room or crate during service hours.</p>
+                </div>
+
+                <div class="contract-section" id="cLiabilitySection">
+                    <h3>6. Limitation of Liability & Breakage</h3>
+                    <p>The Provider maintains general liability insurance. The Provider will notify Client within 24 hours of any accidental damage caused by staff. Provider is not liable for pre-existing surface defects, normal wear and tear, unanchored wall hangings, or items of high irreplaceable sentimental value.</p>
+                </div>
+
+                <div class="signature-grid">
+                    <div class="sig-block">
+                        <div class="sig-line"></div>
+                        <div class="sig-label">Authorized Provider Signature</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">Date: ________________________</div>
+                    </div>
+                    <div class="sig-block">
+                        <div class="sig-line"></div>
+                        <div class="sig-label">Client Signature</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">Date: ________________________</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 右侧操作栏 -->
+        <aside class="sidebar no-print">
+            <div class="result-card">
+                <div class="price-title">Print or Save Agreement</div>
+                <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 16px;">
+                    Export to PDF or print two physical copies for mutual signing prior to commencing initial service.
+                </p>
+
+                <div class="action-row">
+                    <button class="btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+                    <button class="btn-secondary" onclick="copyAgreementText()">📋 Copy Agreement Text</button>
+                </div>
+            </div>
+
+            <!-- Shopify 电商推荐卡片 -->
+            <div class="shopify-promo-card">
+                <span class="shopify-tag">PureWear Store</span>
+                <h3>Equip Your Staff with Professional Gear</h3>
+                <p>Contract agreements set expectations; high-quality uniforms fulfill them. Give clients confidence in your company from day one.</p>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
+                    View Commercial Uniforms →
+                </a>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer no-print">
+        <div class="footer-content">
+            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">All Tools</a>
+                <a href="../cleaning-quote-calculator/">Quote Calculator</a>
+                <a href="../cleaning-checklist/">Cleaning Checklist</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 PureWear Space. Free contracts and templates for cleaning businesses.</p>
+        </div>
+    </footer>
+
+    <script>
+        function updateContract() {
+            const provider = document.getElementById('providerName').value.trim() || '[Provider Name]';
+            const client = document.getElementById('clientName').value.trim() || '[Client Name]';
+            const address = document.getElementById('serviceAddress').value.trim() || '[Service Address]';
+            const freq = document.getElementById('frequency').value;
+            const rate = document.getElementById('rate').value.trim() || '$0.00';
+            const startDate = document.getElementById('startDate').value || new Date().toISOString().split('T')[0];
+
+            document.getElementById('cProvider').innerText = provider;
+            document.getElementById('cClient').innerText = client;
+            document.getElementById('cAddress').innerText = address;
+            document.getElementById('cFreq').innerText = freq;
+            document.getElementById('cRate').innerText = rate;
+            document.getElementById('cStart').innerText = startDate;
+            document.getElementById('contractDateSpan').innerText = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            // 条款显示隐藏控制
+            document.getElementById('cCancelSection').style.display = document.getElementById('clauseCancel').checked ? 'block' : 'none';
+            document.getElementById('cPetsSection').style.display = document.getElementById('clausePets').checked ? 'block' : 'none';
+            document.getElementById('cLiabilitySection').style.display = document.getElementById('clauseLiability').checked ? 'block' : 'none';
+            document.getElementById('cPaymentClause').style.display = document.getElementById('clausePayment').checked ? 'block' : 'none';
         }
+
+        function copyAgreementText() {
+            const provider = document.getElementById('cProvider').innerText;
+            const client = document.getElementById('cClient').innerText;
+            const address = document.getElementById('cAddress').innerText;
+            const freq = document.getElementById('cFreq').innerText;
+            const rate = document.getElementById('cRate').innerText;
+            const date = document.getElementById('cStart').innerText;
+
+            const text = `📄 CLEANING SERVICE AGREEMENT\n\n` +
+                         `Provider: ${provider}\n` +
+                         `Client: ${client}\n` +
+                         `Service Address: ${address}\n` +
+                         `Frequency: ${freq}\n` +
+                         `Rate: ${rate} per visit\n` +
+                         `Start Date: ${date}\n\n` +
+                         `Terms: 24h cancellation notice required. Payment due upon completion.\n` +
+                         `Generated via PureWear Space: https://tool.purewearspace.com/tools/service-agreement/`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert("✅ Agreement summary copied to clipboard!");
+            }).catch(() => {
+                alert("Failed to copy. Please manually copy the agreement text.");
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('startDate').value = today;
+            updateContract();
+        });
     </script>
 </body>
 </html>

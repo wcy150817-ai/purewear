@@ -108,14 +108,20 @@
 </head>
 <body>
 
+    <!-- 顶部主店引流条 -->
+    <div class="top-notice-bar no-print">
+        <span>👕 Professional Housekeeping Uniforms & Cleaning Workwear:</span>
+        <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
+    </div>
+
     <!-- 导航栏 -->
     <nav class="navbar no-print">
         <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../index.html" class="nav-link active">All Tools</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
-            <a href="../../about.html" class="nav-link">About</a>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
@@ -174,11 +180,9 @@
                     <textarea id="comments" class="form-control" rows="3" placeholder="Optional: Great job on the deep cleaning last week..."></textarea>
                 </div>
 
-                <div class="ad-container ad-in-content no-print">Advertisement</div>
-
-                <div style="display: flex; gap: 10px;">
-                    <button onclick="generateReview()" class="btn-submit">GENERATE REVIEW</button>
-                    <button onclick="window.print()" class="btn-submit" style="background: var(--text-main); flex: 1;">PRINT</button>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="button" onclick="generateReview()" class="btn-primary" style="flex: 2;">GENERATE REVIEW</button>
+                    <button type="button" onclick="window.print()" class="btn-secondary" style="flex: 1;">🖨️ PRINT</button>
                 </div>
             </div>
 
@@ -186,7 +190,6 @@
             <div id="printArea">
                 <div id="reviewDoc" class="doc-container"></div>
             </div>
-
         </main>
 
         <!-- 侧边栏 -->
@@ -195,10 +198,34 @@
                 <h3>💡 Tip</h3>
                 <p>Keep reviews positive but honest. Use specific examples to justify scores.</p>
             </div>
-            
-            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+
+            <div class="shopify-promo-card" style="margin-top: 20px;">
+                <span class="shopify-tag">PureWear Store</span>
+                <h3>Reward Top Performers with New Uniforms</h3>
+                <p>Equip your highest-rated cleaners with premium, breathable PureWear workwear to boost team pride and retention.</p>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
+                    View Team Uniforms →
+                </a>
+            </div>
         </aside>
     </div>
+
+    <!-- 页脚 -->
+    <footer class="footer no-print">
+        <div class="footer-content">
+            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">All Tools</a>
+                <a href="../schedule-generator/">Schedule Generator</a>
+                <a href="../hourly-pay-calculator/">Hourly Pay Calculator</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 PureWear Space. Free performance review and management tools.</p>
+        </div>
+    </footer>
 
     <script>
         // 1. 初始化星星点击事件

@@ -3,148 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message Template Generator | PureWear Space</title>
-    <meta name="description" content="Generate professional SMS and email templates for cleaning business.">
+    <title>Cleaning Client SMS & Message Generator | PureWear Space</title>
+    <meta name="description" content="Free professional SMS and message template generator for cleaning businesses. Generate instant appointment confirmations, ETA alerts, review requests, and payment reminders.">
+    <link rel="canonical" href="https://tool.purewearspace.com/tools/message-template-generator/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cleaning Client SMS & Message Generator | PureWear Space">
+    <meta property="og:description" content="Instant client text templates for housekeepers: confirmations, ETA alerts, late notices, review requests, and payment reminders.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/message-template-generator/">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Cleaning Client Message Generator",
+      "url": "https://tool.purewearspace.com/tools/message-template-generator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Generates professional SMS text messages, appointment confirmations, and payment reminders for cleaning contractors."
+    }
+    </script>
+
     <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin: 16px 0 24px;
+        }
+
+        .scenario-btn {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            padding: 10px 12px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-sub);
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .scenario-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-subtle);
+        }
+
+        .scenario-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+        }
+
+        .tone-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tone-tab {
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            font-size: 12px;
+            font-weight: 700;
+            background: var(--bg-surface);
+            color: var(--text-sub);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tone-tab.active {
+            background: var(--text-main);
+            color: #ffffff;
+            border-color: var(--text-main);
+        }
+
+        /* 手机预览气泡 */
+        .phone-mockup {
+            background: #f1f5f9;
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            border: 2px solid var(--border-color);
+        }
+
+        .sms-bubble {
+            background: #059669;
+            color: #ffffff;
+            padding: 16px 20px;
+            border-radius: 18px 18px 4px 18px;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-left: auto;
+            max-width: 90%;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .char-counter {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 8px;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- 顶部主店引流条 -->
+    <div class="top-notice-bar">
+        <span>👕 Premium Workwear, Aprons & Cleaning Uniforms:</span>
+        <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
+    </div>
 
     <!-- 导航栏 -->
     <nav class="navbar">
         <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">Tools</a>
+            <a href="../index.html" class="nav-link active">All Tools</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
-            <a href="../../about.html" class="nav-link">About</a>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 主容器 -->
+    <!-- 页面标题 -->
+    <div class="page-header">
+        <h1>Cleaning Client SMS & Message Generator</h1>
+        <p>Generate polite, professional text messages for booking confirmations, arrival ETAs, late alerts, and 5-star review requests in seconds.</p>
+    </div>
+
+    <!-- 主布局网格 -->
     <div class="main-container">
+        
+        <!-- 左侧配置表单 -->
         <main>
             <div class="card">
-                <div class="form-header">
-                    <h1>Message Template Generator</h1>
-                    <p>Create professional replies for your clients in seconds.</p>
+                <h2 style="font-size: 18px; margin-bottom: 6px;">1. Choose Message Scenario</h2>
+                <div class="scenario-grid">
+                    <button type="button" class="scenario-btn active" onclick="setScenario('confirm', this)">📅 Confirmation</button>
+                    <button type="button" class="scenario-btn" onclick="setScenario('eta', this)">🚗 On the Way / ETA</button>
+                    <button type="button" class="scenario-btn" onclick="setScenario('late', this)">⏰ Running Late</button>
+                    <button type="button" class="scenario-btn" onclick="setScenario('review', this)">⭐ Review Request</button>
+                    <button type="button" class="scenario-btn" onclick="setScenario('invoice', this)">💵 Payment Due</button>
+                    <button type="button" class="scenario-btn" onclick="setScenario('holiday', this)">🎄 Holiday Notice</button>
                 </div>
 
-                <form id="templateForm">
-                    <!-- 1. 选择场景 -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <h2 style="font-size: 18px; margin-bottom: 0;">2. Details & Tone</h2>
+                    <div class="tone-tabs">
+                        <button type="button" class="tone-tab active" onclick="setTone('friendly', this)">Friendly & Warm</button>
+                        <button type="button" class="tone-tab" onclick="setTone('formal', this)">Polite & Formal</button>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                     <div class="input-group">
-                        <label>📋 Select Scenario</label>
-                        <select id="scenario" class="form-control" onchange="updateInputFields()">
-                            <option value="confirm">Booking Confirmation</option>
-                            <option value="late">Running Late</option>
-                            <option value="cancel">Cancellation Notice</option>
-                            <option value="payment">Payment Reminder</option>
-                            <option value="thank">Thank You / Follow-up</option>
-                            <option value="holiday">Holiday Schedule</option>
-                        </select>
+                        <label>👤 Client Name</label>
+                        <input type="text" id="clientName" class="form-control" value="Sarah" placeholder="e.g. Sarah" oninput="renderTemplate()">
                     </div>
 
-                    <!-- 2. 动态输入区域 -->
-                    <div id="dynamicInputs">
-                        <!-- 这里会通过JS动态变化 -->
-                        <div class="input-group">
-                            <label>👤 Client Name</label>
-                            <input type="text" id="clientName" class="form-control" placeholder="e.g. Mrs. Smith">
-                        </div>
-                        
-                        <div class="input-group">
-                            <label>📅 Date / Time</label>
-                            <input type="text" id="dateTime" class="form-control" placeholder="e.g. Tomorrow at 2 PM">
-                        </div>
+                    <div class="input-group">
+                        <label>🧹 Cleaner / Business Name</label>
+                        <input type="text" id="bizName" class="form-control" value="Elena from Sparkle Clean" placeholder="e.g. Maria's Cleaning" oninput="renderTemplate()">
                     </div>
+                </div>
 
-                    <!-- 广告位 -->
-                    <div class="ad-container ad-in-content">Advertisement</div>
-
-                    <button type="button" class="btn-submit" onclick="generateTemplate()">GENERATE MESSAGE</button>
-                </form>
-
-                <!-- 结果区域 -->
-                <div id="resultBox" class="result-box" style="display:none;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <div style="font-size: 14px; font-weight: 800; color: var(--accent); text-transform: uppercase;">Generated Message</div>
-                        <button onclick="copyText()" style="background: var(--accent); color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600;">Copy</button>
-                    </div>
-                    <div id="outputText" style="background: #f9f9f9; padding: 15px; border-radius: 8px; font-size: 15px; line-height: 1.6; color: var(--text-main); border: 1px solid var(--border-color);">
-                        <!-- 生成的内容在这里 -->
-                    </div>
+                <!-- 动态参数 -->
+                <div id="dynamicFields">
+                    <!-- 动态注入字段 -->
                 </div>
             </div>
 
-            <!-- SEO 区域 -->
-            <div class="card" style="margin-top: 20px; padding: 20px;">
-                <h2 style="font-size: 18px; margin-bottom: 10px;">Why Professional Communication Matters</h2>
-                <p style="color: var(--text-sub); font-size: 14px; line-height: 1.6;">
-                    Clear communication builds trust. Using professional templates reduces misunderstandings and makes your cleaning business look more reliable.
+            <!-- SEO 沟通指南 -->
+            <div class="card" style="margin-top: 24px;">
+                <h2 style="font-size: 20px; margin-bottom: 10px;">Why Client Communication Prevents Cancellations</h2>
+                <p style="font-size: 14px; color: var(--text-sub); line-height: 1.6; margin-bottom: 12px;">
+                    Studies show that sending an SMS reminder 24 hours prior and an "On the Way" notification 30 minutes before arrival reduces lockouts and last-minute cancellations by over <strong>40%</strong>.
                 </p>
+                <div style="background: var(--bg-surface); padding: 12px 16px; border-radius: var(--radius-sm); font-size: 13px; color: var(--text-main);">
+                    💡 <strong>Pro Tip:</strong> Always include the link to your payment app (Venmo, Zelle, Square) or Google Business Profile in post-clean follow-ups while satisfaction is at its peak.
+                </div>
             </div>
         </main>
 
-        <!-- 侧边栏 -->
+        <!-- 右侧预览与复制 -->
         <aside class="sidebar">
-            <div class="info-card">
-                <h3>💡 Tip</h3>
-                <p>Always include your name or business name in the message so clients know who is texting.</p>
+            <div class="result-card">
+                <div class="price-title">Ready-to-Send SMS Preview</div>
+
+                <div class="phone-mockup" style="margin-top: 14px;">
+                    <div class="sms-bubble" id="smsOutput">
+                        Hi Sarah! This is Elena from Sparkle Clean. Just confirming our cleaning appointment tomorrow at 10:00 AM. Please let us know if you need any special focus areas. See you soon!
+                    </div>
+                    <div class="char-counter" id="charCount">174 characters (1 SMS part)</div>
+                </div>
+
+                <!-- 操作按钮 -->
+                <div class="action-row" style="margin-top: 24px;">
+                    <button class="btn-primary" onclick="copyMessage()">📋 Copy Text Message</button>
+                    <button class="btn-secondary" onclick="openSmsApp()">📱 Open in SMS App</button>
+                </div>
             </div>
-            
-            <div class="ad-slot ad-sidebar">Ad: 300x250</div>
+
+            <!-- Shopify 电商推荐卡片 -->
+            <div class="shopify-promo-card">
+                <span class="shopify-tag">PureWear Store</span>
+                <h3>Look as Professional as You Sound</h3>
+                <p>Pair professional communication with matching team uniforms. PureWear custom embroidery and durable workwear elevate your brand credibility.</p>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
+                    Explore Uniforms →
+                </a>
+            </div>
         </aside>
+
     </div>
 
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div class="footer-links">
+                <a href="../../index.html">Home</a>
+                <a href="../index.html">All Tools</a>
+                <a href="../schedule-generator/">Schedule Generator</a>
+                <a href="../cleaning-checklist/">Cleaning Checklist</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 PureWear Space. Free communication templates for home service contractors.</p>
+        </div>
+    </footer>
+
     <script>
-        // 根据场景动态改变输入框提示
-        function updateInputFields() {
-            const scenario = document.getElementById('scenario').value;
-            const container = document.getElementById('dynamicInputs');
-            
+        let currentScenario = 'confirm';
+        let currentTone = 'friendly';
+
+        function setScenario(scen, btn) {
+            currentScenario = scen;
+            document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            updateDynamicFields();
+            renderTemplate();
+        }
+
+        function setTone(tone, btn) {
+            currentTone = tone;
+            document.querySelectorAll('.tone-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderTemplate();
+        }
+
+        function updateDynamicFields() {
+            const container = document.getElementById('dynamicFields');
             let html = '';
 
-            // 通用的姓名输入
-            html += `
-                <div class="input-group">
-                    <label>👤 Client Name</label>
-                    <input type="text" id="clientName" class="form-control" placeholder="e.g. Mrs. Smith">
-                </div>
-            `;
-
-            // 根据不同场景显示不同的额外输入框
-            if (scenario === 'confirm' || scenario === 'thank') {
-                html += `
+            if (currentScenario === 'confirm') {
+                html = `
                     <div class="input-group">
-                        <label>📅 Date / Time</label>
-                        <input type="text" id="dateTime" class="form-control" placeholder="e.g. Tomorrow at 2 PM">
+                        <label>📅 Appointment Date & Time</label>
+                        <input type="text" id="dateTime" class="form-control" value="Tomorrow at 10:00 AM" oninput="renderTemplate()">
                     </div>
                 `;
-            } else if (scenario === 'late') {
-                html += `
+            } else if (currentScenario === 'eta') {
+                html = `
                     <div class="input-group">
-                        <label>⏱️ Minutes Late</label>
-                        <input type="text" id="minutesLate" class="form-control" placeholder="e.g. 15">
+                        <label>⏱️ Estimated Arrival Minutes</label>
+                        <input type="text" id="etaMinutes" class="form-control" value="20-25 minutes" oninput="renderTemplate()">
                     </div>
                 `;
-            } else if (scenario === 'cancel') {
-                 html += `
-                    <div class="input-group">
-                        <label>📅 Date of Service</label>
-                        <input type="text" id="dateTime" class="form-control" placeholder="e.g. Today">
+            } else if (currentScenario === 'late') {
+                html = `
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div class="input-group">
+                            <label>⏰ Delay Duration</label>
+                            <input type="text" id="delayTime" class="form-control" value="15-20 minutes" oninput="renderTemplate()">
+                        </div>
+                        <div class="input-group">
+                            <label>🚗 Reason (Optional)</label>
+                            <input type="text" id="delayReason" class="form-control" value="heavy highway traffic" oninput="renderTemplate()">
+                        </div>
                     </div>
                 `;
-            } else if (scenario === 'payment') {
-                 html += `
+            } else if (currentScenario === 'review') {
+                html = `
                     <div class="input-group">
-                        <label>💰 Amount (Optional)</label>
-                        <input type="text" id="amount" class="form-control" placeholder="e.g. $150">
+                        <label>🔗 Google Review / Feedback Link</label>
+                        <input type="text" id="reviewLink" class="form-control" value="g.page/r/your-business/review" oninput="renderTemplate()">
                     </div>
                 `;
-            } else if (scenario === 'holiday') {
-                 html += `
+            } else if (currentScenario === 'invoice') {
+                html = `
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div class="input-group">
+                            <label>💵 Balance Due ($)</label>
+                            <input type="text" id="balanceDue" class="form-control" value="$180.00" oninput="renderTemplate()">
+                        </div>
+                        <div class="input-group">
+                            <label>💳 Payment Method / Handle</label>
+                            <input type="text" id="payMethod" class="form-control" value="Zelle / Venmo @YourHandle" oninput="renderTemplate()">
+                        </div>
+                    </div>
+                `;
+            } else if (currentScenario === 'holiday') {
+                html = `
                     <div class="input-group">
-                        <label>📅 Return Date</label>
-                        <input type="text" id="returnDate" class="form-control" placeholder="e.g. Next Monday">
+                        <label>🎄 Holiday & Closure Dates</label>
+                        <input type="text" id="holidayDates" class="form-control" value="Dec 24th - Dec 26th" oninput="renderTemplate()">
                     </div>
                 `;
             }
@@ -152,54 +326,82 @@
             container.innerHTML = html;
         }
 
-        // 生成模板逻辑
-        function generateTemplate() {
-            const scenario = document.getElementById('scenario').value;
-            const nameInput = document.getElementById('clientName');
-            
-            // 获取姓名，如果没填默认用 "Client"
-            const name = nameInput ? nameInput.value || 'Client' : 'Client';
-            
+        function renderTemplate() {
+            const client = document.getElementById('clientName').value.trim() || 'Client';
+            const biz = document.getElementById('bizName').value.trim() || 'Our Team';
             let message = '';
 
-            if (scenario === 'confirm') {
-                const date = document.getElementById('dateTime').value || 'the scheduled time';
-                message = `Hi ${name}, this is to confirm our cleaning appointment on ${date}. Please let me know if you have any special requests. Thank you!`;
-            } 
-            else if (scenario === 'late') {
-                const mins = document.getElementById('minutesLate').value || 'a few';
-                message = `Hi ${name}, I am running about ${mins} minutes late due to traffic/previous job. I apologize for the delay and will be there shortly. Thank you for your patience.`;
-            } 
-            else if (scenario === 'cancel') {
-                const date = document.getElementById('dateTime').value || 'today';
-                message = `Hi ${name}, I am very sorry but I need to reschedule our cleaning for ${date} due to an emergency. Are you available [Insert New Time]? I apologize for any inconvenience.`;
-            } 
-            else if (scenario === 'payment') {
-                const amount = document.getElementById('amount').value;
-                const amountText = amount ? ` of $${amount}` : '';
-                message = `Hi ${name}, this is a friendly reminder regarding the invoice for our recent cleaning service${amountText}. Please let me know when payment has been sent. Thank you!`;
-            } 
-            else if (scenario === 'thank') {
-                const date = document.getElementById('dateTime').value || 'today';
-                message = `Hi ${name}, thank you for trusting us with your cleaning needs ${date}. We hope you are enjoying your fresh space! Let us know if you need anything else.`;
-            } 
-            else if (scenario === 'holiday') {
-                const returnDate = document.getElementById('returnDate').value || 'next week';
-                message = `Hi ${name}, please note that I will be away for the holidays starting tomorrow. I will be back and available for bookings on ${returnDate}. Happy Holidays!`;
+            if (currentScenario === 'confirm') {
+                const date = (document.getElementById('dateTime') && document.getElementById('dateTime').value) || 'Tomorrow';
+                if (currentTone === 'friendly') {
+                    message = `Hi ${client}! This is ${biz}. Just confirming our cleaning appointment on ${date}. Please let us know if you need any special focus areas. Looking forward to making your home sparkle! ✨`;
+                } else {
+                    message = `Hello ${client}, this is ${biz} confirming your scheduled cleaning appointment for ${date}. Please reply to confirm or let us know if any adjustments are needed. Thank you.`;
+                }
+            } else if (currentScenario === 'eta') {
+                const eta = (document.getElementById('etaMinutes') && document.getElementById('etaMinutes').value) || '20 minutes';
+                if (currentTone === 'friendly') {
+                    message = `Hi ${client}! ${biz} is on the way to your home. Our estimated arrival time is in about ${eta}. See you shortly! 🚗`;
+                } else {
+                    message = `Hello ${client}, our cleaning team (${biz}) is currently en route to your property. Estimated arrival is in ${eta}. Thank you.`;
+                }
+            } else if (currentScenario === 'late') {
+                const delay = (document.getElementById('delayTime') && document.getElementById('delayTime').value) || '15-20 minutes';
+                const reason = (document.getElementById('delayReason') && document.getElementById('delayReason').value) || 'unexpected traffic';
+                if (currentTone === 'friendly') {
+                    message = `Hi ${client}, so sorry for the delay! We ran into ${reason} and will be running about ${delay} later than planned. We'll be there as quickly and safely as possible!`;
+                } else {
+                    message = `Dear ${client}, please accept our apologies as our team is delayed by approximately ${delay} due to ${reason}. We will notify you immediately upon arrival. Thank you for your patience.`;
+                }
+            } else if (currentScenario === 'review') {
+                const link = (document.getElementById('reviewLink') && document.getElementById('reviewLink').value) || '';
+                if (currentTone === 'friendly') {
+                    message = `Hi ${client}! Thank you so much for having ${biz} clean your home today! If you loved the results, would you mind leaving us a quick 5-star review here? ${link} It means the world to our small business! 💖`;
+                } else {
+                    message = `Hello ${client}, thank you for choosing ${biz}. We hope everything met your highest expectations. If you were satisfied with our service, we would appreciate a brief review: ${link}. Thank you for your continued business.`;
+                }
+            } else if (currentScenario === 'invoice') {
+                const bal = (document.getElementById('balanceDue') && document.getElementById('balanceDue').value) || '$0.00';
+                const pay = (document.getElementById('payMethod') && document.getElementById('payMethod').value) || 'card';
+                if (currentTone === 'friendly') {
+                    message = `Hi ${client}! Today's cleaning is complete and everything is all fresh! The balance due is ${bal}. You can pay via ${pay}. Thank you again for having us! 😊`;
+                } else {
+                    message = `Hello ${client}, your cleaning service has been completed. The remaining balance of ${bal} is now due. Payment can be submitted via ${pay}. Thank you for your business.`;
+                }
+            } else if (currentScenario === 'holiday') {
+                const dates = (document.getElementById('holidayDates') && document.getElementById('holidayDates').value) || 'the holidays';
+                if (currentTone === 'friendly') {
+                    message = `Happy Holidays ${client}! 🎄 ${biz} will be closed from ${dates} to spend time with family. Please reach out early if you'd like to book a pre-holiday spruce-up!`;
+                } else {
+                    message = `Dear ${client}, please be advised that ${biz} will observe holiday closures from ${dates}. Please contact us in advance to reschedule your regular cleaning appointments.`;
+                }
             }
 
-            // 显示结果
-            document.getElementById('outputText').innerText = message;
-            document.getElementById('resultBox').style.display = 'block';
+            document.getElementById('smsOutput').innerText = message;
+            
+            const len = message.length;
+            const parts = Math.ceil(len / 160) || 1;
+            document.getElementById('charCount').innerText = `${len} characters (${parts} SMS segment${parts > 1 ? 's' : ''})`;
         }
 
-        // 复制功能
-        function copyText() {
-            const text = document.getElementById('outputText').innerText;
+        function copyMessage() {
+            const text = document.getElementById('smsOutput').innerText;
             navigator.clipboard.writeText(text).then(() => {
-                alert('Copied to clipboard!');
+                alert("✅ Message copied to clipboard!");
+            }).catch(() => {
+                alert("Failed to copy message.");
             });
         }
+
+        function openSmsApp() {
+            const text = encodeURIComponent(document.getElementById('smsOutput').innerText);
+            window.open(`sms:?&body=${text}`, '_blank');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateDynamicFields();
+            renderTemplate();
+        });
     </script>
 </body>
 </html>
