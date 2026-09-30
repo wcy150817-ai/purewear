@@ -1,10 +1,17 @@
-// js/render-tools.js - Omni Calculator Aesthetic Card Renderer
+function getToolUrl(tool) {
+    if (typeof window !== 'undefined' && window.location.protocol === 'file:') {
+        const isSubDir = window.location.pathname.includes('/tools/');
+        return isSubDir ? `${tool.id}/index.html` : `tools/${tool.id}/index.html`;
+    }
+    return tool.url || `/tools/${tool.id}/`;
+}
 
 function createToolCard(tool) {
     const isHot = tool.id === 'cleaning-quote-calculator' || tool.id === 'dilution-calculator' || tool.id === 'schedule-generator';
+    const targetUrl = getToolUrl(tool);
     
     return `
-        <a href="${tool.url}" class="omni-tool-card" data-category="${tool.category || 'all'}">
+        <a href="${targetUrl}" class="omni-tool-card" data-category="${tool.category || 'all'}">
             <div>
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
                     <span style="font-size: 24px; line-height: 1;">${tool.icon}</span>
