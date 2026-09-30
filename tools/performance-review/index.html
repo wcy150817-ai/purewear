@@ -2,357 +2,387 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Performance Review | PureWear Space</title>
-    <meta name="description" content="Printable cleaning staff performance evaluation form.">
-    <link rel="stylesheet" href="../../css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Staff Performance Review Generator | PureWear Space</title>
+    <meta name="description" content="Generate standardized employee performance reviews, 4-point custodial scorecards, and printable PDF evaluation sheets for cleaning businesses.">
+    <link rel="canonical" href="https://tool.purewearspace.com/tools/performance-review/">
     
+    <!-- Open Graph -->
+    <meta property="og:title" content="Staff Performance Review Generator | PureWear Space">
+    <meta property="og:description" content="Construct objective, standardized performance reviews and scorecards for cleaners and team leads.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/performance-review/">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Staff Performance Review Generator",
+      "url": "https://tool.purewearspace.com/tools/performance-review/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Interactive employee performance evaluation and scorecard generator for commercial cleaning companies."
+    }
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
     <style>
-        /* 评分区域样式 */
-        .review-section {
-            background: #fff;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .review-title {
-            font-weight: 700;
-            margin-bottom: 10px;
+        .star-rating-box {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        /* 星星评分组件 */
-        .star-rating {
-            font-size: 24px;
-            color: #ddd; /* 默认灰色 */
+            gap: 6px;
+            font-size: 20px;
             cursor: pointer;
             user-select: none;
+            color: #DFE2EB;
         }
-        
-        .star-rating .star {
-            margin-left: 5px;
-            transition: color 0.2s;
+        .star-rating-box span.active {
+            color: #F59E0B;
         }
-        
-        .star-rating .star.active {
-            color: #fdcb6e; /* 选中金色 */
-        }
-
-        /* 打印文档样式 */
-        .doc-container {
-            background: #fff;
-            padding: 40px;
-            border: 1px solid var(--border-color);
-            margin-top: 20px;
-            display: none; /* 默认隐藏 */
-        }
-
-        .doc-header {
-            text-align: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-
-        .doc-row {
-            margin-bottom: 15px;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        
-        .doc-label {
-            font-weight: 700;
-            display: inline-block;
-            width: 120px;
-        }
-        
-        .doc-field {
-            border-bottom: 1px solid #ccc;
-            display: inline-block;
-            min-width: 200px;
-            text-align: center;
-        }
-        
-        .doc-score-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        
-        .doc-score-table td {
-            border: 1px solid #eee;
-            padding: 8px;
-        }
-        
-        .doc-score-val {
-            font-weight: 800;
-            color: var(--primary);
+        .eval-paper {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-top: 24px;
+            box-shadow: var(--shadow-sm);
+            font-size: 13px;
         }
 
         @media print {
-            body * { visibility: hidden; }
-            #printArea, #printArea * { visibility: visible; }
-            #printArea {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
+            .navbar, .top-notice-bar, .omni-calculator-aside, .omni-footer-actions, .footer, .omni-breadcrumb, .no-print {
+                display: none !important;
             }
-            .no-print { display: none !important; }
+            .omni-layout-grid {
+                display: block !important;
+                padding: 0 !important;
+            }
+            .eval-paper {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
         }
     </style>
 </head>
 <body>
 
     <!-- 顶部主店引流条 -->
-    <div class="top-notice-bar no-print">
-        <span>👕 Professional Housekeeping Uniforms & Cleaning Workwear:</span>
+    <div class="top-notice-bar">
+        <span>👕 High-Mobility Cleaning Uniforms & Bleach-Resistant Aprons:</span>
         <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
     </div>
 
-    <!-- 导航栏 -->
-    <nav class="navbar no-print">
-        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+    <!-- 导航栏 (Omni 风格) -->
+    <nav class="navbar">
+        <a href="../../index.html" class="brand">Pure<span>Wear</span> <span style="font-weight: 400; color: var(--text-muted); font-size: 14px; margin-left: 2px;">Calculators</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">All Tools</a>
+            <a href="../index.html" class="nav-link active">All Calculators</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
             <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 主容器 -->
-    <div class="main-container">
-        <main>
-            <!-- 输入表单 -->
-            <div class="card no-print">
-                <div class="form-header">
-                    <h1>Performance Review</h1>
-                    <p>Rate your employee's performance and generate a printable review form.</p>
-                </div>
+    <!-- 双栏工作台网格 (Omni 布局) -->
+    <div class="omni-layout-grid">
+        
+        <!-- 左侧：学术文章与评估表单 -->
+        <article class="omni-article">
+            <!-- 面包屑 -->
+            <nav class="omni-breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span class="sep">/</span>
+                <a href="../index.html">All Calculators</a>
+                <span class="sep">/</span>
+                <span>Performance Review Generator</span>
+            </nav>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div class="input-group">
-                        <label>Employee Name</label>
-                        <input type="text" id="empName" class="form-control" placeholder="e.g. Sarah Jones">
-                    </div>
-                    <div class="input-group">
-                        <label>Review Period</label>
-                        <input type="text" id="period" class="form-control" placeholder="e.g. October 2023">
-                    </div>
-                </div>
-
-                <!-- 评分项目 -->
-                <div class="review-section">
-                    <div class="review-title">
-                        <span>1. Quality of Work (Thoroughness)</span>
-                        <div class="star-rating" data-rating="quality"></div>
-                    </div>
-                </div>
-
-                <div class="review-section">
-                    <div class="review-title">
-                        <span>2. Punctuality (On-time arrival)</span>
-                        <div class="star-rating" data-rating="punctuality"></div>
-                    </div>
-                </div>
-
-                <div class="review-section">
-                    <div class="review-title">
-                        <span>3. Attitude (Professionalism)</span>
-                        <div class="star-rating" data-rating="attitude"></div>
-                    </div>
-                </div>
-
-                <div class="review-section">
-                    <div class="review-title">
-                        <span>4. Safety & Equipment Care</span>
-                        <div class="star-rating" data-rating="safety"></div>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label>Manager's Comments</label>
-                    <textarea id="comments" class="form-control" rows="3" placeholder="Optional: Great job on the deep cleaning last week..."></textarea>
-                </div>
-
-                <div style="display: flex; gap: 10px; margin-top: 20px;">
-                    <button type="button" onclick="generateReview()" class="btn-primary" style="flex: 2;">GENERATE REVIEW</button>
-                    <button type="button" onclick="window.print()" class="btn-secondary" style="flex: 1;">🖨️ PRINT</button>
-                </div>
+            <h1>Staff Performance Review Generator</h1>
+            
+            <div class="omni-author-bar">
+                <span class="author-badge">Custodial HR Management</span>
+                <span>Created by PureWear Workforce Desk</span>
+                <span class="sep">•</span>
+                <span>Updated March 2026</span>
             </div>
 
-            <!-- 打印区域 -->
-            <div id="printArea">
-                <div id="reviewDoc" class="doc-container"></div>
-            </div>
-        </main>
+            <p>
+                Staff turnover in commercial and domestic cleaning ranges between <strong>200% and 400% annually</strong> across North America. Regular, structured quarterly reviews provide team members with objective feedback, clear expectations for wage increases, and motivation to maintain quality standards.
+            </p>
 
-        <!-- 侧边栏 -->
-        <aside class="sidebar no-print">
-            <div class="info-card">
-                <h3>💡 Tip</h3>
-                <p>Keep reviews positive but honest. Use specific examples to justify scores.</p>
+            <div class="eval-paper" id="evalDoc" style="display: none;">
+                <!-- JS 动态生成正式考核单 -->
             </div>
 
-            <div class="shopify-promo-card" style="margin-top: 20px;">
-                <span class="shopify-tag">PureWear Store</span>
-                <h3>Reward Top Performers with New Uniforms</h3>
-                <p>Equip your highest-rated cleaners with premium, breathable PureWear workwear to boost team pride and retention.</p>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
-                    View Team Uniforms →
-                </a>
+            <h2>4 Pillars of Cleaning Staff Evaluations</h2>
+            <div class="omni-table-wrapper">
+                <table class="omni-table">
+                    <thead>
+                        <tr>
+                            <th>Performance Pillar</th>
+                            <th>Weight</th>
+                            <th>Evaluation Focus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Work Quality & Detail</strong></td>
+                            <td>35%</td>
+                            <td>Streak-free glass, clean bathroom grout, vacuumed corners</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Punctuality & Reliability</strong></td>
+                            <td>25%</td>
+                            <td>On-time client arrivals, attendance consistency</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Professional Attitude</strong></td>
+                            <td>20%</td>
+                            <td>Client communication, respect for coworker property, uniform cleanliness</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Safety & Equipment Care</strong></td>
+                            <td>20%</td>
+                            <td>Proper chemical dilution, PPE usage, vacuum filter maintenance</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="omni-faq-accordion">
+                <details class="omni-faq-item">
+                    <summary>How often should cleaners receive performance reviews?</summary>
+                    <div class="omni-faq-answer">
+                        New technicians should receive an initial review at <strong>30 and 90 days</strong>, followed by structured semi-annual or annual reviews tied directly to wage step increases.
+                    </div>
+                </details>
+
+                <details class="omni-faq-item">
+                    <summary>How can I print this evaluation for employee files?</summary>
+                    <div class="omni-faq-answer">
+                        Click the <strong>Generate & Print Review</strong> button in the right sidebar. The printable layout hides website UI and produces a clean signature sheet for manager and technician sign-off.
+                    </div>
+                </details>
+            </div>
+
+            <!-- 矩阵关联工具推荐 -->
+            <div style="margin-top: 40px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
+                <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">Related Free Calculators:</div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="../hourly-pay-calculator/" class="omni-action-btn">💰 Hourly Pay Calculator</a>
+                    <a href="../schedule-generator/" class="omni-action-btn">📅 Weekly Schedule</a>
+                    <a href="../tip-calculator/" class="omni-action-btn">💵 Tip Split Calculator</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 右侧：Omni 科学计算器白底卡片 (Calculator Widget) -->
+        <aside class="omni-calculator-aside">
+            <div class="omni-calculator-widget omni-calculator-sticky">
+                
+                <div class="omni-widget-header">
+                    <span class="omni-widget-title">Performance Scorecard</span>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--omni-blue); background: var(--omni-blue-light); padding: 2px 6px; border-radius: 4px;">SCORECARD</span>
+                </div>
+
+                <!-- 分组 1: Employee Details -->
+                <div class="omni-group-title">Employee Information</div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Technician name</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="empName" class="omni-input" value="Maria Garcia" oninput="updateReview()">
+                    </div>
+                </div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Review period</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="evalPeriod" class="omni-input" value="Q1 2026 Evaluation" oninput="updateReview()">
+                    </div>
+                </div>
+
+                <!-- 分组 2: Scorecard Ratings -->
+                <div class="omni-group-title">Ratings (1 to 5 Stars)</div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>1. Cleaning Quality</span>
+                        <div class="star-rating-box" id="stars-quality" data-key="quality"></div>
+                    </div>
+                </div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>2. Punctuality</span>
+                        <div class="star-rating-box" id="stars-punctuality" data-key="punctuality"></div>
+                    </div>
+                </div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>3. Attitude & Conduct</span>
+                        <div class="star-rating-box" id="stars-attitude" data-key="attitude"></div>
+                    </div>
+                </div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>4. Safety & Equipment</span>
+                        <div class="star-rating-box" id="stars-safety" data-key="safety"></div>
+                    </div>
+                </div>
+
+                <!-- 分组 3: Summary Score -->
+                <div class="omni-group-title">Evaluation Result</div>
+
+                <div class="omni-row result">
+                    <div class="omni-label">
+                        <span style="font-weight: 700; color: var(--omni-blue);">Total Score</span>
+                        <span id="gradeBadge" style="font-size: 11px; font-weight: 700; color: #10B981;">Outstanding</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="scoreDisplay" class="omni-input" readonly value="19 / 20 (95%)">
+                    </div>
+                </div>
+
+                <!-- Omni 底部快捷操作条 -->
+                <div class="omni-footer-actions">
+                    <button type="button" class="omni-action-btn" onclick="generateAndShowDoc()">📄 View Document</button>
+                    <button type="button" class="omni-action-btn" onclick="window.print()" style="border-color: var(--omni-blue); color: var(--omni-blue); font-weight: 700;">🖨️ Print Sheet</button>
+                </div>
+
             </div>
         </aside>
+
     </div>
 
+    <!-- Toast 弹窗容器 -->
+    <div id="toastNotification" class="toast-notification"></div>
+
     <!-- 页脚 -->
-    <footer class="footer no-print">
+    <footer class="footer">
         <div class="footer-content">
-            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div>
+                <div class="footer-brand">Pure<span style="color: var(--omni-blue);">Wear</span> Calculators</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Precision utility tools for independent cleaners and commercial maid services.</div>
+            </div>
             <div class="footer-links">
                 <a href="../../index.html">Home</a>
-                <a href="../index.html">All Tools</a>
-                <a href="../schedule-generator/">Schedule Generator</a>
-                <a href="../hourly-pay-calculator/">Hourly Pay Calculator</a>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+                <a href="../index.html">All Calculators</a>
+                <a href="../../resources.html">Resources</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Workwear Store</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free performance review and management tools.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
         </div>
     </footer>
 
+    <!-- 逻辑脚本 -->
     <script>
-        // 1. 初始化星星点击事件
         const ratings = {
-            quality: 0,
-            punctuality: 0,
-            attitude: 0,
-            safety: 0
+            quality: 5,
+            punctuality: 5,
+            attitude: 5,
+            safety: 4
         };
 
-        document.querySelectorAll('.star-rating').forEach(container => {
-            const key = container.dataset.rating;
-            
-            // 创建5个星星
-            for(let i=1; i<=5; i++) {
-                const star = document.createElement('span');
-                star.className = 'star';
-                star.innerHTML = '★';
-                star.dataset.value = i;
-                
-                star.onclick = function() {
-                    // 更新数据
-                    ratings[key] = i;
-                    // 更新UI
-                    updateStars(container, i);
-                };
-                
-                container.appendChild(star);
-            }
-        });
-
-        function updateStars(container, value) {
-            container.querySelectorAll('.star').forEach(star => {
-                if(parseInt(star.dataset.value) <= value) {
-                    star.classList.add('active');
-                } else {
-                    star.classList.remove('active');
+        function initStars() {
+            ['quality', 'punctuality', 'attitude', 'safety'].forEach(key => {
+                const box = document.getElementById(`stars-${key}`);
+                let html = '';
+                for (let i = 1; i <= 5; i++) {
+                    html += `<span class="star ${i <= ratings[key] ? 'active' : ''}" onclick="setRating('${key}', ${i})">★</span>`;
                 }
+                box.innerHTML = html;
             });
+            updateReview();
         }
 
-        // 2. 生成考核单
-        function generateReview() {
-            const name = document.getElementById('empName').value || '________________________';
-            const period = document.getElementById('period').value || '________________________';
-            const comments = document.getElementById('comments').value || 'No additional comments.';
+        function setRating(key, val) {
+            ratings[key] = val;
+            initStars();
+        }
 
-            // 计算总分
+        function updateReview() {
             const total = ratings.quality + ratings.punctuality + ratings.attitude + ratings.safety;
-            const maxScore = 20;
-            const percentage = Math.round((total / maxScore) * 100);
+            const pct = Math.round((total / 20) * 100);
 
-            let grade = "Needs Improvement";
-            if(percentage >= 90) grade = "Outstanding";
-            else if(percentage >= 75) grade = "Exceeds Expectations";
-            else if(percentage >= 60) grade = "Meets Expectations";
-            else if(percentage >= 40) grade = "Below Expectations";
+            let grade = "Outstanding";
+            let color = "#10B981";
+            if (pct < 60) { grade = "Needs Improvement"; color = "#DC2626"; }
+            else if (pct < 75) { grade = "Meets Expectations"; color = "#3B68FC"; }
+            else if (pct < 90) { grade = "Exceeds Expectations"; color = "#059669"; }
 
-            const today = new Date().toLocaleDateString('en-US');
+            document.getElementById('scoreDisplay').value = `${total} / 20 (${pct}%)`;
+            const badge = document.getElementById('gradeBadge');
+            badge.innerText = grade;
+            badge.style.color = color;
+        }
 
-            const html = `
-                <div class="doc-header">
-                    <h1 style="margin:0; font-size: 24px;">EMPLOYEE PERFORMANCE REVIEW</h1>
-                    <div style="font-size: 12px; color: #666; margin-top: 5px;">Confidential Document</div>
+        function generateAndShowDoc() {
+            const name = document.getElementById('empName').value || 'Technician';
+            const period = document.getElementById('evalPeriod').value || 'Q1 2026';
+            const total = ratings.quality + ratings.punctuality + ratings.attitude + ratings.safety;
+            const pct = Math.round((total / 20) * 100);
+
+            const doc = document.getElementById('evalDoc');
+            doc.innerHTML = `
+                <div style="text-align: center; border-bottom: 2px solid #000; padding-bottom: 12px; margin-bottom: 16px;">
+                    <div style="font-size: 16px; font-weight: 800; text-transform: uppercase;">EMPLOYEE PERFORMANCE EVALUATION</div>
+                    <div style="font-size: 11px; color: var(--text-muted);">PureWear Operations Management • Confidential</div>
                 </div>
-
-                <div class="doc-row">
-                    <span class="doc-label">Employee:</span>
-                    <span class="doc-field">${name}</span>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 13px;">
+                    <span><strong>Employee:</strong> ${name}</span>
+                    <span><strong>Period:</strong> ${period}</span>
+                    <span><strong>Date:</strong> ${new Date().toLocaleDateString('en-US')}</span>
                 </div>
-                <div class="doc-row">
-                    <span class="doc-label">Period:</span>
-                    <span class="doc-field">${period}</span>
-                </div>
-
-                <h3 style="margin-top: 20px; margin-bottom: 10px;">Evaluation Scores</h3>
-                <table class="doc-score-table">
-                    <tr>
-                        <td>Quality of Work</td>
-                        <td width="80" align="center">${ratings.quality} / 5</td>
-                    </tr>
-                    <tr>
-                        <td>Punctuality</td>
-                        <td align="center">${ratings.punctuality} / 5</td>
-                    </tr>
-                    <tr>
-                        <td>Attitude</td>
-                        <td align="center">${ratings.attitude} / 5</td>
-                    </tr>
-                    <tr>
-                        <td>Safety & Equipment</td>
-                        <td align="center">${ratings.safety} / 5</td>
-                    </tr>
-                    <tr style="font-weight: 700; background: #f9f9f9;">
-                        <td>TOTAL SCORE</td>
-                        <td align="center">${total} / 20</td>
-                    </tr>
+                <table class="omni-table" style="margin-bottom: 16px;">
+                    <thead><tr><th>Pillar</th><th style="width: 80px; text-align: center;">Score</th></tr></thead>
+                    <tbody>
+                        <tr><td>Cleaning Quality & Thoroughness</td><td align="center">${ratings.quality} / 5</td></tr>
+                        <tr><td>Punctuality & Arrival Times</td><td align="center">${ratings.punctuality} / 5</td></tr>
+                        <tr><td>Customer Attitude & Professionalism</td><td align="center">${ratings.attitude} / 5</td></tr>
+                        <tr><td>Equipment & Chemical Safety Care</td><td align="center">${ratings.safety} / 5</td></tr>
+                        <tr style="font-weight: 800; background: var(--bg-surface);"><td>TOTAL SCORE</td><td align="center">${total} / 20 (${pct}%)</td></tr>
+                    </tbody>
                 </table>
-
-                <div style="background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0;">
-                    <div style="font-size: 14px; color: #666;">Overall Rating</div>
-                    <div style="font-size: 24px; font-weight: 800; color: var(--primary);">${grade}</div>
-                    <div style="font-size: 12px;">${percentage}% Score</div>
-                </div>
-
-                <h3 style="margin-top: 20px;">Manager Comments</h3>
-                <p style="line-height: 1.6; border: 1px solid #eee; padding: 10px; min-height: 60px;">${comments}</p>
-
-                <div style="margin-top: 60px; display: flex; justify-content: space-between;">
-                    <div style="width: 45%;">
-                        <hr style="border: none; border-bottom: 1px solid #000;">
-                        <div style="font-size: 12px; color: #666;">Manager Signature / Date</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; padding-top: 20px; border-top: 1px dashed #ccc;">
+                    <div>
+                        <div style="height: 1px; background: #000; margin-bottom: 6px;"></div>
+                        <div style="font-size: 11px; font-weight: 700;">Manager Signature / Date</div>
                     </div>
-                    <div style="width: 45%;">
-                        <hr style="border: none; border-bottom: 1px solid #000;">
-                        <div style="font-size: 12px; color: #666;">Employee Signature / Date</div>
+                    <div>
+                        <div style="height: 1px; background: #000; margin-bottom: 6px;"></div>
+                        <div style="font-size: 11px; font-weight: 700;">Employee Signature / Date</div>
                     </div>
                 </div>
             `;
-
-            const doc = document.getElementById('reviewDoc');
-            doc.innerHTML = html;
             doc.style.display = 'block';
-            
-            // 滚动到文档
             doc.scrollIntoView({ behavior: 'smooth' });
+            showToast("📄 Document generated below.");
         }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotification');
+            if (!toast) return;
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initStars();
+        });
     </script>
 </body>
 </html>

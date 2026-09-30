@@ -14,70 +14,6 @@
     <meta property="og:type" content="website">
 
     <link rel="stylesheet" href="../css/style.css">
-    
-    <style>
-        .filter-search-bar {
-            max-width: 640px;
-            margin: 0 auto 28px;
-            display: flex;
-            gap: 10px;
-            position: relative;
-        }
-
-        .filter-search-input {
-            width: 100%;
-            padding: 16px 20px 16px 50px;
-            font-size: 15px;
-            border-radius: 999px;
-            border: 2px solid var(--border-color);
-            background: #ffffff;
-            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
-            outline: none;
-            transition: all 0.2s;
-        }
-
-        .filter-search-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.18);
-        }
-
-        .filter-search-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 18px;
-            color: var(--text-sub);
-            pointer-events: none;
-        }
-
-        .filter-tags {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 36px;
-        }
-
-        .filter-pill {
-            padding: 8px 18px;
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-sub);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .filter-pill:hover, .filter-pill.active {
-            background: var(--primary);
-            color: #ffffff;
-            border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
-        }
-    </style>
 </head>
 <body>
 
@@ -87,110 +23,124 @@
         <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
     </div>
 
-    <!-- 导航栏 -->
+    <!-- 导航栏 (Omni 风格) -->
     <nav class="navbar">
-        <a href="../index.html" class="brand">✨ Pure<span>Wear Space</span> <span style="font-size: 11px; background: #dbeafe; color: #1e40af; padding: 2px 8px; border-radius: 999px; font-weight: 700;">ALL TOOLS</span></a>
+        <a href="../index.html" class="brand">Pure<span>Wear</span> <span style="font-weight: 400; color: var(--text-muted); font-size: 14px; margin-left: 2px;">Calculators</span></a>
         <div class="nav-menu">
             <a href="../index.html" class="nav-link">Home</a>
-            <a href="index.html" class="nav-link active">All Tools</a>
+            <a href="index.html" class="nav-link active">All Calculators</a>
             <a href="../resources.html" class="nav-link">Resources</a>
             <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 页面标题 -->
-    <div class="page-header">
-        <h1>All Cleaning Calculators & Utilities</h1>
-        <p>14 free professional business calculators, shift planners, and utility generators for home cleaners, maids, and facility managers.</p>
-    </div>
-
-    <!-- 主内容区 -->
-    <main style="max-width: 1140px; margin: 30px auto 60px; padding: 0 20px; width: 100%;">
+    <!-- 页面主体容器 -->
+    <main style="max-width: 1200px; margin: 0 auto; padding: 28px 20px 60px; width: 100%;">
         
-        <!-- 搜索栏 -->
-        <div class="filter-search-bar">
-            <span class="filter-search-icon">🔍</span>
-            <input type="text" id="toolSearch" class="filter-search-input" placeholder="Search calculators (e.g. quote, schedule, dilution, checklist, wage)..." oninput="filterTools()">
+        <!-- 面包屑导航 -->
+        <nav class="omni-breadcrumb">
+            <a href="../index.html">Home</a>
+            <span class="sep">/</span>
+            <span>All Calculators</span>
+        </nav>
+
+        <!-- 页面标题与学术导言 -->
+        <div class="page-header" style="margin-bottom: 24px;">
+            <h1>All Cleaning Calculators & Utilities</h1>
+            <div class="omni-author-bar" style="margin-bottom: 16px;">
+                <span class="author-badge">ISSA & OSHA Calibrated</span>
+                <span>14 Scientific Estimators & Operational Utilities</span>
+                <span class="sep">•</span>
+                <span>Updated 2026</span>
+            </div>
+            <p style="color: var(--text-muted); max-width: 800px; font-size: 15px; line-height: 1.6;">
+                Every calculator in our directory is built with strict mathematical models and current 2026 labor data. Select a category below or search directly to compute bids, chemical formulas, employee shifts, or tips instantly.
+            </p>
         </div>
 
-        <!-- 标签筛选器 -->
-        <div class="filter-tags">
-            <button class="filter-pill active" onclick="setCategoryFilter('all', this)">⚡ All 14 Tools</button>
-            <button class="filter-pill" onclick="setCategoryFilter('popular', this)">⭐ Popular Flagships</button>
-            <button class="filter-pill" onclick="setCategoryFilter('pricing', this)">💵 Pricing & Money</button>
-            <button class="filter-pill" onclick="setCategoryFilter('team', this)">👥 Crew & Scheduling</button>
-            <button class="filter-pill" onclick="setCategoryFilter('safety', this)">🧪 Chemical & Safety</button>
+        <!-- 居中搜索框 -->
+        <div class="omni-search-container" style="margin: 28px 0;">
+            <span class="omni-search-icon">🔍</span>
+            <input type="text" id="toolSearch" class="omni-search-input" placeholder="Search calculators (e.g. quote, schedule, dilution, wages, tips)..." oninput="handleSearch(this.value)">
         </div>
 
-        <!-- 工具卡片容器 -->
+        <!-- 分类过滤标签 -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px;" id="catPills">
+            <button class="omni-action-btn" id="btn-all" style="background: var(--omni-blue); color: #fff; border-color: var(--omni-blue);" onclick="filterTools('all')">All Calculators (14)</button>
+            <button class="omni-action-btn" id="btn-popular" onclick="filterTools('popular')">⭐ Popular Flagships</button>
+            <button class="omni-action-btn" id="btn-pricing" onclick="filterTools('pricing')">🧹 Quotes & Pricing</button>
+            <button class="omni-action-btn" id="btn-ops" onclick="filterTools('ops')">📅 Shifts & Operations</button>
+            <button class="omni-action-btn" id="btn-safety" onclick="filterTools('safety')">🧪 Chemical & Safety</button>
+        </div>
+
+        <!-- 工具卡片网格 -->
         <div id="all-tools-container" class="card-grid">
             <!-- 由 tools-data.js 和 render-tools.js 自动生成 -->
         </div>
 
-        <!-- 底部电商带货推荐横幅 (带呼吸发光效果) -->
-        <div class="shopify-promo-card cta-glow" style="margin-top: 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; padding: 36px 32px;">
-            <div>
-                <span class="shopify-tag">PureWear Store</span>
-                <h3 style="font-size: 24px; font-weight: 900; margin-bottom: 8px;">Upgrade Your Team's Daily Uniforms</h3>
-                <p style="margin-bottom: 0; max-width: 650px; line-height: 1.6;">
-                    Lightweight, breathable, and chemical-resistant workwear designed specifically for cleaning professionals and housekeeping crews. Look sharp and stay protected.
+        <!-- Omni 风格的主店推荐卡片 -->
+        <div style="background: #FFFFFF; border: 1px solid var(--omni-blue-border); border-left: 4px solid var(--omni-blue); border-radius: var(--radius-md); padding: 28px 32px; margin-top: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: var(--shadow-sm);">
+            <div style="max-width: 720px;">
+                <div style="font-size: 11px; font-weight: 800; color: var(--omni-blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">PureWear Store • Gear for Pros</div>
+                <h3 style="font-size: 20px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Upgrade Your Team's Daily Uniforms</h3>
+                <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 0; line-height: 1.6;">
+                    Lightweight, breathable, and bleach-resistant workwear designed specifically for cleaning professionals and housekeeping crews. Look sharp and stay protected.
                 </p>
             </div>
-            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn" style="width: auto; padding: 16px 32px; white-space: nowrap; font-size: 15px;">
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn" style="padding: 12px 24px; font-size: 14px; white-space: nowrap;">
                 Shop Cleaning Gear →
             </a>
         </div>
+
     </main>
 
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div>
+                <div class="footer-brand">Pure<span style="color: var(--omni-blue);">Wear</span> Calculators</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Precision utility tools for independent cleaners and commercial maid services.</div>
+            </div>
             <div class="footer-links">
                 <a href="../index.html">Home</a>
-                <a href="index.html">All Tools</a>
+                <a href="index.html">All Calculators</a>
                 <a href="../resources.html">Resources</a>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Workwear Store</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free tools for cleaning professionals.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
         </div>
     </footer>
 
-    <!-- 数据与渲染脚本 -->
+    <!-- 关键脚本 -->
     <script src="../js/tools-data.js"></script>
     <script src="../js/render-tools.js"></script>
     <script>
-        let activeCat = 'all';
+        let selectedCategory = 'all';
 
-        function setCategoryFilter(cat, btn) {
-            activeCat = cat;
-            document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            filterTools();
-        }
-
-        function filterTools() {
-            const query = document.getElementById('toolSearch').value.toLowerCase().trim();
-            const container = document.getElementById('all-tools-container');
+        function filterTools(cat) {
+            selectedCategory = cat;
             
-            const filtered = TOOLS_DATA.filter(tool => {
-                const matchesQuery = tool.title.toLowerCase().includes(query) || tool.desc.toLowerCase().includes(query);
-                
-                if (activeCat === 'all') return matchesQuery;
-                if (activeCat === 'popular') return matchesQuery && (tool.id.includes('quote') || tool.id.includes('schedule') || tool.id.includes('dilution'));
-                if (activeCat === 'pricing') return matchesQuery && (tool.id.includes('quote') || tool.id.includes('pay') || tool.id.includes('tip') || tool.id.includes('expense'));
-                if (activeCat === 'team') return matchesQuery && (tool.id.includes('schedule') || tool.id.includes('review') || tool.id.includes('agreement') || tool.id.includes('template') || tool.id.includes('time') || tool.id.includes('checklist'));
-                if (activeCat === 'safety') return matchesQuery && (tool.id.includes('dilution') || tool.id.includes('chemical') || tool.id.includes('mixing'));
-                return matchesQuery;
+            const buttons = document.querySelectorAll('#catPills button');
+            buttons.forEach(btn => {
+                if (btn.id === 'btn-' + cat) {
+                    btn.style.background = 'var(--omni-blue)';
+                    btn.style.color = '#fff';
+                    btn.style.borderColor = 'var(--omni-blue)';
+                } else {
+                    btn.style.background = '#FFFFFF';
+                    btn.style.color = 'var(--text-body)';
+                    btn.style.borderColor = 'var(--border-light)';
+                }
             });
 
-            container.innerHTML = filtered.map(tool => createToolCard(tool, tool.featured)).join('');
-            
-            if (filtered.length === 0) {
-                container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 48px; color: var(--text-sub);">No tools found matching "${query}". Try searching another keyword!</div>`;
-            }
+            const searchVal = document.getElementById('toolSearch') ? document.getElementById('toolSearch').value : '';
+            renderAllTools(selectedCategory, searchVal);
+        }
+
+        function handleSearch(val) {
+            renderAllTools(selectedCategory, val);
         }
     </script>
 </body>

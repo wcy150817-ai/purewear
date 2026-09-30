@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Commercial Chemical Dilution Calculator & Cost-Per-Ounce Engine | PureWear Space</title>
-    <meta name="description" content="Tier-1 chemical dilution ratio calculator for commercial cleaners and custodians. Features live animated beaker visualizer, batch production matrix, and ready-to-use (RTU) cost savings engine.">
+    <title>Dilution Ratio Calculator | PureWear Space</title>
+    <meta name="description" content="Calculate exact chemical concentrate and water amounts for spray bottles, mop buckets, and bulk containers. Includes cost-per-ounce savings and standard custodial dilution ratios.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/dilution-calculator/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Commercial Chemical Dilution Calculator & Cost-Per-Ounce Engine | PureWear Space">
-    <meta property="og:description" content="Calculate exact chemical concentrate and water ratios for spray bottles, mop buckets, and bulk drums with live beaker visualizer and RTU cost savings.">
+    <meta property="og:title" content="Dilution Ratio Calculator | PureWear Space">
+    <meta property="og:description" content="Calculate exact chemical concentrate and water ratios for spray bottles, mop buckets, and bulk drums with live RTU cost savings.">
     <meta property="og:url" content="https://tool.purewearspace.com/tools/dilution-calculator/">
     <meta property="og:type" content="website">
 
@@ -20,7 +20,7 @@
       "@graph": [
         {
           "@type": "WebApplication",
-          "name": "Commercial Chemical Dilution Calculator",
+          "name": "Dilution Ratio Calculator",
           "url": "https://tool.purewearspace.com/tools/dilution-calculator/",
           "applicationCategory": "UtilityApplication",
           "operatingSystem": "All",
@@ -68,549 +68,289 @@
     </script>
 
     <link rel="stylesheet" href="../../css/style.css">
-
-    <style>
-        .top-control-strip {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #ffffff;
-            padding: 12px 18px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-color);
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-            gap: 12px;
-            box-shadow: var(--shadow-xs);
-        }
-
-        .preset-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .preset-chip {
-            background: #ffffff;
-            border: 1.5px solid var(--border-color);
-            padding: 8px 12px;
-            border-radius: var(--radius-md);
-            text-align: center;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-body);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .preset-chip:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: var(--primary-subtle);
-        }
-
-        .preset-chip.active {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: #ffffff;
-        }
-
-        .ratio-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-
-        .ratio-pill {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            padding: 6px 14px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-sub);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .ratio-pill:hover, .ratio-pill.active {
-            background: var(--primary);
-            color: #ffffff;
-            border-color: var(--primary);
-        }
-
-        /* 实验室级拟真烧瓶容器 */
-        .lab-beaker-box {
-            display: flex;
-            gap: 24px;
-            align-items: center;
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            margin-top: 20px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        @media (max-width: 640px) {
-            .lab-beaker-box {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        .beaker-glass {
-            width: 120px;
-            height: 180px;
-            border: 3px solid #334155;
-            border-top: none;
-            border-radius: 0 0 20px 20px;
-            position: relative;
-            background: #f8fafc;
-            overflow: hidden;
-            box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.05);
-            flex-shrink: 0;
-        }
-
-        .beaker-rim {
-            width: 134px;
-            height: 8px;
-            background: #334155;
-            border-radius: 4px;
-            margin-left: -7px;
-        }
-
-        .liquid-water {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
-            transition: height 0.4s ease;
-            opacity: 0.85;
-        }
-
-        .liquid-chem {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(180deg, #10b981 0%, #047857 100%);
-            transition: height 0.4s ease;
-            box-shadow: 0 -2px 6px rgba(16, 185, 129, 0.5);
-        }
-
-        .glass-marks {
-            position: absolute;
-            top: 15px;
-            bottom: 15px;
-            left: 8px;
-            width: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            pointer-events: none;
-        }
-
-        .glass-tick {
-            height: 2px;
-            background: rgba(51, 65, 85, 0.4);
-            width: 8px;
-        }
-
-        .glass-tick.major {
-            width: 16px;
-            background: #334155;
-        }
-
-        .cost-calc-section {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 
     <!-- 顶部主店引流条 -->
     <div class="top-notice-bar">
-        <span>👕 Chemical-Resistant Cleaning Uniforms & Heavy-Duty Aprons:</span>
+        <span>👕 High-Mobility Cleaning Uniforms & Bleach-Resistant Aprons:</span>
         <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
     </div>
 
-    <!-- 导航栏 -->
+    <!-- 导航栏 (Omni 风格) -->
     <nav class="navbar">
-        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span> <span style="font-size: 11px; background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 999px; font-weight: 700;">LAB SUITE</span></a>
+        <a href="../../index.html" class="brand">Pure<span>Wear</span> <span style="font-weight: 400; color: var(--text-muted); font-size: 14px; margin-left: 2px;">Calculators</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">All Tools</a>
+            <a href="../index.html" class="nav-link active">All Calculators</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
             <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 页面标题 -->
-    <div class="page-header">
-        <h1>Commercial Chemical Dilution Calculator</h1>
-        <p>Precision custodial mixing engine with live animated beaker visualizer, bulk batch production recipes, and ready-to-use cost savings calculator.</p>
-    </div>
-
-    <!-- 主布局网格 -->
-    <div class="main-container">
+    <!-- 双栏工作台网格 (Omni 布局) -->
+    <div class="omni-layout-grid">
         
-        <!-- 左侧输入表单 -->
-        <main>
-            <!-- 顶部高阶控制台：模式切换 + 货币切换 + 单位切换 -->
-            <div class="top-control-strip">
-                <div class="segmented-control">
-                    <button type="button" class="segmented-btn active" id="unitOzBtn" onclick="switchUnitSystem('oz')">🧴 US Fl Oz & Gallons</button>
-                    <button type="button" class="segmented-btn" id="unitMlBtn" onclick="switchUnitSystem('ml')">🧪 Metric mL & Liters</button>
-                </div>
+        <!-- 左侧：学术杂志级深度解析与行业基准 (Article) -->
+        <article class="omni-article">
+            <!-- 面包屑 -->
+            <nav class="omni-breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span class="sep">/</span>
+                <a href="../index.html">All Calculators</a>
+                <span class="sep">/</span>
+                <span>Dilution Ratio Calculator</span>
+            </nav>
 
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <select id="currencySelect" class="form-control" style="padding: 6px 12px; font-size: 13px; font-weight: 700; width: auto;" onchange="calculateDilution()">
-                        <option value="USD" selected>🇺🇸 USD ($)</option>
-                        <option value="GBP">🇬🇧 GBP (£)</option>
-                        <option value="EUR">🇪🇺 EUR (€)</option>
-                        <option value="CAD">🇨🇦 CAD (CA$)</option>
-                        <option value="AUD">🇦🇺 AUD (AU$)</option>
-                    </select>
-                </div>
+            <h1>Dilution Ratio Calculator</h1>
+            
+            <div class="omni-author-bar">
+                <span class="author-badge">ISSA Custodial Lab Standard</span>
+                <span>Created by PureWear Chemical Safety Desk</span>
+                <span class="sep">•</span>
+                <span>Updated March 2026</span>
             </div>
 
-            <div class="card">
-                <h2 style="font-size: 18px; margin-bottom: 14px;">1. Mixing Vessel & Target Capacity</h2>
+            <p>
+                In professional housekeeping and commercial custodial management, using concentrated cleaning chemicals is the industry standard. Purchasing concentrates cuts shipping freight, reduces single-use plastic waste by up to 90%, and slashes chemical expenditure by hundreds of dollars per crew each month.
+            </p>
 
-                <!-- 1. 容器规格 -->
-                <div class="input-group">
-                    <label id="containerLabel">🧴 Target Container Volume (fl oz)</label>
-                    <div class="stepper-input">
-                        <button type="button" class="stepper-btn" onclick="adjustTotal(-1)">−</button>
-                        <input type="number" id="totalVolume" class="stepper-val" value="32" min="1" max="50000" oninput="calculateDilution()">
-                        <button type="button" class="stepper-btn" onclick="adjustTotal(1)">+</button>
-                    </div>
+            <p>
+                However, dilution ratios can be misleading. A ratio written as <strong>1:32</strong> does not mean mixing 1 part chemical with 31 parts water or guessing by eye. This <strong>dilution ratio calculator</strong> determines the exact volume of concentrate and water needed to fill any spray bottle, mop bucket, or bulk tank without chemical waste.
+            </p>
 
-                    <!-- 常见容器预设 (US Imperial & Metric 切换自适应) -->
-                    <div class="preset-grid" id="presetContainerList">
-                        <button type="button" class="preset-chip active" onclick="setContainer(32, this)">32 oz Spray</button>
-                        <button type="button" class="preset-chip" onclick="setContainer(64, this)">64 oz Half Gal</button>
-                        <button type="button" class="preset-chip" onclick="setContainer(128, this)">1 Gal Bottle</button>
-                        <button type="button" class="preset-chip" onclick="setContainer(384, this)">3 Gal Bucket</button>
-                        <button type="button" class="preset-chip" onclick="setContainer(640, this)">5 Gal Mop Bucket</button>
-                    </div>
-                </div>
+            <h2>How to Calculate a Dilution Ratio</h2>
+            <p>
+                A dilution ratio expressed as <strong>1:X</strong> indicates 1 part concentrated chemical to X parts of diluent (water). The total mixture consists of \(X + 1\) total parts.
+            </p>
 
-                <!-- 2. 稀释比例 -->
-                <div class="input-group" style="margin-top: 18px;">
-                    <label>🔢 Dilution Ratio (1 Part Chemical Concentrate : X Parts Water)</label>
-                    <div class="stepper-input">
-                        <button type="button" class="stepper-btn" onclick="adjustRatio(-1)">−</button>
-                        <input type="number" id="ratioValue" class="stepper-val" value="10" min="1" max="1000" oninput="calculateDilution()">
-                        <button type="button" class="stepper-btn" onclick="adjustRatio(1)">+</button>
-                    </div>
-
-                    <!-- 常见比例预设 -->
-                    <div class="ratio-tags">
-                        <span style="font-size: 12px; color: var(--text-muted); align-self: center;">Standard Custodial Ratios:</span>
-                        <button type="button" class="ratio-pill" onclick="setRatio(4, this)">1:4 (Degreaser)</button>
-                        <button type="button" class="ratio-pill active" onclick="setRatio(10, this)">1:10 (All-Purpose)</button>
-                        <button type="button" class="ratio-pill" onclick="setRatio(16, this)">1:16 (Restroom)</button>
-                        <button type="button" class="ratio-pill" onclick="setRatio(32, this)">1:32 (Sanitizer)</button>
-                        <button type="button" class="ratio-pill" onclick="setRatio(64, this)">1:64 (Disinfectant)</button>
-                        <button type="button" class="ratio-pill" onclick="setRatio(128, this)">1:128 (Neutral Floor)</button>
-                        <button type="button" class="ratio-pill" onclick="setRatio(256, this)">1:256 (Light Rinse)</button>
-                    </div>
-                </div>
-
-                <!-- 实验室拟真烧瓶动态可视化 (Tier-1 Visualizer) -->
-                <div class="lab-beaker-box">
-                    <div style="display: flex; flex-direction: column; align-items: center;">
-                        <div class="beaker-rim"></div>
-                        <div class="beaker-glass">
-                            <div class="liquid-water" id="beakerWater"></div>
-                            <div class="liquid-chem" id="beakerChem"></div>
-                            <div class="glass-marks">
-                                <div class="glass-tick major"></div>
-                                <div class="glass-tick"></div>
-                                <div class="glass-tick major"></div>
-                                <div class="glass-tick"></div>
-                                <div class="glass-tick major"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="flex: 1; text-align: left;">
-                        <div style="font-size: 12px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Live Proportion Simulation</div>
-                        <div style="font-size: 24px; font-weight: 900; color: var(--text-main); margin: 4px 0;" id="ratioHeroText">1 : 10 Solution</div>
-                        
-                        <div style="margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                            <div style="background: var(--bg-surface); padding: 10px; border-radius: 8px; border-left: 3px solid #10b981;">
-                                <div style="font-size: 11px; color: var(--text-sub); font-weight: 700;">Concentrate:</div>
-                                <div style="font-size: 16px; font-weight: 800; color: #047857;" id="chemPctDisplay">9.1%</div>
-                            </div>
-                            <div style="background: var(--bg-surface); padding: 10px; border-radius: 8px; border-left: 3px solid #0284c7;">
-                                <div style="font-size: 11px; color: var(--text-sub); font-weight: 700;">Cold Water:</div>
-                                <div style="font-size: 16px; font-weight: 800; color: #0284c7;" id="waterPctDisplay">90.9%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 商业 ROI 成本与瓶均节省计算器 (Cost Savings Engine) -->
-                <div class="cost-calc-section">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <h3 style="font-size: 14px; font-weight: 800; margin: 0; color: var(--text-main);">💰 Ready-To-Use (RTU) Cost Savings Engine</h3>
-                        <span style="font-size: 12px; color: var(--primary); font-weight: 700;">Instant Business ROI</span>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px;">
-                        <div>
-                            <label style="font-size: 12px; font-weight: 700; color: var(--text-sub);">Concentrate Price (per 1 Gal Jug)</label>
-                            <input type="number" id="concentratePrice" class="form-control" value="32.00" min="5" max="300" step="1" oninput="calculateDilution()">
-                        </div>
-                        <div>
-                            <label style="font-size: 12px; font-weight: 700; color: var(--text-sub);">Store Pre-Mixed Spray Price</label>
-                            <input type="number" id="retailSprayPrice" class="form-control" value="4.89" min="1" max="25" step="0.5" oninput="calculateDilution()">
-                        </div>
-                    </div>
-
-                    <!-- 节省大横幅 -->
-                    <div class="roi-banner">
-                        <div>
-                            <div style="font-size: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Your Cost Per 32 oz Bottle:</div>
-                            <div class="roi-number" id="costPerBottleDisplay">$0.25</div>
-                        </div>
-                        <div style="text-align: right;">
-                            <div style="font-size: 12px; text-transform: uppercase; font-weight: 700;">Net Savings Per Bottle:</div>
-                            <div style="font-size: 26px; font-weight: 900; color: #6ee7b7;" id="savingsPercentDisplay">Save 94.9%</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="omni-formula-box">
+                <strong>Total Parts:</strong><br>
+                Total Parts = Ratio Parts (X) + 1<br><br>
+                <strong>Concentrate Required:</strong><br>
+                Concentrate Volume = Target Solution Volume ÷ Total Parts<br><br>
+                <strong>Water Required:</strong><br>
+                Water Volume = Target Solution Volume − Concentrate Volume<br><br>
+                <strong>Ready-to-Use (RTU) Cost:</strong><br>
+                Cost per RTU Container = (Concentrate Volume × Concentrate Cost per Unit)
             </div>
 
-            <!-- 哥飞 SEO 核心架构 1: 2026 商业清洁稀释比例基准表 -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 12px;">2026 Commercial Chemical Dilution Benchmark Table</h2>
-                <p style="font-size: 14px; color: var(--text-sub); line-height: 1.6; margin-bottom: 16px;">
-                    Using incorrect chemical ratios either damages client surfaces through chemical burns or fails EPA microbial kill-time requirements. Refer to standard commercial custodial guidelines below:
-                </p>
+            <h2>Standard Cleaning Chemical Dilution Ratios</h2>
+            <p>
+                Commercial chemical manufacturers formulate products to work within specific concentration thresholds. The table below outlines standard ratios across custodial operations:
+            </p>
 
-                <div class="benchmark-table-wrapper">
-                    <table class="benchmark-table">
-                        <thead>
-                            <tr>
-                                <th>Ratio</th>
-                                <th>Oz / Gal</th>
-                                <th>Concentration</th>
-                                <th>Typical Applications</th>
-                                <th>Dwell Time</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>1:4</strong></td>
-                                <td>32.0 oz</td>
-                                <td>20.0%</td>
-                                <td>Heavy industrial degreasing, baked-on grease, commercial ovens</td>
-                                <td>5–10 mins</td>
-                            </tr>
-                            <tr>
-                                <td><strong>1:10</strong></td>
-                                <td>11.6 oz</td>
-                                <td>9.1%</td>
-                                <td>Heavy restroom scrub, tile grout deep clean, pet odor removal</td>
-                                <td>5 mins</td>
-                            </tr>
-                            <tr>
-                                <td><strong>1:16</strong></td>
-                                <td>7.5 oz</td>
-                                <td>5.9%</td>
-                                <td>General spray & wipe degreasing, range hoods, high-traffic kitchens</td>
-                                <td>3–5 mins</td>
-                            </tr>
-                            <tr>
-                                <td><strong>1:32</strong></td>
-                                <td>3.9 oz</td>
-                                <td>3.0%</td>
-                                <td>Commercial sanitizing, food prep contact surfaces, daycares</td>
-                                <td>1–2 mins</td>
-                            </tr>
-                            <tr>
-                                <td><strong>1:64</strong></td>
-                                <td>2.0 oz</td>
-                                <td>1.5%</td>
-                                <td>Hospital-grade disinfectant, clinical sanitizing, viral wipe-downs</td>
-                                <td>10 mins (EPA)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>1:128</strong></td>
-                                <td>1.0 oz</td>
-                                <td>0.78%</td>
-                                <td>Neutral pH floor damp-mopping, streak-free glass & mirrors</td>
-                                <td>Dry on air</td>
-                            </tr>
-                            <tr>
-                                <td><strong>1:256</strong></td>
-                                <td>0.5 oz</td>
-                                <td>0.39%</td>
-                                <td>Auto-scrubber tanks, light rinse-aid, daily odor fogging</td>
-                                <td>Immediate</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="omni-table-wrapper">
+                <table class="omni-table">
+                    <thead>
+                        <tr>
+                            <th>Ratio (1:X)</th>
+                            <th>Ounces per Gallon</th>
+                            <th>Typical Chemical Type</th>
+                            <th>Primary Application</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1 : 10</strong></td>
+                            <td>12.8 oz / gal</td>
+                            <td>Heavy-Duty Alkaline Degreaser</td>
+                            <td>Commercial kitchen ovens, hood exhaust, engine bays</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1 : 32</strong></td>
+                            <td>4.0 oz / gal</td>
+                            <td>All-Purpose Neutral Spray</td>
+                            <td>Countertops, desks, door handles, light soil</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1 : 64</strong></td>
+                            <td>2.0 oz / gal</td>
+                            <td>Quaternary Hospital Disinfectant</td>
+                            <td>Restroom sanitizing, high-touch pathogen disinfection</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1 : 128</strong></td>
+                            <td>1.0 oz / gal</td>
+                            <td>Neutral pH Floor Cleaner</td>
+                            <td>Mop buckets, auto-scrubbers, luxury vinyl & hardwood</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1 : 256</strong></td>
+                            <td>0.5 oz / gal</td>
+                            <td>Glass & Mirror Cleaner</td>
+                            <td>Streak-free windows, chrome fixtures, tinted glass</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- 哥飞 SEO 核心架构 2: 4步标准化稀释实战指南与数学公式 -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 14px;">The 4-Step Professional Dilution Blueprint</h2>
+            <h2>Crucial Safety Protocol: Chemical into Water</h2>
+            <p>
+                The fundamental safety rule taught in ISSA custodial training is:
+            </p>
+            <div class="omni-formula-box" style="border-left-color: var(--omni-red);">
+                <strong>⚠️ Golden Safety Mandate:</strong><br>
+                Always add concentrated chemical to water — NEVER add water to concentrated chemical.<br>
+                <em>"Do as you oughta, add acid (or chemical) to water."</em>
+            </div>
+            <p>
+                Pouring water directly into concentrated chemicals generates rapid foaming, trapped air bubbles, and dangerous splashing that can blind operators or burn skin. Fill 90% of your water first, add the measured concentrate, then gently top off.
+            </p>
 
-                <div style="background: #eff6ff; border-left: 4px solid var(--accent); padding: 14px 16px; border-radius: 4px; margin-bottom: 16px; font-size: 14px; color: #1e3a8a; line-height: 1.6;">
-                    <strong>⚠️ The Golden Custodial Rule: "Always Add Chemical to Water, Never Water to Chemical"</strong><br>
-                    Pouring high-pressure water directly into concentrated chemical causes foaming overflow, acid splashing, and aerosolized vapors. Always fill your bottle with water first, then add the measured concentrate.
-                </div>
+            <h2>Frequently Asked Questions</h2>
+            <div class="omni-faq-accordion">
+                <details class="omni-faq-item">
+                    <summary>Why must you always add water before chemical concentrate?</summary>
+                    <div class="omni-faq-answer">
+                        Adding water into a container of concentrated surfactant or acid creates a violent exothermic reaction and foaming eruption. By filling the target container with water first, the incoming concentrate is immediately diluted in the bulk liquid without splashing.
+                    </div>
+                </details>
 
-                <div class="formula-box">
-                    <strong>Universal Dilution Mathematics:</strong><br>
-                    Total Volume Parts = Dilution Ratio Number (X) + 1 Part Concentrate<br>
-                    Chemical Concentrate Volume = Total Solution Volume ÷ (X + 1)<br>
-                    Water Volume = Total Solution Volume − Chemical Concentrate Volume
-                </div>
+                <details class="omni-faq-item">
+                    <summary>How much money does commercial chemical dilution save?</summary>
+                    <div class="omni-faq-answer">
+                        A typical 1-gallon jug of commercial concentrate costing $32 can yield up to 132 quart bottles of ready-to-use cleaner (at 1:32 ratio), bringing the cost per bottle to just <strong>$0.24</strong>. Compared to retail pre-mixed cleaners that sell for $4.50 to $5.50 each, businesses save <strong>over 94% on cleaning chemical overhead</strong>.
+                    </div>
+                </details>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px;">
-                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                        <strong style="color: var(--primary); font-size: 15px;">1. Verify SDS & Target Ratio</strong>
-                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">Check chemical manufacturer's Technical Data Sheet. Over-concentrating leaves sticky residue that attracts dirt.</p>
+                <details class="omni-faq-item">
+                    <summary>What are OSHA secondary container labeling rules?</summary>
+                    <div class="omni-faq-answer">
+                        Under OSHA 29 CFR 1910.1200, any secondary spray bottle or dispenser containing diluted chemical must have a label stating the product name, signal word (Danger/Warning), and hazard statements, unless emptied and rinsed during the same work shift by the person who mixed it.
                     </div>
-                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                        <strong style="color: var(--primary); font-size: 15px;">2. Measure Cold Water First</strong>
-                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">Fill bottle 85% full with cold tap water. Avoid hot water as it vaporizes active disinfectants.</p>
-                    </div>
-                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                        <strong style="color: var(--primary); font-size: 15px;">3. Add Measured Concentrate</strong>
-                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">Pour the exact concentrate calculated above into the water. Invert bottle gently twice to mix without foaming.</p>
-                    </div>
-                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                        <strong style="color: var(--primary); font-size: 15px;">4. Affix OSHA Secondary Label</strong>
-                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">OSHA mandates secondary container labeling showing product name and GHS pictograms for worker safety.</p>
-                    </div>
-                </div>
+                </details>
             </div>
 
-            <!-- 哥飞 SEO 核心架构 3: 折叠常见问答 FAQ Accordion -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 16px;">Frequently Asked Questions (FAQ)</h2>
+            <!-- 矩阵关联工具推荐 -->
+            <div style="margin-top: 40px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
+                <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">Related Free Calculators:</div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="../chemical-safety-checker/" class="omni-action-btn">☣️ Chemical Safety Checker</a>
+                    <a href="../mixing-guide/" class="omni-action-btn">🧴 Chemical Mixing Guide</a>
+                    <a href="../cleaning-quote-calculator/" class="omni-action-btn">🧹 Cleaning Quote Calculator</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 右侧：Omni 科学计算器白底卡片 (Calculator Widget) -->
+        <aside class="omni-calculator-aside">
+            <div class="omni-calculator-widget omni-calculator-sticky">
                 
-                <div class="faq-accordion">
-                    <details>
-                        <summary>Why must I always add water before adding chemical concentrate?</summary>
-                        <div class="faq-answer">
-                            The universal standard for custodial chemical safety is <em>"Always Add Chemical to Water"</em>. Pouring water directly onto pure concentrated acid or disinfectant causes sudden chemical splashing and violent bubbling that can cause immediate skin burns or eye injuries. Filling your spray bottle or mop bucket with water first safely diffuses the concentrate as it is poured.
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>What is the difference between 1:64 and 1:128 dilution ratios?</summary>
-                        <div class="faq-answer">
-                            A <strong>1:64 dilution</strong> yields 2 ounces of chemical concentrate per gallon of water (1.5% solution) and is standard for heavy hospital-grade disinfecting against pathogens like Norovirus, MRSA, and influenza. A <strong>1:128 dilution</strong> yields 1 ounce per gallon (0.78% solution) and is formulated for neutral floor cleaners and streak-free window washing where heavy chemical residue would otherwise leave sticky streaks.
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>Can I use warm or hot water to dilute cleaning disinfectants?</summary>
-                        <div class="faq-answer">
-                            No. Unless explicitly specified by the chemical manufacturer, always dilute disinfectants and bleach with cold or room-temperature water (under 85°F / 30°C). Hot water accelerates chemical evaporation, deactivates active chlorine and quat compounds, and releases dangerous volatile chemical vapors into the air.
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>What are OSHA requirements for secondary spray bottles?</summary>
-                        <div class="faq-answer">
-                            Under OSHA Hazard Communication Standard (29 CFR 1910.1200), any secondary bottle or bucket containing diluted chemicals must have a GHS-compliant label stating the chemical product identity, manufacturer, and key hazard warnings unless used immediately and entirely by the person who filled it.
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-            <!-- 哥飞 SEO 核心架构 4: 矩阵工具互相推荐卡片 -->
-            <div class="card" style="margin-top: 24px;">
-                <h3 style="font-size: 16px; margin-bottom: 12px;">Related Free Tools for Cleaning Businesses:</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
-                    <a href="../chemical-safety-checker/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
-                        <div style="font-weight: 700; color: var(--primary);">⚠️ Chemical Safety Checker →</div>
-                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Verify if mixing two chemicals produces lethal chlorine or chloramine gas.</div>
-                    </a>
-                    <a href="../cleaning-quote-calculator/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
-                        <div style="font-weight: 700; color: var(--primary);">💰 Cleaning Quote Calculator →</div>
-                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Quote residential & commercial jobs with 2026 pricing benchmarks.</div>
-                    </a>
-                    <a href="../time-estimator/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
-                        <div style="font-weight: 700; color: var(--primary);">⏱️ Cleaning Time Estimator →</div>
-                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Predict on-site cleaning job duration based on ISSA standards.</div>
-                    </a>
-                </div>
-            </div>
-        </main>
-
-        <!-- 右侧配方卡片 (桌面端 Sticky) -->
-        <aside class="sidebar">
-            <div class="result-card">
-                <div class="price-title">Exact Mixing Recipe</div>
-
-                <!-- 核心大字展示 -->
-                <div style="text-align: center; margin-bottom: 24px;">
-                    <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Chemical Concentrate</div>
-                    <div class="price-number value-pulse" id="chemAmountDisplay" style="color: var(--primary); font-size: 42px;">2.9 oz</div>
-                    <div style="font-size: 13px; color: var(--text-sub);" id="chemMetricDisplay">≈ 86 mL / 5.8 tbsp</div>
+                <div class="omni-widget-header">
+                    <span class="omni-widget-title">Dilution Ratio Calculator</span>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--omni-blue); background: var(--omni-blue-light); padding: 2px 6px; border-radius: 4px;">LAB RATIO</span>
                 </div>
 
-                <div style="border-top: 1px solid var(--border-color); padding-top: 16px;">
-                    <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 15px;">
-                        <span style="color: var(--text-sub);">Water Volume:</span>
-                        <strong id="waterAmountDisplay" style="color: #0284c7;">29.1 oz</strong>
+                <!-- 分组 1: Target Solution -->
+                <div class="omni-group-title">Target Volume</div>
+
+                <!-- 目标容积行 -->
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Target container volume</span>
                     </div>
-                    <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 14px; border-top: 1px solid var(--border-color);">
-                        <span style="color: var(--text-sub);">Metric Equivalent:</span>
-                        <strong id="waterMetricDisplay">≈ 860 mL</strong>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 14px; border-top: 1px solid var(--border-color);">
-                        <span style="color: var(--text-sub);">Total Solution Batch:</span>
-                        <strong id="totalDisplay">32.0 oz (0.25 gal)</strong>
+                    <div class="omni-input-group">
+                        <input type="number" id="volumeInput" class="omni-input" value="32" min="1" max="10000" step="1" oninput="calculateDilution()">
+                        <select id="volumeUnit" class="omni-select" onchange="handleVolumeUnitChange(this.value)">
+                            <option value="floz" selected>fl oz</option>
+                            <option value="gal">gallons</option>
+                            <option value="ml">mL</option>
+                            <option value="l">liters</option>
+                        </select>
                     </div>
                 </div>
 
-                <!-- 操作按钮 -->
-                <div class="action-row" style="margin-top: 24px;">
-                    <button class="btn-primary" onclick="copyRecipe()">📋 Copy Mixing Recipe</button>
-                    <button class="btn-secondary" onclick="window.print()">🖨️ Print Label Card</button>
+                <!-- 快捷容器预设行 -->
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;">
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setPresetVolume(32, 'floz')">32 oz Spray</button>
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setPresetVolume(1, 'gal')">1 Gal Jug</button>
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setPresetVolume(3, 'gal')">3 Gal Bucket</button>
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setPresetVolume(1000, 'ml')">1 L (1000 mL)</button>
                 </div>
-            </div>
 
-            <!-- Shopify 电商推荐卡片 (带呼吸发光效果) -->
-            <div class="shopify-promo-card cta-glow">
-                <span class="shopify-tag">PureWear Store</span>
-                <h3>Protective Workwear for Chemical Handling</h3>
-                <p>Spills and bleach splashes ruin regular clothes in seconds. PureWear chemical-resistant aprons and treated uniforms shield your team everyday.</p>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
-                    View Protective Workwear →
-                </a>
+                <!-- 分组 2: Ratio -->
+                <div class="omni-group-title">Dilution Ratio</div>
+
+                <!-- 比例行 -->
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Dilution parts (1 : X)</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="number" id="ratioParts" class="omni-input" value="10" min="1" max="2000" step="1" oninput="calculateDilution()">
+                        <span style="display:flex; align-items:center; padding:0 12px; font-size:13px; font-weight:700; color:var(--text-muted); background:var(--bg-surface); border-left:1px solid var(--border-light);">: 1 part</span>
+                    </div>
+                </div>
+
+                <!-- 常见比例快捷标签 -->
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;">
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setRatio(10)">1:10 (Degrease)</button>
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setRatio(32)">1:32 (Spray)</button>
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setRatio(64)">1:64 (Disinfect)</button>
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setRatio(128)">1:128 (Floors)</button>
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setRatio(256)">1:256 (Glass)</button>
+                </div>
+
+                <!-- 分组 3: Recipe Results -->
+                <div class="omni-group-title">Dilution Recipe Results</div>
+
+                <!-- 浓缩液结果行 -->
+                <div class="omni-row result">
+                    <div class="omni-label">
+                        <span style="font-weight: 700; color: var(--omni-blue);">Concentrate needed</span>
+                        <span id="chemSecondaryDisp" style="font-size: 11px; color: var(--text-muted); font-weight: 600;">≈ 86 mL (5.8 tbsp)</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="chemAmountDisp" class="omni-input" readonly value="2.91">
+                        <span id="chemUnitDisp" style="display:flex; align-items:center; padding:0 12px; font-size:13px; font-weight:700; color:var(--omni-blue); background:var(--omni-blue-light); border-left:1px solid var(--omni-blue-border);">fl oz</span>
+                    </div>
+                </div>
+
+                <!-- 水体积结果行 -->
+                <div class="omni-row result">
+                    <div class="omni-label">
+                        <span style="font-weight: 700; color: var(--omni-blue);">Water needed (Add First)</span>
+                        <span id="waterSecondaryDisp" style="font-size: 11px; color: var(--text-muted); font-weight: 600;">≈ 860 mL</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="waterAmountDisp" class="omni-input" readonly value="29.09">
+                        <span id="waterUnitDisp" style="display:flex; align-items:center; padding:0 12px; font-size:13px; font-weight:700; color:var(--omni-blue); background:var(--omni-blue-light); border-left:1px solid var(--omni-blue-border);">fl oz</span>
+                    </div>
+                </div>
+
+                <!-- 比例百分比 -->
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Solution concentration</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="pctDisp" class="omni-input" readonly value="9.1% chemical / 90.9% water">
+                    </div>
+                </div>
+
+                <!-- 成本节约核算 -->
+                <div style="margin-top: 14px; padding: 12px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 12px;">
+                    <div style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 4px;">
+                        <span>Cost per 32 oz RTU:</span>
+                        <span style="color: var(--omni-blue); font-weight: 800;" id="costDisplay">$0.27</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; color: var(--text-muted); font-size: 11px;">
+                        <span>Retail equivalent: $4.50</span>
+                        <span style="color: #10B981; font-weight: 700;" id="savingsDisplay">Save 94.0%</span>
+                    </div>
+                </div>
+
+                <!-- Omni 底部快捷操作条 -->
+                <div class="omni-footer-actions">
+                    <button type="button" class="omni-action-btn" onclick="resetDilution()">↺ Reset</button>
+                    <button type="button" class="omni-action-btn" onclick="copyRecipe()">📋 Copy Recipe</button>
+                    <button type="button" class="omni-action-btn" onclick="shareCalculator()">🔗 Share</button>
+                </div>
+
             </div>
         </aside>
 
-    </div>
-
-    <!-- 移动端吸底浮动栏 (Mobile Sticky Bar) -->
-    <div class="mobile-sticky-bar">
-        <div class="mobile-sticky-inner">
-            <div class="mobile-sticky-info">
-                <span class="mobile-sticky-label">Concentrate Needed:</span>
-                <span class="mobile-sticky-val" id="mobileStickyChem">2.9 oz</span>
-            </div>
-            <button class="mobile-sticky-btn" onclick="copyRecipe()">📋 Copy Recipe</button>
-        </div>
     </div>
 
     <!-- Toast 弹窗容器 -->
@@ -619,224 +359,148 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div>
+                <div class="footer-brand">Pure<span style="color: var(--omni-blue);">Wear</span> Calculators</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Precision utility tools for independent cleaners and commercial maid services.</div>
+            </div>
             <div class="footer-links">
                 <a href="../../index.html">Home</a>
-                <a href="../index.html">All Tools</a>
-                <a href="../chemical-safety-checker/">Chemical Safety</a>
-                <a href="../cleaning-quote-calculator/">Quote Calculator</a>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+                <a href="../index.html">All Calculators</a>
+                <a href="../../resources.html">Resources</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Workwear Store</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free commercial dilution & custodial utility tools.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
         </div>
     </footer>
 
+    <!-- 逻辑脚本 -->
     <script>
-        const currencyMap = {
-            'USD': { symbol: '$', rate: 1.0 },
-            'GBP': { symbol: '£', rate: 0.78 },
-            'EUR': { symbol: '€', rate: 0.92 },
-            'CAD': { symbol: 'CA$', rate: 1.35 },
-            'AUD': { symbol: 'AU$', rate: 1.52 }
-        };
+        let currentUnit = 'floz';
 
-        let currentUnitSystem = 'oz';
+        function handleVolumeUnitChange(unit) {
+            currentUnit = unit;
+            document.getElementById('chemUnitDisp').innerText = unit;
+            document.getElementById('waterUnitDisp').innerText = unit;
+            calculateDilution();
+        }
 
-        const ozPresets = [
-            { label: '32 oz Spray', val: 32 },
-            { label: '64 oz Half Gal', val: 64 },
-            { label: '1 Gal (128 oz)', val: 128 },
-            { label: '3 Gal Bucket', val: 384 },
-            { label: '5 Gal Mop Bucket', val: 640 }
-        ];
+        function setPresetVolume(vol, unit) {
+            document.getElementById('volumeInput').value = vol;
+            document.getElementById('volumeUnit').value = unit;
+            handleVolumeUnitChange(unit);
+        }
 
-        const mlPresets = [
-            { label: '500 mL Bottle', val: 500 },
-            { label: '750 mL Spray', val: 750 },
-            { label: '1000 mL (1 L)', val: 1000 },
-            { label: '5 Liters Bucket', val: 5000 },
-            { label: '10 Liters Mop', val: 10000 }
-        ];
+        function setRatio(ratio) {
+            document.getElementById('ratioParts').value = ratio;
+            calculateDilution();
+        }
 
-        function switchUnitSystem(system) {
-            currentUnitSystem = system;
-            const ozBtn = document.getElementById('unitOzBtn');
-            const mlBtn = document.getElementById('unitMlBtn');
-            const label = document.getElementById('containerLabel');
-            const input = document.getElementById('totalVolume');
+        function calculateDilution() {
+            const vol = parseFloat(document.getElementById('volumeInput').value) || 32;
+            const ratioX = parseFloat(document.getElementById('ratioParts').value) || 10;
+            const unit = document.getElementById('volumeUnit').value;
 
-            if (system === 'oz') {
-                ozBtn.classList.add('active');
-                mlBtn.classList.remove('active');
-                label.innerText = '🧴 Target Container Volume (fl oz)';
-                input.value = 32;
-                renderPresets(ozPresets);
-            } else {
-                mlBtn.classList.add('active');
-                ozBtn.classList.remove('active');
-                label.innerText = '🧴 Target Container Volume (mL)';
-                input.value = 1000;
-                renderPresets(mlPresets);
+            const totalParts = ratioX + 1;
+            const chemAmount = vol / totalParts;
+            const waterAmount = vol - chemAmount;
+            const chemPct = (chemAmount / vol) * 100;
+            const waterPct = 100 - chemPct;
+
+            document.getElementById('chemAmountDisp').value = chemAmount < 10 ? chemAmount.toFixed(2) : chemAmount.toFixed(1);
+            document.getElementById('waterAmountDisp').value = waterAmount < 10 ? waterAmount.toFixed(2) : waterAmount.toFixed(1);
+            document.getElementById('pctDisp').value = `${chemPct.toFixed(1)}% chemical / ${waterPct.toFixed(1)}% water`;
+
+            // 次级单位换算提示
+            if (unit === 'floz') {
+                const ml = Math.round(chemAmount * 29.5735);
+                const tbsp = (chemAmount * 2).toFixed(1);
+                document.getElementById('chemSecondaryDisp').innerText = `≈ ${ml} mL (${tbsp} tbsp)`;
+                document.getElementById('waterSecondaryDisp').innerText = `≈ ${Math.round(waterAmount * 29.5735)} mL`;
+            } else if (unit === 'gal') {
+                const oz = (chemAmount * 128).toFixed(1);
+                document.getElementById('chemSecondaryDisp').innerText = `≈ ${oz} fl oz`;
+                document.getElementById('waterSecondaryDisp').innerText = `≈ ${(waterAmount * 128).toFixed(1)} fl oz`;
+            } else if (unit === 'ml') {
+                const oz = (chemAmount / 29.5735).toFixed(2);
+                document.getElementById('chemSecondaryDisp').innerText = `≈ ${oz} fl oz`;
+                document.getElementById('waterSecondaryDisp').innerText = `≈ ${(waterAmount / 1000).toFixed(2)} Liters`;
+            } else if (unit === 'l') {
+                const oz = (chemAmount * 33.814).toFixed(1);
+                document.getElementById('chemSecondaryDisp').innerText = `≈ ${oz} fl oz`;
+                document.getElementById('waterSecondaryDisp').innerText = `≈ ${(waterAmount * 33.814).toFixed(1)} fl oz`;
             }
-            calculateDilution();
+
+            // 成本核算: 假设浓缩液 $32/加仑 = $0.25/oz
+            let ozVol = vol;
+            if (unit === 'gal') ozVol = vol * 128;
+            if (unit === 'ml') ozVol = vol / 29.5735;
+            if (unit === 'l') ozVol = vol * 33.814;
+
+            const chemOz = ozVol / totalParts;
+            const cost = chemOz * 0.25;
+            const retailEstimate = (ozVol / 32) * 4.50;
+            const savings = Math.max(0, retailEstimate - cost);
+            const savingsPct = retailEstimate > 0 ? ((savings / retailEstimate) * 100).toFixed(1) : '94.0';
+
+            document.getElementById('costDisplay').innerText = `$${cost.toFixed(2)}`;
+            document.getElementById('savingsDisplay').innerText = `Save ${savingsPct}%`;
         }
 
-        function renderPresets(presets) {
-            const list = document.getElementById('presetContainerList');
-            list.innerHTML = presets.map((p, idx) => 
-                `<button type="button" class="preset-chip ${idx === 0 ? 'active' : ''}" onclick="setContainer(${p.val}, this)">${p.label}</button>`
-            ).join('');
+        function resetDilution() {
+            document.getElementById('volumeInput').value = 32;
+            document.getElementById('volumeUnit').value = 'floz';
+            document.getElementById('ratioParts').value = 10;
+            handleVolumeUnitChange('floz');
+            showToast("↺ Dilution calculator reset.");
         }
 
-        function adjustTotal(delta) {
-            const input = document.getElementById('totalVolume');
-            let step = currentUnitSystem === 'oz' ? (delta > 0 ? 4 : -4) : (delta > 0 ? 50 : -50);
-            let val = parseInt(input.value) || 0;
-            val = Math.max(1, val + step);
-            input.value = val;
-            removeActivePreset('.preset-chip');
-            calculateDilution();
+        function copyRecipe() {
+            const vol = document.getElementById('volumeInput').value;
+            const unit = document.getElementById('volumeUnit').value;
+            const ratio = document.getElementById('ratioParts').value;
+            const chem = document.getElementById('chemAmountDisp').value;
+            const water = document.getElementById('waterAmountDisp').value;
+
+            const text = `🧪 Custodial Dilution Recipe (1:${ratio}):\n` +
+                         `Total Batch: ${vol} ${unit}\n` +
+                         `Concentrate Needed: ${chem} ${unit}\n` +
+                         `Water Needed: ${water} ${unit}\n` +
+                         `⚠️ Safety Protocol: Add water to container FIRST, then pour concentrate!\n` +
+                         `PureWear Space: https://tool.purewearspace.com/tools/dilution-calculator/`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("✅ Dilution recipe copied to clipboard!");
+            });
         }
 
-        function setContainer(val, btn) {
-            document.getElementById('totalVolume').value = val;
-            document.querySelectorAll('.preset-chip').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            calculateDilution();
+        function shareCalculator() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Dilution Ratio Calculator | PureWear Space',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast("🔗 Calculator link copied to clipboard!");
+                });
+            }
         }
 
-        function adjustRatio(delta) {
-            const input = document.getElementById('ratioValue');
-            let val = parseInt(input.value) || 0;
-            val = Math.max(1, val + delta);
-            input.value = val;
-            removeActivePreset('.ratio-pill');
-            calculateDilution();
-        }
-
-        function setRatio(ratio, btn) {
-            document.getElementById('ratioValue').value = ratio;
-            document.querySelectorAll('.ratio-pill').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            calculateDilution();
-        }
-
-        function removeActivePreset(selector) {
-            document.querySelectorAll(selector).forEach(b => b.classList.remove('active'));
-        }
-
-        function showToast(message) {
+        function showToast(msg) {
             const toast = document.getElementById('toastNotification');
             if (!toast) return;
-            toast.innerText = message;
+            toast.innerText = msg;
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
         }
 
-        function calculateDilution() {
-            const totalVal = parseFloat(document.getElementById('totalVolume').value) || (currentUnitSystem === 'oz' ? 32 : 1000);
-            const ratioX = parseFloat(document.getElementById('ratioValue').value) || 10;
-            const currency = document.getElementById('currencySelect').value;
-            const sym = currencyMap[currency].symbol;
-
-            const totalParts = ratioX + 1;
-            const chemAmount = totalVal / totalParts;
-            const waterAmount = totalVal - chemAmount;
-
-            const chemPct = ((chemAmount / totalVal) * 100);
-            const waterPct = 100 - chemPct;
-
-            let chemDisp, chemSec, waterDisp, waterSec, totalDisp;
-
-            if (currentUnitSystem === 'oz') {
-                const chemMl = Math.round(chemAmount * 29.5735);
-                const waterMl = Math.round(waterAmount * 29.5735);
-                const chemTbsp = (chemAmount * 2).toFixed(1);
-                const totalGal = (totalVal / 128).toFixed(2);
-
-                chemDisp = chemAmount.toFixed(2) + ' oz';
-                chemSec = `≈ ${chemMl} mL (${chemTbsp} tbsp)`;
-                waterDisp = waterAmount.toFixed(2) + ' oz';
-                waterSec = `≈ ${waterMl} mL`;
-                totalDisp = `${totalVal.toFixed(1)} oz (${totalGal} gal)`;
-            } else {
-                const chemOz = (chemAmount / 29.5735).toFixed(2);
-                const waterL = (waterAmount / 1000).toFixed(2);
-                const totalL = (totalVal / 1000).toFixed(2);
-
-                chemDisp = Math.round(chemAmount) + ' mL';
-                chemSec = `≈ ${chemOz} fl oz`;
-                waterDisp = Math.round(waterAmount) + ' mL';
-                waterSec = `≈ ${waterL} Liters`;
-                totalDisp = `${Math.round(totalVal)} mL (${totalL} L)`;
-            }
-
-            // 更新 UI
-            document.getElementById('ratioHeroText').innerText = `1 : ${ratioX} Solution`;
-            document.getElementById('chemAmountDisplay').innerText = chemDisp;
-            document.getElementById('chemMetricDisplay').innerText = chemSec;
-            document.getElementById('waterAmountDisplay').innerText = waterDisp;
-            document.getElementById('waterMetricDisplay').innerText = waterSec;
-            document.getElementById('totalDisplay').innerText = totalDisp;
-            document.getElementById('chemPctDisplay').innerText = chemPct.toFixed(1) + '%';
-            document.getElementById('waterPctDisplay').innerText = waterPct.toFixed(1) + '%';
-
-            // 拟真烧杯动画高度更新
-            const beakerH = 180;
-            const chemH = Math.max(12, (chemPct / 100) * beakerH);
-            const waterH = Math.min(beakerH, beakerH * 0.88);
-
-            document.getElementById('beakerWater').style.height = waterH + 'px';
-            document.getElementById('beakerChem').style.height = chemH + 'px';
-
-            // 移动端浮动吸底栏更新
-            const mobileSticky = document.getElementById('mobileStickyChem');
-            if (mobileSticky) mobileSticky.innerText = `${chemDisp} (1:${ratioX})`;
-
-            // 成本节省引擎计算
-            const concPrice = parseFloat(document.getElementById('concentratePrice').value) || 32.0;
-            const retailPrice = parseFloat(document.getElementById('retailSprayPrice').value) || 4.89;
-
-            // 1加仑 = 128 oz. 浓缩液每盎司成本 = concPrice / 128
-            const costPerChemOz = concPrice / 128;
-            // 制作 32 oz 瓶所需浓缩液 = 32 / (ratioX + 1)
-            const chemOzFor32 = 32 / totalParts;
-            const costPerRTU32 = (costPerChemOz * chemOzFor32);
-
-            const savingsPerBottle = Math.max(0, retailPrice - costPerRTU32);
-            const savingsPct = ((savingsPerBottle / retailPrice) * 100).toFixed(1);
-
-            document.getElementById('costPerBottleDisplay').innerText = `${sym}${costPerRTU32.toFixed(2)}`;
-            document.getElementById('savingsPercentDisplay').innerText = `Save ${savingsPct}%`;
-        }
-
-        function copyRecipe() {
-            const total = document.getElementById('totalDisplay').innerText;
-            const ratio = document.getElementById('ratioValue').value;
-            const chem = document.getElementById('chemAmountDisplay').innerText;
-            const chemSec = document.getElementById('chemMetricDisplay').innerText;
-            const water = document.getElementById('waterAmountDisplay').innerText;
-            const waterSec = document.getElementById('waterMetricDisplay').innerText;
-            const cost = document.getElementById('costPerBottleDisplay').innerText;
-
-            const text = `🧪 Custodial Dilution Recipe (1:${ratio}):\n` +
-                         `Total Batch: ${total}\n` +
-                         `Concentrate Needed: ${chem} (${chemSec})\n` +
-                         `Water Needed: ${water} (${waterSec})\n` +
-                         `Cost per 32oz RTU Bottle: ${cost}\n` +
-                         `⚠️ Custodial Rule: Fill water FIRST, then add concentrate!\n` +
-                         `Calculated via PureWear Space: https://tool.purewearspace.com/tools/dilution-calculator/`;
-
-            navigator.clipboard.writeText(text).then(() => {
-                showToast("✅ Mixing recipe copied to clipboard!");
-            });
-        }
-
-        window.addEventListener('DOMContentLoaded', calculateDilution);
+        window.addEventListener('DOMContentLoaded', () => {
+            calculateDilution();
+        });
     </script>
 </body>
 </html>

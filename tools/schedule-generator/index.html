@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Weekly Work Schedule Generator & Team Shift Planner | PureWear Space</title>
-    <meta name="description" content="Tier-1 weekly work schedule generator and payroll estimator for cleaning crews, maid services, and custodians. 1-click shift assigning, overtime warning badges, and printable team rosters.">
+    <title>Weekly Shift Schedule Generator | PureWear Space</title>
+    <meta name="description" content="Build balanced weekly employee schedules, track crew hours, and avoid FLSA 40-hour overtime penalties with instant printable rosters and CSV export.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/schedule-generator/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Weekly Work Schedule Generator & Team Shift Planner | PureWear Space">
+    <meta property="og:title" content="Weekly Shift Schedule Generator | PureWear Space">
     <meta property="og:description" content="Interactive weekly shift matrix planner with live labor hours, overtime payroll calculators, and printable bulletin board rosters.">
     <meta property="og:url" content="https://tool.purewearspace.com/tools/schedule-generator/">
     <meta property="og:type" content="website">
@@ -20,7 +20,7 @@
       "@graph": [
         {
           "@type": "WebApplication",
-          "name": "Weekly Work Schedule Generator",
+          "name": "Weekly Shift Schedule Generator",
           "url": "https://tool.purewearspace.com/tools/schedule-generator/",
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "All",
@@ -60,125 +60,72 @@
     </script>
 
     <link rel="stylesheet" href="../../css/style.css">
-    
     <style>
-        .top-control-strip {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #ffffff;
-            padding: 12px 18px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-color);
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-            gap: 12px;
-            box-shadow: var(--shadow-xs);
-        }
-
-        .schedule-card {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 24px;
+        .schedule-matrix-wrap {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            margin-bottom: 28px;
             box-shadow: var(--shadow-sm);
         }
-
-        .table-responsive {
+        .schedule-table-scroll {
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            margin: 16px 0;
-            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            margin: 14px 0;
         }
-
-        .schedule-table {
+        .matrix-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
-            min-width: 760px;
-            text-align: center;
+            min-width: 680px;
         }
-
-        .schedule-table th {
-            background: #f8fafc;
-            color: var(--text-main);
-            font-weight: 700;
-            padding: 12px 10px;
-            border-bottom: 2px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
-        }
-
-        .schedule-table td {
+        .matrix-table th, .matrix-table td {
             padding: 8px 6px;
-            border-bottom: 1px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
-            height: 60px;
-            vertical-align: middle;
+            text-align: center;
+            border: 1px solid var(--border-light);
         }
-
-        .staff-name-cell {
-            text-align: left;
-            padding-left: 12px !important;
+        .matrix-table th {
+            background: var(--bg-surface);
             font-weight: 700;
-            color: var(--text-main);
-            background: #ffffff;
-            position: sticky;
-            left: 0;
-            z-index: 2;
-            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.04);
-            min-width: 140px;
+            color: var(--text-primary);
         }
-
-        .staff-hours-cell {
-            font-weight: 800;
-            color: var(--primary);
-            background: var(--primary-subtle);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .staff-hours-cell.overtime {
-            background: #fee2e2;
-            color: #b91c1c;
-        }
-
-        /* 班次徽章 */
-        .shift-badge {
-            display: block;
+        .shift-pill {
+            display: inline-block;
             width: 100%;
-            padding: 6px 4px;
-            border-radius: 6px;
+            padding: 5px 2px;
             font-size: 11px;
             font-weight: 700;
+            border-radius: 4px;
             cursor: pointer;
             user-select: none;
             transition: all 0.15s;
-            border: 1px solid transparent;
+        }
+        .shift-pill.morning { background: #EEF2FF; color: #3B68FC; border: 1px solid #C7D7FE; }
+        .shift-pill.afternoon { background: #ECFDF5; color: #059669; border: 1px solid #A7F3D0; }
+        .shift-pill.full { background: #3B68FC; color: #FFFFFF; }
+        .shift-pill.off { background: #F1F5F9; color: #94A3B8; border: 1px solid #E2E8F0; }
+        
+        .overtime-alert {
+            background: #FEE2E2 !important;
+            color: #DC2626 !important;
+            font-weight: 800;
         }
 
-        .shift-badge:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .shift-morning { background: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
-        .shift-afternoon { background: #fef3c7; color: #92400e; border-color: #fde68a; }
-        .shift-full { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
-        .shift-deep { background: #f3e8ff; color: #7e22ce; border-color: #e9d5ff; }
-        .shift-off { background: #f1f5f9; color: #94a3b8; border-color: #e2e8f0; }
-
-        .payroll-bar-card {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 16px 20px;
-            margin-top: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
+        @media print {
+            .navbar, .top-notice-bar, .omni-calculator-aside, .omni-footer-actions, .footer, .omni-breadcrumb {
+                display: none !important;
+            }
+            .omni-layout-grid {
+                display: block !important;
+                padding: 0 !important;
+            }
+            .schedule-matrix-wrap {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
         }
     </style>
 </head>
@@ -186,287 +133,277 @@
 
     <!-- 顶部主店引流条 -->
     <div class="top-notice-bar">
-        <span>👕 High-Mobility Cleaning Uniforms & Protective Aprons:</span>
+        <span>👕 High-Mobility Cleaning Uniforms & Bleach-Resistant Aprons:</span>
         <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
     </div>
 
-    <!-- 导航栏 -->
+    <!-- 导航栏 (Omni 风格) -->
     <nav class="navbar">
-        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span> <span style="font-size: 11px; background: #e0e7ff; color: #3730a3; padding: 2px 8px; border-radius: 999px; font-weight: 700;">OPS PLANNER</span></a>
+        <a href="../../index.html" class="brand">Pure<span>Wear</span> <span style="font-weight: 400; color: var(--text-muted); font-size: 14px; margin-left: 2px;">Calculators</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">All Tools</a>
+            <a href="../index.html" class="nav-link active">All Calculators</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
             <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 页面标题 -->
-    <div class="page-header">
-        <h1>Weekly Team Work Schedule Generator</h1>
-        <p>Interactive shift management matrix for cleaning contractors and maid services. Track live weekly labor hours, detect overtime violations, and export rosters instantly.</p>
-    </div>
-
-    <!-- 主布局网格 -->
-    <div class="main-container">
+    <!-- 双栏工作台网格 (Omni 布局) -->
+    <div class="omni-layout-grid">
         
-        <!-- 左侧排班核心表单 -->
-        <main>
-            <!-- 顶部高阶控制台 -->
-            <div class="top-control-strip">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <label style="font-size: 12px; font-weight: 700; color: var(--text-sub);">Schedule Week of:</label>
-                    <input type="date" id="weekDate" class="form-control" style="padding: 6px 12px; font-size: 13px; width: auto;" onchange="updateHeaderDates()">
-                </div>
+        <!-- 左侧：排班表与学术深度内容 -->
+        <article class="omni-article">
+            <!-- 面包屑 -->
+            <nav class="omni-breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span class="sep">/</span>
+                <a href="../index.html">All Calculators</a>
+                <span class="sep">/</span>
+                <span>Weekly Shift Schedule Generator</span>
+            </nav>
 
-                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                    <button class="btn-secondary" onclick="applyScheduleTemplate('standard')" style="padding: 6px 12px; font-size: 12px;">🏢 Standard 40h Full-Time</button>
-                    <button class="btn-secondary" onclick="applyScheduleTemplate('weekend')" style="padding: 6px 12px; font-size: 12px;">⚡ Weekend Peak Wave</button>
-                    <button class="btn-secondary" onclick="resetAllShifts()" style="padding: 6px 12px; font-size: 12px;">🔄 Clear All</button>
-                </div>
+            <h1>Weekly Shift Schedule Generator</h1>
+            
+            <div class="omni-author-bar">
+                <span class="author-badge">ISSA Workforce Management</span>
+                <span>Created by PureWear Custodial Operations</span>
+                <span class="sep">•</span>
+                <span>Updated March 2026</span>
             </div>
 
-            <div class="schedule-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <!-- 交互式排班矩阵工作区 -->
+            <div class="schedule-matrix-wrap">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
                     <div>
-                        <h2 style="font-size: 18px; margin: 0;">Weekly Shift Matrix</h2>
-                        <span style="font-size: 12px; color: var(--text-sub);">Click any shift badge to cycle: Morning → Afternoon → Full Day → Evening → Off</span>
+                        <div style="font-size: 14px; font-weight: 800; color: var(--text-primary);">Interactive Team Shift Matrix</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">Click any shift badge to cycle: Morning (4h) → Afternoon (4h) → Full Day (8h) → Off</div>
                     </div>
-                    <div style="display: flex; gap: 6px; font-size: 11px; font-weight: 700;">
-                        <span class="shift-badge shift-morning" style="padding: 3px 8px; cursor: default;">Morning (4h)</span>
-                        <span class="shift-badge shift-afternoon" style="padding: 3px 8px; cursor: default;">Afternoon (4h)</span>
-                        <span class="shift-badge shift-full" style="padding: 3px 8px; cursor: default;">Full Day (8h)</span>
-                        <span class="shift-badge shift-off" style="padding: 3px 8px; cursor: default;">Off (0h)</span>
+                    <div style="display: flex; gap: 6px;">
+                        <button type="button" class="omni-action-btn" onclick="applyTemplate('standard')">Standard 40h</button>
+                        <button type="button" class="omni-action-btn" onclick="applyTemplate('weekend')">Weekend Surge</button>
+                        <button type="button" class="omni-action-btn" onclick="resetAllShifts()">Clear</button>
                     </div>
                 </div>
 
-                <!-- 排班表格 -->
-                <div class="table-responsive">
-                    <table class="schedule-table" id="scheduleTable">
+                <div class="schedule-table-scroll">
+                    <table class="matrix-table" id="scheduleTable">
                         <thead>
                             <tr>
-                                <th class="staff-name-cell">Staff Member</th>
-                                <th>Mon<br><span style="font-size: 11px; font-weight: 400;" id="dateMon">Oct 5</span></th>
-                                <th>Tue<br><span style="font-size: 11px; font-weight: 400;" id="dateTue">Oct 6</span></th>
-                                <th>Wed<br><span style="font-size: 11px; font-weight: 400;" id="dateWed">Oct 7</span></th>
-                                <th>Thu<br><span style="font-size: 11px; font-weight: 400;" id="dateThu">Oct 8</span></th>
-                                <th>Fri<br><span style="font-size: 11px; font-weight: 400;" id="dateFri">Oct 9</span></th>
-                                <th>Sat<br><span style="font-size: 11px; font-weight: 400;" id="dateSat">Oct 10</span></th>
-                                <th>Sun<br><span style="font-size: 11px; font-weight: 400;" id="dateSun">Oct 11</span></th>
-                                <th style="width: 85px;">Total Hrs</th>
+                                <th style="text-align: left; padding-left: 12px;">Staff Member</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                                <th>Sun</th>
+                                <th style="width: 80px;">Total</th>
                             </tr>
                         </thead>
                         <tbody id="scheduleBody">
-                            <!-- JS 动态渲染 4 位保洁员行 -->
+                            <!-- 由 JS 渲染 -->
                         </tbody>
                     </table>
                 </div>
 
-                <!-- 团队薪资与工时预测条 (Payroll & Labor Cost) -->
-                <div class="payroll-bar-card">
-                    <div>
-                        <div style="font-size: 11px; font-weight: 700; color: var(--text-sub); text-transform: uppercase;">Estimated Weekly Payroll:</div>
-                        <div style="font-size: 22px; font-weight: 900; color: var(--text-main); font-family: 'JetBrains Mono', monospace;" id="totalPayrollDisplay">$2,880.00</div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
+                    <div style="display: flex; gap: 12px;">
+                        <span><strong style="color: var(--omni-blue);">Morning:</strong> 8am–12pm (4h)</span>
+                        <span><strong style="color: #059669;">Afternoon:</strong> 1pm–5pm (4h)</span>
+                        <span><strong style="color: var(--text-primary);">Full:</strong> 8am–5pm (8h)</span>
                     </div>
-                    <div style="display: flex; gap: 16px; align-items: center;">
-                        <div>
-                            <span style="font-size: 12px; color: var(--text-sub);">Base Hourly Rate:</span>
-                            <input type="number" id="baseWageInput" class="form-control" value="18" min="10" max="50" style="width: 70px; padding: 4px 8px; font-size: 13px; display: inline-block; margin-left: 6px;" oninput="updateCalculations()">
-                        </div>
-                        <div>
-                            <span style="font-size: 12px; color: var(--text-sub);">Team Total Hours:</span>
-                            <strong style="font-size: 16px; color: var(--primary); margin-left: 6px;" id="teamHoursDisplay">160 hrs</strong>
-                        </div>
-                    </div>
+                    <span>Click staff name to edit</span>
                 </div>
             </div>
 
-            <!-- 哥飞 SEO 核心架构 1: 2026 行业排班模式基准表 -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 12px;">2026 Cleaning Industry Shift Models Benchmark Table</h2>
-                <p style="font-size: 14px; color: var(--text-sub); line-height: 1.6; margin-bottom: 16px;">
-                    Selecting the right shift structure determines staff retention, vehicle fuel efficiency, and overtime expenses. Standard models in commercial cleaning include:
-                </p>
+            <h2>How to Optimize Cleaning Shift Scheduling</h2>
+            <p>
+                In the commercial and residential cleaning industries, labor overhead accounts for <strong>40% to 50% of gross revenue</strong>. Unplanned overtime quickly erodes net profit margins, while unpredictable scheduling leads to high cleaner turnover.
+            </p>
 
-                <div class="benchmark-table-wrapper">
-                    <table class="benchmark-table">
-                        <thead>
-                            <tr>
-                                <th>Shift Strategy</th>
-                                <th>Weekly Hours</th>
-                                <th>Turnover Rate</th>
-                                <th>Best Applied To</th>
-                                <th>Overtime Risk</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>5x8 Mon–Fri Standard</strong></td>
-                                <td>40 hrs / cleaner</td>
-                                <td>Low (15–20%)</td>
-                                <td>Residential recurring maintenance routes</td>
-                                <td>Low (Capped at 40h)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>4x10 Compressed Week</strong></td>
-                                <td>40 hrs / cleaner</td>
-                                <td>Very Low (10–12%)</td>
-                                <td>High-density suburban estate routes</td>
-                                <td>Moderate (Fatigue factor)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Weekend Airbnb Surge</strong></td>
-                                <td>16–24 hrs / part-time</td>
-                                <td>Moderate (25–30%)</td>
-                                <td>Vacation rental 10am–3pm check-in windows</td>
-                                <td>Zero (Part-time pool)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Split Shift (Night Office)</strong></td>
-                                <td>30–35 hrs / cleaner</td>
-                                <td>High (35–45%)</td>
-                                <td>Commercial janitorial & corporate offices</td>
-                                <td>Low</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <p>
+                This <strong>weekly shift schedule generator</strong> allows custodial managers to quickly allocate morning, afternoon, and full-day shifts across team members, automatically calculate total labor hours, track estimated weekly payroll, and highlight FLSA 40-hour overtime violations in red.
+            </p>
+
+            <h2>The FLSA Overtime Pay Formula</h2>
+            <div class="omni-formula-box">
+                <strong>Standard Labor Payroll:</strong><br>
+                Regular Pay = Total Regular Hours (≤ 40h per cleaner) × Base Hourly Wage<br><br>
+                <strong>FLSA Overtime Burden:</strong><br>
+                Overtime Pay = Overtime Hours (> 40h per cleaner) × (Base Hourly Wage × 1.5)<br><br>
+                <strong>Gross Team Payroll:</strong><br>
+                Total Gross Payroll = Regular Pay + Overtime Pay
             </div>
 
-            <!-- 哥飞 SEO 核心架构 2: 3条保洁防疲劳与排班黄金法则 -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 14px;">The 3 Golden Rules of Custodial Shift Scheduling</h2>
-
-                <div class="formula-box">
-                    <strong>Overtime Legal Formula (FLSA Compliance):</strong><br>
-                    Regular Pay = Total Hours (up to 40) × Hourly Rate<br>
-                    Overtime Pay = Hours in Excess of 40 × (Hourly Rate × 1.5)<br>
-                    Total Gross Payroll = Regular Pay + Overtime Pay
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px;">
-                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                        <strong style="color: var(--primary); font-size: 15px;">1. Cap Physical Scrubbing</strong>
-                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">Never schedule more than 7.5 hours of active physical scrubbing per day. High fatigue triples worker injury and property damage.</p>
-                    </div>
-                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                        <strong style="color: var(--primary); font-size: 15px;">2. Pair High & Low Mobility</strong>
-                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">Schedule intense move-out cleans in the morning when cleaners have peak energy, reserving light dusting for afternoons.</p>
-                    </div>
-                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                        <strong style="color: var(--primary); font-size: 15px;">3. Route Clustering</strong>
-                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">Cluster homes within a 5-mile zip code radius per team to eliminate wasted driving hours and vehicle wear.</p>
-                    </div>
-                </div>
+            <h2>2026 Industry Shift Models Benchmark Table</h2>
+            <div class="omni-table-wrapper">
+                <table class="omni-table">
+                    <thead>
+                        <tr>
+                            <th>Shift Structure</th>
+                            <th>Weekly Hours</th>
+                            <th>Turnover Rate</th>
+                            <th>Ideal Service Application</th>
+                            <th>Overtime Risk</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>5x8 Mon–Fri Standard</strong></td>
+                            <td>40h / cleaner</td>
+                            <td>Low (15–20%)</td>
+                            <td>Residential recurring maintenance routes</td>
+                            <td>Low (Capped at 40h)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4x10 Compressed Week</strong></td>
+                            <td>40h / cleaner</td>
+                            <td>Very Low (10–12%)</td>
+                            <td>High-density suburban estate routes</td>
+                            <td>Moderate (Fatigue factor)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weekend Airbnb Surge</strong></td>
+                            <td>16–24h part-time</td>
+                            <td>Moderate (25–30%)</td>
+                            <td>Vacation rental 10am–3pm turnover windows</td>
+                            <td>Zero (Part-time pool)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Night Janitorial Split</strong></td>
+                            <td>30–35h / cleaner</td>
+                            <td>High (35–45%)</td>
+                            <td>Commercial banks, corporate offices, medical suites</td>
+                            <td>Low</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- 哥飞 SEO 核心架构 3: 折叠常见问答 FAQ Accordion -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 16px;">Frequently Asked Questions (FAQ)</h2>
+            <h2>The 3 Golden Rules of Custodial Shift Scheduling</h2>
+            <ol>
+                <li><strong>Cap Physical Cleaning at 7.5 Hours:</strong> Active scrubbing and vacuuming carry high physical strain. Scheduling cleaners beyond 8 on-site hours triples the risk of workplace injuries and detail omissions.</li>
+                <li><strong>Distribute Shift Schedules by Friday Noon:</strong> Announcing rosters at least 48 hours prior to Monday morning shifts cuts absenteeism and last-minute call-outs by up to 60%.</li>
+                <li><strong>Group by Geographic Route Clusters:</strong> Ensure teams clean homes clustered within a 5-mile zip code radius to eliminate unpaid drive time and vehicle maintenance wear.</li>
+            </ol>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="omni-faq-accordion">
+                <details class="omni-faq-item">
+                    <summary>How far in advance should cleaning business schedules be posted?</summary>
+                    <div class="omni-faq-answer">
+                        Best industry practice is to distribute the following week's schedule by <strong>Friday 12:00 PM</strong>. This gives cleaners over 48 hours notice before Monday morning shifts and significantly reduces last-minute call-outs.
+                    </div>
+                </details>
+
+                <details class="omni-faq-item">
+                    <summary>How many hours should a residential cleaner work per day?</summary>
+                    <div class="omni-faq-answer">
+                        Most professional residential cleaners work between <strong>6 and 8 on-site hours per day</strong> (typically 2 to 3 average homes). Scheduling beyond 8 physical cleaning hours frequently leads to fatigue, missed details, and higher employee turnover.
+                    </div>
+                </details>
+
+                <details class="omni-faq-item">
+                    <summary>How can I export or print this roster for my bulletin board?</summary>
+                    <div class="omni-faq-answer">
+                        Click the <strong>Print Team Roster</strong> button in the calculator actions bar to generate an ink-friendly, high-contrast PDF wall roster, or click <strong>Export CSV</strong> to import the schedule directly into payroll software or Excel.
+                    </div>
+                </details>
+            </div>
+
+            <!-- 矩阵关联工具推荐 -->
+            <div style="margin-top: 40px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
+                <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">Related Free Calculators:</div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="../hourly-pay-calculator/" class="omni-action-btn">💰 Hourly Pay Calculator</a>
+                    <a href="../tip-calculator/" class="omni-action-btn">💵 Tip Split Calculator</a>
+                    <a href="../time-estimator/" class="omni-action-btn">⏱️ Time Estimator</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 右侧：Omni 科学计算器白底卡片 (Calculator Widget) -->
+        <aside class="omni-calculator-aside">
+            <div class="omni-calculator-widget omni-calculator-sticky">
                 
-                <div class="faq-accordion">
-                    <details>
-                        <summary>How far in advance should cleaning business schedules be posted?</summary>
-                        <div class="faq-answer">
-                            Best industry practice is to distribute the following week's schedule by <strong>Friday 12:00 PM</strong>. This gives cleaners over 48 hours notice before Monday morning shifts and significantly reduces last-minute call-outs and route disruption.
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>How many hours should a residential cleaner work per day?</summary>
-                        <div class="faq-answer">
-                            Most professional residential cleaners work between <strong>6 and 8 on-site hours per day</strong> (typically 2 to 3 average homes). Scheduling beyond 8 physical cleaning hours frequently leads to fatigue, missed details, and higher employee turnover.
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>How do I avoid overtime wage penalties for cleaners?</summary>
-                        <div class="faq-answer">
-                            Under the US Fair Labor Standards Act (FLSA), all non-exempt employees must be paid <strong>1.5 times their regular rate</strong> for any hours exceeding 40 in a 7-day workweek. This generator highlights any cleaner exceeding 40 hours in red to help managers distribute shifts evenly before locking the schedule.
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-            <!-- 哥飞 SEO 核心架构 4: 矩阵工具互相推荐卡片 -->
-            <div class="card" style="margin-top: 24px;">
-                <h3 style="font-size: 16px; margin-bottom: 12px;">Related Operations & Management Tools:</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
-                    <a href="../time-estimator/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
-                        <div style="font-weight: 700; color: var(--primary);">⏱️ Cleaning Time Estimator →</div>
-                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Predict on-site cleaning job duration based on ISSA standards.</div>
-                    </a>
-                    <a href="../cleaning-quote-calculator/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
-                        <div style="font-weight: 700; color: var(--primary);">💰 Cleaning Quote Calculator →</div>
-                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Convert estimated hours into profitable, competitive pricing quotes.</div>
-                    </a>
-                    <a href="../hourly-pay-calculator/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
-                        <div style="font-weight: 700; color: var(--primary);">💵 Hourly Pay & Wage Calculator →</div>
-                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Calculate take-home wages, taxes, and overtime rates.</div>
-                    </a>
-                </div>
-            </div>
-        </main>
-
-        <!-- 右侧管理操作卡片 (桌面端 Sticky) -->
-        <aside class="sidebar">
-            <div class="result-card">
-                <div class="price-title">Schedule Summary</div>
-
-                <!-- 核心大字展示 -->
-                <div style="text-align: center; margin-bottom: 24px;">
-                    <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Total Scheduled Labor</div>
-                    <div class="price-number value-pulse" id="sidebarTeamHours" style="font-size: 42px; color: var(--primary); margin: 6px 0;">160.0h</div>
-                    <div style="font-size: 13px; color: var(--text-sub);" id="sidebarActiveStaff">Across 4 Team Members</div>
+                <div class="omni-widget-header">
+                    <span class="omni-widget-title">Weekly Roster & Payroll</span>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--omni-blue); background: var(--omni-blue-light); padding: 2px 6px; border-radius: 4px;">LIVE MATRIX</span>
                 </div>
 
-                <div style="border-top: 1px solid var(--border-color); padding-top: 14px; font-size: 13px;">
-                    <div style="display: flex; justify-content: space-between; padding: 6px 0;">
-                        <span style="color: var(--text-sub);">Cleaners on Overtime:</span>
-                        <strong id="overtimeStaffCount" style="color: var(--text-main);">0 cleaners</strong>
+                <!-- 分组 1: Wage & Team Parameters -->
+                <div class="omni-group-title">Roster Parameters</div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Base hourly wage</span>
                     </div>
-                    <div style="display: flex; justify-content: space-between; padding: 6px 0;">
-                        <span style="color: var(--text-sub);">Average Hours/Staff:</span>
-                        <strong id="avgHoursStaff">40.0 hrs</strong>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 6px 0;">
-                        <span style="color: var(--text-sub);">Weekly Gross Payroll:</span>
-                        <strong id="sidebarGrossPayroll" style="color: var(--primary); font-size: 15px;">$2,880.00</strong>
+                    <div class="omni-input-group">
+                        <input type="number" id="baseWageInput" class="omni-input" value="18" min="10" max="60" step="0.5" oninput="updateCalculations()">
+                        <span style="display:flex; align-items:center; padding:0 12px; font-size:13px; font-weight:700; color:var(--text-muted); background:var(--bg-surface); border-left:1px solid var(--border-light);">$/hr</span>
                     </div>
                 </div>
 
-                <!-- 操作按钮 -->
-                <div class="action-row" style="margin-top: 20px;">
-                    <button class="btn-primary" onclick="window.print()" style="font-size: 14px; font-weight: 800; padding: 14px;">🖨️ Print Team Roster</button>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                        <button class="btn-secondary" onclick="exportToCSV()">📊 Export CSV</button>
-                        <button class="btn-secondary" onclick="copyScheduleSummary()">💬 Copy Text</button>
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Active cleaners</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="activeCleanersDisplay" class="omni-input" readonly value="4 Cleaners">
                     </div>
                 </div>
-            </div>
 
-            <!-- Shopify 电商推荐卡片 (带呼吸发光效果) -->
-            <div class="shopify-promo-card cta-glow">
-                <span class="shopify-tag">PureWear Store</span>
-                <h3>Breathable, Ergonomic Uniforms for Long Shifts</h3>
-                <p>When cleaners work 40 hours a week, comfort directly drives morale. PureWear moisture-wicking uniforms prevent chafing and stay fresh all week.</p>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
-                    Explore Performance Workwear →
-                </a>
+                <!-- 分组 2: Calculated Labor & Payroll -->
+                <div class="omni-group-title">Labor & Payroll Totals</div>
+
+                <div class="omni-row result">
+                    <div class="omni-label">
+                        <span style="font-weight: 700; color: var(--omni-blue);">Total scheduled hours</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="teamHoursDisplay" class="omni-input" readonly value="160.0">
+                        <span style="display:flex; align-items:center; padding:0 12px; font-size:13px; font-weight:700; color:var(--omni-blue); background:var(--omni-blue-light); border-left:1px solid var(--omni-blue-border);">hrs</span>
+                    </div>
+                </div>
+
+                <div class="omni-row result">
+                    <div class="omni-label">
+                        <span style="font-weight: 700; color: var(--omni-blue);">Gross weekly payroll</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="totalPayrollDisplay" class="omni-input" readonly value="$2,880.00">
+                        <span style="display:flex; align-items:center; padding:0 12px; font-size:13px; font-weight:700; color:var(--omni-blue); background:var(--omni-blue-light); border-left:1px solid var(--omni-blue-border);">USD</span>
+                    </div>
+                </div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Cleaners on overtime (>40h)</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="otCountDisplay" class="omni-input" readonly value="0 Cleaners (Safe)">
+                    </div>
+                </div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Average hours per staff</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="avgHoursDisplay" class="omni-input" readonly value="40.0 hrs">
+                    </div>
+                </div>
+
+                <!-- Omni 底部快捷操作条 -->
+                <div class="omni-footer-actions">
+                    <button type="button" class="omni-action-btn" onclick="exportToCSV()">📊 Export CSV</button>
+                    <button type="button" class="omni-action-btn" onclick="copyScheduleSummary()">📋 Copy</button>
+                    <button type="button" class="omni-action-btn" onclick="window.print()" style="border-color: var(--omni-blue); color: var(--omni-blue); font-weight: 700;">🖨️ Print Roster</button>
+                </div>
+
             </div>
         </aside>
 
-    </div>
-
-    <!-- 移动端吸底浮动栏 (Mobile Sticky Bar) -->
-    <div class="mobile-sticky-bar">
-        <div class="mobile-sticky-inner">
-            <div class="mobile-sticky-info">
-                <span class="mobile-sticky-label">Team Labor Hours:</span>
-                <span class="mobile-sticky-val" id="mobileStickyTeamHours">160.0h ($2,880)</span>
-            </div>
-            <button class="mobile-sticky-btn" onclick="window.print()">🖨️ Print Roster</button>
-        </div>
     </div>
 
     <!-- Toast 弹窗容器 -->
@@ -475,28 +412,29 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div>
+                <div class="footer-brand">Pure<span style="color: var(--omni-blue);">Wear</span> Calculators</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Precision utility tools for independent cleaners and commercial maid services.</div>
+            </div>
             <div class="footer-links">
                 <a href="../../index.html">Home</a>
-                <a href="../index.html">All Tools</a>
-                <a href="../time-estimator/">Time Estimator</a>
-                <a href="../cleaning-quote-calculator/">Quote Calculator</a>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+                <a href="../index.html">All Calculators</a>
+                <a href="../../resources.html">Resources</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Workwear Store</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Flagship custodial workforce management tools.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
         </div>
     </footer>
 
+    <!-- 逻辑脚本 -->
     <script>
-        // 班次定义：名称, 小时数, css 类名
         const SHIFTS = [
-            { id: 'full', label: 'Full (8h)', hours: 8, cls: 'shift-full' },
-            { id: 'morning', label: 'Morn (4h)', hours: 4, cls: 'shift-morning' },
-            { id: 'afternoon', label: 'Aft (4h)', hours: 4, cls: 'shift-afternoon' },
-            { id: 'deep', label: 'Eve (4h)', hours: 4, cls: 'shift-deep' },
-            { id: 'off', label: 'OFF', hours: 0, cls: 'shift-off' }
+            { id: 'morning', label: 'Morning', hours: 4, cls: 'morning' },
+            { id: 'afternoon', label: 'Afternoon', hours: 4, cls: 'afternoon' },
+            { id: 'full', label: 'Full Day', hours: 8, cls: 'full' },
+            { id: 'off', label: 'Off', hours: 0, cls: 'off' }
         ];
 
         let staffData = [
@@ -515,25 +453,24 @@
                 let cellsHtml = '';
 
                 staff.shifts.forEach((shiftId, dayIdx) => {
-                    const shiftObj = SHIFTS.find(s => s.id === shiftId) || SHIFTS[4];
+                    const shiftObj = SHIFTS.find(s => s.id === shiftId) || SHIFTS[3];
                     rowHours += shiftObj.hours;
                     cellsHtml += `<td>
-                        <span class="shift-badge ${shiftObj.cls}" onclick="cycleShift(${staffIdx}, ${dayIdx})">
+                        <span class="shift-pill ${shiftObj.cls}" onclick="cycleShift(${staffIdx}, ${dayIdx})">
                             ${shiftObj.label}
                         </span>
                     </td>`;
                 });
 
                 const isOT = rowHours > 40;
-                const otClass = isOT ? 'staff-hours-cell overtime' : 'staff-hours-cell';
 
                 html += `<tr>
-                    <td class="staff-name-cell">
+                    <td style="text-align: left; padding-left: 12px; font-weight: 700;">
                         <span contenteditable="true" onblur="updateStaffName(${staffIdx}, this.innerText)">${staff.name}</span>
                     </td>
                     ${cellsHtml}
-                    <td class="${otClass}">
-                        ${rowHours}h ${isOT ? '<br><span class="ot-badge">OVERTIME</span>' : ''}
+                    <td style="font-weight: 800; font-family: 'JetBrains Mono', monospace;" class="${isOT ? 'overtime-alert' : ''}">
+                        ${rowHours}h
                     </td>
                 </tr>`;
             });
@@ -554,7 +491,7 @@
             staffData[idx].name = newName.trim();
         }
 
-        function applyScheduleTemplate(type) {
+        function applyTemplate(type) {
             if (type === 'standard') {
                 staffData.forEach(s => s.shifts = ['full', 'full', 'full', 'full', 'full', 'off', 'off']);
                 showToast("✅ Applied 40h Mon-Fri Full-Time Template!");
@@ -563,7 +500,7 @@
                 staffData[1].shifts = ['off', 'off', 'full', 'full', 'full', 'full', 'off'];
                 staffData[2].shifts = ['full', 'full', 'off', 'off', 'full', 'full', 'full'];
                 staffData[3].shifts = ['full', 'full', 'off', 'off', 'full', 'full', 'full'];
-                showToast("✅ Applied Weekend Peak Wave Template!");
+                showToast("✅ Applied Weekend Surge Template!");
             }
             renderTable();
         }
@@ -571,7 +508,7 @@
         function resetAllShifts() {
             staffData.forEach(s => s.shifts = ['off', 'off', 'off', 'off', 'off', 'off', 'off']);
             renderTable();
-            showToast("🔄 Schedule cleared!");
+            showToast("🔄 Schedule cleared.");
         }
 
         function updateCalculations() {
@@ -597,44 +534,12 @@
                 }
             });
 
-            document.getElementById('teamHoursDisplay').innerText = `${teamHours.toFixed(1)} hrs`;
-            document.getElementById('totalPayrollDisplay').innerText = `$${totalPayroll.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-            
-            document.getElementById('sidebarTeamHours').innerText = `${teamHours.toFixed(1)}h`;
-            document.getElementById('sidebarActiveStaff').innerText = `Across ${staffData.length} Team Members`;
-            document.getElementById('overtimeStaffCount').innerText = `${otCount} cleaner${otCount === 1 ? '' : 's'}`;
-            document.getElementById('overtimeStaffCount').style.color = otCount > 0 ? '#b91c1c' : 'inherit';
-            document.getElementById('avgHoursStaff').innerText = `${(teamHours / staffData.length).toFixed(1)} hrs`;
-            document.getElementById('sidebarGrossPayroll').innerText = `$${totalPayroll.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-
-            const mobileSticky = document.getElementById('mobileStickyTeamHours');
-            if (mobileSticky) mobileSticky.innerText = `${teamHours.toFixed(0)}h ($${totalPayroll.toFixed(0)})`;
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toastNotification');
-            if (!toast) return;
-            toast.innerText = message;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        function updateHeaderDates() {
-            const input = document.getElementById('weekDate');
-            if (!input.value) return;
-            const start = new Date(input.value);
-            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
-            days.forEach((day, idx) => {
-                const d = new Date(start);
-                d.setDate(start.getDate() + idx);
-                const span = document.getElementById(`date${day}`);
-                if (span) {
-                    span.innerText = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                }
-            });
+            document.getElementById('teamHoursDisplay').value = teamHours.toFixed(1);
+            document.getElementById('totalPayrollDisplay').value = `$${totalPayroll.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            document.getElementById('otCountDisplay').value = otCount > 0 ? `${otCount} Cleaner${otCount === 1 ? '' : 's'} (>40h FLSA)` : `0 Cleaners (Safe)`;
+            document.getElementById('otCountDisplay').style.color = otCount > 0 ? '#DC2626' : 'inherit';
+            document.getElementById('avgHoursDisplay').value = `${(teamHours / staffData.length).toFixed(1)} hrs`;
+            document.getElementById('activeCleanersDisplay').value = `${staffData.length} Cleaners`;
         }
 
         function exportToCSV() {
@@ -668,15 +573,21 @@
             text += `-------------------------------\nPlanned via PureWear Space: https://tool.purewearspace.com/tools/schedule-generator/`;
 
             navigator.clipboard.writeText(text).then(() => {
-                showToast("💬 Schedule roster copied to clipboard!");
+                showToast("📋 Schedule copied to clipboard!");
             });
         }
 
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotification');
+            if (!toast) return;
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
-            const today = new Date();
-            const monday = new Date(today.setDate(today.getDate() - today.getDay() + 1));
-            document.getElementById('weekDate').value = monday.toISOString().slice(0, 10);
-            updateHeaderDates();
             renderTable();
         });
     </script>

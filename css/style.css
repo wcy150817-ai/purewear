@@ -1,51 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap');
 
-/* 
- * PureWear Space - Tier-1 Modern Design System 2026
- * Flagship UI/UX for Cleaning Utilities & Commercial Calculators
- */
+/* ==========================================================================
+   PUREWEAR SPACE - OMNI CALCULATOR AESTHETIC DESIGN SYSTEM
+   Authentic Scientific Utility Workspace & Editorial Standards
+   ========================================================================== */
 
 :root {
-    /* 主色调：专业医护/家政绿 (Emerald / Clean Tech) */
-    --primary: #059669;
-    --primary-hover: #047857;
-    --primary-light: #d1fae5;
-    --primary-subtle: #ecfdf5;
+    /* Omni Calculator 核心视觉色彩体系 */
+    --omni-blue: #3B68FC;
+    --omni-blue-hover: #294CC2;
+    --omni-blue-light: #EEF2FF;
+    --omni-blue-border: #C7D7FE;
     
-    /* 辅助色：品质靛蓝 (Navy / Indigo) */
-    --accent: #2563eb;
-    --accent-hover: #1d4ed8;
-    --accent-light: #dbeafe;
+    /* 辅助色 */
+    --omni-red: #FF4059;
+    --omni-yellow: #FFCC00;
+    --omni-green: #10B981;
     
-    /* 预警与功能色 */
-    --warning: #f59e0b;
-    --danger: #ef4444;
-    --success: #10b981;
+    /* 科学中性色阶 */
+    --text-primary: #0A0A0A;
+    --text-body: #212427;
+    --text-muted: #748091;
+    --text-subtle: #A0AAB8;
     
-    /* 中性文字与背景 (Modern Slate) */
-    --text-main: #0f172a;
-    --text-body: #334155;
-    --text-sub: #64748b;
-    --text-muted: #94a3b8;
-    --bg-page: #f8fafc;
-    --bg-card: #ffffff;
-    --bg-surface: #f1f5f9;
-    --border-color: #e2e8f0;
-    --border-focus: #10b981;
+    --bg-page: #F7F9FF;
+    --bg-card: #FFFFFF;
+    --bg-surface: #F8F9FB;
+    --bg-hover: #F0F4FF;
     
-    /* 现代柔和阴影 */
-    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
+    --border-light: #DFE2EB;
+    --border-input: #C3C8D4;
+    --border-focus: #3B68FC;
+    
+    /* 投影 */
+    --shadow-sm: 0 1px 2px 0 rgba(59, 104, 252, 0.08);
+    --shadow-md: 0 4px 12px 0 rgba(59, 104, 252, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 25px -5px rgba(59, 104, 252, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
 }
 
-/* ========== 全局基础重置 ========== */
+/* 全局重置 */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -58,7 +55,7 @@ html {
 }
 
 body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-variant-numeric: tabular-nums;
     background-color: var(--bg-page);
     color: var(--text-body);
@@ -69,10 +66,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* ========== 顶部通告条 (引导到 Shopify 主店) ========== */
+/* 顶部通知条 (Shopify 推荐) */
 .top-notice-bar {
-    background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
-    color: #f8fafc;
+    background: #0F172A;
+    color: #F8FAFC;
     font-size: 13px;
     font-weight: 500;
     padding: 8px 16px;
@@ -81,1037 +78,437 @@ body {
 }
 
 .top-notice-bar a {
-    color: #34d399;
+    color: #60A5FA;
     text-decoration: none;
     font-weight: 700;
     margin-left: 6px;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    transition: color 0.2s;
 }
 
 .top-notice-bar a:hover {
-    color: #6ee7b7;
     text-decoration: underline;
 }
 
-/* ========== 现代化导航栏 ========== */
+/* 现代化导航栏 (Omni 风格) */
 .navbar {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    height: 70px;
-    padding: 0 clamp(16px, 4vw, 48px);
-    border-bottom: 1px solid var(--border-color);
+    background: #FFFFFF;
+    height: 64px;
+    padding: 0 clamp(16px, 4vw, 40px);
+    border-bottom: 1px solid var(--border-light);
     position: sticky;
     top: 0;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .brand {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 800;
     text-decoration: none;
-    color: var(--text-main);
+    color: var(--text-primary);
     display: flex;
     align-items: center;
-    gap: 8px;
-    letter-spacing: -0.5px;
+    gap: 6px;
+    letter-spacing: -0.3px;
 }
 
 .brand span {
-    color: var(--primary);
+    color: var(--omni-blue);
 }
 
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 20px;
 }
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-sub);
-    padding: 8px 14px;
-    font-weight: 600;
     font-size: 14px;
-    border-radius: var(--radius-sm);
-    transition: all 0.2s ease;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: color 0.15s ease;
 }
 
-.nav-link:hover {
-    color: var(--primary);
-    background: var(--primary-subtle);
-}
-
-.nav-link.active {
-    color: var(--primary);
-    background: var(--primary-subtle);
-    font-weight: 700;
+.nav-link:hover, .nav-link.active {
+    color: var(--omni-blue);
 }
 
 .nav-shop-btn {
-    background: var(--primary);
-    color: #ffffff !important;
-    padding: 8px 16px;
+    background: var(--omni-blue-light);
+    color: var(--omni-blue);
+    border: 1px solid var(--omni-blue-border);
+    padding: 6px 14px;
     border-radius: var(--radius-sm);
-    font-weight: 700;
     font-size: 13px;
-    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
-    transition: all 0.2s;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.15s;
 }
 
 .nav-shop-btn:hover {
-    background: var(--primary-hover) !important;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+    background: var(--omni-blue);
+    color: #FFFFFF;
 }
 
-/* ========== 主内容布局 ========== */
-.main-container {
-    max-width: 1140px;
-    margin: 32px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 32px;
-    flex: 1;
-    width: 100%;
-}
-
-@media (max-width: 900px) {
-    .main-container {
-        grid-template-columns: 1fr;
-        margin: 20px auto;
-        gap: 24px;
-        padding: 0 16px;
-    }
-}
-
-/* ========== 现代化卡片容器 ========== */
-.card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: 32px;
-    transition: box-shadow 0.2s;
-}
-
-@media (max-width: 640px) {
-    .card {
-        padding: 20px 16px;
-    }
-}
-
-/* ========== 工具头部标题 ========== */
-.form-header {
-    margin-bottom: 28px;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 20px;
-}
-
-.form-header h1 {
-    font-size: clamp(22px, 3vw, 30px);
-    font-weight: 800;
-    color: var(--text-main);
-    letter-spacing: -0.5px;
-    line-height: 1.25;
-    margin-bottom: 8px;
-}
-
-.form-header p {
-    color: var(--text-sub);
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-/* ========== 交互表单控件 ========== */
-.input-group {
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    display: block;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-main);
-    margin-bottom: 8px;
-    letter-spacing: -0.2px;
-}
-
-.form-control, .form-select {
-    width: 100%;
-    padding: 12px 16px;
-    font-size: 15px;
-    color: var(--text-main);
-    background-color: #ffffff;
-    border: 1.5px solid var(--border-color);
-    border-radius: var(--radius-md);
-    transition: all 0.2s ease;
-    font-family: inherit;
-    appearance: none;
-}
-
-.form-select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    background-size: 16px;
-    padding-right: 40px;
-    cursor: pointer;
-}
-
-.form-control:focus, .form-select:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
-}
-
-/* 滑块与数值输入配合 */
-.slider-container {
+/* 面包屑导航 (Breadcrumb) */
+.omni-breadcrumb {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.range-slider {
-    width: 100%;
-    height: 6px;
-    background: #e2e8f0;
-    border-radius: 4px;
-    outline: none;
-    cursor: pointer;
-    accent-color: var(--primary);
-}
-
-.slider-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: var(--text-muted);
-    font-weight: 600;
-}
-
-/* 预设快捷选项 (Pill Buttons) */
-.pill-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 10px;
-    margin-top: 8px;
-}
-
-.pill-card {
-    border: 1.5px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 12px;
-    text-align: center;
-    cursor: pointer;
-    background: #ffffff;
-    transition: all 0.2s;
-    user-select: none;
-}
-
-.pill-card:hover {
-    border-color: #cbd5e1;
-    background: #f8fafc;
-}
-
-.pill-card.selected {
-    border-color: var(--primary);
-    background: var(--primary-subtle);
-    color: var(--primary-hover);
-    font-weight: 700;
-    box-shadow: 0 2px 6px rgba(5, 150, 105, 0.12);
-}
-
-/* 加减数字调节器 (Stepper) */
-.stepper {
-    display: flex;
-    align-items: center;
-    border: 1.5px solid var(--border-color);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    width: 140px;
-    background: #fff;
-}
-
-.stepper button {
-    width: 40px;
-    height: 40px;
-    background: var(--bg-surface);
-    border: none;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-body);
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.stepper button:hover {
-    background: #e2e8f0;
-}
-
-.stepper input {
-    width: 60px;
-    text-align: center;
-    border: none;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-main);
-    background: transparent;
-}
-
-/* ========== 操作按钮体系 ========== */
-.btn-primary {
-    width: 100%;
-    padding: 14px 20px;
-    background: var(--primary);
-    color: #ffffff;
-    border: none;
-    border-radius: var(--radius-md);
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
-}
-
-.btn-primary:hover {
-    background: var(--primary-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
-}
-
-.btn-secondary {
-    padding: 10px 16px;
-    background: #ffffff;
-    color: var(--text-body);
-    border: 1.5px solid var(--border-color);
-    border-radius: var(--radius-md);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: inline-flex;
     align-items: center;
     gap: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
 }
 
-.btn-secondary:hover {
+.omni-breadcrumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.omni-breadcrumb a:hover {
+    color: var(--omni-blue);
+}
+
+.omni-breadcrumb span.sep {
+    color: var(--text-subtle);
+}
+
+/* 页面头部 */
+.page-header {
+    margin-bottom: 24px;
+}
+
+.page-header h1 {
+    font-size: clamp(24px, 3.5vw, 32px);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.omni-author-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 24px;
+}
+
+.author-badge {
     background: var(--bg-surface);
-    border-color: #cbd5e1;
-    color: var(--text-main);
+    border: 1px solid var(--border-light);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--omni-blue);
 }
 
-/* ========== 实时计算结果卡片 ========== */
-.result-card {
-    margin-top: 28px;
-    background: linear-gradient(145deg, #ffffff 0%, var(--primary-subtle) 100%);
-    border: 2px solid var(--primary-light);
-    border-radius: var(--radius-lg);
+/* ==========================================================================
+   OMNI 计算器工作台组件规范 (The Calculator Widget)
+   ========================================================================== */
+
+.omni-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+}
+
+@media (min-width: 960px) {
+    .omni-layout-grid {
+        grid-template-columns: minmax(0, 1fr) 420px;
+        align-items: start;
+    }
+}
+
+/* 计算器白底卡片 */
+.omni-calculator-widget {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
     padding: 24px;
     box-shadow: var(--shadow-md);
 }
 
-.price-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 16px;
-    border-bottom: 1px dashed rgba(5, 150, 105, 0.25);
-    padding-bottom: 16px;
+@media (min-width: 960px) {
+    .omni-calculator-sticky {
+        position: sticky;
+        top: 84px;
+    }
 }
 
-.price-title {
+.omni-widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--omni-blue);
+}
+
+.omni-widget-title {
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 800;
+    color: var(--text-primary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: var(--primary-hover);
 }
 
-.price-number {
-    font-size: 38px;
-    font-weight: 900;
-    color: var(--text-main);
-    letter-spacing: -1px;
-}
-
-.breakdown-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-    font-size: 13px;
-}
-
-.breakdown-row {
-    display: flex;
-    justify-content: space-between;
-    color: var(--text-body);
-}
-
-.breakdown-row.total-row {
-    font-weight: 800;
-    font-size: 15px;
-    color: var(--text-main);
-    border-top: 1px solid rgba(5, 150, 105, 0.2);
-    padding-top: 8px;
-    margin-top: 4px;
-}
-
-.action-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-/* ========== 侧边栏与电商带货横幅 (Native Shopify Banner) ========== */
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* 原生电商店铺带货卡片 (替代以前廉价的 Ad 占位符) */
-.shopify-promo-card {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    color: #ffffff;
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    box-shadow: var(--shadow-lg);
-    position: relative;
-    overflow: hidden;
-}
-
-.shopify-promo-card::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 140px;
-    height: 140px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%);
-    border-radius: 50%;
-}
-
-.shopify-tag {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 4px;
-    background: rgba(16, 185, 129, 0.2);
-    color: #34d399;
+/* 分组标题 */
+.omni-group-title {
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin: 18px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.omni-group-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-light);
+}
+
+/* 变量输入行 (Variable Row) */
+.omni-row {
     margin-bottom: 12px;
 }
 
-.shopify-promo-card h3 {
-    font-size: 18px;
-    font-weight: 800;
-    line-height: 1.35;
-    margin-bottom: 8px;
-    color: #ffffff;
-}
-
-.shopify-promo-card p {
-    font-size: 13px;
-    color: #94a3b8;
-    line-height: 1.5;
-    margin-bottom: 18px;
-}
-
-.shopify-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 100%;
-    padding: 12px;
-    border-radius: var(--radius-md);
-    background: var(--primary);
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 14px;
-    transition: all 0.2s;
-}
-
-.shopify-btn:hover {
-    background: #10b981;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
-}
-
-.info-tip-card {
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 20px;
-    box-shadow: var(--shadow-sm);
-}
-
-.info-tip-card h3 {
-    font-size: 14px;
-    font-weight: 800;
-    color: var(--text-main);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.info-tip-card p {
-    font-size: 13px;
-    color: var(--text-sub);
-    line-height: 1.55;
-}
-
-/* ========== SEO 深度长文解析区 ========== */
-.seo-section {
-    margin-top: 32px;
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    box-shadow: var(--shadow-sm);
-}
-
-.seo-section h2 {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--text-main);
-    margin-bottom: 16px;
-    letter-spacing: -0.3px;
-}
-
-.seo-section h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-main);
-    margin: 20px 0 10px 0;
-}
-
-.seo-section p {
-    font-size: 14px;
-    color: var(--text-body);
-    line-height: 1.7;
-    margin-bottom: 14px;
-}
-
-.seo-section ul, .seo-section ol {
-    padding-left: 20px;
-    margin-bottom: 16px;
-    font-size: 14px;
-    color: var(--text-body);
-}
-
-.seo-section li {
-    margin-bottom: 6px;
-}
-
-/* ========== 底部版权栏 ========== */
-.footer {
-    background: #ffffff;
-    border-top: 1px solid var(--border-color);
-    padding: 40px 20px 24px;
-    margin-top: 60px;
-}
-
-.footer-content {
-    max-width: 1140px;
-    margin: 0 auto;
+.omni-label {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.footer-brand {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--text-main);
-}
-
-.footer-links {
-    display: flex;
-    gap: 20px;
     font-size: 13px;
+    font-weight: 600;
+    color: var(--text-body);
+    margin-bottom: 4px;
 }
 
-.footer-links a {
-    color: var(--text-sub);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.footer-links a:hover {
-    color: var(--primary);
-}
-
-.footer-bottom {
-    max-width: 1140px;
-    margin: 24px auto 0;
-    padding-top: 20px;
-    border-top: 1px solid #f1f5f9;
-    font-size: 12px;
-    color: var(--text-muted);
-    text-align: center;
-}
-
-/* ========== 首页与工具列表专用样式 ========== */
-.page-header {
-    text-align: center;
-    padding: 48px 20px 32px;
-    background: #ffffff;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.page-header h1 {
-    font-size: clamp(26px, 4vw, 36px);
-    font-weight: 900;
-    color: var(--text-main);
-    letter-spacing: -0.8px;
-    margin-bottom: 10px;
-}
-
-.page-header p {
-    font-size: 16px;
-    color: var(--text-sub);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    width: 100%;
-}
-
-.tool-card, .card-featured {
-    background: #ffffff;
-    border: 1.5px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    text-decoration: none;
+.omni-input-group {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: var(--shadow-xs);
-    position: relative;
+    height: 40px;
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-sm);
+    background: #FFFFFF;
     overflow: hidden;
+    transition: all 0.15s ease;
 }
 
-.tool-card:hover, .card-featured:hover {
-    transform: translateY(-4px);
-    border-color: var(--primary);
-    box-shadow: var(--shadow-lg);
+.omni-input-group:focus-within {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(59, 104, 252, 0.15);
 }
 
-.card-icon {
-    font-size: 32px;
-    margin-bottom: 14px;
-    display: inline-block;
-}
-
-.card-title {
-    font-size: 17px;
-    font-weight: 800;
-    color: var(--text-main);
-    margin-bottom: 8px;
-    letter-spacing: -0.3px;
-}
-
-.card-desc {
-    font-size: 13px;
-    color: var(--text-sub);
-    line-height: 1.55;
-    flex-grow: 1;
-    margin-bottom: 16px;
-}
-
-.card-tag {
-    align-self: flex-start;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 700;
-    background: var(--bg-surface);
-    color: var(--text-sub);
-    border: 1px solid var(--border-color);
-}
-
-.card-featured .card-tag {
-    background: var(--primary-subtle);
-    color: var(--primary-hover);
-    border-color: var(--primary-light);
-}
-
-.hero {
-    background: linear-gradient(180deg, #ffffff 0%, var(--bg-page) 100%);
-    padding: 60px 20px 40px;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.hero h1 {
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 900;
-    color: var(--text-main);
-    letter-spacing: -1px;
-    margin-bottom: 14px;
-}
-
-.hero p {
-    font-size: 18px;
-    color: var(--text-sub);
-    max-width: 640px;
-    margin: 0 auto 28px;
-}
-
-.hero-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 28px;
-    background: var(--primary);
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 15px;
-    border-radius: var(--radius-md);
-    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
-    transition: all 0.2s;
-}
-
-.hero-btn:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4);
-}
-
-/* ========== 打印专属样式 (高精格式化) ========== */
-@media print {
-    body {
-        background: #ffffff !important;
-        color: #000000 !important;
-    }
-    .navbar, .top-notice-bar, .sidebar, .seo-section, .footer, .btn-primary, .action-row, .slider-container, .range-slider {
-        display: none !important;
-    }
-    .main-container {
-        display: block !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        max-width: 100% !important;
-    }
-    .card {
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-    }
-    .result-card {
-        border: 2px solid #000000 !important;
-        background: #ffffff !important;
-        color: #000000 !important;
-        box-shadow: none !important;
-    }
-    .price-title, .price-number {
-        color: #000000 !important;
-    }
-}
-
-/* ========== 哥飞标准：桌面端 Sticky 悬浮计算结果栏 ========== */
-@media (min-width: 901px) {
-    .sidebar {
-        position: sticky;
-        top: 86px;
-        align-self: start;
-        max-height: calc(100vh - 100px);
-        overflow-y: auto;
-        padding-bottom: 20px;
-    }
-    .sidebar::-webkit-scrollbar {
-        width: 4px;
-    }
-    .sidebar::-webkit-scrollbar-thumb {
-        background: var(--border-color);
-        border-radius: 4px;
-    }
-}
-
-/* ========== 哥飞标准：移动端底部吸底浮窗 (Mobile Sticky Bottom Bar) ========== */
-.mobile-sticky-bar {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-top: 1px solid var(--border-color);
-    padding: 10px 16px;
-    z-index: 998;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
-}
-
-@media (max-width: 900px) {
-    .mobile-sticky-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-    }
-    body {
-        padding-bottom: 74px;
-    }
-}
-
-.mobile-bar-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.mobile-bar-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-sub);
-    text-transform: uppercase;
-}
-
-.mobile-bar-price {
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--primary);
-    line-height: 1.1;
-}
-
-.mobile-bar-btn {
-    padding: 10px 18px;
-    background: var(--primary);
-    color: #ffffff;
+.omni-input {
+    flex: 1;
     border: none;
-    border-radius: var(--radius-md);
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+    outline: none;
+    padding: 8px 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', monospace;
+    background: transparent;
+    width: 100%;
 }
 
-/* ========== Toast 现代轻提示系统 (替代丑陋的原生 alert) ========== */
-.toast-notification {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: #0f172a;
-    color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-    z-index: 99999;
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
-}
-
-.toast-notification.show {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-}
-
-/* ========== 数值变化呼吸动效 ========== */
-@keyframes valuePulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); color: var(--primary); }
-    100% { transform: scale(1); }
-}
-
-.value-pulse {
-    animation: valuePulse 0.25s ease-out;
-}
-
-/* ========== 哥飞 CTA 呼吸光晕微动效 ========== */
-@keyframes ctaGlow {
-    0%, 100% { box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25); }
-    50% { box-shadow: 0 6px 26px rgba(5, 150, 105, 0.55); }
-}
-
-.cta-glow {
-    animation: ctaGlow 2.5s infinite ease-in-out;
-}
-
-/* ========== 多币种与面积单位切换栏 ========== */
-.unit-switcher-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.omni-select {
+    border: none;
+    border-left: 1px solid var(--border-light);
+    outline: none;
+    padding: 0 10px;
     background: var(--bg-surface);
-    padding: 8px 14px;
-    border-radius: var(--radius-md);
-    margin-bottom: 20px;
-    border: 1px solid var(--border-color);
-    flex-wrap: wrap;
-    gap: 8px;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0;
 }
 
-.switch-group {
+.omni-select:focus {
+    background: #EEF2FF;
+    color: var(--omni-blue);
+}
+
+/* 计算结果行高光 (Omni Result State) */
+.omni-row.result .omni-input-group {
+    background: var(--omni-blue-light);
+    border-color: var(--omni-blue-border);
+}
+
+.omni-row.result .omni-input {
+    color: var(--omni-blue);
+    font-weight: 700;
+}
+
+/* 底部操作条 (Actions Bar) */
+.omni-footer-actions {
     display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-light);
+}
+
+.omni-action-btn {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-body);
+    cursor: pointer;
+    display: inline-flex;
     align-items: center;
     gap: 4px;
-}
-
-.switch-btn {
-    padding: 5px 10px;
-    border-radius: 6px;
-    border: 1px solid transparent;
-    background: transparent;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-sub);
-    cursor: pointer;
     transition: all 0.15s;
 }
 
-.switch-btn:hover {
-    color: var(--text-main);
+.omni-action-btn:hover {
+    border-color: var(--omni-blue);
+    color: var(--omni-blue);
+    background: var(--bg-surface);
 }
 
-.switch-btn.active {
-    background: #ffffff;
-    border-color: var(--border-color);
-    color: var(--primary);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+/* 移动端吸底条 (Mobile Ergonomics) */
+.omni-mobile-bottom-bar {
+    display: none;
 }
 
-/* ========== 极速场景模板 (Quick Scenario Presets) ========== */
-.scenario-presets {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 8px;
-    margin-bottom: 20px;
+@media (max-width: 959px) {
+    .omni-mobile-bottom-bar {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #FFFFFF;
+        border-top: 1px solid var(--border-light);
+        padding: 10px 16px;
+        z-index: 1000;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
+    }
+    .omni-mobile-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 600px;
+        margin: 0 auto;
+    }
 }
 
-.preset-card-btn {
-    background: #ffffff;
-    border: 1.5px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 10px 8px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    user-select: none;
+/* ==========================================================================
+   学术与杂志级长文排版规范 (Omni Editorial Article)
+   ========================================================================== */
+
+.omni-article {
+    color: var(--text-body);
+    font-size: 15px;
+    line-height: 1.7;
 }
 
-.preset-card-btn:hover {
-    border-color: var(--primary);
-    background: var(--primary-subtle);
+.omni-article h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 36px 0 14px;
+    letter-spacing: -0.3px;
 }
 
-.preset-card-btn.active {
-    border-color: var(--primary);
-    background: var(--primary-subtle);
-    color: var(--primary-hover);
-    box-shadow: 0 2px 6px rgba(5, 150, 105, 0.15);
-}
-
-.preset-card-title {
-    font-size: 13px;
+.omni-article h3 {
+    font-size: 17px;
     font-weight: 700;
-    display: block;
+    color: var(--text-primary);
+    margin: 24px 0 10px;
 }
 
-.preset-card-meta {
-    font-size: 11px;
-    color: var(--text-sub);
-    margin-top: 2px;
-    display: block;
+.omni-article p {
+    margin-bottom: 16px;
 }
 
-/* ========== 行业基准参考数据表 (Benchmark Table) ========== */
-.benchmark-table-wrapper {
+.omni-article ul, .omni-article ol {
+    margin: 0 0 18px 24px;
+}
+
+.omni-article li {
+    margin-bottom: 6px;
+}
+
+/* 数学公式块 (Formula Block) */
+.omni-formula-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-left: 3px solid var(--omni-blue);
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-primary);
+    margin: 18px 0;
+    line-height: 1.6;
+}
+
+/* 学术对照表 (Academic Table) */
+.omni-table-wrapper {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 16px 0;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
+    margin: 20px 0;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
 }
 
-.benchmark-table {
+.omni-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 13px;
+    background: #FFFFFF;
+}
+
+.omni-table th, .omni-table td {
+    padding: 10px 14px;
+    border: 1px solid var(--border-light);
     text-align: left;
-    white-space: nowrap;
 }
 
-.benchmark-table th {
+.omni-table th {
     background: var(--bg-surface);
-    padding: 12px 14px;
     font-weight: 700;
-    color: var(--text-main);
-    border-bottom: 1.5px solid var(--border-color);
+    color: var(--text-primary);
 }
 
-.benchmark-table td {
-    padding: 12px 14px;
-    border-bottom: 1px solid var(--border-color);
-    color: var(--text-body);
+.omni-table tr:nth-child(even) td {
+    background: #FCFDFE;
 }
 
-.benchmark-table tr:last-child td {
-    border-bottom: none;
+/* 折叠常见问答 (FAQ Accordion) */
+.omni-faq-accordion {
+    margin-top: 24px;
 }
 
-.benchmark-table tr:hover td {
-    background: #f8fafc;
+.omni-faq-item {
+    border-bottom: 1px solid var(--border-light);
 }
 
-/* ========== 哥飞 FAQ 手风琴样式 ========== */
-.faq-accordion {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 16px;
-}
-
-.faq-item {
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    transition: all 0.2s;
-}
-
-.faq-item[open] {
-    border-color: var(--primary-light);
-    box-shadow: var(--shadow-sm);
-}
-
-.faq-question {
-    padding: 14px 18px;
-    font-weight: 700;
+.omni-faq-item summary {
     font-size: 15px;
-    color: var(--text-main);
+    font-weight: 700;
+    color: var(--text-primary);
+    padding: 14px 0;
     cursor: pointer;
     list-style: none;
     display: flex;
@@ -1120,193 +517,279 @@ body {
     user-select: none;
 }
 
-.faq-question::-webkit-details-marker {
+.omni-faq-item summary::-webkit-details-marker {
     display: none;
 }
 
-.faq-question::after {
+.omni-faq-item summary::after {
     content: "+";
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
-    color: var(--text-sub);
-    line-height: 1;
+    color: var(--omni-blue);
 }
 
-.faq-item[open] .faq-question::after {
+.omni-faq-item[open] summary::after {
     content: "−";
-    color: var(--primary);
 }
 
-.faq-answer {
-    padding: 0 18px 16px;
+.omni-faq-answer {
+    padding-bottom: 16px;
     font-size: 14px;
     line-height: 1.6;
     color: var(--text-body);
-    border-top: 1px solid transparent;
 }
 
-.faq-item[open] .faq-answer {
-    border-top-color: var(--border-color);
-    padding-top: 12px;
+/* ==========================================================================
+   首页与分类页卡片系统 (Omni Category & Tool Cards)
+   ========================================================================== */
+
+/* 首页 Hero 区域 */
+.omni-home-hero {
+    text-align: center;
+    padding: 48px 20px 32px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* ========== 移动端针对性触控 Ergonomics 优化 ========== */
-@media (max-width: 640px) {
-    .form-control, .form-select, .stepper-val {
-        font-size: 16px !important; /* 强制 16px 防止 iOS Safari 自动缩放 */
+.omni-home-hero h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+}
+
+.omni-home-hero h1 span.highlight {
+    color: var(--omni-blue);
+}
+
+.omni-search-container {
+    max-width: 600px;
+    margin: 0 auto 32px;
+    position: relative;
+}
+
+.omni-search-input {
+    width: 100%;
+    padding: 14px 20px 14px 48px;
+    font-size: 15px;
+    border: 1px solid var(--border-input);
+    border-radius: 999px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 16px rgba(59, 104, 252, 0.06);
+    outline: none;
+    transition: all 0.2s;
+}
+
+.omni-search-input:focus {
+    border-color: var(--omni-blue);
+    box-shadow: 0 4px 20px rgba(59, 104, 252, 0.15);
+}
+
+.omni-search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--text-muted);
+}
+
+/* 分类矩阵卡片网格 (Category Grid) */
+.omni-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+}
+
+.omni-category-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 24px 16px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.omni-category-card:hover {
+    border-color: var(--omni-blue);
+    color: var(--omni-blue);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+}
+
+.omni-cat-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--omni-blue);
+}
+
+.omni-cat-name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.omni-cat-count {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* 标准工具卡片 (Tool Card) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.omni-tool-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.omni-tool-card:hover {
+    border-color: var(--omni-blue);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+}
+
+.omni-tool-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.omni-tool-card:hover .omni-tool-card-title {
+    color: var(--omni-blue);
+}
+
+.omni-tool-card-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Toast 提示通知 */
+.toast-notification {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #0A0A0A;
+    color: #FFFFFF;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    z-index: 3000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.toast-notification.show {
+    display: block;
+    opacity: 1;
+}
+
+/* 页脚 */
+.footer {
+    background: #FFFFFF;
+    border-top: 1px solid var(--border-light);
+    padding: 40px 20px 24px;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.footer-brand {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--omni-blue);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 20px auto 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-subtle);
+}
+
+/* ==========================================================================
+   移动端优先级与响应式排序 (Mobile First Ergonomics)
+   ========================================================================== */
+@media (max-width: 959px) {
+    .omni-layout-grid {
+        display: flex;
+        flex-direction: column;
     }
-    .stepper button {
-        width: 44px;
-        height: 44px; /* 满足 44px 触控标准 */
-    }
-    .range-slider {
-        height: 8px;
-    }
-    .range-slider::-webkit-slider-thumb {
-        width: 28px;
-        height: 28px; /* 增大手机触控手柄 */
-    }
-    .pill-card {
-        padding: 14px 10px;
+    .omni-calculator-aside {
+        order: -1;
+        margin-bottom: 24px;
     }
 }
 
 /* ==========================================================================
-   TIER-1 FLAGSHIP DESIGN SYSTEM: LINEAR / STRIPE LEVEL COMPONENTS
+   方案预览弹窗组件 (Proposal & Contract Modal)
    ========================================================================== */
-
-/* 1. iOS / Linear 风格分段控制器 (Segmented Controls) */
-.segmented-control {
-    display: inline-flex;
-    background: #e2e8f0;
-    padding: 4px;
-    border-radius: 12px;
-    gap: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.segmented-btn {
-    border: none;
-    background: transparent;
-    padding: 8px 18px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-sub);
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-}
-
-.segmented-btn:hover {
-    color: var(--text-main);
-}
-
-.segmented-btn.active {
-    background: #ffffff;
-    color: var(--primary);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
-}
-
-/* 2. 动态财务与工时成本分布可视化条 (Cost Breakdown Visualizer) */
-.breakdown-card {
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 20px;
-    margin: 20px 0;
-    box-shadow: var(--shadow-sm);
-}
-
-.breakdown-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.breakdown-title {
-    font-size: 14px;
-    font-weight: 800;
-    color: var(--text-main);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.breakdown-bar-track {
-    height: 16px;
-    background: #e2e8f0;
-    border-radius: 999px;
-    overflow: hidden;
-    display: flex;
-    margin-bottom: 14px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.bar-segment {
-    height: 100%;
-    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-}
-
-.seg-labor { background: #3b82f6; }
-.seg-supplies { background: #10b981; }
-.seg-overhead { background: #f59e0b; }
-.seg-profit { background: #8b5cf6; }
-
-.breakdown-legend-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 10px;
-}
-
-.legend-box {
-    display: flex;
-    flex-direction: column;
-    padding: 8px 12px;
-    background: var(--bg-surface);
-    border-radius: var(--radius-sm);
-    border-left: 3px solid transparent;
-}
-
-.legend-box.leg-labor { border-left-color: #3b82f6; }
-.legend-box.leg-supplies { border-left-color: #10b981; }
-.legend-box.leg-overhead { border-left-color: #f59e0b; }
-.legend-box.leg-profit { border-left-color: #8b5cf6; }
-
-.legend-title {
-    font-size: 11px;
-    color: var(--text-sub);
-    font-weight: 700;
-}
-
-.legend-val {
-    font-size: 14px;
-    font-weight: 800;
-    color: var(--text-main);
-    margin-top: 2px;
-    font-family: 'JetBrains Mono', monospace;
-}
-
-/* 3. 客户级正式报价方案预览弹窗 (Client Proposal Modal) */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(8px);
+    background: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(4px);
     z-index: 2000;
     display: none;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 16px;
     opacity: 0;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.2s ease;
 }
 
 .modal-overlay.open {
@@ -1315,27 +798,22 @@ body {
 }
 
 .proposal-modal {
-    background: #ffffff;
+    background: #FFFFFF;
     width: 100%;
-    max-width: 720px;
+    max-width: 680px;
     max-height: 90vh;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transform: scale(0.95);
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.modal-overlay.open .proposal-modal {
-    transform: scale(1);
+    border: 1px solid var(--border-light);
 }
 
 .modal-header-bar {
-    padding: 18px 24px;
-    background: #0f172a;
-    color: #ffffff;
+    padding: 16px 20px;
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border-light);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1344,77 +822,73 @@ body {
 .modal-header-bar h3 {
     margin: 0;
     font-size: 16px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-weight: 800;
+    color: var(--text-primary);
 }
 
 .modal-close-btn {
     background: transparent;
     border: none;
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 24px;
     line-height: 1;
     cursor: pointer;
-    padding: 4px;
 }
 
 .modal-close-btn:hover {
-    color: #ffffff;
+    color: var(--omni-blue);
 }
 
 .proposal-scroll-body {
-    padding: 28px;
+    padding: 24px;
     overflow-y: auto;
-    background: #f8fafc;
+    background: var(--bg-surface);
 }
 
 .proposal-paper {
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 32px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
 }
 
 .proposal-brand-row {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 20px;
-    margin-bottom: 24px;
+    border-bottom: 2px solid var(--omni-blue);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .proposal-logo {
-    font-size: 22px;
-    font-weight: 900;
-    color: #0f172a;
-    letter-spacing: -0.5px;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-primary);
 }
 
 .proposal-badge-quote {
-    background: #dbeafe;
-    color: #1e40af;
-    font-size: 12px;
-    font-weight: 800;
-    padding: 4px 12px;
-    border-radius: 999px;
-    text-transform: uppercase;
+    background: var(--omni-blue-light);
+    color: var(--omni-blue);
+    border: 1px solid var(--omni-blue-border);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
 }
 
 .proposal-meta-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
     font-size: 13px;
 }
 
 .proposal-meta-item strong {
     display: block;
-    color: var(--text-sub);
+    color: var(--text-muted);
     font-size: 11px;
     text-transform: uppercase;
     margin-bottom: 2px;
@@ -1423,218 +897,78 @@ body {
 .proposal-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 14px;
+    margin: 16px 0;
+    font-size: 13px;
 }
 
 .proposal-table th, .proposal-table td {
-    padding: 12px 14px;
+    padding: 10px 12px;
     text-align: left;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-light);
 }
 
 .proposal-table th {
-    background: #f1f5f9;
-    color: #475569;
+    background: var(--bg-surface);
+    color: var(--text-primary);
     font-weight: 700;
 }
 
 .proposal-total-card {
-    background: #f8fafc;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin-top: 20px;
-    border: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin-top: 16px;
+    border: 1px solid var(--border-light);
 }
 
 .total-line {
     display: flex;
     justify-content: space-between;
-    padding: 6px 0;
-    font-size: 14px;
-    color: var(--text-sub);
+    padding: 5px 0;
+    font-size: 13px;
+    color: var(--text-body);
 }
 
 .total-line.final {
-    border-top: 2px solid #0f172a;
+    border-top: 2px solid var(--omni-blue);
     margin-top: 8px;
-    padding-top: 12px;
-    font-size: 20px;
-    font-weight: 900;
-    color: var(--primary);
+    padding-top: 8px;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--omni-blue);
 }
 
 .modal-footer-bar {
-    padding: 16px 24px;
-    background: #ffffff;
-    border-top: 1px solid var(--border-color);
+    padding: 14px 20px;
+    background: #FFFFFF;
+    border-top: 1px solid var(--border-light);
     display: flex;
     justify-content: flex-end;
-    gap: 12px;
+    gap: 10px;
 }
 
-/* 4. 实验室级拟真动画烧瓶 / 烧杯 (Laboratory Beaker Visualizer) */
-.beaker-card {
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    text-align: center;
-    box-shadow: var(--shadow-sm);
-    margin-top: 20px;
+/* 打印样式 */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #proposalModal, #proposalModal * {
+        visibility: visible;
+    }
+    #proposalModal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: transparent;
+        padding: 0;
+    }
+    .modal-header-bar, .modal-footer-bar {
+        display: none !important;
+    }
+    .proposal-paper {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    }
 }
-
-.beaker-stage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-}
-
-.beaker-svg-wrap {
-    width: 140px;
-    height: 200px;
-    position: relative;
-    border: 3px solid #334155;
-    border-top: none;
-    border-radius: 0 0 24px 24px;
-    background: rgba(248, 250, 252, 0.7);
-    overflow: hidden;
-    box-shadow: inset 0 -6px 12px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.06);
-}
-
-.beaker-lip {
-    width: 154px;
-    height: 8px;
-    background: #334155;
-    border-radius: 4px;
-    margin: 0 auto;
-}
-
-.beaker-fill-water {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
-    transition: height 0.4s ease;
-    opacity: 0.85;
-}
-
-.beaker-fill-chem {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(180deg, #10b981 0%, #059669 100%);
-    transition: height 0.4s ease;
-    box-shadow: 0 -2px 6px rgba(16, 185, 129, 0.4);
-}
-
-.beaker-markings {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 10px;
-    width: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 16px 0;
-    pointer-events: none;
-}
-
-.mark-tick {
-    height: 1.5px;
-    background: #94a3b8;
-    width: 12px;
-}
-
-.mark-tick.long {
-    width: 20px;
-    background: #475569;
-}
-
-/* 5. 商业 ROI 节省对比卡片 (Commercial ROI Savings Banner) */
-.roi-banner {
-    background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
-    color: #ffffff;
-    border-radius: var(--radius-lg);
-    padding: 20px 24px;
-    margin: 20px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 10px 25px -5px rgba(6, 95, 70, 0.3);
-}
-
-.roi-stats {
-    display: flex;
-    gap: 24px;
-}
-
-.roi-number {
-    font-size: 28px;
-    font-weight: 900;
-    color: #34d399;
-    font-family: 'JetBrains Mono', monospace;
-}
-
-/* 6. 排班可视化互动矩阵 (Interactive Shift Grid) */
-.shift-matrix-wrap {
-    overflow-x: auto;
-    margin: 20px 0;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    background: #ffffff;
-}
-
-.shift-grid-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    min-width: 650px;
-}
-
-.shift-grid-table th, .shift-grid-table td {
-    padding: 12px 10px;
-    text-align: center;
-    border: 1px solid var(--border-color);
-}
-
-.shift-grid-table th {
-    background: #f8fafc;
-    font-weight: 700;
-    color: var(--text-main);
-}
-
-.shift-btn-pill {
-    padding: 6px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all 0.15s;
-    user-select: none;
-    width: 100%;
-    display: block;
-}
-
-.shift-btn-morning { background: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
-.shift-btn-afternoon { background: #fef3c7; color: #b45309; border-color: #fde68a; }
-.shift-btn-fullday { background: #dcfce7; color: #15803d; border-color: #bbf7d0; }
-.shift-btn-evening { background: #f3e8ff; color: #7e22ce; border-color: #e9d5ff; }
-.shift-btn-off { background: #f1f5f9; color: #94a3b8; border-color: #e2e8f0; }
-
-.ot-badge {
-    background: #fee2e2;
-    color: #b91c1c;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: 800;
-    font-size: 11px;
-    display: inline-block;
-}
-
-

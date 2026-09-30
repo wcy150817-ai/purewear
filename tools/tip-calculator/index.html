@@ -3,483 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Tip Split Calculator by Hours Worked | Fair Team Distribution 2026</title>
-    <meta name="description" content="Calculate and split team tips fairly based on hours worked or equal distribution. Free tool for cleaning crews, restaurants, and hospitality staff with 2026 tipping benchmarks.">
+    <title>Tip Split Calculator | PureWear Space</title>
+    <meta name="description" content="Calculate and split team tip pools fairly based on hours worked or equal distribution. Free tool for cleaning crews, hospitality staff, and service businesses.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/tip-calculator/">
     
-    <link rel="stylesheet" href="../../css/style.css">
-    
-    <style>
-        .mode-toggle {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: var(--bg-surface);
-            padding: 4px;
-            border-radius: var(--radius-md);
-            margin-bottom: 24px;
-            gap: 4px;
-        }
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tip Split Calculator | PureWear Space">
+    <meta property="og:description" content="Divide and distribute tip pools fairly among workers based on actual shift hours worked or equal shares.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/tip-calculator/">
+    <meta property="og:type" content="website">
 
-        .mode-btn {
-            padding: 10px;
-            border: none;
-            background: transparent;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-sub);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .mode-btn.active {
-            background: #ffffff;
-            color: var(--primary-hover);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .staff-tip-row {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr auto;
-            gap: 10px;
-            align-items: center;
-            margin-bottom: 12px;
-            padding: 10px;
-            background: var(--bg-surface);
-            border-radius: var(--radius-md);
-        }
-
-        .payout-result-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px dashed rgba(5, 150, 105, 0.2);
-            font-size: 14px;
-        }
-
-        .related-tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-top: 16px;
-        }
-
-        .related-tool-item {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            transition: all 0.2s;
-        }
-
-        .related-tool-item:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-    </style>
-    
+    <!-- Schema.org WebApplication & FAQPage -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@graph": [
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Tip Split Calculator",
+          "url": "https://tool.purewearspace.com/tools/tip-calculator/",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "All",
+          "description": "Divide and distribute tip pools fairly among workers based on actual shift hours worked."
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
             {
-                "@type": "WebApplication",
-                "name": "Tip Split Calculator by Hours",
-                "url": "https://tool.purewearspace.com/tools/tip-calculator/",
-                "applicationCategory": "FinanceApplication",
-                "operatingSystem": "All",
-                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-                "description": "Divide and distribute tip pools fairly among workers based on actual shift hours worked."
+              "@type": "Question",
+              "name": "How do you split tips based on hours worked?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "1. Add up all the hours worked by the entire team to find Total Team Hours. 2. Divide the Total Tip Pool by Total Team Hours to determine the Tip Rate per Hour ($/hr). 3. Multiply each worker's individual hours by that hourly tip rate to get their exact fair payout."
+              }
             },
             {
-                "@type": "FAQPage",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "How do you split tips based on hours worked?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "1. Add up all the hours worked by the entire team to find Total Team Hours. 2. Divide the Total Tip Pool by Total Team Hours to determine the Tip Rate per Hour ($/hr). 3. Multiply each worker's individual hours by that hourly tip rate to get their exact fair payout."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "What is the formula for dividing tips by hours?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Employee Tip = (Total Tip Amount / Sum of All Employees' Hours) × Employee's Individual Hours Worked."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "How much do homeowners usually tip house cleaners?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "In 2026, standard residential tipping norms range from $15 to $25 per cleaner for recurring visits (or 10% to 15% of the total bill). For deep cleanings or move-out turnover jobs, 15% to 20% is customary."
-                        }
-                    }
-                ]
+              "@type": "Question",
+              "name": "What is the formula for dividing tips by hours?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Employee Tip = (Total Tip Amount / Sum of All Employees' Hours) × Employee's Individual Hours Worked."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much do homeowners usually tip house cleaners?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In 2026, standard residential tipping norms range from $15 to $25 per cleaner for recurring visits (or 10% to 15% of the total bill). For deep cleanings or move-out turnover jobs, 15% to 20% is customary."
+              }
             }
-        ]
+          ]
+        }
+      ]
     }
     </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
     <!-- 顶部主店引流条 -->
     <div class="top-notice-bar">
-        <span>👕 Professional Housekeeping Uniforms & Workwear:</span>
+        <span>👕 High-Mobility Cleaning Uniforms & Bleach-Resistant Aprons:</span>
         <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
     </div>
 
-    <!-- 导航栏 -->
+    <!-- 导航栏 (Omni 风格) -->
     <nav class="navbar">
-        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <a href="../../index.html" class="brand">Pure<span>Wear</span> <span style="font-weight: 400; color: var(--text-muted); font-size: 14px; margin-left: 2px;">Calculators</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">All Tools</a>
+            <a href="../index.html" class="nav-link active">All Calculators</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
             <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 页面标题 -->
-    <div class="page-header">
-        <h1>Tip Split Calculator (Hours-Worked & Equal)</h1>
-        <p>Divide tips fairly and transparently among cleaning teams, housekeepers, baristas, and hospitality staff.</p>
-    </div>
-
-    <!-- 主布局网格 -->
-    <div class="main-container">
+    <!-- 双栏工作台网格 (Omni 布局) -->
+    <div class="omni-layout-grid">
         
-        <!-- 左侧输入主控台 -->
-        <main>
-            <div class="card">
+        <!-- 左侧：学术杂志级深度解析 (Article) -->
+        <article class="omni-article">
+            <!-- 面包屑 -->
+            <nav class="omni-breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span class="sep">/</span>
+                <a href="../index.html">All Calculators</a>
+                <span class="sep">/</span>
+                <span>Tip Split Calculator</span>
+            </nav>
+
+            <h1>Tip Split Calculator</h1>
+            
+            <div class="omni-author-bar">
+                <span class="author-badge">Hospitality & Labor Standard</span>
+                <span>Created by PureWear Payroll Desk</span>
+                <span class="sep">•</span>
+                <span>Updated March 2026</span>
+            </div>
+
+            <p>
+                When cleaning crews, catering staff, or housekeeping teams receive cash or credit card gratuities from clients, distributing the money fairly is essential for team morale and preventing workplace disputes.
+            </p>
+
+            <p>
+                If all technicians worked the exact same shift duration, splitting tips equally is straightforward. However, when staff members work staggered shifts (e.g., one cleaner worked 6 hours while an assistant arrived for 3 hours), <strong>hours-weighted tip pooling</strong> is the legally recognized, equitable standard.
+            </p>
+
+            <h2>The Hours-Weighted Tip Pool Formula</h2>
+            <div class="omni-formula-box">
+                <strong>Total Team Labor:</strong><br>
+                Total Hours = Hour₁ + Hour₂ + ... + Hourₙ<br><br>
+                <strong>Hourly Tip Rate:</strong><br>
+                Tip Rate per Hour = Total Tip Pool ÷ Total Hours<br><br>
+                <strong>Individual Staff Payout:</strong><br>
+                Employee Payout = Individual Hours Worked × Tip Rate per Hour
+            </div>
+
+            <h2>2026 Residential Cleaning Tipping Guidelines Table</h2>
+            <div class="omni-table-wrapper">
+                <table class="omni-table">
+                    <thead>
+                        <tr>
+                            <th>Cleaning Service Scope</th>
+                            <th>Recommended Tip Range</th>
+                            <th>Timing of Gratuity</th>
+                            <th>Distribution Method</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Standard Recurring (Bi-Weekly)</strong></td>
+                            <td>$15 – $25 per cleaner (or 10–15%)</td>
+                            <td>Per visit or monthly lump sum</td>
+                            <td>Equal split among on-site crew</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Initial Deep Clean</strong></td>
+                            <td>15% – 20% of total invoice</td>
+                            <td>Upon job completion inspection</td>
+                            <td>Weighted by on-site hours</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Move-Out Vacancy Turnover</strong></td>
+                            <td>$20 – $40 per technician</td>
+                            <td>At key turnover handover</td>
+                            <td>Weighted by physical scrubbing hours</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Holiday Season (December Bonus)</strong></td>
+                            <td>Equivalent to 1 standard cleaning cost</td>
+                            <td>Final December service visit</td>
+                            <td>Distributed across regular crew members</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>3 Golden Rules of Fair Tip Pooling</h2>
+            <ol>
+                <li><strong>Transparent Logging:</strong> Always display the total tip pool amount and the math formula so every cleaner understands exactly how their individual envelope was calculated.</li>
+                <li><strong>Managers Must Not Take From Tip Pools:</strong> Under federal FLSA labor regulations, business owners and exempt managers are prohibited from keeping any portion of employee tip pools.</li>
+                <li><strong>Distribute Tips the Same Day:</strong> Cash tips should be counted and distributed immediately at the conclusion of the day's route to prevent accounting confusion.</li>
+            </ol>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="omni-faq-accordion">
+                <details class="omni-faq-item">
+                    <summary>How do you split tips based on hours worked?</summary>
+                    <div class="omni-faq-answer">
+                        First, add all team members' hours to get Total Team Hours. Second, divide the total tip pool by the total hours to determine the <strong>Tip Rate per Hour</strong>. Finally, multiply each worker's individual hours by that rate.
+                    </div>
+                </details>
+
+                <details class="omni-faq-item">
+                    <summary>Are house cleaning tips mandatory?</summary>
+                    <div class="omni-faq-answer">
+                        Tips are never legally mandatory in home service contracts, but they are customary in North America. Roughly <strong>70% of recurring residential clients tip regularly</strong>, while 90% give a holiday cash bonus in December.
+                    </div>
+                </details>
+
+                <details class="omni-faq-item">
+                    <summary>Should tips be reported on payroll taxes?</summary>
+                    <div class="omni-faq-answer">
+                        Yes. The IRS requires employees to report all cash and credit card tips exceeding $20 per month as taxable income on Form 4070 / W-2 wages.
+                    </div>
+                </details>
+            </div>
+
+            <!-- 矩阵关联工具推荐 -->
+            <div style="margin-top: 40px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
+                <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">Related Free Calculators:</div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="../hourly-pay-calculator/" class="omni-action-btn">💰 Hourly Pay Calculator</a>
+                    <a href="../schedule-generator/" class="omni-action-btn">📅 Shift Schedule Generator</a>
+                    <a href="../cleaning-quote-calculator/" class="omni-action-btn">🧹 Cleaning Quote Calculator</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 右侧：Omni 科学计算器白底卡片 (Calculator Widget) -->
+        <aside class="omni-calculator-aside">
+            <div class="omni-calculator-widget omni-calculator-sticky">
                 
-                <!-- 货币切换器 -->
-                <div class="unit-switcher-row">
-                    <div class="switch-group">
-                        <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Currency:</span>
-                        <button type="button" class="switch-btn active" onclick="setTipCurrency('USD', '$', this)">$ USD</button>
-                        <button type="button" class="switch-btn" onclick="setTipCurrency('GBP', '£', this)">£ GBP</button>
-                        <button type="button" class="switch-btn" onclick="setTipCurrency('EUR', '€', this)">€ EUR</button>
-                        <button type="button" class="switch-btn" onclick="setTipCurrency('CAD', 'CA$', this)">CA$ CAD</button>
-                        <button type="button" class="switch-btn" onclick="setTipCurrency('AUD', 'AU$', this)">AU$ AUD</button>
+                <div class="omni-widget-header">
+                    <span class="omni-widget-title">Tip Split Calculator</span>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--omni-blue); background: var(--omni-blue-light); padding: 2px 6px; border-radius: 4px;">FAIR POOL</span>
+                </div>
+
+                <!-- 分组 1: Tip Pool & Method -->
+                <div class="omni-group-title">Tip Pool Specifications</div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Total tip pool</span>
                     </div>
-                    <span style="font-size: 12px; color: var(--text-sub); font-weight: 600;">⚡ Real-Time Instant Split</span>
-                </div>
-
-                <!-- 分配模式切换 (加权工时 vs 等额平分) -->
-                <div class="mode-toggle">
-                    <button type="button" class="mode-btn active" id="btnHoursMode" onclick="setMode('hours')">
-                        ⏱️ Split by Hours Worked (Weighted)
-                    </button>
-                    <button type="button" class="mode-btn" id="btnEqualMode" onclick="setMode('equal')">
-                        👥 Equal Split (Per Person)
-                    </button>
-                </div>
-
-                <!-- 小费总金额输入 -->
-                <div class="input-group">
-                    <label>💵 Total Tip Pool to Divide (<span id="tipSym">$</span>)</label>
-                    <input type="number" id="totalTip" class="form-control" placeholder="e.g. 150.00" value="120" step="1" min="0" inputmode="decimal" oninput="calculateTips()">
-                </div>
-
-                <!-- 模式 1: 按工时分配 -->
-                <div id="hoursModeSection">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <label style="font-weight: 700; font-size: 14px; margin-bottom: 0;">Team Members & Hours Worked</label>
-                        <button type="button" class="btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="addCleanerRow()">
-                            + Add Cleaner
-                        </button>
-                    </div>
-
-                    <div id="cleanersList">
-                        <!-- 动态渲染员工行 -->
+                    <div class="omni-input-group">
+                        <input type="number" id="totalTip" class="omni-input" value="120" min="1" max="10000" step="5" oninput="calculateTips()">
+                        <select id="currencySelect" class="omni-select" onchange="calculateTips()">
+                            <option value="USD" selected>USD ($)</option>
+                            <option value="GBP">GBP (£)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="CAD">CAD (CA$)</option>
+                            <option value="AUD">AUD (AU$)</option>
+                        </select>
                     </div>
                 </div>
 
-                <!-- 模式 2: 按人数平分 -->
-                <div id="equalModeSection" style="display: none;">
-                    <div class="input-group">
-                        <label>👥 Number of Team Members</label>
-                        <div class="stepper-input">
-                            <button type="button" class="stepper-btn" onclick="adjustEqualMembers(-1)">−</button>
-                            <input type="number" id="equalMembers" class="stepper-val" value="3" min="1" max="50" inputmode="numeric" oninput="calculateTips()">
-                            <button type="button" class="stepper-btn" onclick="adjustEqualMembers(1)">+</button>
-                        </div>
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Distribution method</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <select id="splitMode" class="omni-select" style="width: 100%; border-left: none;" onchange="handleModeChange(this.value)">
+                            <option value="hours" selected>Weighted by Hours Worked</option>
+                            <option value="equal">Equal Shares (Flat Split)</option>
+                        </select>
                     </div>
                 </div>
 
-            </div>
-
-            <!-- 哥飞 SEO 板块 1: 2026 小费参考基准数据表 (Tipping Benchmark) -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">2026 Residential Cleaning Tipping Standards</h2>
-                <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 14px;">
-                    Common customer tipping amounts across residential house cleaning and move-out turns:
-                </p>
-
-                <div class="benchmark-table-wrapper">
-                    <table class="benchmark-table">
-                        <thead>
-                            <tr>
-                                <th>Service Frequency / Type</th>
-                                <th>Customary Tip Amount</th>
-                                <th>Percentage Equivalent</th>
-                                <th>When to Tip</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Recurring Standard Cleaning</strong></td>
-                                <td>$15 – $25 per cleaner</td>
-                                <td>10% – 15% of invoice</td>
-                                <td>Each visit or holiday bonus</td>
-                            </tr>
-                            <tr>
-                                <td><strong>First-Time Deep Cleaning</strong></td>
-                                <td>$30 – $60 per team</td>
-                                <td>15% – 20% of invoice</td>
-                                <td>Upon job walk-through</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Move-Out Turnover Clean</strong></td>
-                                <td>$40 – $80 per team</td>
-                                <td>15% – 20% of invoice</td>
-                                <td>Upon deposit sign-off</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Annual Holiday Bonus</strong></td>
-                                <td>1 week's service cost</td>
-                                <td>100% of single visit</td>
-                                <td>Mid-December</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- 哥飞 SEO 板块 2: 加权工时计算公式推导 (Mathematical Transparency) -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 12px;">How to Divide Tips by Hours Worked (The Fair Formula)</h2>
-                <p style="font-size: 14px; color: var(--text-sub); line-height: 1.6; margin-bottom: 14px;">
-                    When crew members work varying shift lengths (for instance, a full-time lead working 8 hours and a part-time helper working 4 hours), an equal 50/50 split creates resentment. The <strong>hourly-weighted distribution formula</strong> ensures fair compensation:
-                </p>
-
-                <div style="background: var(--bg-surface); padding: 14px 18px; border-radius: var(--radius-sm); font-family: monospace; font-size: 13px; color: var(--text-main); margin-bottom: 14px; line-height: 1.7;">
-                    1. Total Team Hours = Sum of hours worked by all cleaners<br>
-                    2. Tip Rate per Hour = Total Tip Pool ÷ Total Team Hours<br>
-                    3. Individual Cleaner Payout = Cleaner's Hours × Tip Rate per Hour
-                </div>
-            </div>
-
-            <!-- 哥飞 SEO 板块 3: 可折叠 FAQ -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">Frequently Asked Questions</h2>
-                
-                <div class="faq-accordion">
-                    <details class="faq-item" open>
-                        <summary class="faq-question">How do you split tips based on hours worked?</summary>
-                        <div class="faq-answer">
-                            Add up the total hours worked by all team members to determine the total team hours. Next, divide the total tip pool by that number to establish the tip rate per hour. Finally, multiply each employee's individual hours by this rate to find their exact payout.
-                        </div>
-                    </details>
-
-                    <details class="faq-item">
-                        <summary class="faq-question">Should supervisors or cleaning business owners take a share of the tip pool?</summary>
-                        <div class="faq-answer">
-                            Under the US Fair Labor Standards Act (FLSA), managers, supervisors, and business owners are legally prohibited from participating in tip pools or keeping employee tips, even if they occasionally assist on the job.
-                        </div>
-                    </details>
-
-                    <details class="faq-item">
-                        <summary class="faq-question">Are tips subject to income taxes for house cleaners?</summary>
-                        <div class="faq-answer">
-                            Yes. In the United States and most jurisdictions, cash and electronic tips are classified as taxable income and must be reported on employee W-2s or contractor 1099 tax filings.
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-            <!-- 哥飞 SEO 板块 4: 内链闭环矩阵 -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">Related Payroll & Scheduling Tools</h2>
-                <div class="related-tools-grid">
-                    <a href="../hourly-pay-calculator/" class="related-tool-item">
-                        <span style="font-size: 20px;">💰</span>
-                        <strong style="font-size: 14px; color: var(--text-main);">Hourly Pay & Overtime</strong>
-                        <span style="font-size: 12px; color: var(--text-sub);">Calculate regular and 1.5x pay.</span>
-                    </a>
-                    <a href="../schedule-generator/" class="related-tool-item">
-                        <span style="font-size: 20px;">📅</span>
-                        <strong style="font-size: 14px; color: var(--text-main);">Weekly Shift Planner</strong>
-                        <span style="font-size: 12px; color: var(--text-sub);">Assign cleaner shifts & hours.</span>
-                    </a>
-                    <a href="../cleaning-quote-calculator/" class="related-tool-item">
-                        <span style="font-size: 20px;">🧹</span>
-                        <strong style="font-size: 14px; color: var(--text-main);">Cleaning Quote Calculator</strong>
-                        <span style="font-size: 12px; color: var(--text-sub);">Price jobs by square footage.</span>
-                    </a>
-                    <a href="../expense-tracker/" class="related-tool-item">
-                        <span style="font-size: 20px;">📊</span>
-                        <strong style="font-size: 14px; color: var(--text-main);">Income & Expense Tracker</strong>
-                        <span style="font-size: 12px; color: var(--text-sub);">Log daily tips & chemical costs.</span>
-                    </a>
-                </div>
-            </div>
-
-        </main>
-
-        <!-- 右侧吸顶悬浮结果栏 (桌面端 Sticky Sidebar) -->
-        <aside class="sidebar">
-            <div class="result-card">
-                <div class="price-header">
-                    <div class="price-title">Tip Distribution</div>
-                    <span style="font-size: 11px; font-weight: 700; color: var(--primary); background: #ffffff; padding: 2px 8px; border-radius: 999px;" id="tipCurrBadge">USD</span>
+                <!-- 分组 2: Staff Members -->
+                <div class="omni-group-title" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>Team Members</span>
+                    <button type="button" class="omni-action-btn" style="padding: 2px 8px; font-size: 11px;" onclick="addCleaner()">+ Add Member</button>
                 </div>
 
-                <div style="text-align: center; margin: 12px 0 20px;">
-                    <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Effective Tip Hourly Rate</div>
-                    <div class="price-number" id="tipRateDisplay" style="font-size: 36px; color: var(--primary);">$8.00 / hr</div>
-                    <div style="font-size: 13px; color: var(--text-sub); margin-top: 4px;" id="tipTotalHoursLabel">across 15.0 total team hours</div>
+                <div id="cleanersList">
+                    <!-- JS 渲染清洁员输入行 -->
                 </div>
 
-                <div id="payoutList" style="border-top: 1px dashed rgba(5, 150, 105, 0.25); padding-top: 14px;">
-                    <!-- 动态注入分配结果 -->
+                <!-- 分组 3: Payout Results -->
+                <div class="omni-group-title">Payout Results</div>
+
+                <div class="omni-row result">
+                    <div class="omni-label">
+                        <span style="font-weight: 700; color: var(--omni-blue);" id="rateLabel">Tip rate per hour</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="tipRateDisplay" class="omni-input" readonly value="$7.50">
+                        <span id="rateUnitDisplay" style="display:flex; align-items:center; padding:0 12px; font-size:13px; font-weight:700; color:var(--omni-blue); background:var(--omni-blue-light); border-left:1px solid var(--omni-blue-border);">/ hr</span>
+                    </div>
                 </div>
 
-                <div class="action-row" style="margin-top: 24px;">
-                    <button class="btn-primary" id="copyTipBtn" onclick="copyTipSummary()">📋 Copy Payout Summary</button>
-                    <button class="btn-secondary" onclick="window.print()">🖨️ Print Payout Sheet</button>
+                <div id="payoutResultContainer" style="margin-top: 12px; border-top: 1px solid var(--border-light); padding-top: 8px;">
+                    <!-- JS 动态渲染各员工分得金额 -->
                 </div>
-            </div>
 
-            <!-- Shopify 原生推荐卡片 -->
-            <div class="shopify-promo-card cta-glow">
-                <span class="shopify-tag">PureWear Store</span>
-                <h3>Higher Tips Start with Higher Standards</h3>
-                <p>Homeowners consistently tip 25% more to cleaners who arrive in clean, matching, professional PureWear aprons and uniform sets.</p>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
-                    View Housekeeping Outfits →
-                </a>
+                <!-- Omni 底部快捷操作条 -->
+                <div class="omni-footer-actions">
+                    <button type="button" class="omni-action-btn" onclick="resetDefaults()">↺ Reset</button>
+                    <button type="button" class="omni-action-btn" onclick="copyTipSummary()">📋 Copy Breakdown</button>
+                    <button type="button" class="omni-action-btn" onclick="shareCalculator()">🔗 Share</button>
+                </div>
+
             </div>
         </aside>
 
     </div>
 
-    <!-- 移动端吸底浮窗 -->
-    <div class="mobile-sticky-bar" id="mobileTipBar">
-        <div class="mobile-bar-info">
-            <span class="mobile-bar-label">Tip Rate per Hour</span>
-            <span class="mobile-bar-price" id="mobileTipRate">$8.00 / hr</span>
-        </div>
-        <button type="button" class="mobile-bar-btn" onclick="copyTipSummary()">📋 Copy Summary</button>
-    </div>
-
-    <!-- Toast 轻提示 -->
-    <div class="toast-notification" id="toastBox">
-        <span id="toastIcon">✓</span>
-        <span id="toastMsg">Payout summary copied!</span>
-    </div>
+    <!-- Toast 弹窗容器 -->
+    <div id="toastNotification" class="toast-notification"></div>
 
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div>
+                <div class="footer-brand">Pure<span style="color: var(--omni-blue);">Wear</span> Calculators</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Precision utility tools for independent cleaners and commercial maid services.</div>
+            </div>
             <div class="footer-links">
                 <a href="../../index.html">Home</a>
-                <a href="../index.html">All Tools</a>
-                <a href="../cleaning-quote-calculator/">Quote Calculator</a>
-                <a href="../schedule-generator/">Schedule Planner</a>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+                <a href="../index.html">All Calculators</a>
+                <a href="../../resources.html">Resources</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Workwear Store</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free team tip splitting tools for cleaning and hospitality crews.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
         </div>
     </footer>
 
+    <!-- 逻辑脚本 -->
     <script>
-        let currentMode = 'hours';
-        let currentSym = '$';
+        const currencyMap = {
+            'USD': { symbol: '$' },
+            'GBP': { symbol: '£' },
+            'EUR': { symbol: '€' },
+            'CAD': { symbol: 'CA$' },
+            'AUD': { symbol: 'AU$' }
+        };
 
         let cleaners = [
-            { id: 1, name: "Cleaner 1 (Lead)", hours: 7.5 },
-            { id: 2, name: "Cleaner 2 (Assistant)", hours: 4.5 },
-            { id: 3, name: "Cleaner 3 (Part-Time)", hours: 3.0 }
+            { id: 1, name: "Maria Garcia", hours: 6.0 },
+            { id: 2, name: "David Kim", hours: 6.0 },
+            { id: 3, name: "Elena Rostova", hours: 4.0 }
         ];
 
-        function setTipCurrency(code, sym, btn) {
-            currentSym = sym;
-            document.querySelectorAll('.unit-switcher-row .switch-btn').forEach(b => {
-                if (b.innerText.includes(code)) b.classList.add('active');
-                else b.classList.remove('active');
-            });
-            document.getElementById('tipSym').innerText = sym;
-            document.getElementById('tipCurrBadge').innerText = code;
-            calculateTips();
-            showToast(`Switched currency to ${code} (${sym})`);
-        }
-
-        function setMode(mode) {
-            currentMode = mode;
-            document.getElementById('btnHoursMode').classList.toggle('active', mode === 'hours');
-            document.getElementById('btnEqualMode').classList.toggle('active', mode === 'equal');
-            document.getElementById('hoursModeSection').style.display = mode === 'hours' ? 'block' : 'none';
-            document.getElementById('equalModeSection').style.display = mode === 'equal' ? 'block' : 'none';
+        function handleModeChange(mode) {
             calculateTips();
         }
 
-        function renderCleanersInput() {
+        function renderCleaners() {
             const container = document.getElementById('cleanersList');
-            container.innerHTML = '';
+            const mode = document.getElementById('splitMode').value;
+            let html = '';
 
-            cleaners.forEach(c => {
-                const div = document.createElement('div');
-                div.className = 'staff-tip-row';
-                div.innerHTML = `
-                    <input type="text" class="form-control" value="${c.name}" placeholder="Name" onchange="updateCleanerName(${c.id}, this.value)">
-                    <div style="display:flex; align-items:center; gap:6px;">
-                        <input type="number" class="form-control" value="${c.hours}" step="0.5" min="0.5" inputmode="decimal" placeholder="Hours" oninput="updateCleanerHours(${c.id}, this.value)">
-                        <span style="font-size:12px; color:var(--text-sub);">hrs</span>
+            cleaners.forEach((c, idx) => {
+                html += `
+                    <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px;">
+                        <input type="text" class="omni-input" style="border: 1px solid var(--border-input); border-radius: 4px; padding: 6px 10px; font-size: 13px; flex: 1.5;" value="${c.name}" onchange="updateName(${c.id}, this.value)">
+                        ${mode === 'hours' ? `
+                            <div class="omni-input-group" style="height: 32px; flex: 1;">
+                                <input type="number" class="omni-input" style="padding: 4px 8px; font-size: 13px;" value="${c.hours}" min="0.5" max="24" step="0.5" oninput="updateHours(${c.id}, this.value)">
+                                <span style="display:flex; align-items:center; padding:0 8px; font-size:11px; color:var(--text-muted); background:var(--bg-surface); border-left:1px solid var(--border-light);">hrs</span>
+                            </div>
+                        ` : ''}
+                        <button type="button" style="background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 14px;" onclick="removeCleaner(${c.id})">✕</button>
                     </div>
-                    <button type="button" style="background:none; border:none; cursor:pointer; color:var(--text-muted); font-size:16px;" onclick="removeCleaner(${c.id})">🗑️</button>
                 `;
-                container.appendChild(div);
             });
+
+            container.innerHTML = html;
         }
 
-        function addCleanerRow() {
+        function addCleaner() {
             const nextId = cleaners.length > 0 ? Math.max(...cleaners.map(c => c.id)) + 1 : 1;
             cleaners.push({ id: nextId, name: `Cleaner ${nextId}`, hours: 4.0 });
-            renderCleanersInput();
+            renderCleaners();
             calculateTips();
-            showToast("Added cleaner row");
         }
 
         function removeCleaner(id) {
             if (cleaners.length <= 1) {
-                alert("You need at least 1 cleaner in the pool.");
+                showToast("Need at least 1 team member.");
                 return;
             }
             cleaners = cleaners.filter(c => c.id !== id);
-            renderCleanersInput();
+            renderCleaners();
             calculateTips();
         }
 
-        function updateCleanerName(id, val) {
+        function updateName(id, val) {
             const c = cleaners.find(x => x.id === id);
             if (c) c.name = val.trim() || `Cleaner ${id}`;
         }
 
-        function updateCleanerHours(id, val) {
+        function updateHours(id, val) {
             const c = cleaners.find(x => x.id === id);
             if (c) {
                 c.hours = parseFloat(val) || 0;
@@ -487,119 +377,129 @@
             }
         }
 
-        function adjustEqualMembers(delta) {
-            const input = document.getElementById('equalMembers');
-            let val = parseInt(input.value) || 1;
-            val = Math.max(1, Math.min(50, val + delta));
-            input.value = val;
-            calculateTips();
-        }
-
         function calculateTips() {
             const totalTip = parseFloat(document.getElementById('totalTip').value) || 0;
-            const payoutList = document.getElementById('payoutList');
-            const sym = currentSym;
+            const mode = document.getElementById('splitMode').value;
+            const currency = document.getElementById('currencySelect').value;
+            const sym = currencyMap[currency].symbol;
 
-            if (currentMode === 'hours') {
-                const totalHours = cleaners.reduce((sum, c) => sum + c.hours, 0);
-                const tipPerHour = totalHours > 0 ? (totalTip / totalHours) : 0;
+            renderCleaners();
 
-                const rateEl = document.getElementById('tipRateDisplay');
-                rateEl.innerText = `${sym}${tipPerHour.toFixed(2)} / hr`;
-                rateEl.classList.remove('value-pulse');
-                void rateEl.offsetWidth;
-                rateEl.classList.add('value-pulse');
+            const resultContainer = document.getElementById('payoutResultContainer');
 
-                document.getElementById('tipTotalHoursLabel').innerText = `across ${totalHours.toFixed(1)} total team hours`;
-                document.getElementById('mobileTipRate').innerText = `${sym}${tipPerHour.toFixed(2)} / hr`;
+            if (mode === 'hours') {
+                document.getElementById('rateLabel').innerText = 'Tip rate per hour';
+                document.getElementById('rateUnitDisplay').innerText = '/ hr';
+
+                const totalHours = cleaners.reduce((acc, c) => acc + c.hours, 0);
+                const ratePerHour = totalHours > 0 ? (totalTip / totalHours) : 0;
+
+                document.getElementById('tipRateDisplay').value = `${sym}${ratePerHour.toFixed(2)}`;
 
                 let html = '';
                 cleaners.forEach(c => {
-                    const payout = c.hours * tipPerHour;
+                    const payout = c.hours * ratePerHour;
                     html += `
-                        <div class="payout-result-row">
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 13px; border-bottom: 1px solid var(--border-light);">
                             <div>
                                 <strong>${c.name}</strong>
-                                <span style="font-size:12px; color:var(--text-sub); margin-left:6px;">(${c.hours} hrs)</span>
+                                <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">(${c.hours}h)</span>
                             </div>
-                            <strong style="color:var(--primary); font-size:16px;">${sym}${payout.toFixed(2)}</strong>
+                            <strong style="color: var(--omni-blue); font-size: 14px;">${sym}${payout.toFixed(2)}</strong>
                         </div>
                     `;
                 });
-                payoutList.innerHTML = html;
+                resultContainer.innerHTML = html;
 
             } else {
-                // 等额模式
-                const members = parseInt(document.getElementById('equalMembers').value) || 1;
-                const perPerson = totalTip / members;
+                document.getElementById('rateLabel').innerText = 'Equal tip per person';
+                document.getElementById('rateUnitDisplay').innerText = '/ person';
 
-                const rateEl = document.getElementById('tipRateDisplay');
-                rateEl.innerText = `${sym}${perPerson.toFixed(2)} / person`;
-                rateEl.classList.remove('value-pulse');
-                void rateEl.offsetWidth;
-                rateEl.classList.add('value-pulse');
-
-                document.getElementById('tipTotalHoursLabel').innerText = `divided equally among ${members} team members`;
-                document.getElementById('mobileTipRate').innerText = `${sym}${perPerson.toFixed(2)} / person`;
+                const perPerson = cleaners.length > 0 ? (totalTip / cleaners.length) : 0;
+                document.getElementById('tipRateDisplay').value = `${sym}${perPerson.toFixed(2)}`;
 
                 let html = '';
-                for (let i = 1; i <= members; i++) {
+                cleaners.forEach(c => {
                     html += `
-                        <div class="payout-result-row">
-                            <strong>Team Member ${i}</strong>
-                            <strong style="color:var(--primary); font-size:16px;">${sym}${perPerson.toFixed(2)}</strong>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 13px; border-bottom: 1px solid var(--border-light);">
+                            <strong>${c.name}</strong>
+                            <strong style="color: var(--omni-blue); font-size: 14px;">${sym}${perPerson.toFixed(2)}</strong>
                         </div>
                     `;
-                }
-                payoutList.innerHTML = html;
+                });
+                resultContainer.innerHTML = html;
             }
+        }
+
+        function resetDefaults() {
+            document.getElementById('totalTip').value = 120;
+            document.getElementById('splitMode').value = 'hours';
+            cleaners = [
+                { id: 1, name: "Maria Garcia", hours: 6.0 },
+                { id: 2, name: "David Kim", hours: 6.0 },
+                { id: 3, name: "Elena Rostova", hours: 4.0 }
+            ];
+            calculateTips();
+            showToast("↺ Tip calculator reset.");
         }
 
         function copyTipSummary() {
-            const sym = currentSym;
+            const currency = document.getElementById('currencySelect').value;
+            const sym = currencyMap[currency].symbol;
             const totalTip = document.getElementById('totalTip').value;
-            let text = `💵 TIP POOL DISTRIBUTION SUMMARY\n` +
-                       `Total Tip Pool: ${sym}${totalTip}\n`;
+            const mode = document.getElementById('splitMode').value;
+            const rate = document.getElementById('tipRateDisplay').value;
 
-            if (currentMode === 'hours') {
-                const rate = document.getElementById('tipRateDisplay').innerText;
-                const hoursLabel = document.getElementById('tipTotalHoursLabel').innerText;
-                text += `Hourly Tip Rate: ${rate} (${hoursLabel})\n\n`;
+            let text = `💵 TIP POOL DISTRIBUTION SUMMARY\n` +
+                       `Total Tip Pool: ${sym}${totalTip}\n` +
+                       `Method: ${mode === 'hours' ? 'Weighted by Hours Worked' : 'Equal Shares'}\n` +
+                       `Rate: ${rate}\n` +
+                       `-------------------------------------\n`;
+
+            if (mode === 'hours') {
+                const totalHours = cleaners.reduce((acc, c) => acc + c.hours, 0);
+                const ratePerHour = totalHours > 0 ? (totalTip / totalHours) : 0;
                 cleaners.forEach(c => {
-                    const totalHours = cleaners.reduce((s, x) => s + x.hours, 0);
-                    const tipPerHour = totalHours > 0 ? (totalTip / totalHours) : 0;
-                    const payout = (c.hours * tipPerHour).toFixed(2);
-                    text += `• ${c.name} (${c.hours} hrs): ${sym}${payout}\n`;
+                    text += `• ${c.name} (${c.hours} hrs): ${sym}${(c.hours * ratePerHour).toFixed(2)}\n`;
                 });
             } else {
-                const members = document.getElementById('equalMembers').value;
-                const rate = document.getElementById('tipRateDisplay').innerText;
-                text += `Equal Split: ${rate} (Team size: ${members})\n`;
+                const perPerson = totalTip / cleaners.length;
+                cleaners.forEach(c => {
+                    text += `• ${c.name}: ${sym}${perPerson.toFixed(2)}\n`;
+                });
             }
 
-            text += `\nGenerated via PureWear Space: https://tool.purewearspace.com/tools/tip-calculator/`;
+            text += `-------------------------------------\nPureWear Space: https://tool.purewearspace.com/tools/tip-calculator/`;
 
             navigator.clipboard.writeText(text).then(() => {
-                const btn = document.getElementById('copyTipBtn');
-                btn.innerText = "✓ Copied Summary!";
-                setTimeout(() => btn.innerText = "📋 Copy Payout Summary", 2000);
-                showToast("✓ Payout summary copied to clipboard!");
-            }).catch(() => {
-                showToast("Failed to copy. Please manually copy the breakdown.");
+                showToast("📋 Tip distribution copied!");
             });
         }
 
+        function shareCalculator() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Tip Split Calculator | PureWear Space',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast("🔗 Calculator link copied!");
+                });
+            }
+        }
+
         function showToast(msg) {
-            const toast = document.getElementById('toastBox');
-            document.getElementById('toastMsg').innerText = msg;
+            const toast = document.getElementById('toastNotification');
+            if (!toast) return;
+            toast.innerText = msg;
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 2500);
+            }, 3000);
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            renderCleanersInput();
             calculateTips();
         });
     </script>

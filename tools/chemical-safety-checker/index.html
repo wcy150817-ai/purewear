@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Cleaning Chemical Safety & Mixing Compatibility Checker | PureWear Space</title>
-    <meta name="description" content="Tier-1 cleaning chemical safety checker and hazard compatibility matrix. Instantly verify if mixing household and commercial cleaning products produces lethal chlorine gas, chloramine vapors, or explosions.">
+    <title>Chemical Safety & Mixing Checker | PureWear Space</title>
+    <meta name="description" content="Verify if mixing household or commercial cleaning chemicals releases lethal chlorine gas, chloramine vapors, or corrosive acids. Follows 2026 OSHA safety standards.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/chemical-safety-checker/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Cleaning Chemical Safety & Mixing Compatibility Checker | PureWear Space">
+    <meta property="og:title" content="Chemical Safety & Mixing Checker | PureWear Space">
     <meta property="og:description" content="Test if mixing two cleaning chemicals produces lethal chlorine or chloramine gas. Features 2026 OSHA safety matrix and emergency flash protocols.">
     <meta property="og:url" content="https://tool.purewearspace.com/tools/chemical-safety-checker/">
     <meta property="og:type" content="website">
@@ -20,7 +20,7 @@
       "@graph": [
         {
           "@type": "WebApplication",
-          "name": "Cleaning Chemical Safety Checker",
+          "name": "Chemical Safety & Mixing Checker",
           "url": "https://tool.purewearspace.com/tools/chemical-safety-checker/",
           "applicationCategory": "SafetyApplication",
           "operatingSystem": "All",
@@ -68,453 +68,280 @@
     </script>
 
     <link rel="stylesheet" href="../../css/style.css">
-
-    <style>
-        .mix-selector-row {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-            gap: 16px;
-            margin: 20px 0;
-        }
-
-        @media (max-width: 640px) {
-            .mix-selector-row {
-                grid-template-columns: 1fr;
-            }
-            .mix-plus {
-                margin: -8px auto;
-            }
-        }
-
-        .mix-plus {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--bg-surface);
-            border: 2px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--text-sub);
-        }
-
-        .product-select {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-md);
-            font-size: 15px;
-            font-weight: 600;
-            background: #ffffff;
-            color: var(--text-main);
-            outline: none;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .product-select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px var(--primary-light);
-        }
-
-        .safety-result-card {
-            border-radius: var(--radius-lg);
-            padding: 30px 24px;
-            text-align: center;
-            margin-top: 24px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .status-danger {
-            background: #fef2f2;
-            border: 2px solid #ef4444;
-            color: #991b1b;
-        }
-
-        .status-warning {
-            background: #fffbeb;
-            border: 2px solid #f59e0b;
-            color: #92400e;
-        }
-
-        .status-neutral {
-            background: #eff6ff;
-            border: 2px solid #3b82f6;
-            color: #1e40af;
-        }
-
-        .status-safe {
-            background: #ecfdf5;
-            border: 2px solid #10b981;
-            color: #065f46;
-        }
-
-        .safety-icon {
-            font-size: 52px;
-            margin-bottom: 12px;
-            line-height: 1;
-        }
-
-        .safety-title {
-            font-size: 22px;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .safety-desc {
-            font-size: 15px;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .cheat-pill {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .cheat-pill.fatal {
-            background: #fee2e2;
-            color: #b91c1c;
-        }
-
-        .cheat-pill.toxic {
-            background: #fef3c7;
-            color: #b45309;
-        }
-
-        .cheat-pill.neutral {
-            background: #e0f2fe;
-            color: #0369a1;
-        }
-
-        .quick-combo-row {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 14px;
-        }
-
-        .quick-combo-chip {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-sub);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .quick-combo-chip:hover {
-            border-color: #ef4444;
-            color: #ef4444;
-            background: #fff5f5;
-        }
-    </style>
 </head>
 <body>
 
     <!-- 顶部主店引流条 -->
     <div class="top-notice-bar">
-        <span>👕 Chemical-Resistant Cleaning Uniforms & Heavy-Duty Aprons:</span>
+        <span>👕 High-Mobility Cleaning Uniforms & Bleach-Resistant Aprons:</span>
         <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
     </div>
 
-    <!-- 导航栏 -->
+    <!-- 导航栏 (Omni 风格) -->
     <nav class="navbar">
-        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span> <span style="font-size: 11px; background: #fee2e2; color: #991b1b; padding: 2px 8px; border-radius: 999px; font-weight: 700;">SAFETY MATRIX</span></a>
+        <a href="../../index.html" class="brand">Pure<span>Wear</span> <span style="font-weight: 400; color: var(--text-muted); font-size: 14px; margin-left: 2px;">Calculators</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">All Tools</a>
+            <a href="../index.html" class="nav-link active">All Calculators</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
             <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 页面标题 -->
-    <div class="page-header">
-        <h1>Cleaning Chemical Safety & Mixing Checker</h1>
-        <p>Real-time chemical reactivity testing engine for professional cleaners. Test combinations of bleach, vinegar, ammonia, peroxide, and acids to prevent lethal gas emissions.</p>
-    </div>
-
-    <!-- 主布局网格 -->
-    <div class="main-container">
+    <!-- 双栏工作台网格 (Omni 布局) -->
+    <div class="omni-layout-grid">
         
-        <!-- 左侧核心检查工具 -->
-        <main>
-            <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
-                    <h2 style="font-size: 18px; margin: 0;">Select Two Products or Active Ingredients</h2>
-                    <span style="font-size: 12px; color: var(--text-sub); font-weight: 600;">Reactive Evaluation</span>
-                </div>
-                <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 16px;">Pick from standard commercial custodial cleaners below to test chemical reactivity.</p>
+        <!-- 左侧：学术杂志级深度解析 (Article) -->
+        <article class="omni-article">
+            <!-- 面包屑 -->
+            <nav class="omni-breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span class="sep">/</span>
+                <a href="../index.html">All Calculators</a>
+                <span class="sep">/</span>
+                <span>Chemical Safety Checker</span>
+            </nav>
 
-                <!-- 两个产品选择器 -->
-                <div class="mix-selector-row">
-                    <div>
-                        <label style="font-size: 13px; font-weight: 700; color: var(--text-sub); margin-bottom: 6px; display: block;">🍾 Product A</label>
-                        <select id="prod1" class="product-select" onchange="runSafetyCheck()">
-                            <option value="bleach" selected>Chlorine Bleach (Sodium Hypochlorite)</option>
-                            <option value="ammonia">Ammonia (Windex / Glass Cleaners)</option>
-                            <option value="vinegar">White Vinegar (Acetic Acid)</option>
-                            <option value="peroxide">Hydrogen Peroxide</option>
-                            <option value="alcohol">Rubbing Alcohol (Isopropyl)</option>
-                            <option value="toilet_acid">Toilet Bowl Cleaner (Hydrochloric Acid)</option>
-                            <option value="drain_cleaner">Drain Cleaner (Lye / Sodium Hydroxide)</option>
-                            <option value="baking_soda">Baking Soda (Sodium Bicarbonate)</option>
-                            <option value="dish_soap">Mild Dish Soap (Neutral Surfactant)</option>
-                        </select>
-                    </div>
-
-                    <div class="mix-plus">+</div>
-
-                    <div>
-                        <label style="font-size: 13px; font-weight: 700; color: var(--text-sub); margin-bottom: 6px; display: block;">🧴 Product B</label>
-                        <select id="prod2" class="product-select" onchange="runSafetyCheck()">
-                            <option value="bleach">Chlorine Bleach (Sodium Hypochlorite)</option>
-                            <option value="ammonia">Ammonia (Windex / Glass Cleaners)</option>
-                            <option value="vinegar" selected>White Vinegar (Acetic Acid)</option>
-                            <option value="peroxide">Hydrogen Peroxide</option>
-                            <option value="alcohol">Rubbing Alcohol (Isopropyl)</option>
-                            <option value="toilet_acid">Toilet Bowl Cleaner (Hydrochloric Acid)</option>
-                            <option value="drain_cleaner">Drain Cleaner (Lye / Sodium Hydroxide)</option>
-                            <option value="baking_soda">Baking Soda (Sodium Bicarbonate)</option>
-                            <option value="dish_soap">Mild Dish Soap (Neutral Surfactant)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- 常见高危组合快捷标签 -->
-                <div>
-                    <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;">High-Risk Presets:</span>
-                    <div class="quick-combo-row">
-                        <button type="button" class="quick-combo-chip" onclick="setPair('bleach', 'vinegar')">⚠️ Bleach + Vinegar</button>
-                        <button type="button" class="quick-combo-chip" onclick="setPair('bleach', 'ammonia')">⚠️ Bleach + Ammonia</button>
-                        <button type="button" class="quick-combo-chip" onclick="setPair('bleach', 'alcohol')">☣️ Bleach + Alcohol</button>
-                        <button type="button" class="quick-combo-chip" onclick="setPair('bleach', 'peroxide')">💥 Bleach + Peroxide</button>
-                        <button type="button" class="quick-combo-chip" onclick="setPair('vinegar', 'baking_soda')">ℹ️ Vinegar + Baking Soda</button>
-                    </div>
-                </div>
-
-                <!-- 实时安全结果卡片 -->
-                <div id="safetyCard" class="safety-result-card status-danger">
-                    <div class="safety-icon" id="statusIcon">☠️</div>
-                    <div class="safety-title" id="statusTitle">DEADLY COMBINATION — DO NOT MIX!</div>
-                    <div class="safety-desc" id="statusDesc">
-                        Mixing <strong>Bleach</strong> and <strong>Vinegar (Acid)</strong> releases <strong>Chlorine Gas</strong>. Inhaling chlorine gas causes chemical burns to the eyes, nose, throat, and lungs, and can be fatal even in moderate concentrations.
-                    </div>
-                </div>
+            <h1>Chemical Safety & Mixing Checker</h1>
+            
+            <div class="omni-author-bar">
+                <span class="author-badge">OSHA Hazard Communication 2026</span>
+                <span>Created by PureWear Chemical Safety Desk</span>
+                <span class="sep">•</span>
+                <span>Updated March 2026</span>
             </div>
 
-            <!-- 哥飞 SEO 核心架构 1: 2026 致命化学反应速查基准表 -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 12px;">2026 Deadly Chemical Combinations Benchmark Matrix</h2>
-                <p style="font-size: 14px; color: var(--text-sub); line-height: 1.6; margin-bottom: 16px;">
-                    OSHA Hazard Communication Standards mandate that all professional housekeepers and custodians understand these critical chemical incompatibilities:
-                </p>
+            <p>
+                A common misconception among domestic cleaners and custodial staff is that combining two potent cleaning agents creates a "super cleaner." In reality, mixing common household or commercial custodial chemicals is one of the leading causes of acute toxic inhalation injuries and ER admissions in residential maintenance.
+            </p>
 
-                <div class="benchmark-table-wrapper">
-                    <table class="benchmark-table">
-                        <thead>
-                            <tr>
-                                <th>Product Pair</th>
-                                <th>Hazardous Byproduct</th>
-                                <th>Severity</th>
-                                <th>Immediate Symptoms</th>
-                                <th>Safe Alternative</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Bleach + Vinegar / Acids</strong></td>
-                                <td><strong>Chlorine Gas (Cl₂)</strong></td>
-                                <td><span class="cheat-pill fatal">FATAL</span></td>
-                                <td>Coughing, choking, burning lungs, pulmonary edema</td>
-                                <td>Use hot water & dish soap first; rinse thoroughly before bleach</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Bleach + Ammonia</strong></td>
-                                <td><strong>Chloramine Gas (NH₂Cl)</strong></td>
-                                <td><span class="cheat-pill fatal">FATAL</span></td>
-                                <td>Shortness of breath, chest pain, nausea, loss of consciousness</td>
-                                <td>Use microfiber with water or alcohol for mirrors; quat disinfectants</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Bleach + Rubbing Alcohol</strong></td>
-                                <td><strong>Chloroform (CHCl₃)</strong></td>
-                                <td><span class="cheat-pill toxic">TOXIC</span></td>
-                                <td>Severe dizziness, vomiting, central nervous depression</td>
-                                <td>Use 70% Isopropyl alcohol alone for touchpoints</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Bleach + Hydrogen Peroxide</strong></td>
-                                <td><strong>Exothermic Oxygen Explosion</strong></td>
-                                <td><span class="cheat-pill toxic">EXPLOSIVE</span></td>
-                                <td>Bottle ruptures, high-pressure corrosive liquid spray</td>
-                                <td>Allow peroxide to dry completely before applying any secondary agent</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Vinegar + Hydrogen Peroxide</strong></td>
-                                <td><strong>Peracetic Acid (CH₃CO₃H)</strong></td>
-                                <td><span class="cheat-pill toxic">CORROSIVE</span></td>
-                                <td>Severe eye, skin, and throat irritation</td>
-                                <td>Use separately from different spray bottles with drying intervals</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Vinegar + Baking Soda</strong></td>
-                                <td><strong>Carbon Dioxide + Salt Water</strong></td>
-                                <td><span class="cheat-pill neutral">INEFFECTIVE</span></td>
-                                <td>Harmless bubbling that neutralizes both acid & alkaline cleaning power</td>
-                                <td>Use baking soda paste first for scrubbing, then wipe clean</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <p>
+                This <strong>cleaning chemical safety checker</strong> tests pairwise compatibility between common custodial chemicals, predicts hazardous byproducts (chlorine gas, chloramines, chloroform, peracetic acid), and outlines immediate OSHA emergency protocols.
+            </p>
+
+            <h2>Hazardous Chemical Reaction Formulas</h2>
+            <div class="omni-formula-box">
+                <strong>Bleach + Vinegar (Chlorine Gas):</strong><br>
+                2 CH₃COOH + NaClO + NaCl → Cl₂ (Toxic Gas) + 2 CH₃COONa + H₂O<br><br>
+                <strong>Bleach + Ammonia (Chloramine Gas):</strong><br>
+                NH₃ + NaOCl → NH₂Cl (Toxic Chloramine) + NaOH<br><br>
+                <strong>Bleach + Rubbing Alcohol (Chloroform):</strong><br>
+                C₃H₈O + NaOCl → CHCl₃ (Chloroform) + Byproducts<br><br>
+                <strong>Vinegar + Hydrogen Peroxide (Peracetic Acid):</strong><br>
+                CH₃COOH + H₂O₂ ⇌ CH₃COOOH (Corrosive Peracetic Acid) + H₂O
             </div>
 
-            <!-- 哥飞 SEO 核心架构 2: 4步意外化学气体泄漏应急指南 -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 14px;">The 4-Step Accidental Chemical Exposure Protocol</h2>
-
-                <div class="formula-box">
-                    <strong>Emergency Custodial Rule:</strong><br>
-                    "Fresh Air First, Treat Second, Never Try to Neutralize in Enclosed Spaces"<br>
-                    Attempting to pour an opposing chemical onto a reacting mixture accelerates toxic gas emission.
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px;">
-                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                        <strong style="color: #ef4444; font-size: 15px;">1. Evacuate Immediately</strong>
-                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">Move yourself, clients, and pets into fresh outdoor air instantly. Do not stop to retrieve vacuum or supplies.</p>
-                    </div>
-                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                        <strong style="color: var(--primary); font-size: 15px;">2. Ventilate from Outside</strong>
-                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">Only open windows or doors if accessible on your immediate exit path without inhaling fumes.</p>
-                    </div>
-                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                        <strong style="color: var(--primary); font-size: 15px;">3. 15-Minute Flush</strong>
-                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">If liquid splashed onto eyes or skin, flush continuously with cold running water for a minimum of 15 minutes.</p>
-                    </div>
-                    <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-                        <strong style="color: #ef4444; font-size: 15px;">4. Call 911 / Poison Control</strong>
-                        <p style="font-size: 13px; color: var(--text-sub); margin: 6px 0 0; line-height: 1.5;">In the US, call <strong>1-800-222-1222</strong> (Poison Control) or 911 if coughing, burning throat, or dizziness persists.</p>
-                    </div>
-                </div>
+            <h2>OSHA Chemical Incompatibility Matrix Table</h2>
+            <div class="omni-table-wrapper">
+                <table class="omni-table">
+                    <thead>
+                        <tr>
+                            <th>Chemical Agent 1</th>
+                            <th>Chemical Agent 2</th>
+                            <th>Reaction Produced</th>
+                            <th>Severity Level</th>
+                            <th>Health Risk</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bleach (Sodium Hypochlorite)</strong></td>
+                            <td>Vinegar (Acetic Acid)</td>
+                            <td>Chlorine Gas (Cl₂)</td>
+                            <td><strong style="color: #DC2626;">Deadly</strong></td>
+                            <td>Severe lung damage, coughing, pulmonary edema</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bleach (Sodium Hypochlorite)</strong></td>
+                            <td>Ammonia (Ammonium Hydroxide)</td>
+                            <td>Chloramine Vapors (NH₂Cl)</td>
+                            <td><strong style="color: #DC2626;">Deadly</strong></td>
+                            <td>Throat swelling, respiratory failure, asphyxiation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bleach (Sodium Hypochlorite)</strong></td>
+                            <td>Acid Toilet Bowl Cleaners</td>
+                            <td>Dense Chlorine Gas</td>
+                            <td><strong style="color: #DC2626;">Deadly</strong></td>
+                            <td>Immediate chemical burns in confined restroom air</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bleach (Sodium Hypochlorite)</strong></td>
+                            <td>Rubbing Alcohol (Isopropyl)</td>
+                            <td>Chloroform (CHCl₃)</td>
+                            <td><strong style="color: #F59E0B;">Dangerous</strong></td>
+                            <td>Dizziness, loss of consciousness, central nervous toxicity</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hydrogen Peroxide</strong></td>
+                            <td>Vinegar (Acetic Acid)</td>
+                            <td>Peracetic Acid</td>
+                            <td><strong style="color: #F59E0B;">Corrosive</strong></td>
+                            <td>Skin burns, eye irritation, mucous membrane corrosion</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Baking Soda (Alkaline)</strong></td>
+                            <td>Vinegar (Acid)</td>
+                            <td>Carbon Dioxide + Salt Water</td>
+                            <td><strong>Ineffective</strong></td>
+                            <td>Neutralizes cleaning efficacy (safe but useless)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- 哥飞 SEO 核心架构 3: 折叠常见问答 FAQ Accordion -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 16px;">Frequently Asked Questions (FAQ)</h2>
+            <h2>Emergency Response Protocol for Accidental Mixing</h2>
+            <ol>
+                <li><strong>Evacuate to Fresh Air Immediately:</strong> Leave the room at once. Never stay behind to attempt neutralizing or rinsing the chemicals, as breathing high concentrations for even 30 seconds can cause permanent respiratory damage.</li>
+                <li><strong>Do Not Close Windows / Leave Exhaust On:</strong> If bathroom exhaust fans are already running, leave them running. Close the door behind you to contain fumes within the room.</li>
+                <li><strong>Call Poison Help (1-800-222-1222):</strong> Free, 24/7 expert medical advice for toxic exposure in the United States and Canada.</li>
+                <li><strong>Dial 911 If Symptoms Persist:</strong> Seek emergency care if anyone experiences wheezing, chest tightness, throat constriction, or eye burns.</li>
+            </ol>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="omni-faq-accordion">
+                <details class="omni-faq-item">
+                    <summary>What happens if you accidentally mix bleach and vinegar?</summary>
+                    <div class="omni-faq-answer">
+                        Bleach contains sodium hypochlorite and vinegar contains acetic acid. Mixing them instantly releases pungent, yellow-green <strong>Chlorine Gas (Cl₂)</strong>. Inhaling chlorine gas causes fluid buildup in the lungs (pulmonary edema) and can be fatal in small, unventilated bathrooms.
+                    </div>
+                </details>
+
+                <details class="omni-faq-item">
+                    <summary>Is mixing bleach and ammonia immediately dangerous?</summary>
+                    <div class="omni-faq-answer">
+                        Yes. Bleach and ammonia produce <strong>toxic Chloramine vapors</strong>. It causes immediate burning of the eyes and respiratory tract. At higher concentrations, it can cause severe internal chemical burns and chemical pneumonia.
+                    </div>
+                </details>
+
+                <details class="omni-faq-item">
+                    <summary>Does mixing baking soda and vinegar make a stronger cleaner?</summary>
+                    <div class="omni-faq-answer">
+                        No. Baking soda is a weak base and vinegar is an acid. Mixing them causes an exciting effervescent fizz of carbon dioxide, but chemically cancels each other out, leaving behind inert salt water (sodium acetate).
+                    </div>
+                </details>
+            </div>
+
+            <!-- 矩阵关联工具推荐 -->
+            <div style="margin-top: 40px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
+                <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">Related Free Calculators:</div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="../dilution-calculator/" class="omni-action-btn">🧪 Dilution Ratio Calculator</a>
+                    <a href="../mixing-guide/" class="omni-action-btn">🧴 Chemical Mixing Guide</a>
+                    <a href="../cleaning-quote-calculator/" class="omni-action-btn">🧹 Cleaning Quote Calculator</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 右侧：Omni 科学计算器白底卡片 (Calculator Widget) -->
+        <aside class="omni-calculator-aside">
+            <div class="omni-calculator-widget omni-calculator-sticky">
                 
-                <div class="faq-accordion">
-                    <details>
-                        <summary>What happens if you accidentally mix bleach and vinegar?</summary>
-                        <div class="faq-answer">
-                            Mixing chlorine bleach (sodium hypochlorite) and vinegar (acetic acid) produces <strong>toxic chlorine gas (Cl₂)</strong>. Even in low concentrations, chlorine gas burns mucous membranes in the eyes, throat, and lungs, creating fluid accumulation (pulmonary edema) that can be fatal in small, unventilated spaces like bathrooms.
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>Is mixing bleach and ammonia immediately dangerous?</summary>
-                        <div class="faq-answer">
-                            Yes. Bleach and ammonia react to produce lethal <strong>Chloramine vapors (NH₂Cl)</strong> and highly volatile hydrazine. Inhaling chloramine gas causes rapid throat swelling, chemical pneumonia, extreme shortness of breath, and potential loss of consciousness.
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>Does mixing baking soda and vinegar make a stronger cleaner?</summary>
-                        <div class="faq-answer">
-                            No. Baking soda (sodium bicarbonate, a base) and vinegar (acetic acid) neutralize each other upon contact. While the bubbling carbon dioxide looks impressive, it turns into essentially salt water (sodium acetate), eliminating both the acidity of vinegar and the alkaline scrubbing power of baking soda.
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>Why is it hazardous to mix bleach and toilet bowl cleaners?</summary>
-                        <div class="faq-answer">
-                            Most commercial toilet bowl cleaners are formulated with concentrated hydrochloric acid or phosphoric acid to remove mineral deposits. Pouring bleach into a toilet containing acid cleaner produces dense clouds of chlorine gas instantly. Always flush toilet cleaner completely before applying any bleach-based product.
-                        </div>
-                    </details>
+                <div class="omni-widget-header">
+                    <span class="omni-widget-title">Chemical Safety Checker</span>
+                    <span style="font-size: 11px; font-weight: 700; color: #DC2626; background: #FEE2E2; padding: 2px 6px; border-radius: 4px;">HAZARD MATRIX</span>
                 </div>
-            </div>
 
-            <!-- 哥飞 SEO 核心架构 4: 矩阵工具互相推荐卡片 -->
-            <div class="card" style="margin-top: 24px;">
-                <h3 style="font-size: 16px; margin-bottom: 12px;">Related Safety & Management Tools for Cleaning Businesses:</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
-                    <a href="../dilution-calculator/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
-                        <div style="font-weight: 700; color: var(--primary);">🧪 Chemical Dilution Calculator →</div>
-                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Calculate exact concentrate ratios to avoid surface burns and product waste.</div>
-                    </a>
-                    <a href="../time-estimator/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
-                        <div style="font-weight: 700; color: var(--primary);">⏱️ Cleaning Time Estimator →</div>
-                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Predict on-site cleaning job duration based on ISSA standards.</div>
-                    </a>
-                    <a href="../cleaning-quote-calculator/" class="metric-box" style="text-decoration: none; color: inherit; text-align: left; display: block;">
-                        <div style="font-weight: 700; color: var(--primary);">💰 Cleaning Quote Calculator →</div>
-                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">Quote residential & commercial cleaning jobs with 2026 pricing benchmarks.</div>
-                    </a>
-                </div>
-            </div>
-        </main>
+                <!-- 分组 1: Select Chemicals -->
+                <div class="omni-group-title">Select Chemical Agents</div>
 
-        <!-- 右侧应急与防护指南 (桌面端 Sticky) -->
-        <aside class="sidebar">
-            <div class="result-card" style="border-color: #ef4444; background: #fff;">
-                <div class="price-title" style="color: #ef4444;">🚨 Emergency Hotline Direct</div>
-                <div style="font-size: 14px; line-height: 1.6; color: var(--text-body); margin-top: 10px;">
-                    In case of chemical poisoning or toxic gas release:
-                    <div style="background: #fef2f2; border: 1.5px solid #ef4444; padding: 12px; border-radius: 8px; margin: 12px 0; text-align: center;">
-                        <div style="font-size: 12px; font-weight: 700; color: #991b1b; text-transform: uppercase;">US Poison Help</div>
-                        <a href="tel:18002221222" style="font-size: 22px; font-weight: 900; color: #ef4444; text-decoration: none; display: block; margin-top: 4px;">
-                            📞 1-800-222-1222
-                        </a>
-                        <div style="font-size: 11px; color: #b91c1c; margin-top: 2px;">Free • Confidential • 24/7/365</div>
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>First chemical</span>
                     </div>
-                    <ul style="padding-left: 18px; margin: 8px 0; font-size: 13px; color: var(--text-sub);">
-                        <li>Evacuate all personnel to open air</li>
-                        <li>Do not attempt to mix or neutralize</li>
-                        <li>Dial <strong>911</strong> immediately if victim collapses</li>
-                    </ul>
+                    <div class="omni-input-group">
+                        <select id="chem1" class="omni-select" style="width: 100%; border-left: none;" onchange="checkSafety()">
+                            <option value="bleach" selected>Bleach (Sodium Hypochlorite)</option>
+                            <option value="vinegar">Vinegar (Acetic Acid)</option>
+                            <option value="ammonia">Ammonia (Windex / Janitorial)</option>
+                            <option value="peroxide">Hydrogen Peroxide (H₂O₂)</option>
+                            <option value="alcohol">Rubbing Alcohol (Isopropyl)</option>
+                            <option value="baking_soda">Baking Soda (Sodium Bicarbonate)</option>
+                            <option value="dish_soap">Dish Soap (Neutral Detergent)</option>
+                            <option value="toilet_acid">Acid Toilet Bowl Cleaner</option>
+                            <option value="drain_cleaner">Drain Cleaner (Lye / Sulfuric)</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="action-row" style="margin-top: 18px;">
-                    <button class="btn-primary" onclick="copySafetyWarning()">📋 Copy Warning Sheet</button>
-                    <button class="btn-secondary" onclick="window.print()">🖨️ Print Safety Card</button>
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Second chemical</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <select id="chem2" class="omni-select" style="width: 100%; border-left: none;" onchange="checkSafety()">
+                            <option value="bleach">Bleach (Sodium Hypochlorite)</option>
+                            <option value="vinegar" selected>Vinegar (Acetic Acid)</option>
+                            <option value="ammonia">Ammonia (Windex / Janitorial)</option>
+                            <option value="peroxide">Hydrogen Peroxide (H₂O₂)</option>
+                            <option value="alcohol">Rubbing Alcohol (Isopropyl)</option>
+                            <option value="baking_soda">Baking Soda (Sodium Bicarbonate)</option>
+                            <option value="dish_soap">Dish Soap (Neutral Detergent)</option>
+                            <option value="toilet_acid">Acid Toilet Bowl Cleaner</option>
+                            <option value="drain_cleaner">Drain Cleaner (Lye / Sulfuric)</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Shopify 电商推荐卡片 (带呼吸发光效果) -->
-            <div class="shopify-promo-card cta-glow">
-                <span class="shopify-tag">PureWear Store</span>
-                <h3>Chemical-Resistant Workwear & Aprons</h3>
-                <p>Accidental splashes of bleach or caustic tile cleaners instantly ruin regular uniforms. PureWear heavy-duty waterproof aprons keep your team safe and dry.</p>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
-                    Explore Protective Aprons →
-                </a>
+                <!-- 常见预设快捷标签 -->
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;">
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setPair('bleach', 'vinegar')">Bleach + Vinegar</button>
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setPair('bleach', 'ammonia')">Bleach + Ammonia</button>
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setPair('vinegar', 'peroxide')">Vinegar + Peroxide</button>
+                    <button type="button" class="omni-action-btn" style="padding: 4px 8px; font-size: 11px;" onclick="setPair('dish_soap', 'vinegar')">Soap + Vinegar</button>
+                </div>
+
+                <!-- 分组 2: Verdict -->
+                <div class="omni-group-title">Compatibility & Hazard Verdict</div>
+
+                <div class="omni-row result">
+                    <div class="omni-label">
+                        <span style="font-weight: 700; color: #DC2626;">Hazard Status</span>
+                    </div>
+                    <div class="omni-input-group" style="background: #FEE2E2; border-color: #FECACA;">
+                        <input type="text" id="verdictStatus" class="omni-input" readonly value="☠️ DEADLY: CHLORINE GAS" style="color: #DC2626; font-weight: 800;">
+                    </div>
+                </div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Reaction byproducts</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="reactionByproducts" class="omni-input" readonly value="Chlorine Gas (Cl₂)">
+                    </div>
+                </div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Health risk & symptoms</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="symptomsText" class="omni-input" readonly value="Coughing, burning eyes, lung edema">
+                    </div>
+                </div>
+
+                <!-- 紧急求助电话直接展示 -->
+                <div style="margin-top: 14px; padding: 12px; background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--radius-sm); font-size: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong style="color: #991B1B; font-size: 12px; display: block;">US Poison Help Hotline:</strong>
+                            <span style="font-size: 11px; color: #B91C1C;">Free • 24/7/365 Medical Expert Assistance</span>
+                        </div>
+                        <a href="tel:18002221222" style="font-size: 14px; font-weight: 800; color: #DC2626; text-decoration: none; padding: 4px 8px; background: #fff; border-radius: 4px; border: 1px solid #FECACA;">1-800-222-1222</a>
+                    </div>
+                </div>
+
+                <!-- Omni 底部快捷操作条 -->
+                <div class="omni-footer-actions">
+                    <button type="button" class="omni-action-btn" onclick="resetDefaults()">↺ Reset</button>
+                    <button type="button" class="omni-action-btn" onclick="copyProtocol()">📋 Copy Warning</button>
+                    <button type="button" class="omni-action-btn" onclick="shareCalculator()">🔗 Share</button>
+                </div>
+
             </div>
         </aside>
 
-    </div>
-
-    <!-- 移动端吸底浮动栏 (Mobile Sticky Bar) -->
-    <div class="mobile-sticky-bar">
-        <div class="mobile-sticky-inner">
-            <div class="mobile-sticky-info">
-                <span class="mobile-sticky-label">Safety Status:</span>
-                <span class="mobile-sticky-val" id="mobileStickyStatus" style="color: #ef4444; font-size: 14px;">☠️ DEADLY MIX</span>
-            </div>
-            <a href="tel:18002221222" class="mobile-sticky-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; background: #ef4444; color: #fff;">📞 Poison Help</a>
-        </div>
     </div>
 
     <!-- Toast 弹窗容器 -->
@@ -523,169 +350,180 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div>
+                <div class="footer-brand">Pure<span style="color: var(--omni-blue);">Wear</span> Calculators</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Precision utility tools for independent cleaners and commercial maid services.</div>
+            </div>
             <div class="footer-links">
                 <a href="../../index.html">Home</a>
-                <a href="../index.html">All Tools</a>
-                <a href="../dilution-calculator/">Dilution Calculator</a>
-                <a href="../cleaning-quote-calculator/">Quote Calculator</a>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+                <a href="../index.html">All Calculators</a>
+                <a href="../../resources.html">Resources</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Workwear Store</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free safety and management tools for cleaning professionals.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
         </div>
     </footer>
 
+    <!-- 逻辑脚本 -->
     <script>
         const reactions = [
             {
                 pair: ['bleach', 'vinegar'],
-                type: 'danger',
-                icon: '☠️',
-                title: 'DEADLY! TOXIC CHLORINE GAS',
-                desc: 'Mixing <strong>Bleach</strong> with <strong>Vinegar</strong> releases toxic <strong>Chlorine Gas</strong> (Cl₂). It causes immediate chemical burns to eyes, throat, and lungs, and can be fatal in enclosed spaces like bathrooms. <strong>NEVER MIX.</strong>'
+                status: '☠️ DEADLY: CHLORINE GAS',
+                color: '#DC2626',
+                bg: '#FEE2E2',
+                byproduct: 'Chlorine Gas (Cl₂)',
+                symptoms: 'Violent coughing, chest pain, eye burns, pulmonary edema'
             },
             {
                 pair: ['bleach', 'toilet_acid'],
-                type: 'danger',
-                icon: '☠️',
-                title: 'DEADLY! TOXIC CHLORINE GAS',
-                desc: 'Toilet bowl cleaners contain concentrated hydrochloric or phosphoric acid. Mixing with <strong>Bleach</strong> creates dense <strong>Chlorine Gas</strong> immediately. <strong>NEVER MIX.</strong>'
+                status: '☠️ DEADLY: CHLORINE GAS',
+                color: '#DC2626',
+                bg: '#FEE2E2',
+                byproduct: 'Dense Chlorine Gas (Cl₂)',
+                symptoms: 'Immediate respiratory choking and chemical lung burns'
             },
             {
                 pair: ['bleach', 'ammonia'],
-                type: 'danger',
-                icon: '☠️',
-                title: 'DEADLY! TOXIC CHLORAMINE VAPORS',
-                desc: 'Mixing <strong>Bleach</strong> and <strong>Ammonia</strong> creates lethal <strong>Chloramine Gas</strong> (NH₂Cl) and hydrazine. Causes acute respiratory distress, throat inflammation, and permanent lung injury. <strong>NEVER MIX.</strong>'
+                status: '☠️ DEADLY: CHLORAMINE GAS',
+                color: '#DC2626',
+                bg: '#FEE2E2',
+                byproduct: 'Chloramine Vapors (NH₂Cl) & Hydrazine',
+                symptoms: 'Throat swelling, shortness of breath, chemical pneumonia'
             },
             {
                 pair: ['bleach', 'alcohol'],
-                type: 'warning',
-                icon: '☣️',
-                title: 'DANGEROUS! PRODUCES CHLOROFORM',
-                desc: 'Combining <strong>Bleach</strong> with <strong>Rubbing Alcohol</strong> (Isopropyl or Ethanol) produces <strong>Chloroform</strong> and hydrochloric acid. Inhaling vapors causes dizziness, unconsciousness, and liver toxicity.'
+                status: '☣️ DANGEROUS: CHLOROFORM',
+                color: '#D97706',
+                bg: '#FEF3C7',
+                byproduct: 'Chloroform (CHCl₃) & Hydrochloric Acid',
+                symptoms: 'Dizziness, nausea, loss of consciousness, liver damage'
             },
             {
                 pair: ['bleach', 'peroxide'],
-                type: 'warning',
-                icon: '💥',
-                title: 'EXPLOSIVE! RAPID OXYGEN RELEASE',
-                desc: 'Bleach and <strong>Hydrogen Peroxide</strong> react violently to release pure oxygen gas and intense heat. If mixed in a closed container or spray bottle, pressure will cause the bottle to <strong>burst or explode</strong> with caustic spray.'
+                status: '💥 EXPLOSIVE: OXYGEN RELEASE',
+                color: '#D97706',
+                bg: '#FEF3C7',
+                byproduct: 'Pure Oxygen Gas & High Heat',
+                symptoms: 'Closed bottles explode with caustic splashing'
             },
             {
                 pair: ['vinegar', 'peroxide'],
-                type: 'warning',
-                icon: '⚠️',
-                title: 'HAZARDOUS! CREATES PERACETIC ACID',
-                desc: 'Mixing <strong>Vinegar</strong> and <strong>Hydrogen Peroxide</strong> in the same bottle creates <strong>Peracetic Acid</strong>, a corrosive chemical that irritates the eyes, skin, and mucous membranes.'
+                status: '⚠️ CORROSIVE: PERACETIC ACID',
+                color: '#D97706',
+                bg: '#FEF3C7',
+                byproduct: 'Peracetic Acid (CH₃COOOH)',
+                symptoms: 'Corrosive burns to skin, eyes, and nasal passages'
             },
             {
                 pair: ['vinegar', 'baking_soda'],
-                type: 'neutral',
-                icon: 'ℹ️',
-                title: 'INEFFECTIVE! NEUTRALIZES CLEANING POWER',
-                desc: 'Vinegar is an acid and baking soda is a base. When mixed, they react to produce carbon dioxide fizz and turn mostly into <strong>salt water (sodium acetate)</strong>. While not toxic, it cancels out the grease-cutting power of both ingredients.'
+                status: 'ℹ️ INEFFECTIVE: CANCELS OUT',
+                color: '#3B68FC',
+                bg: '#EEF2FF',
+                byproduct: 'Carbon Dioxide + Salt Water',
+                symptoms: 'Non-toxic, but neutralizes cleaning power'
             },
             {
                 pair: ['drain_cleaner', 'bleach'],
-                type: 'danger',
-                icon: '☠️',
-                title: 'HIGH RISK OF BURNS & TOXIC GAS',
-                desc: 'Commercial drain cleaners contain strong acids or highly concentrated lye. Pouring bleach down a drain with drain cleaner can trigger violent boiling, corrosive splatter, or toxic gas.'
+                status: '☠️ SEVERE BURNS & TOXIC GAS',
+                color: '#DC2626',
+                bg: '#FEE2E2',
+                byproduct: 'Toxic Gas & Thermal Splatter',
+                symptoms: 'Violent boiling eruptions of caustic lye/acid'
             }
         ];
 
         function setPair(p1, p2) {
-            document.getElementById('prod1').value = p1;
-            document.getElementById('prod2').value = p2;
-            runSafetyCheck();
+            document.getElementById('chem1').value = p1;
+            document.getElementById('chem2').value = p2;
+            checkSafety();
         }
 
-        function showToast(message) {
+        function checkSafety() {
+            const c1 = document.getElementById('chem1').value;
+            const c2 = document.getElementById('chem2').value;
+
+            if (c1 === c2) {
+                document.getElementById('verdictStatus').value = '✅ IDENTICAL CHEMICAL';
+                document.getElementById('verdictStatus').style.color = '#10B981';
+                document.getElementById('verdictStatus').parentElement.style.background = '#ECFDF5';
+                document.getElementById('reactionByproducts').value = 'No chemical reaction occurs';
+                document.getElementById('symptomsText').value = 'Safe to combine identical products';
+                return;
+            }
+
+            const match = reactions.find(r => 
+                (r.pair[0] === c1 && r.pair[1] === c2) ||
+                (r.pair[0] === c2 && r.pair[1] === c1)
+            );
+
+            if (match) {
+                document.getElementById('verdictStatus').value = match.status;
+                document.getElementById('verdictStatus').style.color = match.color;
+                document.getElementById('verdictStatus').parentElement.style.background = match.bg;
+                document.getElementById('reactionByproducts').value = match.byproduct;
+                document.getElementById('symptomsText').value = match.symptoms;
+            } else {
+                document.getElementById('verdictStatus').value = '✅ NO LETHAL REACTION DETECTED';
+                document.getElementById('verdictStatus').style.color = '#10B981';
+                document.getElementById('verdictStatus').parentElement.style.background = '#ECFDF5';
+                document.getElementById('reactionByproducts').value = 'No dangerous volatile gases identified';
+                document.getElementById('symptomsText').value = 'Standard custodial ventilation recommended';
+            }
+        }
+
+        function resetDefaults() {
+            document.getElementById('chem1').value = 'bleach';
+            document.getElementById('chem2').value = 'vinegar';
+            checkSafety();
+            showToast("↺ Checker reset.");
+        }
+
+        function copyProtocol() {
+            const status = document.getElementById('verdictStatus').value;
+            const byprod = document.getElementById('reactionByproducts').value;
+            const symptoms = document.getElementById('symptomsText').value;
+
+            const text = `⚠️ CHEMICAL SAFETY ALERT:\n` +
+                         `Status: ${status}\n` +
+                         `Hazardous Reaction: ${byprod}\n` +
+                         `Symptoms: ${symptoms}\n` +
+                         `Emergency Protocol: Evacuate to open air. In USA call Poison Help: 1-800-222-1222\n` +
+                         `Checked via PureWear Space: https://tool.purewearspace.com/tools/chemical-safety-checker/`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("📋 Safety warning copied to clipboard!");
+            });
+        }
+
+        function shareCalculator() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Chemical Safety Checker | PureWear Space',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast("🔗 Checker link copied to clipboard!");
+                });
+            }
+        }
+
+        function showToast(msg) {
             const toast = document.getElementById('toastNotification');
             if (!toast) return;
-            toast.innerText = message;
+            toast.innerText = msg;
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
         }
 
-        function runSafetyCheck() {
-            const p1 = document.getElementById('prod1').value;
-            const p2 = document.getElementById('prod2').value;
-            const card = document.getElementById('safetyCard');
-            const icon = document.getElementById('statusIcon');
-            const title = document.getElementById('statusTitle');
-            const desc = document.getElementById('statusDesc');
-            const mobileSticky = document.getElementById('mobileStickyStatus');
-
-            if (p1 === p2) {
-                card.className = 'safety-result-card status-safe';
-                icon.innerText = 'ℹ️';
-                title.innerText = 'SAME PRODUCT SELECTED';
-                desc.innerHTML = 'You have selected the same chemical in both slots. Mixing a product with itself does not cause a chemical reaction.';
-                if (mobileSticky) {
-                    mobileSticky.innerText = 'ℹ️ Same Product';
-                    mobileSticky.style.color = '#10b981';
-                }
-                return;
-            }
-
-            let match = null;
-            for (let r of reactions) {
-                if (r.pair.includes(p1) && r.pair.includes(p2)) {
-                    match = r;
-                    break;
-                }
-            }
-
-            if (match) {
-                card.className = `safety-result-card status-${match.type}`;
-                icon.innerText = match.icon;
-                title.innerText = match.title;
-                desc.innerHTML = match.desc;
-
-                if (mobileSticky) {
-                    mobileSticky.innerText = `${match.icon} ${match.type.toUpperCase()}`;
-                    mobileSticky.style.color = match.type === 'danger' ? '#ef4444' : (match.type === 'warning' ? '#f59e0b' : '#3b82f6');
-                }
-            } else {
-                card.className = 'safety-result-card status-safe';
-                icon.innerText = '✅';
-                title.innerText = 'NO KNOWN HAZARDOUS REACTION';
-                desc.innerHTML = 'There are no documented toxic or explosive reactions between these two specific ingredients. However, <strong>always practice safety:</strong> do not mix concentrated chemicals without manufacturer guidance, and ensure good ventilation.';
-                
-                if (mobileSticky) {
-                    mobileSticky.innerText = '✅ No Known Hazard';
-                    mobileSticky.style.color = '#10b981';
-                }
-            }
-        }
-
-        function copySafetyWarning() {
-            const p1 = document.getElementById('prod1').options[document.getElementById('prod1').selectedIndex].text;
-            const p2 = document.getElementById('prod2').options[document.getElementById('prod2').selectedIndex].text;
-            const title = document.getElementById('statusTitle').innerText;
-            const desc = document.getElementById('statusDesc').innerText;
-
-            const text = `⚠️ Chemical Mixing Safety Warning:\n` +
-                         `Ingredients: ${p1} + ${p2}\n` +
-                         `Status: ${title}\n` +
-                         `Details: ${desc}\n` +
-                         `US Poison Control Help: 1-800-222-1222\n` +
-                         `Verified via PureWear Space: https://tool.purewearspace.com/tools/chemical-safety-checker/`;
-
-            navigator.clipboard.writeText(text).then(() => {
-                showToast("✅ Safety warning sheet copied to clipboard!");
-            }).catch(() => {
-                showToast("Failed to copy. Please manually copy the values.");
-            });
-        }
-
-        window.addEventListener('DOMContentLoaded', runSafetyCheck);
+        window.addEventListener('DOMContentLoaded', () => {
+            checkSafety();
+        });
     </script>
 </body>
 </html>

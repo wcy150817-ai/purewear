@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Cleaning Supply Inventory Tracker | PureWear Space</title>
-    <meta name="description" content="Free cleaning supply stock tracker. Track chemicals, trash bags, microfiber towels, and get automatic low-stock replenishment alerts on your phone.">
+    <meta name="description" content="Free cleaning supply stock tracker. Track chemicals, trash bags, microfiber towels, and get automatic low-stock replenishment alerts.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/inventory-tracker/">
     
     <!-- Open Graph -->
@@ -27,157 +27,39 @@
     </script>
 
     <link rel="stylesheet" href="../../css/style.css">
-
     <style>
-        .filter-row {
+        .inv-item-row {
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 16px 0 20px;
-            flex-wrap: wrap;
-            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
         }
-
-        .filter-chips {
+        .inv-item-row.low {
+            border-color: #FECACA;
+            background: #FEF2F2;
+        }
+        .inv-stepper {
             display: flex;
+            align-items: center;
             gap: 6px;
         }
-
-        .filter-chip {
-            padding: 6px 14px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 700;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            color: var(--text-sub);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .filter-chip.active {
-            background: var(--primary);
-            color: #ffffff;
-            border-color: var(--primary);
-        }
-
-        .inventory-list {
-            display: grid;
-            gap: 12px;
-        }
-
-        .inventory-item {
-            background: #ffffff;
-            border: 1.5px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.2s;
-            box-shadow: var(--shadow-xs);
-        }
-
-        .inventory-item:hover {
-            border-color: var(--primary-light);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .inventory-item.low-stock {
-            border-color: #fca5a5;
-            background: #fef2f2;
-        }
-
-        .item-name {
-            font-size: 15px;
-            font-weight: 800;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .item-meta {
-            font-size: 12px;
-            color: var(--text-sub);
-            margin-top: 4px;
-        }
-
-        .low-badge {
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 999px;
-            text-transform: uppercase;
-        }
-
-        .qty-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-surface);
-            padding: 4px 8px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-        }
-
-        .qty-btn {
+        .inv-btn {
+            background: #FFFFFF;
+            border: 1px solid var(--border-input);
             width: 28px;
             height: 28px;
-            border-radius: 50%;
-            border: 1px solid var(--border-color);
-            background: #ffffff;
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.15s;
+            font-weight: 700;
         }
-
-        .qty-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .qty-display {
-            min-width: 28px;
-            text-align: center;
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--text-main);
-        }
-
-        .del-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 6px;
-            font-size: 16px;
-            transition: color 0.2s;
-        }
-
-        .del-btn:hover {
-            color: var(--danger);
-        }
-
-        .add-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr auto;
-            gap: 10px;
-            align-items: flex-end;
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 640px) {
-            .add-row {
-                grid-template-columns: 1fr 1fr;
-            }
+        .inv-btn:hover {
+            border-color: var(--omni-blue);
+            color: var(--omni-blue);
         }
     </style>
 </head>
@@ -185,183 +67,232 @@
 
     <!-- 顶部主店引流条 -->
     <div class="top-notice-bar">
-        <span>👕 Premium Workwear, Aprons & Cleaning Uniforms:</span>
+        <span>👕 High-Mobility Cleaning Uniforms & Bleach-Resistant Aprons:</span>
         <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
     </div>
 
-    <!-- 导航栏 -->
+    <!-- 导航栏 (Omni 风格) -->
     <nav class="navbar">
-        <a href="../../index.html" class="brand">✨ Pure<span>Wear Space</span></a>
+        <a href="../../index.html" class="brand">Pure<span>Wear</span> <span style="font-weight: 400; color: var(--text-muted); font-size: 14px; margin-left: 2px;">Calculators</span></a>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-link">Home</a>
-            <a href="../index.html" class="nav-link active">All Tools</a>
+            <a href="../index.html" class="nav-link active">All Calculators</a>
             <a href="../../resources.html" class="nav-link">Resources</a>
             <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
         </div>
     </nav>
 
-    <!-- 页面标题 -->
-    <div class="page-header">
-        <h1>Cleaning Supply Inventory Tracker</h1>
-        <p>Keep your cleaning van and supply closet stocked. Track counts, set minimum reorder alerts, and export shopping lists.</p>
-    </div>
-
-    <!-- 主布局网格 -->
-    <div class="main-container">
+    <!-- 双栏工作台网格 (Omni 布局) -->
+    <div class="omni-layout-grid">
         
-        <!-- 左侧库存列表 -->
-        <main>
-            <div class="card">
-                <h2 style="font-size: 18px; margin-bottom: 6px;">Add Supplies to Inventory</h2>
-                <div style="margin-bottom: 16px;">
-                    <span style="font-size: 12px; font-weight: 700; color: var(--text-sub);">Quick Add Staples:</span>
-                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px;">
-                        <button type="button" class="filter-chip" onclick="addPreset('Microfiber Towels (Packs)', 5, 2)">Towels</button>
-                        <button type="button" class="filter-chip" onclick="addPreset('Trash Bags (Boxes)', 4, 1)">Trash Bags</button>
-                        <button type="button" class="filter-chip" onclick="addPreset('All-Purpose Cleaner (Gallons)', 3, 1)">All-Purpose</button>
-                        <button type="button" class="filter-chip" onclick="addPreset('Nitrile Gloves (Boxes)', 6, 2)">Gloves</button>
-                        <button type="button" class="filter-chip" onclick="addPreset('Glass Cleaner (Bottles)', 4, 2)">Glass Cleaner</button>
-                        <button type="button" class="filter-chip" onclick="addPreset('Sponges / Scour Pads', 12, 4)">Sponges</button>
-                    </div>
+        <!-- 左侧：库存清单工作区与学术文章 -->
+        <article class="omni-article">
+            <!-- 面包屑 -->
+            <nav class="omni-breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span class="sep">/</span>
+                <a href="../index.html">All Calculators</a>
+                <span class="sep">/</span>
+                <span>Supply Inventory Tracker</span>
+            </nav>
+
+            <h1>Cleaning Supply Inventory Tracker</h1>
+            
+            <div class="omni-author-bar">
+                <span class="author-badge">Custodial Logistics Standard</span>
+                <span>Created by PureWear Supply Desk</span>
+                <span class="sep">•</span>
+                <span>Updated March 2026</span>
+            </div>
+
+            <!-- 筛选与快速添加 -->
+            <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 18px; margin-bottom: 20px;">
+                <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+                    <input type="text" id="newName" class="omni-input" placeholder="Item name (e.g. 32oz Degreaser Bottles)..." style="border: 1px solid var(--border-input); border-radius: 4px; padding: 8px 12px;">
+                    <input type="number" id="newQty" class="omni-input" placeholder="Qty" value="5" min="0" style="border: 1px solid var(--border-input); border-radius: 4px; width: 70px; padding: 8px;">
+                    <button type="button" class="omni-action-btn" style="background: var(--omni-blue); color: #fff; border-color: var(--omni-blue); white-space: nowrap;" onclick="addItem()">+ Add Item</button>
                 </div>
 
-                <!-- 手动添加表单 -->
-                <div class="add-row">
-                    <div>
-                        <label style="font-size: 12px; font-weight: 700; color: var(--text-sub);">Item Name</label>
-                        <input type="text" id="newName" class="form-control" placeholder="e.g. Mop Head Refills">
-                    </div>
-                    <div>
-                        <label style="font-size: 12px; font-weight: 700; color: var(--text-sub);">Current Qty</label>
-                        <input type="number" id="newQty" class="form-control" value="3" min="0">
-                    </div>
-                    <div>
-                        <label style="font-size: 12px; font-weight: 700; color: var(--text-sub);">Alert Min</label>
-                        <input type="number" id="newMin" class="form-control" value="2" min="0">
-                    </div>
-                    <button type="button" class="btn-primary" style="padding: 12px 20px; white-space: nowrap;" onclick="addItem()">+ Add Item</button>
-                </div>
-
-                <!-- 筛选与搜索 -->
-                <div class="filter-row">
-                    <div class="filter-chips">
-                        <button type="button" class="filter-chip active" onclick="setFilter('all', this)">All Items (<span id="countAll">0</span>)</button>
-                        <button type="button" class="filter-chip" onclick="setFilter('low', this)">⚠️ Low Stock (<span id="countLow">0</span>)</button>
-                        <button type="button" class="filter-chip" onclick="setFilter('ok', this)">✅ In Stock (<span id="countOk">0</span>)</button>
-                    </div>
-                    <button type="button" class="btn-secondary" style="padding: 6px 14px; font-size: 12px;" onclick="copyShoppingList()">🛒 Copy Shopping List</button>
-                </div>
-
-                <!-- 列表容器 -->
-                <div id="itemList" class="inventory-list"></div>
-                <div id="emptyNotice" style="display: none; text-align: center; padding: 40px; color: var(--text-sub);">
-                    No items found. Add cleaning supplies above to begin tracking.
+                <div id="itemList">
+                    <!-- JS 渲染库存项 -->
                 </div>
             </div>
 
-            <!-- SEO 说明 -->
-            <div class="card" style="margin-top: 24px;">
-                <h2 style="font-size: 20px; margin-bottom: 10px;">Why Inventory Tracking Saves Cleaning Businesses Money</h2>
-                <p style="font-size: 14px; color: var(--text-sub); line-height: 1.6; margin-bottom: 12px;">
-                    Running out of supplies mid-clean forces cleaners to buy expensive retail chemicals at convenience stores. By maintaining a 2-unit buffer stock and reviewing your van inventory weekly, you cut supply overhead by <strong>20–30%</strong> via wholesale bulk ordering.
-                </p>
-            </div>
-        </main>
+            <h2>How Custodial Inventory Controls Maximize Cash Flow</h2>
+            <p>
+                In cleaning businesses, supply expenses average <strong>5% to 8% of total revenue</strong>. Running out of critical supplies like disinfectant or commercial trash liners mid-route forces technicians into expensive retail store emergency purchases that destroy job margins.
+            </p>
 
-        <!-- 右侧侧边栏 -->
-        <aside class="sidebar">
-            <div class="result-card">
-                <div class="price-title">Supply Closet Health</div>
+            <h2>Recommended Par Levels for a 2-Person Cleaning Route</h2>
+            <div class="omni-table-wrapper">
+                <table class="omni-table">
+                    <thead>
+                        <tr>
+                            <th>Supply Category</th>
+                            <th>Minimum Route Par Level</th>
+                            <th>Reorder Trigger</th>
+                            <th>Estimated Weekly Consumption</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Color-Coded Microfiber Cloths</strong></td>
+                            <td>40 cloths per van</td>
+                            <td>Below 20 clean cloths</td>
+                            <td>15 – 25 cloths laundered daily</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Concentrated All-Purpose Cleaner</strong></td>
+                            <td>2 gallons in storage</td>
+                            <td>1 gallon remaining</td>
+                            <td>0.5 gallon concentrate / week</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Commercial Can Liners (Heavy)</strong></td>
+                            <td>2 full rolls (50ct)</td>
+                            <td>1 roll remaining</td>
+                            <td>30 – 40 liners / week</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Disposable Nitrile Gloves</strong></td>
+                            <td>2 boxes (200 count)</td>
+                            <td>1 box remaining</td>
+                            <td>40 – 60 pairs / week</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="omni-faq-accordion">
+                <details class="omni-faq-item">
+                    <summary>Are my inventory numbers saved automatically?</summary>
+                    <div class="omni-faq-answer">
+                        Yes. Your items, quantities, and minimum thresholds are saved automatically in your browser's local storage. They persist across visits without requiring an account.
+                    </div>
+                </details>
+
+                <details class="omni-faq-item">
+                    <summary>How can I export a shopping list?</summary>
+                    <div class="omni-faq-answer">
+                        Click the <strong>Copy Shopping List</strong> button in the right sidebar. It generates a formatted checklist containing only the items currently below their reorder threshold.
+                    </div>
+                </details>
+            </div>
+
+            <!-- 矩阵关联工具推荐 -->
+            <div style="margin-top: 40px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
+                <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">Related Free Calculators:</div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="../dilution-calculator/" class="omni-action-btn">🧪 Dilution Ratio Calculator</a>
+                    <a href="../chemical-safety-checker/" class="omni-action-btn">☣️ Chemical Safety Checker</a>
+                    <a href="../cleaning-quote-calculator/" class="omni-action-btn">🧹 Quote Calculator</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 右侧：Omni 科学计算器白底卡片 (Calculator Widget) -->
+        <aside class="omni-calculator-aside">
+            <div class="omni-calculator-widget omni-calculator-sticky">
                 
-                <div style="text-align: center; margin: 16px 0;">
-                    <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Items Needing Restock</div>
-                    <div class="price-number" id="lowStockCountDisplay" style="color: var(--danger); font-size: 42px;">0</div>
-                    <div style="font-size: 13px; color: var(--text-sub);" id="healthStatusText">All supplies sufficiently stocked</div>
+                <div class="omni-widget-header">
+                    <span class="omni-widget-title">Inventory Summary</span>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--omni-blue); background: var(--omni-blue-light); padding: 2px 6px; border-radius: 4px;">STOCK</span>
                 </div>
 
-                <div class="action-row" style="margin-top: 20px;">
-                    <button class="btn-primary" onclick="copyShoppingList()">📋 Copy Restock List</button>
-                    <button class="btn-secondary" onclick="window.print()">🖨️ Print Stock Sheet</button>
-                </div>
-            </div>
+                <!-- 分组 1: Stock Status -->
+                <div class="omni-group-title">Stock Health Metrics</div>
 
-            <!-- Shopify 电商推荐卡片 -->
-            <div class="shopify-promo-card">
-                <span class="shopify-tag">PureWear Store</span>
-                <h3>Durable Aprons with Supply Pockets</h3>
-                <p>Keep your spray bottles, scrapers, and microfiber cloths right at your hip. PureWear work aprons cut wasted steps across large homes.</p>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="shopify-btn">
-                    Shop Cleaning Aprons →
-                </a>
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Total tracked items</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="totalItemsDisplay" class="omni-input" readonly value="5 Items">
+                    </div>
+                </div>
+
+                <div class="omni-row result">
+                    <div class="omni-label">
+                        <span style="font-weight: 700; color: #DC2626;" id="lowLabel">Low-stock items</span>
+                    </div>
+                    <div class="omni-input-group" id="lowGroup" style="background: #FEE2E2; border-color: #FECACA;">
+                        <input type="text" id="lowCountDisplay" class="omni-input" readonly value="2 Need Reorder" style="color: #DC2626; font-weight: 800;">
+                    </div>
+                </div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Sufficient stock</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="text" id="okCountDisplay" class="omni-input" readonly value="3 In Good Supply">
+                    </div>
+                </div>
+
+                <!-- Omni 底部快捷操作条 -->
+                <div class="omni-footer-actions">
+                    <button type="button" class="omni-action-btn" onclick="resetDefaultItems()">↺ Reset</button>
+                    <button type="button" class="omni-action-btn" onclick="copyShoppingList()" style="border-color: var(--omni-blue); color: var(--omni-blue); font-weight: 700;">🛒 Copy Shopping List</button>
+                </div>
+
             </div>
         </aside>
 
     </div>
 
+    <!-- Toast 弹窗容器 -->
+    <div id="toastNotification" class="toast-notification"></div>
+
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-brand">✨ PureWear Space Tools</div>
+            <div>
+                <div class="footer-brand">Pure<span style="color: var(--omni-blue);">Wear</span> Calculators</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Precision utility tools for independent cleaners and commercial maid services.</div>
+            </div>
             <div class="footer-links">
                 <a href="../../index.html">Home</a>
-                <a href="../index.html">All Tools</a>
-                <a href="../dilution-calculator/">Dilution Calculator</a>
-                <a href="../chemical-safety-checker/">Chemical Safety</a>
-                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Store</a>
+                <a href="../index.html">All Calculators</a>
+                <a href="../../resources.html">Resources</a>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener">Official Workwear Store</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free inventory and supply management tools for cleaners.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
         </div>
     </footer>
 
+    <!-- 逻辑脚本 -->
     <script>
         const DEFAULT_ITEMS = [
-            { id: 1, name: 'Microfiber Towels (Color-Coded)', qty: 8, min: 4 },
-            { id: 2, name: 'Concentrated All-Purpose Cleaner (Gal)', qty: 1, min: 2 },
+            { id: 1, name: 'Microfiber Towels (Pack of 12)', qty: 8, min: 4 },
+            { id: 2, name: 'Concentrated Neutral Cleaner (Gal)', qty: 1, min: 2 },
             { id: 3, name: 'Heavy Duty Trash Bags (Roll)', qty: 3, min: 2 },
-            { id: 4, name: 'Nitrile Gloves (M/L Box)', qty: 1, min: 2 },
-            { id: 5, name: 'Glass & Mirror Spray (Bottles)', qty: 4, min: 2 }
+            { id: 4, name: 'Nitrile Gloves (Box of 100)', qty: 1, min: 2 },
+            { id: 5, name: 'Glass & Mirror Spray (32oz)', qty: 4, min: 2 }
         ];
 
         let inventory = JSON.parse(localStorage.getItem('purewear_inventory_2026')) || DEFAULT_ITEMS;
-        let activeFilter = 'all';
 
         function saveAndRender() {
             localStorage.setItem('purewear_inventory_2026', JSON.stringify(inventory));
             renderItems();
         }
 
-        function setFilter(filter, btn) {
-            activeFilter = filter;
-            document.querySelectorAll('.filter-chips .filter-chip').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderItems();
-        }
-
         function addItem() {
             const name = document.getElementById('newName').value.trim();
             const qty = parseInt(document.getElementById('newQty').value) || 0;
-            const min = parseInt(document.getElementById('newMin').value) || 1;
 
             if (!name) {
-                alert("Please enter an item name.");
+                showToast("Please enter item name.");
                 return;
             }
 
-            inventory.push({ id: Date.now(), name, qty, min });
+            inventory.push({ id: Date.now(), name, qty, min: 2 });
             document.getElementById('newName').value = '';
             saveAndRender();
-        }
-
-        function addPreset(name, qty, min) {
-            const exists = inventory.find(i => i.name.toLowerCase() === name.toLowerCase());
-            if (exists) {
-                exists.qty += qty;
-            } else {
-                inventory.push({ id: Date.now(), name, qty, min });
-            }
-            saveAndRender();
+            showToast("Item added to inventory.");
         }
 
         function updateQty(id, delta) {
@@ -372,10 +303,9 @@
         }
 
         function deleteItem(id) {
-            if (confirm("Remove this item from tracker?")) {
-                inventory = inventory.filter(i => i.id !== id);
-                saveAndRender();
-            }
+            inventory = inventory.filter(i => i.id !== id);
+            saveAndRender();
+            showToast("Item deleted.");
         }
 
         function renderItems() {
@@ -383,54 +313,37 @@
             const lowItems = inventory.filter(i => i.qty <= i.min);
             const okItems = inventory.filter(i => i.qty > i.min);
 
-            // 更新计数
-            document.getElementById('countAll').innerText = inventory.length;
-            document.getElementById('countLow').innerText = lowItems.length;
-            document.getElementById('countOk').innerText = okItems.length;
-            document.getElementById('lowStockCountDisplay').innerText = lowItems.length;
+            document.getElementById('totalItemsDisplay').value = `${inventory.length} Items`;
+            document.getElementById('lowCountDisplay').value = lowItems.length > 0 ? `${lowItems.length} Need Reorder` : `0 (All Good)`;
+            document.getElementById('okCountDisplay').value = `${okItems.length} In Good Supply`;
 
+            const lowGroup = document.getElementById('lowGroup');
             if (lowItems.length > 0) {
-                document.getElementById('healthStatusText').innerText = `${lowItems.length} item(s) below reorder threshold`;
-                document.getElementById('lowStockCountDisplay').style.color = 'var(--danger)';
+                lowGroup.style.background = '#FEE2E2';
+                lowGroup.style.borderColor = '#FECACA';
+                document.getElementById('lowCountDisplay').style.color = '#DC2626';
             } else {
-                document.getElementById('healthStatusText').innerText = 'All supplies sufficiently stocked';
-                document.getElementById('lowStockCountDisplay').style.color = 'var(--success)';
+                lowGroup.style.background = '#ECFDF5';
+                lowGroup.style.borderColor = '#A7F3D0';
+                document.getElementById('lowCountDisplay').style.color = '#10B981';
             }
 
-            let filtered = inventory;
-            if (activeFilter === 'low') filtered = lowItems;
-            if (activeFilter === 'ok') filtered = okItems;
-
-            if (filtered.length === 0) {
-                container.innerHTML = '';
-                document.getElementById('emptyNotice').style.display = 'block';
-                return;
-            }
-
-            document.getElementById('emptyNotice').style.display = 'none';
             let html = '';
-
-            filtered.forEach(item => {
+            inventory.forEach(item => {
                 const isLow = item.qty <= item.min;
                 html += `
-                    <div class="inventory-item ${isLow ? 'low-stock' : ''}">
+                    <div class="inv-item-row ${isLow ? 'low' : ''}">
                         <div>
-                            <div class="item-name">
-                                <span>${item.name}</span>
-                                ${isLow ? '<span class="low-badge">Low Stock</span>' : ''}
-                            </div>
-                            <div class="item-meta">
-                                Alert Threshold: ${item.min} units | ${isLow ? '⚠️ Reorder urgently' : 'In good supply'}
+                            <strong>${item.name}</strong>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
+                                Alert threshold: ${item.min} | ${isLow ? '<span style="color:#DC2626; font-weight:700;">⚠️ Reorder Now</span>' : 'Adequate'}
                             </div>
                         </div>
-
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <div class="qty-controls">
-                                <button type="button" class="qty-btn" onclick="updateQty(${item.id}, -1)">−</button>
-                                <span class="qty-display">${item.qty}</span>
-                                <button type="button" class="qty-btn" onclick="updateQty(${item.id}, 1)">+</button>
-                            </div>
-                            <button type="button" class="del-btn" title="Delete Item" onclick="deleteItem(${item.id})">🗑️</button>
+                        <div class="inv-stepper">
+                            <button type="button" class="inv-btn" onclick="updateQty(${item.id}, -1)">−</button>
+                            <span style="font-weight: 800; min-width: 24px; text-align: center;">${item.qty}</span>
+                            <button type="button" class="inv-btn" onclick="updateQty(${item.id}, 1)">+</button>
+                            <button type="button" style="background: none; border: none; cursor: pointer; color: var(--text-muted); margin-left: 8px;" onclick="deleteItem(${item.id})">✕</button>
                         </div>
                     </div>
                 `;
@@ -439,25 +352,38 @@
             container.innerHTML = html;
         }
 
+        function resetDefaultItems() {
+            inventory = [...DEFAULT_ITEMS];
+            saveAndRender();
+            showToast("↺ Inventory reset to defaults.");
+        }
+
         function copyShoppingList() {
             const lowItems = inventory.filter(i => i.qty <= i.min);
             if (lowItems.length === 0) {
-                alert("Great news! You have no low-stock items right now.");
+                showToast("All items are adequately stocked!");
                 return;
             }
 
             let text = `🛒 CLEANING SUPPLY SHOPPING LIST:\n\n`;
             lowItems.forEach(i => {
-                const needed = Math.max(1, (i.min * 2) - i.qty);
-                text += `• ${i.name} (Current: ${i.qty}, Buy: +${needed})\n`;
+                text += `• ${i.name} (Current: ${i.qty}, Reorder threshold: ${i.min})\n`;
             });
-            text += `\nGenerated via PureWear Space: https://tool.purewearspace.com/tools/inventory-tracker/`;
+            text += `\nPureWear Space: https://tool.purewearspace.com/tools/inventory-tracker/`;
 
             navigator.clipboard.writeText(text).then(() => {
-                alert("✅ Shopping list copied to clipboard!");
-            }).catch(() => {
-                alert("Failed to copy. Please manually copy the items.");
+                showToast("📋 Shopping list copied!");
             });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotification');
+            if (!toast) return;
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         }
 
         window.addEventListener('DOMContentLoaded', renderItems);
