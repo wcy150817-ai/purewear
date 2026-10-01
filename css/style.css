@@ -152,13 +152,15 @@ a {
 
 .omni-layout-grid {
   display: grid;
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: 1fr 400px;
   gap: 40px;
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 24px;
+  align-items: start;
 }
 
+/* Left article: contained scroll area on desktop */
 .omni-article {
   background: var(--bg-white);
   border-radius: var(--radius-card);
@@ -166,6 +168,44 @@ a {
   box-shadow: var(--shadow-widget);
 }
 
+@media (min-width: 1006px) {
+  .omni-article {
+    max-height: calc(100vh - 120px);
+    overflow-y: hidden;
+    position: sticky;
+    top: 88px;
+    transition: overflow-y 0.1s;
+  }
+
+  .omni-article:hover {
+    overflow-y: auto;
+  }
+
+  /* Thin scrollbar - only visible on hover */
+  .omni-article::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .omni-article::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .omni-article::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+  }
+
+  .omni-article::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .omni-article {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+  }
+}
+
+/* Right calculator: sticky, follows browser scroll */
 .omni-calculator-aside {
   position: relative;
 }
