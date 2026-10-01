@@ -68,6 +68,16 @@
     </script>
 
     <link rel="stylesheet" href="../../css/style.css">
+
+<style>
+@media print {
+  .navbar, .footer, .omni-toc-bar, .omni-breadcrumb, .omni-feedback-box, .omni-mobile-bottom-bar, .shopify-promo-card, .top-notice-bar { display: none !important; }
+  .omni-layout-grid { display: block !important; max-width: 100% !important; padding: 0 !important; }
+  .omni-calculator-sticky { position: static !important; }
+  .omni-calculator-widget { box-shadow: none !important; border: 1px solid #ddd !important; }
+  body { background: #fff !important; }
+}
+</style>
 </head>
 <body>
 
@@ -430,6 +440,7 @@
 
                 <!-- Omni 底部快捷操作条 -->
                 <div class="omni-footer-actions">
+                    <button class="omni-action-btn omni-print-btn" onclick="window.print()">🖨️ Print / Export PDF</button>
                     <button type="button" class="omni-action-btn" onclick="resetDefaults()">↺ Reset</button>
                     <button type="button" class="omni-action-btn" onclick="copyTimeEstimate()">📋 Copy</button>
                     <button type="button" class="omni-action-btn" onclick="shareCalculator()">🔗 Share</button>

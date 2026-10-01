@@ -847,10 +847,19 @@ a {
   right: 0;
   bottom: 0;
   background: rgba(0,0,0,0.5);
-  display: flex;
+  backdrop-filter: blur(4px);
+  display: none;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 2000;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.modal-overlay.open {
+  display: flex;
+  opacity: 1;
 }
 
 .proposal-modal {
@@ -1172,5 +1181,251 @@ a {
   
   body {
     background: white;
+  }
+}
+
+/* Print button styling */
+.omni-print-btn {
+  background: var(--omni-blue) !important;
+  color: #fff !important;
+  border-color: var(--omni-blue) !important;
+}
+
+@media (max-width: 768px) {
+  /* Full-width layout */
+  .omni-layout-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 12px !important;
+    gap: 16px !important;
+    margin-top: 60px !important;
+  }
+  
+  /* Calculator comes first on mobile */
+  .omni-calculator-aside {
+    order: -1 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Calculator widget mobile styles */
+  .omni-calculator-widget {
+    padding: 16px !important;
+    border-radius: 12px !important;
+  }
+  
+  /* Sticky position off on mobile */
+  .omni-calculator-sticky {
+    position: static !important;
+  }
+  
+  /* Input fields bigger touch targets */
+  .omni-input {
+    font-size: 16px !important; /* Prevents iOS zoom */
+    padding: 12px !important;
+    min-height: 48px !important;
+  }
+  
+  .omni-input-group {
+    min-height: 48px !important;
+  }
+  
+  .omni-select {
+    font-size: 16px !important;
+    padding: 0 12px !important;
+    min-height: 48px !important;
+  }
+  
+  /* Labels bigger */
+  .omni-label {
+    font-size: 15px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Group titles */
+  .omni-group-title {
+    font-size: 17px !important;
+    margin: 20px 0 12px !important;
+  }
+  
+  /* Buttons bigger for touch */
+  .omni-action-btn {
+    padding: 12px 20px !important;
+    font-size: 15px !important;
+    min-height: 48px !important;
+    border-radius: 12px !important;
+  }
+  
+  .omni-footer-actions {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  
+  .omni-footer-actions .omni-action-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  
+  /* Navbar mobile */
+  .navbar {
+    padding: 10px 16px !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  .nav-menu {
+    display: none !important;
+  }
+  
+  .brand {
+    font-size: 16px !important;
+  }
+  
+  /* Page header */
+  .page-header h1 {
+    font-size: 22px !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Article text */
+  .omni-article {
+    font-size: 15px !important;
+    padding: 0 4px !important;
+  }
+  
+  .omni-article h2 {
+    font-size: 20px !important;
+  }
+  
+  /* TOC bar horizontal scroll */
+  .omni-toc-bar {
+    padding: 10px 0 !important;
+    gap: 6px !important;
+    margin: 12px 0 16px !important;
+  }
+  
+  .omni-toc-pill {
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+  }
+  
+  /* FAQ */
+  .omni-faq-item summary {
+    font-size: 15px !important;
+    padding: 14px 0 !important;
+  }
+  
+  /* Category grid */
+  .omni-category-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  
+  /* Tool cards */
+  .card-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  
+  /* Spotlight cards */
+  .omni-spotlight-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Trust grid */
+  .omni-trust-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Hero section */
+  .omni-home-hero {
+    padding: 32px 16px 24px !important;
+  }
+  
+  .omni-home-hero h1 {
+    font-size: 26px !important;
+  }
+  
+  /* Search */
+  .omni-search-input {
+    height: 48px !important;
+    font-size: 16px !important;
+  }
+  
+  /* Tables responsive */
+  .omni-table-wrapper {
+    margin: 16px -12px !important;
+    border-radius: 0 !important;
+  }
+  
+  /* Math block */
+  .omni-math-block {
+    padding: 14px !important;
+    font-size: 13px !important;
+  }
+  
+  /* Case study */
+  .omni-case-study {
+    padding: 16px !important;
+  }
+  
+  /* Reviewer card */
+  .omni-reviewer-card {
+    flex-direction: column !important;
+    padding: 16px !important;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 24px 16px !important;
+  }
+  
+  .footer-content {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+  
+  .footer-links {
+    justify-content: center !important;
+  }
+  
+  /* Modal mobile */
+  .proposal-modal {
+    width: 100% !important;
+    max-height: 95vh !important;
+    border-radius: 12px 12px 0 0 !important;
+  }
+  
+  .modal-overlay {
+    padding: 0 !important;
+    align-items: flex-end !important;
+  }
+  
+  .proposal-paper {
+    padding: 20px !important;
+  }
+  
+  /* Shopify promo card */
+  .shopify-promo-card {
+    padding: 16px !important;
+  }
+
+  /* Print button prominent on mobile */
+  .omni-print-btn {
+    position: relative !important;
+    font-size: 16px !important;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 380px) {
+  .omni-category-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .page-header h1 {
+    font-size: 20px !important;
+  }
+  
+  .omni-home-hero h1 {
+    font-size: 22px !important;
   }
 }
