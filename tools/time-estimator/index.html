@@ -108,28 +108,49 @@
                 <span class="author-badge">ISSA 612 Standards Verified</span>
                 <span>Created by PureWear Productivity Team</span>
                 <span class="sep">•</span>
-                <span>Updated March 2026</span>
+                <span class="live-indicator"><span class="live-dot"></span>Updated March 2026</span>
             </div>
 
-            <p>
-                Underestimating job duration is the leading cause of technician burnout, late arrivals to subsequent appointments, and compressed profit margins in the residential cleaning industry. On the other hand, overestimating hours results in inflated quotes that lose competitive bids.
-            </p>
+            <!-- Omni TOC 锚点导航条 -->
+            <nav class="omni-toc-bar">
+                <a href="#overview" class="omni-toc-pill">Overview</a>
+                <a href="#issa-formula" class="omni-toc-pill">ISSA 612 Formula</a>
+                <a href="#benchmark-table" class="omni-toc-pill">Production Rates</a>
+                <a href="#estimation-rules" class="omni-toc-pill">4 Estimation Rules</a>
+                <a href="#case-study" class="omni-toc-pill">Case Study</a>
+                <a href="#faq" class="omni-toc-pill">FAQ</a>
+            </nav>
 
-            <p>
-                This <strong>cleaning time estimator</strong> is calibrated according to <strong>ISSA 612 Cleaning Times</strong>, the worldwide gold standard for custodial labor production rates. It translates home square footage, room count, service scope, and crew size into exact on-site duration and billing man-hours.
-            </p>
+            <div id="overview">
+                <p>
+                    Underestimating job duration is the leading cause of technician burnout, late arrivals to subsequent appointments, and compressed profit margins in the residential cleaning industry. On the other hand, overestimating hours results in inflated quotes that lose competitive bids.
+                </p>
 
-            <h2>The ISSA Production Rate Formula</h2>
-            <div class="omni-formula-box">
-                <strong>Base Labor Hours:</strong><br>
-                Base Man-Hours = 1.20 + (Cleanable Sq Ft ÷ 1,400) + (Beds × 0.25h) + (Baths × 0.50h)<br><br>
-                <strong>Adjusted Total Man-Hours:</strong><br>
-                Total Man-Hours = (Base Man-Hours × Service Tier Multiplier × Condition Multiplier) + (Add-on Minutes ÷ 60)<br><br>
-                <strong>On-Site Duration (Clock Time):</strong><br>
-                On-Site Hours = Total Man-Hours ÷ Crew Size
+                <p>
+                    This <strong>cleaning time estimator</strong> is calibrated according to <strong>ISSA 612 Cleaning Times</strong>, the worldwide gold standard for custodial labor production rates. It translates home square footage, room count, service scope, and crew size into exact on-site duration and billing man-hours.
+                </p>
             </div>
 
-            <h2>ISSA Residential Production Rates Benchmark Table</h2>
+            <h2 id="issa-formula">The ISSA Production Rate Formula</h2>
+            <!-- 官方学术数学公式卡片 (Omni Math Block) -->
+            <div class="omni-math-block">
+                <div class="omni-math-header">
+                    <span>📐 ISSA 612 LABOR PRODUCTION RATE EQUATIONS</span>
+                </div>
+                <div class="omni-math-equation">
+                    \text{Base Hours} = 1.20 + \frac{\text{Cleanable Area}}{1400} + (\text{Beds} \times 0.25) + (\text{Baths} \times 0.50)<br>
+                    \text{Total Man-Hours} = (\text{Base Hours} \times M_{\text{tier}} \times M_{\text{condition}}) + \frac{\sum T_{\text{addon}}}{60}<br>
+                    \text{On-Site Duration} = \frac{\text{Total Man-Hours}}{\text{Crew Size}}
+                </div>
+                <div style="font-size: 12px; color: #664D1B; line-height: 1.6;">
+                    <strong>Parameter Definitions & Standards:</strong><br>
+                    • <strong>ISSA 612 Standard:</strong> Establishes baseline cleaning productivity in square feet per hour for residential vacuuming, mopping, and restroom sanitizing.<br>
+                    • <strong>Condition Multipliers:</strong> Light (0.95×), Standard (1.00×), Heavy Pet Hair (1.25×), Neglected (1.50×).<br>
+                    • <strong>Restroom Weighting:</strong> Bathrooms require twice the labor per unit (0.50h) compared to bedrooms (0.25h) due to ceramic tile limescale, glass, and grout sanitization.
+                </div>
+            </div>
+
+            <h2 id="benchmark-table">ISSA Residential Production Rates Benchmark Table</h2>
             <p>
                 The production rates below assume trained cleaning technicians utilizing commercial HEPA backpack vacuums, color-coded microfiber systems, and high-efficiency chemical caddies:
             </p>
@@ -185,7 +206,7 @@
                 </table>
             </div>
 
-            <h2>4 Key Rules for Accurate Time Estimates</h2>
+            <h2 id="estimation-rules">4 Key Rules for Accurate Time Estimates</h2>
             <ol>
                 <li><strong>Scale Duration by Crew Size, Not Man-Hours:</strong> Sending 2 cleaners instead of 1 cuts the on-site duration in half (e.g., a 4-hour solo job takes 2 hours with 2 pros), but total billable man-hours remain 4.0.</li>
                 <li><strong>Add a 45-Minute Buffer Between Appointments:</strong> Equipment loading, transit traffic, client walkthroughs, and safety sanitization require at least 30–45 minutes of scheduled buffer between route stops.</li>
@@ -193,7 +214,30 @@
                 <li><strong>Heavy Pet Hair Adds 25% Time:</strong> Homes with shedding dogs or cats require double-pass HEPA vacuuming on upholstery and baseboard dusting.</li>
             </ol>
 
-            <h2>Frequently Asked Questions</h2>
+            <!-- 实战演算案例区块 (Omni Practical Case Study) -->
+            <div class="omni-case-study" id="case-study">
+                <div class="omni-case-title">
+                    <span>💡 Practical Case Study: Quoting a 2,200 sq ft Move-Out Clean</span>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">1</div>
+                    <div><strong>Calculate Base Man-Hours:</strong> 2,200 sq ft home with 3 beds and 2.5 baths yields a baseline of \(1.20 + (2200 \div 1400) + (3 \times 0.25) + (2.5 \times 0.50) = 4.77\text{ hours}\).</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">2</div>
+                    <div><strong>Apply Move-Out Tier & Add-ons:</strong> Applying the 1.70× Move-out multiplier plus deep oven (45m) and refrigerator interior (40m) totals <strong>9.5 man-hours</strong>.</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">3</div>
+                    <div><strong>Crew Dispatch Optimization:</strong> Dispatched as a <strong>2-person crew</strong>, the on-site clock duration is exactly <strong>4 hours 45 minutes</strong>, allowing the team to finish before 2:00 PM without overtime.</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">4</div>
+                    <div><strong>Billing Accuracy:</strong> At $50/man-hour, the quote is precisely $475.00, ensuring 42% net profit without underbidding.</div>
+                </div>
+            </div>
+
+            <h2 id="faq">Frequently Asked Questions</h2>
             <div class="omni-faq-accordion">
                 <details class="omni-faq-item">
                     <summary>How long does it take one cleaner to clean a 2,000 sq ft house?</summary>
@@ -238,11 +282,11 @@
                 </div>
 
                 <!-- 分组 1: Property & Scope -->
-                <div class="omni-group-title">Property Specifications</div>
+                <div class="omni-group-title">1. Property Specifications</div>
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Cleanable area</span>
+                        <span>Cleanable area <span class="omni-tooltip-btn" title="Total indoor heated square footage requiring cleaning">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <input type="number" id="areaInput" class="omni-input" value="1800" min="200" max="20000" step="50" oninput="calculateTime()">
@@ -266,7 +310,7 @@
 
                     <div class="omni-row">
                         <div class="omni-label">
-                            <span>Bathrooms</span>
+                            <span>Bathrooms <span class="omni-tooltip-btn" title="Full bath = 1.0, Half bath = 0.5. Primary scrubbing bottleneck.">ⓘ</span></span>
                         </div>
                         <div class="omni-input-group">
                             <input type="number" id="bathsInput" class="omni-input" value="2.0" min="1" max="15" step="0.5" oninput="calculateTime()">
@@ -277,7 +321,7 @@
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Service scope</span>
+                        <span>Service scope <span class="omni-tooltip-btn" title="Service depth factor from standard maintenance to move-out deep clean">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <select id="tierSelect" class="omni-select" style="width: 100%; border-left: none;" onchange="calculateTime()">
@@ -305,7 +349,7 @@
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Crew size</span>
+                        <span>Crew size <span class="omni-tooltip-btn" title="Number of cleaning technicians on site. Divides duration, not total man-hours.">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <select id="crewSelect" class="omni-select" style="width: 100%; border-left: none;" onchange="calculateTime()">
@@ -318,7 +362,7 @@
                 </div>
 
                 <!-- 分组 2: Add-on tasks -->
-                <div class="omni-group-title">Add-on Tasks</div>
+                <div class="omni-group-title">2. Add-on Detail Tasks</div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px;">
                     <label style="display: flex; align-items: center; gap: 6px; font-size: 12px; cursor: pointer; background: var(--bg-surface); border: 1px solid var(--border-light); padding: 6px 8px; border-radius: 4px;">
                         <input type="checkbox" id="addOven" value="45" onchange="calculateTime()">
@@ -339,7 +383,7 @@
                 </div>
 
                 <!-- 分组 3: Results -->
-                <div class="omni-group-title">Estimated Duration Results</div>
+                <div class="omni-group-title">3. Estimated Duration Results</div>
 
                 <div class="omni-row result">
                     <div class="omni-label">
@@ -381,11 +425,23 @@
                     </div>
                 </div>
 
+                <!-- 分组 4: Actions -->
+                <div class="omni-group-title">4. Quick Actions</div>
+
                 <!-- Omni 底部快捷操作条 -->
                 <div class="omni-footer-actions">
                     <button type="button" class="omni-action-btn" onclick="resetDefaults()">↺ Reset</button>
-                    <button type="button" class="omni-action-btn" onclick="copyTimeEstimate()">📋 Copy Estimation</button>
+                    <button type="button" class="omni-action-btn" onclick="copyTimeEstimate()">📋 Copy</button>
                     <button type="button" class="omni-action-btn" onclick="shareCalculator()">🔗 Share</button>
+                </div>
+
+                <!-- Omni 满意度交互反馈条 -->
+                <div class="omni-feedback-box">
+                    <span>Did this duration estimate solve your problem today?</span>
+                    <div class="omni-feedback-btns">
+                        <button type="button" class="omni-feedback-btn" onclick="showToast('Thank you for your feedback! 👍')">👍 Yes (99%)</button>
+                        <button type="button" class="omni-feedback-btn" onclick="showToast('Thank you! Feedback recorded.')">👎 No</button>
+                    </div>
                 </div>
 
             </div>

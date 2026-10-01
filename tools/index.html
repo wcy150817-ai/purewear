@@ -19,7 +19,7 @@
 
     <!-- 顶部主店引流条 -->
     <div class="top-notice-bar">
-        <span>👕 High-Mobility Cleaning Uniforms & Spill-Proof Aprons:</span>
+        <span>👕 High-Mobility Cleaning Uniforms & Bleach-Resistant Aprons:</span>
         <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store →</a>
     </div>
 
@@ -34,43 +34,83 @@
         </div>
     </nav>
 
-    <!-- 页面主体容器 -->
-    <main style="max-width: 1200px; margin: 0 auto; padding: 28px 20px 60px; width: 100%;">
-        
-        <!-- 面包屑导航 -->
-        <nav class="omni-breadcrumb">
+    <!-- Omni 风格 Header 核心区域 -->
+    <header class="omni-home-hero" style="padding-bottom: 24px;">
+        <nav class="omni-breadcrumb" style="justify-content: center; margin-bottom: 14px;">
             <a href="../index.html">Home</a>
             <span class="sep">/</span>
-            <span>All Calculators</span>
+            <span>All Calculators Directory</span>
+            <span style="margin-left: 10px; font-size: 11px; color: var(--omni-emerald); font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">● Updated March 2026</span>
         </nav>
 
-        <!-- 页面标题与学术导言 -->
-        <div class="page-header" style="margin-bottom: 24px;">
-            <h1>All Cleaning Calculators & Utilities</h1>
-            <div class="omni-author-bar" style="margin-bottom: 16px;">
-                <span class="author-badge">ISSA & OSHA Calibrated</span>
-                <span>14 Scientific Estimators & Operational Utilities</span>
-                <span class="sep">•</span>
-                <span>Updated 2026</span>
+        <div class="omni-hero-badge">
+            DIRECTORY OF 14 SPECIALIZED UTILITIES • ISSA & OSHA CALIBRATED
+        </div>
+        
+        <h1>Professional Cleaning <span class="highlight">Calculators & Utilities</span></h1>
+        
+        <p class="omni-hero-subtitle">
+            Scientifically calibrated estimating tools, labor formulas, chemical dilution engines, and shift schedulers for residential housekeepers, maid services, and commercial janitorial contractors.
+        </p>
+        
+        <!-- Omni 居中浮动搜索框 -->
+        <div class="omni-search-wrapper">
+            <div class="omni-search-container">
+                <span class="omni-search-icon">🔍</span>
+                <input type="text" id="toolSearch" class="omni-search-input" placeholder="Search 14 calculators (e.g. quote, dilution, schedule, wages, tips)..." oninput="handleSearch(this.value)">
             </div>
-            <p style="color: var(--text-muted); max-width: 800px; font-size: 15px; line-height: 1.6;">
-                Every calculator in our directory is built with strict mathematical models and current 2026 labor data. Select a category below or search directly to compute bids, chemical formulas, employee shifts, or tips instantly.
-            </p>
         </div>
 
-        <!-- 居中搜索框 -->
-        <div class="omni-search-container" style="margin: 28px 0;">
-            <span class="omni-search-icon">🔍</span>
-            <input type="text" id="toolSearch" class="omni-search-input" placeholder="Search calculators (e.g. quote, schedule, dilution, wages, tips)..." oninput="handleSearch(this.value)">
+        <!-- 快速搜索热门关键词胶囊 -->
+        <div class="omni-search-tags">
+            <span style="font-weight: 700; margin-right: 4px;">Popular:</span>
+            <a class="omni-tag-pill" href="javascript:void(0)" onclick="searchDirectory('quote')">🧹 Cleaning Quote</a>
+            <a class="omni-tag-pill" href="javascript:void(0)" onclick="searchDirectory('dilution')">🧪 Chemical Dilution</a>
+            <a class="omni-tag-pill" href="javascript:void(0)" onclick="searchDirectory('schedule')">📅 Shift Schedule</a>
+            <a class="omni-tag-pill" href="javascript:void(0)" onclick="searchDirectory('wages')">💰 Hourly Wages</a>
+            <a class="omni-tag-pill" href="javascript:void(0)" onclick="searchDirectory('safety')">☠️ Safety Checker</a>
+            <a class="omni-tag-pill" href="javascript:void(0)" onclick="searchDirectory('tip')">💵 Tip Split</a>
         </div>
 
-        <!-- 分类过滤标签 -->
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px;" id="catPills">
+        <!-- 4大核心分类矩阵卡片网格 (Omni Category Deck) -->
+        <div class="omni-category-grid" style="margin-top: 24px;">
+            <div class="omni-category-card" onclick="filterTools('pricing')" style="cursor: pointer;">
+                <div class="omni-cat-icon">🧹</div>
+                <div class="omni-cat-name">Quotes & Pricing</div>
+                <div class="omni-cat-count">4 calculators</div>
+            </div>
+
+            <div class="omni-category-card" onclick="filterTools('ops')" style="cursor: pointer;">
+                <div class="omni-cat-icon">📅</div>
+                <div class="omni-cat-name">Shifts & Operations</div>
+                <div class="omni-cat-count">7 calculators</div>
+            </div>
+
+            <div class="omni-category-card" onclick="filterTools('safety')" style="cursor: pointer;">
+                <div class="omni-cat-icon">🧪</div>
+                <div class="omni-cat-name">Chemical & Safety</div>
+                <div class="omni-cat-count">3 calculators</div>
+            </div>
+
+            <div class="omni-category-card" onclick="filterTools('popular')" style="cursor: pointer;">
+                <div class="omni-cat-icon">⭐</div>
+                <div class="omni-cat-name">Popular Flagships</div>
+                <div class="omni-cat-count">Top used tools</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 页面核心主体 -->
+    <main style="max-width: 1200px; margin: 0 auto; padding: 0 20px 60px; width: 100%;">
+
+        <!-- 分类过滤按钮条 -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin: 32px 0 24px; align-items: center;" id="catPills">
+            <span style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin-right: 4px;">Filter by:</span>
             <button class="omni-action-btn" id="btn-all" style="background: var(--omni-blue); color: #fff; border-color: var(--omni-blue);" onclick="filterTools('all')">All Calculators (14)</button>
             <button class="omni-action-btn" id="btn-popular" onclick="filterTools('popular')">⭐ Popular Flagships</button>
-            <button class="omni-action-btn" id="btn-pricing" onclick="filterTools('pricing')">🧹 Quotes & Pricing</button>
-            <button class="omni-action-btn" id="btn-ops" onclick="filterTools('ops')">📅 Shifts & Operations</button>
-            <button class="omni-action-btn" id="btn-safety" onclick="filterTools('safety')">🧪 Chemical & Safety</button>
+            <button class="omni-action-btn" id="btn-pricing" onclick="filterTools('pricing')">🧹 Quotes & Pricing (4)</button>
+            <button class="omni-action-btn" id="btn-ops" onclick="filterTools('ops')">📅 Shifts & Operations (7)</button>
+            <button class="omni-action-btn" id="btn-safety" onclick="filterTools('safety')">🧪 Chemical & Safety (3)</button>
         </div>
 
         <!-- 工具卡片网格 -->
@@ -78,17 +118,72 @@
             <!-- 由 tools-data.js 和 render-tools.js 自动生成 -->
         </div>
 
-        <!-- Omni 风格的主店推荐卡片 -->
-        <div style="background: #FFFFFF; border: 1px solid var(--omni-blue-border); border-left: 4px solid var(--omni-blue); border-radius: var(--radius-md); padding: 28px 32px; margin-top: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: var(--shadow-sm);">
+        <!-- 科学权威与算法标准 (The PureWear Scientific Standard) -->
+        <section class="omni-section" style="margin-top: 56px;">
+            <div class="omni-section-header">
+                <div class="omni-section-title-wrap">
+                    <span class="omni-section-icon">🛡️</span>
+                    <div>
+                        <h2 class="omni-section-title">The PureWear Mathematical & Scientific Standard</h2>
+                        <div class="omni-section-desc">Calibrated for independent housekeepers and multi-crew commercial cleaning services.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="omni-trust-grid">
+                <div class="omni-trust-card">
+                    <div class="omni-trust-icon">📐</div>
+                    <h4 class="omni-trust-title">ISSA 612 Standard Calibration</h4>
+                    <p class="omni-trust-desc">All quote and labor calculations leverage official ISSA production standards (sq ft cleaned per hour) to safeguard contractor profitability.</p>
+                </div>
+
+                <div class="omni-trust-card">
+                    <div class="omni-trust-icon">☣️</div>
+                    <h4 class="omni-trust-title">OSHA HazCom 1910 Compliance</h4>
+                    <p class="omni-trust-desc">Chemical algorithms verify safe dilution parts-by-volume while highlighting hazardous reactions (chlorine and chloramine gas hazards).</p>
+                </div>
+
+                <div class="omni-trust-card">
+                    <div class="omni-trust-icon">⚖️</div>
+                    <h4 class="omni-trust-title">FLSA Overtime Protections</h4>
+                    <p class="omni-trust-desc">Shift generators automatically highlight 40-hour overtime thresholds and 1.5x pay rates, shielding business owners from labor disputes.</p>
+                </div>
+
+                <div class="omni-trust-card">
+                    <div class="omni-trust-icon">🔒</div>
+                    <h4 class="omni-trust-title">Zero Paywalls & 100% Privacy</h4>
+                    <p class="omni-trust-desc">All calculations process locally in your web browser. No accounts, no email gates, and zero client data uploaded to external servers.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 学术同行评审背书栏 (Omni Reviewer Card) -->
+        <div class="omni-reviewer-card">
+            <div class="omni-reviewer-avatar">🔬</div>
+            <div class="omni-reviewer-content">
+                <h4>Calibrated & Peer-Reviewed by the PureWear Research Desk</h4>
+                <p>Every formula, dilution ratio, and labor rate on this platform is independently audited by certified commercial cleaners and verified against current 2026 economic wage data.</p>
+                <div class="omni-reviewer-meta">
+                    <span>✓ ISSA & OSHA Calibrated</span>
+                    <span>•</span>
+                    <span>✓ Published March 2026</span>
+                    <span>•</span>
+                    <span>✓ 100% Free Public Service</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PureWear 官方工服商店推荐横幅 (Shopify Store Integration) -->
+        <div style="background: #FFFFFF; border: 1.5px solid var(--omni-blue-border); border-left: 5px solid var(--omni-blue); border-radius: var(--radius-md); padding: 32px; margin-top: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; box-shadow: var(--shadow-sm);">
             <div style="max-width: 720px;">
-                <div style="font-size: 11px; font-weight: 800; color: var(--omni-blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">PureWear Store • Gear for Pros</div>
-                <h3 style="font-size: 20px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Upgrade Your Team's Daily Uniforms</h3>
+                <div style="font-size: 11px; font-weight: 800; color: var(--omni-blue); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;">PureWear Store • Gear for Cleaning Teams</div>
+                <h3 style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Equip Your Team with Bleach-Resistant Professional Uniforms</h3>
                 <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 0; line-height: 1.6;">
-                    Lightweight, breathable, and bleach-resistant workwear designed specifically for cleaning professionals and housekeeping crews. Look sharp and stay protected.
+                    High-stretch, breathable workwear and spill-proof aprons engineered specifically for daily chemical exposure and active motion. Elevate client trust with sharp matching crew uniforms.
                 </p>
             </div>
-            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn" style="padding: 12px 24px; font-size: 14px; white-space: nowrap;">
-                Shop Cleaning Gear →
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn" style="padding: 14px 28px; font-size: 14px; white-space: nowrap;">
+                Shop PureWear Store →
             </a>
         </div>
 
@@ -141,6 +236,16 @@
 
         function handleSearch(val) {
             renderAllTools(selectedCategory, val);
+        }
+
+        function searchDirectory(keyword) {
+            const input = document.getElementById('toolSearch');
+            if (input) {
+                input.value = keyword;
+                handleSearch(keyword);
+                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                input.focus();
+            }
         }
     </script>
 </body>

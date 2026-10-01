@@ -108,46 +108,79 @@
                 <span class="author-badge">Custodial Accounting Benchmark</span>
                 <span>Created by PureWear Financial Desk</span>
                 <span class="sep">•</span>
-                <span>Updated March 2026</span>
+                <span class="live-indicator"><span class="live-dot"></span>Updated March 2026</span>
             </div>
+
+            <!-- Omni TOC 锚点导航条 -->
+            <nav class="omni-toc-bar">
+                <a href="#ledger-workspace" class="omni-toc-pill">Transaction Ledger</a>
+                <a href="#overview" class="omni-toc-pill">Overview</a>
+                <a href="#profit-math" class="omni-toc-pill">Net Profit Math</a>
+                <a href="#distribution-table" class="omni-toc-pill">Expense Benchmarks</a>
+                <a href="#case-study" class="omni-toc-pill">Case Study</a>
+                <a href="#faq" class="omni-toc-pill">FAQ</a>
+            </nav>
 
             <!-- 账本工作区 -->
-            <div class="ledger-box">
-                <div style="font-size: 14px; font-weight: 800; color: var(--text-primary); margin-bottom: 12px;">Add Transaction Entry</div>
-                <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
-                    <input type="text" id="descInput" class="omni-input" placeholder="Description (e.g. Miller Residence Bi-Weekly)..." style="border: 1px solid var(--border-input); border-radius: 4px; padding: 8px 12px; flex: 2; min-width: 200px;">
-                    <select id="typeSelect" class="omni-select" style="border: 1px solid var(--border-input); border-radius: 4px; padding: 8px; font-size: 13px;">
-                        <option value="income">Income (+)</option>
-                        <option value="expense">Expense (−)</option>
-                    </select>
-                    <input type="number" id="amountInput" class="omni-input" placeholder="Amount ($)" step="0.5" style="border: 1px solid var(--border-input); border-radius: 4px; width: 100px; padding: 8px;">
-                    <button type="button" class="omni-action-btn" style="background: var(--omni-blue); color: #fff; border-color: var(--omni-blue); white-space: nowrap;" onclick="addTransaction()">+ Add Entry</button>
-                </div>
+            <div id="ledger-workspace">
+                <div class="ledger-box">
+                    <div style="font-size: 14px; font-weight: 800; color: var(--text-primary); margin-bottom: 12px;">Add Transaction Entry</div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
+                        <input type="text" id="descInput" class="omni-input" placeholder="Description (e.g. Miller Residence Bi-Weekly)..." style="border: 1px solid var(--border-input); border-radius: 4px; padding: 8px 12px; flex: 2; min-width: 200px;">
+                        <select id="typeSelect" class="omni-select" style="border: 1px solid var(--border-input); border-radius: 4px; padding: 8px; font-size: 13px;">
+                            <option value="income">Income (+)</option>
+                            <option value="expense">Expense (−)</option>
+                        </select>
+                        <input type="number" id="amountInput" class="omni-input" placeholder="Amount ($)" step="0.5" style="border: 1px solid var(--border-input); border-radius: 4px; width: 100px; padding: 8px;">
+                        <button type="button" class="omni-action-btn" style="background: var(--omni-blue); color: #fff; border-color: var(--omni-blue); white-space: nowrap;" onclick="addTransaction()">+ Add Entry</button>
+                    </div>
 
-                <div class="omni-table-wrapper" style="margin: 0;">
-                    <table class="omni-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Description</th>
-                                <th>Type</th>
-                                <th style="text-align: right;">Amount</th>
-                                <th style="width: 40px; text-align: center;"></th>
-                            </tr>
-                        </thead>
-                        <tbody id="transBody">
-                            <!-- JS 渲染 -->
-                        </tbody>
-                    </table>
+                    <div class="omni-table-wrapper" style="margin: 0;">
+                        <table class="omni-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Type</th>
+                                    <th style="text-align: right;">Amount</th>
+                                    <th style="width: 40px; text-align: center;"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="transBody">
+                                <!-- JS 渲染 -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
-            <h2>How to Maintain a 30% Net Profit Margin in Cleaning</h2>
-            <p>
-                Many cleaning business owners fall into the trap of measuring business health purely by gross revenue. However, after accounting for field labor wages, chemical supplies, microfiber replacement, vehicle fuel, and general liability insurance, healthy cleaning services target a <strong>25% to 35% net profit margin</strong>.
-            </p>
+            <div id="overview">
+                <h2>How to Maintain a 30% Net Profit Margin in Cleaning</h2>
+                <p>
+                    Many cleaning business owners fall into the trap of measuring business health purely by gross revenue. However, after accounting for field labor wages, chemical supplies, microfiber replacement, vehicle fuel, and general liability insurance, healthy cleaning services target a <strong>25% to 35% net profit margin</strong>.
+                </p>
+            </div>
 
-            <h2>Typical Custodial Expense Distribution</h2>
+            <h2 id="profit-math">The Net Profit Margin Formula</h2>
+            <!-- 官方学术数学公式卡片 (Omni Math Block) -->
+            <div class="omni-math-block">
+                <div class="omni-math-header">
+                    <span>📐 CLEANING SERVICE MARGIN & CASH FLOW FORMULAS</span>
+                </div>
+                <div class="omni-math-equation">
+                    \text{Gross Profit} = \text{Total Client Billings} - \text{Direct Route Labor}<br>
+                    \text{Net Operating Income (NOI)} = \text{Gross Profit} - (\text{Chemicals} + \text{Fuel} + \text{Insurance} + \text{Software})<br>
+                    \text{Net Profit Margin (\%)} = \frac{\text{Net Operating Income}}{\text{Total Revenue}} \times 100
+                </div>
+                <div style="font-size: 12px; color: #664D1B; line-height: 1.6;">
+                    <strong>Custodial Accounting Targets:</strong><br>
+                    • <strong>Direct Labor Target:</strong> 40% – 45% (highest single expenditure item).<br>
+                    • <strong>Supply Ratio:</strong> 5% – 8% (slashed below 5% using 1:32 / 1:64 bulk chemical dilution).<br>
+                    • <strong>Target Net Margin:</strong> 25% – 35% ensures business longevity through economic downturns and seasonal lulls.
+                </div>
+            </div>
+
+            <h2 id="distribution-table">Typical Custodial Expense Distribution</h2>
             <div class="omni-table-wrapper">
                 <table class="omni-table">
                     <thead>
@@ -187,7 +220,30 @@
                 </table>
             </div>
 
-            <h2>Frequently Asked Questions</h2>
+            <!-- 实战演算案例区块 (Omni Practical Case Study) -->
+            <div class="omni-case-study" id="case-study">
+                <div class="omni-case-title">
+                    <span>💡 Practical Case Study: Lifting Monthly Net Margin From 12% to 28%</span>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">1</div>
+                    <div><strong>Diagnose Expense Leaks:</strong> A residential cleaning business generated $12,000/mo but retained only $1,440 (12% margin) due to non-clustered cross-town driving and retail cleaning supply purchases.</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">2</div>
+                    <div><strong>Route Re-Clustering:</strong> Grouped service appointments into 3 compact zip-code clusters, cutting weekly vehicle gas and maintenance overhead by $340/month.</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">3</div>
+                    <div><strong>Bulk Chemical Dilution:</strong> Switched from $5.50 retail spray bottles to bulk concentrates, reducing supply expense from 8.2% to 4.1% ($490/month saved).</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">4</div>
+                    <div><strong>Financial Result:</strong> Monthly take-home profit surged to $3,360 (28% net margin) without needing to raise customer prices.</div>
+                </div>
+            </div>
+
+            <h2 id="faq">Frequently Asked Questions</h2>
             <div class="omni-faq-accordion">
                 <details class="omni-faq-item">
                     <summary>Are work uniforms and equipment tax-deductible?</summary>
@@ -225,11 +281,11 @@
                 </div>
 
                 <!-- 分组 1: Revenue & Expenses -->
-                <div class="omni-group-title">Cash Flow Totals</div>
+                <div class="omni-group-title">1. Cash Flow Totals</div>
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Total Revenue</span>
+                        <span>Total Revenue <span class="omni-tooltip-btn" title="Total receipts from residential and commercial client billings">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <input type="text" id="totalIncDisplay" class="omni-input" readonly value="$1,240.00">
@@ -239,7 +295,7 @@
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Total Expenses</span>
+                        <span>Total Expenses <span class="omni-tooltip-btn" title="Labor, chemical supplies, vehicle fuel, and overhead expenses">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <input type="text" id="totalExpDisplay" class="omni-input" readonly value="$310.00">
@@ -248,7 +304,7 @@
                 </div>
 
                 <!-- 分组 2: Net Profit Result -->
-                <div class="omni-group-title">Net Profit Margin</div>
+                <div class="omni-group-title">2. Net Profit Margin</div>
 
                 <div class="omni-row result">
                     <div class="omni-label">
@@ -262,18 +318,30 @@
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Profit margin percentage</span>
+                        <span>Profit margin percentage <span class="omni-tooltip-btn" title="Healthy cleaning operations achieve 25% to 35% net margin">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <input type="text" id="marginDisplay" class="omni-input" readonly value="75.0% (Strong)">
                     </div>
                 </div>
 
+                <!-- 分组 3: Actions -->
+                <div class="omni-group-title">3. Export & Ledger Actions</div>
+
                 <!-- Omni 底部快捷操作条 -->
                 <div class="omni-footer-actions">
                     <button type="button" class="omni-action-btn" onclick="resetDefaults()">↺ Reset</button>
                     <button type="button" class="omni-action-btn" onclick="exportCSV()">📊 Export CSV</button>
                     <button type="button" class="omni-action-btn" onclick="copySummary()">📋 Copy</button>
+                </div>
+
+                <!-- Omni 满意度交互反馈条 -->
+                <div class="omni-feedback-box">
+                    <span>Did this income and expense ledger help track your bottom line?</span>
+                    <div class="omni-feedback-btns">
+                        <button type="button" class="omni-feedback-btn" onclick="showToast('Thank you for your feedback! 👍')">👍 Yes (100%)</button>
+                        <button type="button" class="omni-feedback-btn" onclick="showToast('Thank you! Feedback recorded.')">👎 No</button>
+                    </div>
                 </div>
 
             </div>

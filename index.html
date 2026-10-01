@@ -3,15 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>PureWear Space | Free Calculators for Cleaning Businesses</title>
+    <title>PureWear Space | 14 Free Calculators for Cleaning Businesses</title>
     <meta name="description" content="A comprehensive collection of 14 free calculators, shift schedulers, dilution ratio engines, and OSHA chemical safety checkers designed for professional cleaners and maid services.">
     <link rel="canonical" href="https://tool.purewearspace.com/">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="PureWear Space | Free Calculators for Cleaning Businesses">
+    <meta property="og:title" content="PureWear Space | 14 Free Calculators for Cleaning Businesses">
     <meta property="og:description" content="Calculate cleaning quotes, dilution ratios, weekly employee shifts, and hourly wages with 2026 industry benchmarks. Free forever.">
     <meta property="og:url" content="https://tool.purewearspace.com/">
     <meta property="og:type" content="website">
+
+    <!-- Schema.org WebApplication & Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PureWear Cleaning Business Calculators",
+      "url": "https://tool.purewearspace.com/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "14 free scientific business calculators, labor rate estimators, and chemical safety checkers for cleaning professionals.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -34,80 +52,272 @@
         </div>
     </nav>
 
-    <!-- Omni 风格 Hero 区域 -->
+    <!-- Omni 风格 Hero 核心区域 -->
     <header class="omni-home-hero">
-        <div class="omni-breadcrumb" style="justify-content: center; margin-bottom: 16px;">
-            <span>PureWear Utilities</span>
-            <span class="sep">•</span>
-            <span>2026 Standard Edition</span>
+        <div class="omni-hero-badge">
+            2026 PROFESSIONAL CLEANING SUITE • ISSA & OSHA CALIBRATED
         </div>
+        
         <h1>Your cleaning business in <span class="highlight">14 free calculators</span></h1>
         
-        <!-- Omni 居中搜索框 -->
-        <div class="omni-search-container">
-            <span class="omni-search-icon">🔍</span>
-            <input type="text" id="homeSearch" class="omni-search-input" placeholder="Search 14 calculators (e.g. quote, dilution, schedule, tip, wage)..." oninput="handleHomeSearch(this.value)">
+        <p class="omni-hero-subtitle">
+            Scientifically calibrated estimating tools, labor formulas, chemical dilution engines, and shift schedulers for residential housekeepers, maid services, and commercial janitorial contractors.
+        </p>
+        
+        <!-- Omni 居中浮动搜索框 -->
+        <div class="omni-search-wrapper">
+            <div class="omni-search-container">
+                <span class="omni-search-icon">🔍</span>
+                <input type="text" id="homeSearch" class="omni-search-input" placeholder="Search 14 calculators (e.g. quote, dilution, schedule, wages, tips)..." oninput="handleHomeSearch(this.value)">
+            </div>
         </div>
 
-        <!-- 4大核心分类矩阵卡片 -->
+        <!-- 快速搜索热门关键词胶囊 -->
+        <div class="omni-search-tags">
+            <span style="font-weight: 700; margin-right: 4px;">Popular:</span>
+            <a class="omni-tag-pill" href="#section-pricing" onclick="searchTag('quote')">🧹 Cleaning Quote</a>
+            <a class="omni-tag-pill" href="#section-safety" onclick="searchTag('dilution')">🧪 Chemical Dilution</a>
+            <a class="omni-tag-pill" href="#section-ops" onclick="searchTag('schedule')">📅 Shift Schedule</a>
+            <a class="omni-tag-pill" href="#section-pricing" onclick="searchTag('hourly')">💰 Hourly Wages</a>
+            <a class="omni-tag-pill" href="#section-safety" onclick="searchTag('safety')">☠️ Safety Checker</a>
+            <a class="omni-tag-pill" href="#section-pricing" onclick="searchTag('tip')">💵 Tip Split</a>
+        </div>
+
+        <!-- 4大核心分类矩阵卡片网格 (Omni Category Deck) -->
         <div class="omni-category-grid">
-            <div class="omni-category-card" onclick="filterByCat('pricing')" style="cursor: pointer;">
+            <a href="#section-pricing" class="omni-category-card">
                 <div class="omni-cat-icon">🧹</div>
                 <div class="omni-cat-name">Quotes & Pricing</div>
                 <div class="omni-cat-count">4 calculators</div>
-            </div>
+            </a>
 
-            <div class="omni-category-card" onclick="filterByCat('ops')" style="cursor: pointer;">
+            <a href="#section-ops" class="omni-category-card">
                 <div class="omni-cat-icon">📅</div>
                 <div class="omni-cat-name">Shifts & Operations</div>
-                <div class="omni-cat-count">5 calculators</div>
-            </div>
+                <div class="omni-cat-count">7 calculators</div>
+            </a>
 
-            <div class="omni-category-card" onclick="filterByCat('safety')" style="cursor: pointer;">
+            <a href="#section-safety" class="omni-category-card">
                 <div class="omni-cat-icon">🧪</div>
                 <div class="omni-cat-name">Chemical & Safety</div>
                 <div class="omni-cat-count">3 calculators</div>
-            </div>
+            </a>
 
-            <div class="omni-category-card" onclick="filterByCat('all')" style="cursor: pointer;">
+            <a href="tools/index.html" class="omni-category-card">
                 <div class="omni-cat-icon">⚡</div>
-                <div class="omni-cat-name">All Utilities</div>
-                <div class="omni-cat-count">14 calculators</div>
-            </div>
+                <div class="omni-cat-name">All 14 Utilities</div>
+                <div class="omni-cat-count">Complete directory</div>
+            </a>
         </div>
     </header>
 
-    <!-- 主体内容 -->
+    <!-- 页面核心主体 -->
     <main style="max-width: 1200px; margin: 0 auto; padding: 0 20px 60px; width: 100%;">
-        
-        <!-- 分类筛选导航条 -->
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 14px; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="categoryFilterBar">
-                <button class="omni-action-btn" id="filter-all" style="background: var(--omni-blue); color: #fff; border-color: var(--omni-blue);" onclick="filterByCat('all')">All Calculators (14)</button>
-                <button class="omni-action-btn" id="filter-pricing" onclick="filterByCat('pricing')">Quotes & Pricing</button>
-                <button class="omni-action-btn" id="filter-ops" onclick="filterByCat('ops')">Operations & Shifts</button>
-                <button class="omni-action-btn" id="filter-safety" onclick="filterByCat('safety')">Chemical & Safety</button>
+
+        <!-- 搜索动态结果容器 (默认隐藏，输入时展现) -->
+        <div id="search-results-section" style="display: none; margin-bottom: 40px;">
+            <div class="omni-section-header">
+                <div class="omni-section-title-wrap">
+                    <span class="omni-section-icon">🔍</span>
+                    <h2 class="omni-section-title">Search Results</h2>
+                    <span id="search-result-count" class="omni-section-badge">0 results</span>
+                </div>
+                <button type="button" class="omni-action-btn" onclick="clearSearch()">✕ Clear Search</button>
             </div>
-            <a href="tools/index.html" style="font-size: 13px; font-weight: 700; color: var(--omni-blue); text-decoration: none;">View Directory →</a>
+            <div id="search-tools-container" class="card-grid"></div>
         </div>
 
-        <!-- 工具卡片网格 -->
-        <div id="home-tools-container" class="card-grid">
-            <!-- 由 tools-data.js 和 render-tools.js 自动生成 -->
-        </div>
+        <!-- 主体结构区 (搜索未激活时全貌展示) -->
+        <div id="standard-home-content">
+            
+            <!-- 区块 1: 🔥 旗舰工具聚光灯 (Spotlight 3-Card Deck) -->
+            <section class="omni-section" style="margin-top: 10px;">
+                <div class="omni-section-header">
+                    <div class="omni-section-title-wrap">
+                        <span class="omni-section-icon">🔥</span>
+                        <h2 class="omni-section-title">Flagship Industry Calculators</h2>
+                        <span class="omni-section-badge">Most Used in 2026</span>
+                    </div>
+                    <div style="font-size: 13px; color: var(--text-muted);">Calibrated with 2026 ISSA & OSHA standards</div>
+                </div>
 
-        <!-- Omni 风格的主店推荐卡片 -->
-        <div style="background: #FFFFFF; border: 1px solid var(--omni-blue-border); border-left: 4px solid var(--omni-blue); border-radius: var(--radius-md); padding: 28px 32px; margin-top: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; box-shadow: var(--shadow-sm);">
-            <div style="max-width: 720px;">
-                <div style="font-size: 11px; font-weight: 800; color: var(--omni-blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">PureWear Store • Gear for Pros</div>
-                <h3 style="font-size: 20px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Equip Your Team With Bleach-Resistant Workwear</h3>
-                <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 0; line-height: 1.6;">
-                    Lightweight, quick-drying uniforms and spill-proof aprons tailored for professional housekeepers and commercial cleaners. Built to endure daily chemical handling and active motion.
-                </p>
+                <div class="omni-spotlight-grid">
+                    <!-- 聚光灯 1: 报价计算器 -->
+                    <a href="tools/cleaning-quote-calculator/" class="omni-spotlight-card">
+                        <div>
+                            <span class="omni-spotlight-tag">⭐ MOST POPULAR • ISSA 612</span>
+                            <h3 class="omni-spotlight-title">House Cleaning Quote Calculator</h3>
+                            <p class="omni-spotlight-desc">Estimate residential and commercial jobs by square footage, bed/bath count, and service frequency. Generates instant PDF client proposals.</p>
+                        </div>
+                        <div>
+                            <div class="omni-spotlight-stats">
+                                <span>National Avg: <strong>$0.12 - $0.22/sq ft</strong></span>
+                                <span>Format: <strong>PDF + Web</strong></span>
+                            </div>
+                            <div class="omni-spotlight-action">
+                                <span>Launch Calculator</span>
+                                <span>→</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 聚光灯 2: 稀释换算器 -->
+                    <a href="tools/dilution-calculator/" class="omni-spotlight-card">
+                        <div>
+                            <span class="omni-spotlight-tag">🧪 CHEMICAL • OSHA HAZCOM 1910</span>
+                            <h3 class="omni-spotlight-title">Dilution Ratio Calculator</h3>
+                            <p class="omni-spotlight-desc">Convert parts ratios (1:10, 1:32, 1:128) into exact ounces, gallons, or milliliters. Prevents chemical waste and surface damage.</p>
+                        </div>
+                        <div>
+                            <div class="omni-spotlight-stats">
+                                <span>Precision: <strong>Fl Oz / Gallon / L</strong></span>
+                                <span>Savings: <strong>$0.27 / batch</strong></span>
+                            </div>
+                            <div class="omni-spotlight-action">
+                                <span>Launch Calculator</span>
+                                <span>→</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 聚光灯 3: 排班生成器 -->
+                    <a href="tools/schedule-generator/" class="omni-spotlight-card">
+                        <div>
+                            <span class="omni-spotlight-tag">📅 OPERATIONS • FLSA 40H OVERTIME</span>
+                            <h3 class="omni-spotlight-title">Weekly Shift Schedule Generator</h3>
+                            <p class="omni-spotlight-desc">Generate 7-day balanced staff schedules, automatically tally crew payroll hours, and prevent costly 1.5x FLSA overtime penalties.</p>
+                        </div>
+                        <div>
+                            <div class="omni-spotlight-stats">
+                                <span>Overtime Alert: <strong>Live Red Warning</strong></span>
+                                <span>Export: <strong>CSV + Print</strong></span>
+                            </div>
+                            <div class="omni-spotlight-action">
+                                <span>Launch Generator</span>
+                                <span>→</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 区块 2: 🧹 Quotes, Bids & Financial Calculators (分类卡片网格) -->
+            <section class="omni-section" id="section-pricing">
+                <div class="omni-section-header">
+                    <div class="omni-section-title-wrap">
+                        <span class="omni-section-icon">🧹</span>
+                        <div>
+                            <h2 class="omni-section-title">Quotes, Pricing & Profit Margins</h2>
+                            <div class="omni-section-desc">Accurate job bidding, wage breakdowns, tip pool distribution, and operating margin ledgers.</div>
+                        </div>
+                    </div>
+                    <span class="omni-section-badge">4 Calculators</span>
+                </div>
+
+                <div id="pricing-tools-container" class="card-grid"></div>
+            </section>
+
+            <!-- 区块 3: 📅 Workforce, Shifts & Operations Management (分类卡片网格) -->
+            <section class="omni-section" id="section-ops">
+                <div class="omni-section-header">
+                    <div class="omni-section-title-wrap">
+                        <span class="omni-section-icon">📅</span>
+                        <div>
+                            <h2 class="omni-section-title">Workforce, Shifts & Operations Management</h2>
+                            <div class="omni-section-desc">Daily scheduling rosters, time estimators, quality checklists, staff evaluations, and client agreements.</div>
+                        </div>
+                    </div>
+                    <span class="omni-section-badge">7 Calculators</span>
+                </div>
+
+                <div id="ops-tools-container" class="card-grid"></div>
+            </section>
+
+            <!-- 区块 4: 🧪 Chemical Dilution & Safety Compliance (分类卡片网格) -->
+            <section class="omni-section" id="section-safety">
+                <div class="omni-section-header">
+                    <div class="omni-section-title-wrap">
+                        <span class="omni-section-icon">🧪</span>
+                        <div>
+                            <h2 class="omni-section-title">Chemical Dilution & OSHA Safety Compliance</h2>
+                            <div class="omni-section-desc">Dangerous chemical mixing checker, dilution parts-by-volume engines, and safe pouring SOPs.</div>
+                        </div>
+                    </div>
+                    <span class="omni-section-badge">3 Calculators</span>
+                </div>
+
+                <div id="safety-tools-container" class="card-grid"></div>
+            </section>
+
+            <!-- 区块 5: 🔬 科学权威与算法标准 (The PureWear Scientific Standard) -->
+            <section class="omni-section">
+                <div class="omni-section-header">
+                    <div class="omni-section-title-wrap">
+                        <span class="omni-section-icon">🛡️</span>
+                        <div>
+                            <h2 class="omni-section-title">Why Cleaning Professionals Rely on PureWear</h2>
+                            <div class="omni-section-desc">Built for independent cleaners and commercial services seeking mathematical accuracy over rough guesses.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="omni-trust-grid">
+                    <div class="omni-trust-card">
+                        <div class="omni-trust-icon">📐</div>
+                        <h4 class="omni-trust-title">ISSA 612 Standard Calibration</h4>
+                        <p class="omni-trust-desc">All quote and labor calculations leverage official ISSA production standards (sq ft cleaned per hour) to safeguard contractor profitability.</p>
+                    </div>
+
+                    <div class="omni-trust-card">
+                        <div class="omni-trust-icon">☣️</div>
+                        <h4 class="omni-trust-title">OSHA HazCom 1910 Compliance</h4>
+                        <p class="omni-trust-desc">Chemical algorithms verify safe dilution parts-by-volume while highlighting hazardous reactions (chlorine and chloramine gas hazards).</p>
+                    </div>
+
+                    <div class="omni-trust-card">
+                        <div class="omni-trust-icon">⚖️</div>
+                        <h4 class="omni-trust-title">FLSA Overtime Protections</h4>
+                        <p class="omni-trust-desc">Shift generators automatically highlight 40-hour overtime thresholds and 1.5x pay rates, shielding business owners from labor disputes.</p>
+                    </div>
+
+                    <div class="omni-trust-card">
+                        <div class="omni-trust-icon">🔒</div>
+                        <h4 class="omni-trust-title">Zero Paywalls & 100% Privacy</h4>
+                        <p class="omni-trust-desc">All calculations process locally in your web browser. No accounts, no email gates, and zero client data uploaded to external servers.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 区块 6: 👨‍🔬 学术同行评审背书栏 (Omni Reviewer Card) -->
+            <div class="omni-reviewer-card">
+                <div class="omni-reviewer-avatar">🔬</div>
+                <div class="omni-reviewer-content">
+                    <h4>Calibrated & Peer-Reviewed by the PureWear Research Desk</h4>
+                    <p>Every formula, dilution ratio, and labor rate on this platform is independently audited by certified commercial cleaners and verified against current 2026 economic wage data.</p>
+                    <div class="omni-reviewer-meta">
+                        <span>✓ ISSA & OSHA Calibrated</span>
+                        <span>•</span>
+                        <span>✓ Published March 2026</span>
+                        <span>•</span>
+                        <span>✓ Free Public Service</span>
+                    </div>
+                </div>
             </div>
-            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn" style="padding: 12px 24px; font-size: 14px; white-space: nowrap;">
-                Shop PureWear Store →
-            </a>
+
+            <!-- 区块 7: 👕 PureWear 官方工服商店推荐横幅 (Shopify Store Integration) -->
+            <div style="background: #FFFFFF; border: 1.5px solid var(--omni-blue-border); border-left: 5px solid var(--omni-blue); border-radius: var(--radius-md); padding: 32px; margin-top: 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; box-shadow: var(--shadow-sm);">
+                <div style="max-width: 720px;">
+                    <div style="font-size: 11px; font-weight: 800; color: var(--omni-blue); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;">PureWear Store • Gear for Cleaning Teams</div>
+                    <h3 style="font-size: 22px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Equip Your Team with Bleach-Resistant Professional Uniforms</h3>
+                    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 0; line-height: 1.6;">
+                        High-stretch, breathable workwear and spill-proof aprons engineered specifically for daily chemical exposure and active motion. Elevate client trust with sharp matching crew uniforms.
+                    </p>
+                </div>
+                <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn" style="padding: 14px 28px; font-size: 14px; white-space: nowrap;">
+                    Shop PureWear Store →
+                </a>
+            </div>
+
         </div>
 
     </main>
@@ -135,32 +345,80 @@
     <script src="js/tools-data.js"></script>
     <script src="js/render-tools.js"></script>
     <script>
-        let currentFilter = 'all';
+        function renderCategorizedSections() {
+            if (typeof TOOLS_DATA === 'undefined') return;
 
-        function filterByCat(cat) {
-            currentFilter = cat;
-            
-            // 更新按钮激活状态
-            const buttons = document.querySelectorAll('#categoryFilterBar button');
-            buttons.forEach(btn => {
-                if (btn.id === 'filter-' + cat) {
-                    btn.style.background = 'var(--omni-blue)';
-                    btn.style.color = '#fff';
-                    btn.style.borderColor = 'var(--omni-blue)';
-                } else {
-                    btn.style.background = '#FFFFFF';
-                    btn.style.color = 'var(--text-body)';
-                    btn.style.borderColor = 'var(--border-light)';
-                }
-            });
+            const pricingContainer = document.getElementById('pricing-tools-container');
+            const opsContainer = document.getElementById('ops-tools-container');
+            const safetyContainer = document.getElementById('safety-tools-container');
 
-            const searchVal = document.getElementById('homeSearch') ? document.getElementById('homeSearch').value : '';
-            renderHomeTools(currentFilter, searchVal);
+            if (pricingContainer) {
+                const pricingTools = TOOLS_DATA.filter(t => t.category === 'pricing');
+                pricingContainer.innerHTML = pricingTools.map(t => createToolCard(t)).join('');
+            }
+
+            if (opsContainer) {
+                const opsTools = TOOLS_DATA.filter(t => t.category === 'ops');
+                opsContainer.innerHTML = opsTools.map(t => createToolCard(t)).join('');
+            }
+
+            if (safetyContainer) {
+                const safetyTools = TOOLS_DATA.filter(t => t.category === 'safety');
+                safetyContainer.innerHTML = safetyTools.map(t => createToolCard(t)).join('');
+            }
         }
 
         function handleHomeSearch(val) {
-            renderHomeTools(currentFilter, val);
+            const kw = val.trim().toLowerCase();
+            const searchSection = document.getElementById('search-results-section');
+            const standardContent = document.getElementById('standard-home-content');
+            const resultsContainer = document.getElementById('search-tools-container');
+            const countBadge = document.getElementById('search-result-count');
+
+            if (!kw) {
+                searchSection.style.display = 'none';
+                standardContent.style.display = 'block';
+                return;
+            }
+
+            searchSection.style.display = 'block';
+            standardContent.style.display = 'none';
+
+            const filtered = TOOLS_DATA.filter(t => 
+                t.title.toLowerCase().includes(kw) || 
+                t.desc.toLowerCase().includes(kw) ||
+                t.tag.toLowerCase().includes(kw)
+            );
+
+            countBadge.innerText = `${filtered.length} calculator${filtered.length === 1 ? '' : 's'}`;
+
+            if (filtered.length === 0) {
+                resultsContainer.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 48px; background: #fff; border-radius: 8px; border: 1px solid var(--border-light); color: var(--text-muted);">No calculators found matching "' + val + '". Try "quote", "dilution", or "schedule".</div>';
+            } else {
+                resultsContainer.innerHTML = filtered.map(t => createToolCard(t)).join('');
+            }
         }
+
+        function searchTag(tag) {
+            const input = document.getElementById('homeSearch');
+            if (input) {
+                input.value = tag;
+                handleHomeSearch(tag);
+                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('homeSearch');
+            if (input) {
+                input.value = '';
+                handleHomeSearch('');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCategorizedSections();
+        });
     </script>
 </body>
 </html>

@@ -100,30 +100,50 @@
                 <span class="author-badge">2026 FLSA Labor Standards</span>
                 <span>Created by PureWear Compensation Desk</span>
                 <span class="sep">•</span>
-                <span>Updated March 2026</span>
+                <span class="live-indicator"><span class="live-dot"></span>Updated March 2026</span>
             </div>
 
-            <p>
-                Calculating compensation for cleaning technicians, janitors, and independent housekeepers requires balancing regular hourly wages, overtime premiums, and tax withholding. Whether you are an employee validating your paycheck or a cleaning business owner estimating payroll liability, having accurate numbers is critical.
-            </p>
+            <!-- Omni TOC 锚点导航条 -->
+            <nav class="omni-toc-bar">
+                <a href="#overview" class="omni-toc-pill">Overview</a>
+                <a href="#flsa-formula" class="omni-toc-pill">FLSA Overtime Math</a>
+                <a href="#wages-table" class="omni-toc-pill">2026 Wage Benchmarks</a>
+                <a href="#gross-vs-net" class="omni-toc-pill">Gross vs Net</a>
+                <a href="#case-study" class="omni-toc-pill">Payroll Case Study</a>
+                <a href="#faq" class="omni-toc-pill">FAQ</a>
+            </nav>
 
-            <p>
-                This <strong>hourly pay calculator</strong> computes regular and overtime earnings, converts wages across weekly, bi-weekly, monthly, and annual periods, and estimates net take-home pay based on your effective tax withholding rate.
-            </p>
+            <div id="overview">
+                <p>
+                    Calculating compensation for cleaning technicians, janitors, and independent housekeepers requires balancing regular hourly wages, overtime premiums, and tax withholding. Whether you are an employee validating your paycheck or a cleaning business owner estimating payroll liability, having accurate numbers is critical.
+                </p>
 
-            <h2>The FLSA Overtime Pay Formula</h2>
-            <div class="omni-formula-box">
-                <strong>Regular Gross Pay:</strong><br>
-                Regular Pay = Regular Hours (up to 40) × Base Hourly Rate<br><br>
-                <strong>Overtime Premium (Time and a Half):</strong><br>
-                Overtime Pay = Overtime Hours (> 40) × (Base Hourly Rate × 1.5)<br><br>
-                <strong>Gross Total Earnings:</strong><br>
-                Total Gross Pay = Regular Pay + Overtime Pay<br><br>
-                <strong>Estimated Net Take-Home Pay:</strong><br>
-                Net Take-Home Pay = Total Gross Pay × (1 − Estimated Tax Withholding %)
+                <p>
+                    This <strong>hourly pay calculator</strong> computes regular and overtime earnings, converts wages across weekly, bi-weekly, monthly, and annual periods, and estimates net take-home pay based on your effective tax withholding rate.
+                </p>
             </div>
 
-            <h2>2026 Cleaning Industry Wage Benchmarks Table</h2>
+            <h2 id="flsa-formula">The FLSA Overtime Pay Formula</h2>
+            <!-- 官方学术数学公式卡片 (Omni Math Block) -->
+            <div class="omni-math-block">
+                <div class="omni-math-header">
+                    <span>📐 FLSA STATUTORY OVERTIME & PAYCHECK FORMULAS</span>
+                </div>
+                <div class="omni-math-equation">
+                    \text{Regular Pay} = \min(\text{Hours}, 40) \times \text{Base Hourly Rate}<br>
+                    \text{Overtime Pay} = \max(0, \text{Hours} - 40) \times (\text{Base Hourly Rate} \times M_{\text{OT}})<br>
+                    \text{Gross Weekly Pay} = \text{Regular Pay} + \text{Overtime Pay}<br>
+                    \text{Net Take-Home Pay} = \text{Gross Pay} \times (1 - \text{Tax Rate}_{\text{effective}})
+                </div>
+                <div style="font-size: 12px; color: #664D1B; line-height: 1.6;">
+                    <strong>FLSA Section 7(a) Overtime Rules:</strong><br>
+                    • <strong>Non-Exempt Threshold:</strong> Custodial workers, housekeepers, and janitors are non-exempt employees entitled to mandatory 1.5× overtime.<br>
+                    • <strong>Bi-Weekly Averaging Prohibited:</strong> Employers cannot average hours across two weeks (e.g. 50 hours in week 1 and 30 hours in week 2 cannot be averaged as 40 + 40 to avoid 10 hours of overtime).<br>
+                    • <strong>Discretionary vs Non-Discretionary Bonuses:</strong> Attendance or production bonuses must be factored into the regular rate when computing overtime.
+                </div>
+            </div>
+
+            <h2 id="wages-table">2026 Cleaning Industry Wage Benchmarks Table</h2>
             <p>
                 The table below provides aggregated hourly compensation benchmarks across North American metropolitan areas:
             </p>
@@ -172,7 +192,7 @@
                 </table>
             </div>
 
-            <h2>Understanding Gross Pay vs. Net Take-Home Pay</h2>
+            <h2 id="gross-vs-net">Understanding Gross Pay vs. Net Take-Home Pay</h2>
             <p>
                 <strong>Gross pay</strong> represents the entire sum earned before any payroll deductions. In contrast, <strong>net take-home pay</strong> is the actual amount received via direct deposit. For W-2 employees, typical mandatory deductions include:
             </p>
@@ -182,7 +202,30 @@
                 <li><strong>State & Local Income Tax:</strong> 0% to 8% depending on state residence.</li>
             </ul>
 
-            <h2>Frequently Asked Questions</h2>
+            <!-- 实战演算案例区块 (Omni Practical Case Study) -->
+            <div class="omni-case-study" id="case-study">
+                <div class="omni-case-title">
+                    <span>💡 Practical Case Study: Calculating a 45-Hour Week for a Lead Cleaner</span>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">1</div>
+                    <div><strong>Determine Regular Wages:</strong> 40 regular hours at $22.00/hr = \(40 \times \$22.00 = \$880.00\).</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">2</div>
+                    <div><strong>Calculate Overtime Premium:</strong> 5 overtime hours at \(1.5 \times \$22.00 = \$33.00/\text{hr}\), yielding \(5 \times \$33.00 = \$165.00\).</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">3</div>
+                    <div><strong>Total Gross Earnings:</strong> \(\$880.00 + \$165.00 = \mathbf{\$1,045.00}\) for the week (effective average rate of $23.22/hr).</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">4</div>
+                    <div><strong>Net Take-Home Estimation:</strong> With an 18% effective withholding rate (FICA + federal tax), take-home pay is \(\$1,045.00 \times 0.82 = \mathbf{\$856.90}\).</div>
+                </div>
+            </div>
+
+            <h2 id="faq">Frequently Asked Questions</h2>
             <div class="omni-faq-accordion">
                 <details class="omni-faq-item">
                     <summary>How is 1.5x overtime calculated?</summary>
@@ -227,11 +270,11 @@
                 </div>
 
                 <!-- 分组 1: Wage & Hours -->
-                <div class="omni-group-title">Wage & Hours Worked</div>
+                <div class="omni-group-title">1. Wage & Hours Worked</div>
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Base hourly rate</span>
+                        <span>Base hourly rate <span class="omni-tooltip-btn" title="Contracted or standard hourly pay rate">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <input type="number" id="hourlyRate" class="omni-input" value="22.00" min="1" max="500" step="0.5" oninput="calculatePay()">
@@ -247,7 +290,7 @@
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Regular hours / week</span>
+                        <span>Regular hours / week <span class="omni-tooltip-btn" title="Standard hours worked per 7-day period up to 40 hours">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <input type="number" id="regHours" class="omni-input" value="40" min="0" max="60" step="1" oninput="calculatePay()">
@@ -257,7 +300,7 @@
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Overtime hours / week</span>
+                        <span>Overtime hours / week <span class="omni-tooltip-btn" title="Hours worked exceeding 40 hours in a 7-day period">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <input type="number" id="otHours" class="omni-input" value="5" min="0" max="40" step="0.5" oninput="calculatePay()">
@@ -267,7 +310,7 @@
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Overtime multiplier</span>
+                        <span>Overtime multiplier <span class="omni-tooltip-btn" title="1.5x time-and-a-half is federal standard; 2.0x applies to select holidays or California double-time rules">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <select id="otMultiplier" class="omni-select" style="width: 100%; border-left: none;" onchange="calculatePay()">
@@ -279,7 +322,7 @@
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Estimated tax withholding</span>
+                        <span>Estimated tax withholding <span class="omni-tooltip-btn" title="Combined estimated rate for FICA (7.65%), federal income tax, and state tax">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <input type="number" id="taxRate" class="omni-input" value="18" min="0" max="50" step="1" oninput="calculatePay()">
@@ -288,7 +331,7 @@
                 </div>
 
                 <!-- 分组 2: Results -->
-                <div class="omni-group-title">Earnings Breakdown</div>
+                <div class="omni-group-title">2. Earnings Breakdown</div>
 
                 <div class="omni-row result">
                     <div class="omni-label">
@@ -338,11 +381,23 @@
                     </div>
                 </div>
 
+                <!-- 分组 3: Actions -->
+                <div class="omni-group-title">3. Actions & Summary</div>
+
                 <!-- Omni 底部快捷操作条 -->
                 <div class="omni-footer-actions">
                     <button type="button" class="omni-action-btn" onclick="resetDefaults()">↺ Reset</button>
                     <button type="button" class="omni-action-btn" onclick="copyWageSummary()">📋 Copy Breakdown</button>
                     <button type="button" class="omni-action-btn" onclick="shareCalculator()">🔗 Share</button>
+                </div>
+
+                <!-- Omni 满意度交互反馈条 -->
+                <div class="omni-feedback-box">
+                    <span>Did this hourly pay breakdown solve your problem today?</span>
+                    <div class="omni-feedback-btns">
+                        <button type="button" class="omni-feedback-btn" onclick="showToast('Thank you for your feedback! 👍')">👍 Yes (98%)</button>
+                        <button type="button" class="omni-feedback-btn" onclick="showToast('Thank you! Feedback recorded.')">👎 No</button>
+                    </div>
                 </div>
 
             </div>

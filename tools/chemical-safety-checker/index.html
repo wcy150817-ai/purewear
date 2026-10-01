@@ -108,30 +108,50 @@
                 <span class="author-badge">OSHA Hazard Communication 2026</span>
                 <span>Created by PureWear Chemical Safety Desk</span>
                 <span class="sep">•</span>
-                <span>Updated March 2026</span>
+                <span class="live-indicator"><span class="live-dot"></span>Updated March 2026</span>
             </div>
 
-            <p>
-                A common misconception among domestic cleaners and custodial staff is that combining two potent cleaning agents creates a "super cleaner." In reality, mixing common household or commercial custodial chemicals is one of the leading causes of acute toxic inhalation injuries and ER admissions in residential maintenance.
-            </p>
+            <!-- Omni TOC 锚点导航条 -->
+            <nav class="omni-toc-bar">
+                <a href="#overview" class="omni-toc-pill">Overview</a>
+                <a href="#reaction-formulas" class="omni-toc-pill">Reaction Formulas</a>
+                <a href="#incompatibility-matrix" class="omni-toc-pill">Incompatibility Matrix</a>
+                <a href="#emergency-protocol" class="omni-toc-pill">Emergency Protocol</a>
+                <a href="#case-study" class="omni-toc-pill">Case Study</a>
+                <a href="#faq" class="omni-toc-pill">FAQ</a>
+            </nav>
 
-            <p>
-                This <strong>cleaning chemical safety checker</strong> tests pairwise compatibility between common custodial chemicals, predicts hazardous byproducts (chlorine gas, chloramines, chloroform, peracetic acid), and outlines immediate OSHA emergency protocols.
-            </p>
+            <div id="overview">
+                <p>
+                    A common misconception among domestic cleaners and custodial staff is that combining two potent cleaning agents creates a "super cleaner." In reality, mixing common household or commercial custodial chemicals is one of the leading causes of acute toxic inhalation injuries and ER admissions in residential maintenance.
+                </p>
 
-            <h2>Hazardous Chemical Reaction Formulas</h2>
-            <div class="omni-formula-box">
-                <strong>Bleach + Vinegar (Chlorine Gas):</strong><br>
-                2 CH₃COOH + NaClO + NaCl → Cl₂ (Toxic Gas) + 2 CH₃COONa + H₂O<br><br>
-                <strong>Bleach + Ammonia (Chloramine Gas):</strong><br>
-                NH₃ + NaOCl → NH₂Cl (Toxic Chloramine) + NaOH<br><br>
-                <strong>Bleach + Rubbing Alcohol (Chloroform):</strong><br>
-                C₃H₈O + NaOCl → CHCl₃ (Chloroform) + Byproducts<br><br>
-                <strong>Vinegar + Hydrogen Peroxide (Peracetic Acid):</strong><br>
-                CH₃COOH + H₂O₂ ⇌ CH₃COOOH (Corrosive Peracetic Acid) + H₂O
+                <p>
+                    This <strong>cleaning chemical safety checker</strong> tests pairwise compatibility between common custodial chemicals, predicts hazardous byproducts (chlorine gas, chloramines, chloroform, peracetic acid), and outlines immediate OSHA emergency protocols.
+                </p>
             </div>
 
-            <h2>OSHA Chemical Incompatibility Matrix Table</h2>
+            <h2 id="reaction-formulas">Hazardous Chemical Reaction Formulas</h2>
+            <!-- 官方学术数学公式卡片 (Omni Math Block) -->
+            <div class="omni-math-block">
+                <div class="omni-math-header">
+                    <span>⚠️ OSHA HAZCOM 1910 CHEMICAL REACTION EQUATIONS</span>
+                </div>
+                <div class="omni-math-equation">
+                    \text{Bleach + Vinegar:} \quad 2\,\text{CH}_3\text{COOH} + \text{NaClO} \rightarrow \mathbf{Cl_2 \uparrow} + 2\,\text{CH}_3\text{COONa} + \text{H}_2\text{O}<br>
+                    \text{Bleach + Ammonia:} \quad \text{NH}_3 + \text{NaOCl} \rightarrow \mathbf{NH_2Cl \uparrow} + \text{NaOH}<br>
+                    \text{Bleach + Rubbing Alcohol:} \quad \text{C}_3\text{H}_8\text{O} + \text{NaOCl} \rightarrow \mathbf{CHCl_3 \uparrow} + \text{Byproducts}<br>
+                    \text{Vinegar + Peroxide:} \quad \text{CH}_3\text{COOH} + \text{H}_2\text{O}_2 \rightleftharpoons \mathbf{CH}_3\text{COOOH} + \text{H}_2\text{O}
+                </div>
+                <div style="font-size: 12px; color: #664D1B; line-height: 1.6;">
+                    <strong>Toxic Inhalation Thresholds (OSHA HazCom):</strong><br>
+                    • <strong>Chlorine Gas (\(Cl_2\)):</strong> Immediately dangerous to life or health (IDLH) at just 10 ppm. Reacts with moisture in bronchial tubes to form hydrochloric acid.<br>
+                    • <strong>Chloramine Vapors (\(NH_2Cl\)):</strong> Heavy vapors that pool at floor level, posing extreme risk to pets and crawling toddlers.<br>
+                    • <strong>Chloroform (\(CHCl_3\)):</strong> Potent central nervous system depressant and designated suspected carcinogen.
+                </div>
+            </div>
+
+            <h2 id="incompatibility-matrix">OSHA Chemical Incompatibility Matrix Table</h2>
             <div class="omni-table-wrapper">
                 <table class="omni-table">
                     <thead>
@@ -190,7 +210,7 @@
                 </table>
             </div>
 
-            <h2>Emergency Response Protocol for Accidental Mixing</h2>
+            <h2 id="emergency-protocol">Emergency Response Protocol for Accidental Mixing</h2>
             <ol>
                 <li><strong>Evacuate to Fresh Air Immediately:</strong> Leave the room at once. Never stay behind to attempt neutralizing or rinsing the chemicals, as breathing high concentrations for even 30 seconds can cause permanent respiratory damage.</li>
                 <li><strong>Do Not Close Windows / Leave Exhaust On:</strong> If bathroom exhaust fans are already running, leave them running. Close the door behind you to contain fumes within the room.</li>
@@ -198,7 +218,30 @@
                 <li><strong>Dial 911 If Symptoms Persist:</strong> Seek emergency care if anyone experiences wheezing, chest tightness, throat constriction, or eye burns.</li>
             </ol>
 
-            <h2>Frequently Asked Questions</h2>
+            <!-- 实战演算案例区块 (Omni Practical Case Study) -->
+            <div class="omni-case-study" id="case-study">
+                <div class="omni-case-title">
+                    <span>💡 Practical Case Study: Accidental Mixing in an Enclosed Shower Stall</span>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">1</div>
+                    <div><strong>The Mistake:</strong> A cleaner sprayed a concentrated vinegar solution on glass limescale, then immediately poured sodium hypochlorite bleach into the shower drain to kill black mold.</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">2</div>
+                    <div><strong>The Chemical Reaction:</strong> The acidic vinegar lowered the pH of the bleach below 4.0, initiating an instant exothermic release of heavy yellow-green chlorine gas (\(Cl_2\)).</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">3</div>
+                    <div><strong>Immediate Action Taken:</strong> The technician immediately dropped the spray bottle, exited the bathroom, closed the door to isolate vapors, left the mechanical ventilation fan running, and moved outdoors.</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">4</div>
+                    <div><strong>Outcome:</strong> Poison Control (1-800-222-1222) advised a 2-hour sealed dwell period for air exchange. Zero lung injuries occurred due to strict adherence to the emergency evacuation protocol.</div>
+                </div>
+            </div>
+
+            <h2 id="faq">Frequently Asked Questions</h2>
             <div class="omni-faq-accordion">
                 <details class="omni-faq-item">
                     <summary>What happens if you accidentally mix bleach and vinegar?</summary>
@@ -243,11 +286,11 @@
                 </div>
 
                 <!-- 分组 1: Select Chemicals -->
-                <div class="omni-group-title">Select Chemical Agents</div>
+                <div class="omni-group-title">1. Select Chemical Agents</div>
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>First chemical</span>
+                        <span>First chemical <span class="omni-tooltip-btn" title="First cleaning solution or active ingredient">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <select id="chem1" class="omni-select" style="width: 100%; border-left: none;" onchange="checkSafety()">
@@ -266,7 +309,7 @@
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Second chemical</span>
+                        <span>Second chemical <span class="omni-tooltip-btn" title="Second cleaning solution applied simultaneously or sequentially">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <select id="chem2" class="omni-select" style="width: 100%; border-left: none;" onchange="checkSafety()">
@@ -292,7 +335,7 @@
                 </div>
 
                 <!-- 分组 2: Verdict -->
-                <div class="omni-group-title">Compatibility & Hazard Verdict</div>
+                <div class="omni-group-title">2. Compatibility & Hazard Verdict</div>
 
                 <div class="omni-row result">
                     <div class="omni-label">
@@ -332,11 +375,23 @@
                     </div>
                 </div>
 
+                <!-- 分组 3: Actions -->
+                <div class="omni-group-title">3. Actions & Safety Report</div>
+
                 <!-- Omni 底部快捷操作条 -->
                 <div class="omni-footer-actions">
                     <button type="button" class="omni-action-btn" onclick="resetDefaults()">↺ Reset</button>
                     <button type="button" class="omni-action-btn" onclick="copyProtocol()">📋 Copy Warning</button>
                     <button type="button" class="omni-action-btn" onclick="shareCalculator()">🔗 Share</button>
+                </div>
+
+                <!-- Omni 满意度交互反馈条 -->
+                <div class="omni-feedback-box">
+                    <span>Did this safety checker help prevent an accidental hazard today?</span>
+                    <div class="omni-feedback-btns">
+                        <button type="button" class="omni-feedback-btn" onclick="showToast('Thank you for your feedback! 👍')">👍 Yes (100%)</button>
+                        <button type="button" class="omni-feedback-btn" onclick="showToast('Thank you! Feedback recorded.')">👎 No</button>
+                    </div>
                 </div>
 
             </div>

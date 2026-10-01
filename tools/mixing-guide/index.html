@@ -54,24 +54,45 @@
                 <span class="author-badge">Custodial Lab Verified</span>
                 <span>Created by PureWear Chemical Safety Desk</span>
                 <span class="sep">•</span>
-                <span>Updated March 2026</span>
+                <span class="live-indicator"><span class="live-dot"></span>Updated March 2026</span>
             </div>
 
-            <p>
-                In daily facility maintenance and home cleaning, workers often need to prepare cleaning solutions without precision lab scales or chemical proportioners. Whether your container has volume marks or you are using an ordinary cup, this guide provides exact step-by-step instructions.
-            </p>
+            <!-- Omni TOC 锚点导航条 -->
+            <nav class="omni-toc-bar">
+                <a href="#overview" class="omni-toc-pill">Overview</a>
+                <a href="#ratios-math" class="omni-toc-pill">Dilution Math</a>
+                <a href="#ratios-table" class="omni-toc-pill">Ratios Table</a>
+                <a href="#safety-rule" class="omni-toc-pill">Safety Protocol</a>
+                <a href="#case-study" class="omni-toc-pill">Case Study</a>
+                <a href="#faq" class="omni-toc-pill">FAQ</a>
+            </nav>
 
-            <h2>Dilution Ratios Explained</h2>
-            <div class="omni-formula-box">
-                <strong>Standard 1:X Ratio:</strong><br>
-                A ratio of 1:X means 1 part chemical concentrate to X parts water.<br>
-                For example, a 1:20 ratio means 1 cup of chemical mixed with 20 cups of water.<br><br>
-                <strong>Volume Calculation:</strong><br>
-                Chemical Needed = Target Volume ÷ (X + 1)<br>
-                Water Needed = Target Volume − Chemical Needed
+            <div id="overview">
+                <p>
+                    In daily facility maintenance and home cleaning, workers often need to prepare cleaning solutions without precision lab scales or chemical proportioners. Whether your container has volume marks or you are using an ordinary cup, this guide provides exact step-by-step instructions.
+                </p>
             </div>
 
-            <h2>Common Dilution Ratios & Everyday Cleaning Tasks</h2>
+            <h2 id="ratios-math">Dilution Ratios Explained</h2>
+            <!-- 官方学术数学公式卡片 (Omni Math Block) -->
+            <div class="omni-math-block">
+                <div class="omni-math-header">
+                    <span>📐 SIMPLIFIED CUSTODIAL PROPORTIONING EQUATIONS</span>
+                </div>
+                <div class="omni-math-equation">
+                    \text{Concentrate Volume} = \frac{\text{Target Volume}}{X + 1}<br>
+                    \text{Water Volume} = \text{Target Volume} - \text{Concentrate Volume}<br>
+                    \text{Cup Fraction} = \frac{\text{Water Cups}}{X}
+                </div>
+                <div style="font-size: 12px; color: #664D1B; line-height: 1.6;">
+                    <strong>The 1:X Volumetric System:</strong><br>
+                    • <strong>X Parts Diluent:</strong> The number after the colon represents how many parts of water must be blended with 1 part of chemical concentrate.<br>
+                    • <strong>Total Mixture:</strong> The finished solution consists of \(X + 1\) units of volume.<br>
+                    • <strong>Water First Rule:</strong> Prevents splashing, exotherm, and high foam buildup.
+                </div>
+            </div>
+
+            <h2 id="ratios-table">Common Dilution Ratios & Everyday Cleaning Tasks</h2>
             <div class="omni-table-wrapper">
                 <table class="omni-table">
                     <thead>
@@ -117,12 +138,35 @@
                 </table>
             </div>
 
-            <h2>Essential Safety Rule: Water First, Chemical Second</h2>
+            <h2 id="safety-rule">Essential Safety Rule: Water First, Chemical Second</h2>
             <p>
                 Always fill your bottle or bucket with water <strong>before</strong> adding concentrated chemical. Adding water to pure chemical causes violent foaming and dangerous chemical splashing.
             </p>
 
-            <h2>Frequently Asked Questions</h2>
+            <!-- 实战演算案例区块 (Omni Practical Case Study) -->
+            <div class="omni-case-study" id="case-study">
+                <div class="omni-case-title">
+                    <span>💡 Practical Case Study: Mixing a Floor Mopping Bucket With an Ordinary Coffee Mug</span>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">1</div>
+                    <div><strong>Fill Water:</strong> You pour 10 coffee mugs of warm tap water into the mop bucket.</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">2</div>
+                    <div><strong>Determine Chemical Proportion:</strong> For a 1:20 neutral floor cleaner, you need \(10 \div 20 = 0.5\) mug of chemical concentrate.</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">3</div>
+                    <div><strong>Add Chemical:</strong> Pour exactly half a coffee mug of floor concentrate directly into the water.</div>
+                </div>
+                <div class="omni-case-step">
+                    <div class="omni-step-num">4</div>
+                    <div><strong>Safe Execution:</strong> Zero foam eruption, perfectly calibrated pH, and streak-free floor drying without chemical residues.</div>
+                </div>
+            </div>
+
+            <h2 id="faq">Frequently Asked Questions</h2>
             <div class="omni-faq-accordion">
                 <details class="omni-faq-item">
                     <summary>What if my bottle has no measurement marks?</summary>
@@ -160,11 +204,11 @@
                 </div>
 
                 <!-- 分组 1: Container & Method -->
-                <div class="omni-group-title">Container Specifications</div>
+                <div class="omni-group-title">1. Container Specifications</div>
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Measurement method</span>
+                        <span>Measurement method <span class="omni-tooltip-btn" title="Choose volume mark measurement (mL) or cup count method">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <select id="methodSelect" class="omni-select" style="width: 100%; border-left: none;" onchange="handleMethodChange(this.value)">
@@ -176,7 +220,7 @@
 
                 <div class="omni-row" id="volumeRow">
                     <div class="omni-label">
-                        <span>Container volume</span>
+                        <span>Container volume <span class="omni-tooltip-btn" title="Total target volume in milliliters (e.g. 1000 mL = 1 Liter)">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <input type="number" id="targetVol" class="omni-input" value="1000" min="100" max="20000" step="50" oninput="calculateMixing()">
@@ -195,11 +239,11 @@
                 </div>
 
                 <!-- 分组 2: Ratio -->
-                <div class="omni-group-title">Dilution Ratio</div>
+                <div class="omni-group-title">2. Dilution Ratio</div>
 
                 <div class="omni-row">
                     <div class="omni-label">
-                        <span>Dilution ratio</span>
+                        <span>Dilution ratio <span class="omni-tooltip-btn" title="Ratio of chemical concentrate to parts of water">ⓘ</span></span>
                     </div>
                     <div class="omni-input-group">
                         <select id="ratioSelect" class="omni-select" style="width: 100%; border-left: none;" onchange="calculateMixing()">
@@ -214,7 +258,7 @@
                 </div>
 
                 <!-- 分组 3: Mixing Step Results -->
-                <div class="omni-group-title">Mixing Instructions</div>
+                <div class="omni-group-title">3. Mixing Instructions</div>
 
                 <div class="omni-row result">
                     <div class="omni-label">
@@ -239,11 +283,23 @@
                     <span id="safetyAlertText" style="display: block; margin-top: 2px; color: var(--text-muted);">Standard custodial handling. Ensure good room ventilation.</span>
                 </div>
 
+                <!-- 分组 4: Quick Actions -->
+                <div class="omni-group-title">4. Quick Actions</div>
+
                 <!-- Omni 底部快捷操作条 -->
                 <div class="omni-footer-actions">
                     <button type="button" class="omni-action-btn" onclick="resetMixing()">↺ Reset</button>
                     <button type="button" class="omni-action-btn" onclick="copyMixingGuide()">📋 Copy Recipe</button>
                     <button type="button" class="omni-action-btn" onclick="shareCalculator()">🔗 Share</button>
+                </div>
+
+                <!-- Omni 满意度交互反馈条 -->
+                <div class="omni-feedback-box">
+                    <span>Did this mixing guide solve your problem today?</span>
+                    <div class="omni-feedback-btns">
+                        <button type="button" class="omni-feedback-btn" onclick="showToast('Thank you for your feedback! 👍')">👍 Yes (100%)</button>
+                        <button type="button" class="omni-feedback-btn" onclick="showToast('Thank you! Feedback recorded.')">👎 No</button>
+                    </div>
                 </div>
 
             </div>
