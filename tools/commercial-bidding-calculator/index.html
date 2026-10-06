@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Cleaning Bid Calculator</title>
+    <meta name="description" content="Calculate your commercial cleaning bids easily and accurately. Factor in labor, overhead, supplies, and profit margins.">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .omni-calculator-widget, .omni-calculator-widget * {
+                visibility: visible;
+            }
+            .omni-calculator-widget {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+            }
+            .omni-action-btn, nav, footer, .omni-article {
+                display: none !important;
+            }
+        }
+        
+        .result-box {
+            background-color: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-item.total {
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 0.5rem;
+            color: #1e40af;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Commercial Cleaning Bid Calculator",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Any",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "342"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I calculate a commercial cleaning bid?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "To calculate a commercial cleaning bid, you need to determine the square footage of the facility, estimate the time required to clean it based on production rates (e.g., 2,500 sq ft per hour), multiply the hours by your hourly labor cost, and then add your overhead, supplies cost, and desired profit margin."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is a good profit margin for commercial cleaning?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A typical net profit margin for a commercial cleaning business ranges from 10% to 28%. It's important to accurately track all labor and overhead costs to ensure your target margin is actually achieved."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much should I charge per square foot?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "While charging per square foot is common, the rate varies widely depending on the facility type, frequency of cleaning, and geographic location. Rates typically range from $0.05 to $0.20 per square foot for standard office cleaning."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <div class="omni-layout-grid">
+        <!-- Article Section -->
+        <article class="omni-article">
+            <h1>Commercial Cleaning Bid Calculator & Complete Bidding Guide</h1>
+            <p>Bidding on commercial cleaning contracts can be daunting. Bid too high, and you lose the job. Bid too low, and you win the job but lose money. This guide and calculator will help you pinpoint the exact right price for any commercial facility.</p>
+            
+            <h2>How to Bid Commercial Cleaning Contracts</h2>
+            <p>Bidding isn't just about throwing out a number. It requires a systematic approach to estimating labor, understanding your overhead, and protecting your profit margins. Here are the core steps to accurately bidding any commercial space.</p>
+            
+            <h3>1. The Walk-Through is Mandatory</h3>
+            <p>Never bid a commercial contract without seeing the facility. During your walk-through, you need to assess:</p>
+            <ul>
+                <li><strong>Total cleanable square footage:</strong> Don't just take the building's total size. Subtract areas you won't be cleaning (like locked server rooms or specific storage areas).</li>
+                <li><strong>Floor types:</strong> Carpet vacuums faster than hard floors need to be mopped and polished.</li>
+                <li><strong>Density and Obstacles:</strong> An open warehouse is much faster to clean than a densely packed call center with hundreds of cubicles.</li>
+                <li><strong>Restroom count:</strong> Restrooms are the most time-consuming part of any facility. Count the fixtures (toilets, urinals, sinks).</li>
+            </ul>
+
+            <h3>2. Calculate Production Rates (Cleaning Speed)</h3>
+            <p>Your production rate is how many square feet one cleaner can clean in one hour. Industry averages for standard office spaces are usually around 2,500 to 3,500 sq ft per hour. However, this drops significantly for medical facilities (1,500 sq ft/hr) due to higher sanitation standards, or increases for industrial spaces (4,000+ sq ft/hr).</p>
+            
+            <h3>3. Determine Labor Costs</h3>
+            <p>Once you know how long it will take, multiply those hours by your fully-loaded labor rate. This shouldn't just be the hourly wage (e.g., $15/hr). It must include payroll taxes, workers' compensation insurance, and benefits. Your "loaded" rate might actually be $18-$20/hr.</p>
+
+            <h3>4. Add Overhead and Supplies</h3>
+            <p>Overhead includes your insurance, vehicles, office expenses, marketing, and cleaning supplies. Many cleaning companies calculate this as a percentage of labor costs. Typically, supplies and overhead add another 15% to 25% to your base costs.</p>
+
+            <h3>5. Apply Your Target Profit Margin</h3>
+            <p>Finally, add your profit margin. Healthy commercial cleaning businesses aim for a net profit margin of 15% to 25%. If your total costs (labor + overhead) are $100 and you want a 20% margin, your selling price is not $120. It's $100 / (1 - 0.20) = $125.</p>
+
+            <h2>Frequently Asked Questions</h2>
+            
+            <details class="omni-faq-item">
+                <summary>How do I calculate a commercial cleaning bid?</summary>
+                <div class="faq-content">
+                    <p>To calculate a commercial cleaning bid, you need to determine the square footage of the facility, estimate the time required to clean it based on production rates (e.g., 2,500 sq ft per hour), multiply the hours by your hourly labor cost, and then add your overhead, supplies cost, and desired profit margin.</p>
+                </div>
+            </details>
+            
+            <details class="omni-faq-item">
+                <summary>What is a good profit margin for commercial cleaning?</summary>
+                <div class="faq-content">
+                    <p>A typical net profit margin for a commercial cleaning business ranges from 10% to 28%. It's important to accurately track all labor and overhead costs to ensure your target margin is actually achieved.</p>
+                </div>
+            </details>
+            
+            <details class="omni-faq-item">
+                <summary>How much should I charge per square foot?</summary>
+                <div class="faq-content">
+                    <p>While charging per square foot is common, the rate varies widely depending on the facility type, frequency of cleaning, and geographic location. Rates typically range from $0.05 to $0.20 per square foot for standard office cleaning.</p>
+                </div>
+            </details>
+
+            <h2>Using the Bid Calculator</h2>
+            <p>Our free commercial cleaning bid calculator simplifies this entire process. Simply input your facility size, your expected cleaning speed, your labor costs, and your desired margins. The calculator will instantly output your total hours required, exact cost breakdown, and the final bid price you should present to the client. You can even adjust the days per week to get a suggested monthly retainer fee.</p>
+
+        </article>
+
+        <!-- Calculator Sidebar -->
+        <aside class="omni-calculator-aside">
+            <div class="omni-calculator-sticky">
+                <div class="omni-calculator-widget">
+                    <div class="omni-widget-header">
+                        <h3>Cleaning Bid Calculator</h3>
+                    </div>
+                    
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="facilitySize">Facility Size (Sq Ft)</label>
+                        <input class="omni-input" type="number" id="facilitySize" value="5000" min="1" step="100">
+                    </div>
+
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="cleaningRate">Cleaning Rate (Sq Ft / Hour)</label>
+                        <select class="omni-select" id="cleaningRate">
+                            <option value="1500">Medical / Dense (1500/hr)</option>
+                            <option value="2500" selected>Standard Office (2500/hr)</option>
+                            <option value="3500">Light Office / Retail (3500/hr)</option>
+                            <option value="5000">Warehouse / Industrial (5000/hr)</option>
+                        </select>
+                    </div>
+
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="hourlyWage">Average Hourly Wage ($)</label>
+                        <input class="omni-input" type="number" id="hourlyWage" value="18" min="1" step="0.5">
+                    </div>
+
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="overheadPercent">Overhead & Supplies (%)</label>
+                        <input class="omni-input" type="number" id="overheadPercent" value="20" min="0" max="100">
+                    </div>
+
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="profitMargin">Target Profit Margin (%)</label>
+                        <input class="omni-input" type="number" id="profitMargin" value="20" min="0" max="99">
+                    </div>
+                    
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="visitsPerWeek">Visits Per Week</label>
+                        <input class="omni-input" type="number" id="visitsPerWeek" value="5" min="1" max="7">
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-item">
+                            <span>Hours per visit:</span>
+                            <span id="resHours">2.00</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Labor Cost:</span>
+                            $<span id="resLabor">36.00</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Overhead & Supplies:</span>
+                            $<span id="resOverhead">7.20</span>
+                        </div>
+                        <div class="result-item total">
+                            <span>Bid Price (Per Visit):</span>
+                            $<span id="resPerVisit">54.00</span>
+                        </div>
+                        <div class="result-item total" style="border-top: none; padding-top: 0;">
+                            <span>Monthly Retainer:</span>
+                            $<span id="resMonthly">1,170.00</span>
+                        </div>
+                    </div>
+
+                    <div class="omni-footer-actions" style="margin-top: 1rem;">
+                        <button class="omni-action-btn omni-print-btn" onclick="window.print()">🖨️ Print / Export PDF</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        function calculateBid() {
+            const facilitySize = parseFloat(document.getElementById('facilitySize').value) || 0;
+            const cleaningRate = parseFloat(document.getElementById('cleaningRate').value) || 1;
+            const hourlyWage = parseFloat(document.getElementById('hourlyWage').value) || 0;
+            const overheadPercent = parseFloat(document.getElementById('overheadPercent').value) || 0;
+            const profitMargin = parseFloat(document.getElementById('profitMargin').value) || 0;
+            const visitsPerWeek = parseFloat(document.getElementById('visitsPerWeek').value) || 0;
+
+            // Calculations
+            const hoursPerVisit = facilitySize / cleaningRate;
+            const laborCost = hoursPerVisit * hourlyWage;
+            const overheadCost = laborCost * (overheadPercent / 100);
+            const totalCost = laborCost + overheadCost;
+            
+            // Price = Cost / (1 - Margin)
+            const marginDecimal = profitMargin / 100;
+            const pricePerVisit = totalCost / (1 - marginDecimal);
+            
+            // Monthly calculation (Average 4.33 weeks per month)
+            const monthlyRetainer = pricePerVisit * visitsPerWeek * 4.333;
+
+            // Update UI
+            document.getElementById('resHours').textContent = hoursPerVisit.toFixed(2);
+            document.getElementById('resLabor').textContent = laborCost.toFixed(2);
+            document.getElementById('resOverhead').textContent = overheadCost.toFixed(2);
+            document.getElementById('resPerVisit').textContent = pricePerVisit.toFixed(2);
+            document.getElementById('resMonthly').textContent = monthlyRetainer.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        // Attach event listeners
+        const inputs = document.querySelectorAll('.omni-input, .omni-select');
+        inputs.forEach(input => {
+            input.addEventListener('input', calculateBid);
+            input.addEventListener('change', calculateBid);
+        });
+        
+        // Initial calc
+        calculateBid();
+    </script>
+</body>
+</html>

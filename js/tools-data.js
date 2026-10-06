@@ -12,6 +12,16 @@ const TOOLS_DATA = [
         url: '/tools/cleaning-quote-calculator/'
     },
     {
+        id: 'commercial-bidding-calculator',
+        title: 'Commercial Bidding Calculator',
+        icon: '🏢',
+        desc: 'Calculate high-ticket commercial janitorial bids (offices, clinics) based on sq ft, production rates, supplies, and target profit.',
+        category: 'pricing',
+        tag: 'New',
+        featured: true, 
+        url: '/tools/commercial-bidding-calculator/'
+    },
+    {
         id: 'dilution-calculator',
         title: 'Dilution Ratio Calculator',
         icon: '🧪',
