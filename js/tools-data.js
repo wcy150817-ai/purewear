@@ -160,6 +160,16 @@ const TOOLS_DATA = [
         tag: 'New',
         featured: true,
         url: '/tools/move-in-out-estimator/'
+    },
+    {
+        id: 'profit-margin-calculator',
+        title: 'Cleaning Business Profit Margin Calculator',
+        icon: '📈',
+        desc: 'Calculate total expenses, gross profit, and net profit margins to assess the financial health of your cleaning business.',
+        category: 'pricing',
+        tag: 'Finance',
+        featured: true,
+        url: '/tools/profit-margin-calculator/'
     }
 ];
 
