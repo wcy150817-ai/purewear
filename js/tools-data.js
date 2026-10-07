@@ -150,6 +150,16 @@ const TOOLS_DATA = [
         tag: 'Operations',
         featured: false,
         url: '/tools/message-template-generator/'
+    },
+    {
+        id: 'move-in-out-estimator',
+        title: 'Move-In/Move-Out Cleaning Estimator',
+        icon: '🏠',
+        desc: 'Calculate detailed estimates for move-in and move-out cleans based on property size, condition, and add-on services.',
+        category: 'pricing',
+        tag: 'New',
+        featured: true,
+        url: '/tools/move-in-out-estimator/'
     }
 ];
 
