@@ -2,6 +2,16 @@
 
 const TOOLS_DATA = [
     {
+        id: "house-cleaning-estimate",
+        title: "House Cleaning Estimate Calculator",
+        icon: "🏠",
+        desc: "Estimate residential cleaning prices with 2026 square footage rates, bedrooms, and deep clean options.",
+        category: "pricing",
+        tag: "New",
+        featured: true,
+        url: "/tools/house-cleaning-estimate/"
+    },
+    {
         id: 'cleaning-quote-calculator',
         title: 'Cleaning Quote Calculator',
         icon: '🧹',
