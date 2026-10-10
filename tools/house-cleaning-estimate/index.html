@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free House Cleaning Estimate Calculator 2026 | Pure Wear Space</title>
+    <meta name="description" content="Calculate your house cleaning estimate instantly. Free online calculator for standard and deep cleaning based on square footage, bedrooms, and bathrooms.">
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <!-- SEO: JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "House Cleaning Estimate Calculator",
+          "operatingSystem": "Web",
+          "applicationCategory": "BusinessApplication",
+          "description": "A free tool to estimate the time and cost of standard or deep house cleaning based on square footage, bedrooms, and bathrooms.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How is house cleaning priced in 2026?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "House cleaning is typically priced based on total square footage, the number of bedrooms and bathrooms, and the level of cleaning required (standard vs. deep clean). On average, prices range from $100 to $300+ depending on these factors."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between a standard and deep clean?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A standard clean covers regular maintenance tasks like dusting, vacuuming, and mopping. A deep clean includes intensive tasks like scrubbing baseboards, cleaning inside appliances, and washing interior windows, usually costing 50% more."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <style>
+        /* Minimal inline styles to ensure the calculator looks decent if style.css is missing specific classes */
+        .calculator-container {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button.calc-btn {
+            background: #0056b3;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+        button.calc-btn:hover {
+            background: #004494;
+        }
+        .results {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #e9ecef;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .results p {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        .results span {
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+<div class="omni-layout-grid">
+    <!-- Left Column: Article -->
+    <main class="omni-article">
+        <article>
+            <h1>How to Price House Cleaning Accurately in 2026</h1>
+            <p>Getting a fair and accurate house cleaning estimate has never been more critical. As the cost of living and professional services evolve in 2026, understanding exactly what you're paying for—and how those costs are calculated—can save you both time and money.</p>
+            
+            <h2>The Core Factors of Cleaning Estimates</h2>
+            <p>Most professional cleaning companies and independent maids calculate their rates based on a few foundational metrics:</p>
+            <ul>
+                <li><strong>Square Footage (Sq Ft):</strong> This is the most reliable baseline for how much ground needs to be covered. Larger homes simply require more sweeping, mopping, and vacuuming.</li>
+                <li><strong>Bedrooms & Bathrooms:</strong> Bathrooms and kitchens are notoriously the most time-consuming rooms to clean. A 1,500 sq ft home with 1 bathroom will cost less to clean than a 1,500 sq ft home with 3 bathrooms due to the intensive scrubbing required.</li>
+                <li><strong>Cleaning Type (Standard vs. Deep):</strong> A standard clean maintains a home’s cleanliness, while a deep clean tackles built-up grime, baseboards, interior windows, and inside appliances. Deep cleans generally take 50% longer.</li>
+            </ul>
+
+            <h2>Standard vs. Deep Clean: What's the Difference?</h2>
+            <p>When you book a <em>Standard Clean</em>, expect dusting, vacuuming, mopping, and basic bathroom/kitchen wipe-downs. It is designed for homes that are already regularly maintained.</p>
+            <p>A <em>Deep Clean</em> goes beyond the surface. It involves scrubbing tile grout, wiping down ceiling fans, cleaning inside the oven and refrigerator, and washing blinds. If it's been more than a month since your last professional cleaning, most services will require a deep clean as the initial service.</p>
+
+            <h2>Why Use an Estimate Calculator?</h2>
+            <p>Our <strong>Free House Cleaning Estimate Calculator</strong> uses industry-standard 2026 pricing formulas to give you an immediate, transparent look at what you should expect to pay. It removes the guesswork and prevents you from being overcharged. Simply input your home's details, and instantly receive both an estimated time and price.</p>
+        </article>
+    </main>
+
+    <!-- Right Column: Calculator -->
+    <aside class="omni-calculator-aside">
+        <div class="calculator-container">
+            <h2>Free House Cleaning Estimate Calculator</h2>
+            <div class="input-group">
+                <label for="sqft">Square Footage (Sq Ft):</label>
+                <input type="number" id="sqft" placeholder="e.g., 1500" min="100">
+            </div>
+            <div class="input-group">
+                <label for="bedrooms">Bedrooms:</label>
+                <input type="number" id="bedrooms" placeholder="e.g., 3" min="0">
+            </div>
+            <div class="input-group">
+                <label for="bathrooms">Bathrooms:</label>
+                <input type="number" id="bathrooms" placeholder="e.g., 2" min="0">
+            </div>
+            <div class="input-group">
+                <label for="cleaningType">Cleaning Type:</label>
+                <select id="cleaningType">
+                    <option value="standard">Standard Clean</option>
+                    <option value="deep">Deep Clean (Move in/out)</option>
+                </select>
+            </div>
+            <button class="calc-btn" onclick="calculateEstimate()">Get My Estimate</button>
+            
+            <div class="results" id="results" style="display: none;">
+                <h3>Your Estimate</h3>
+                <p>Estimated Time: <span id="estTime"></span></p>
+                <p>Estimated Price: <span id="estPrice"></span></p>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<!-- Calculator Script -->
+<script>
+function calculateEstimate() {
+    const sqft = parseFloat(document.getElementById('sqft').value) || 0;
+    const bedrooms = parseFloat(document.getElementById('bedrooms').value) || 0;
+    const bathrooms = parseFloat(document.getElementById('bathrooms').value) || 0;
+    const type = document.getElementById('cleaningType').value;
+
+    if (sqft < 100) {
+        alert("Please enter a valid square footage (minimum 100).");
+        return;
+    }
+
+    // Base pricing formula for 2026 (Hypothetical standard rates)
+    // Standard: $0.10 per sq ft, +$15 per bedroom, +$25 per bathroom
+    // Time: 1 hour per 500 sq ft + 30 mins per bed/bath
+    
+    let basePrice = (sqft * 0.10) + (bedrooms * 15) + (bathrooms * 25);
+    let baseTimeMinutes = (sqft / 500 * 60) + (bedrooms * 30) + (bathrooms * 45);
+
+    if (type === 'deep') {
+        basePrice *= 1.5; // Deep cleans are typically 50% more
+        baseTimeMinutes *= 1.5;
+    }
+
+    // Formatting outputs
+    const finalPrice = "$" + basePrice.toFixed(2);
+    
+    const hours = Math.floor(baseTimeMinutes / 60);
+    const minutes = Math.round(baseTimeMinutes % 60);
+    let timeString = "";
+    if (hours > 0) {
+        timeString += hours + (hours === 1 ? " hr " : " hrs ");
+    }
+    if (minutes > 0) {
+        timeString += minutes + " min";
+    }
+
+    document.getElementById('estPrice').innerText = finalPrice;
+    document.getElementById('estTime').innerText = timeString;
+    document.getElementById('results').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
