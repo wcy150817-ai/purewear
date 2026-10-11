@@ -14,63 +14,56 @@
     <meta property="og:type" content="website">
 
     <!-- Schema.org WebApplication & FAQPage -->
-    <script type="application/ld+json">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "name": "Cleaning Time Estimator",
+      "url": "https://tool.purewearspace.com/tools/time-estimator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Calculates estimated on-site job duration and total crew labor hours for home cleaning and maid services based on ISSA standards."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "WebApplication",
-          "name": "Cleaning Time Estimator",
-          "url": "https://tool.purewearspace.com/tools/time-estimator/",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "All",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.7",
-            "ratingCount": "147"
-          },
-          "description": "Calculates estimated on-site job duration and total crew labor hours for home cleaning and maid services based on ISSA standards."
+          "@type": "Question",
+          "name": "How long does it take one cleaner to clean a 2,000 sq ft house?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a standard recurring maintenance cleaning (dusting, vacuuming, mopping, kitchen, and 2.5 bathrooms), one solo cleaner typically requires 3.5 to 4.5 hours (approx. 450-550 sq ft per hour). If it is a first-time deep clean or move-out clean, it requires 6.0 to 8.0 man-hours."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How long does it take one cleaner to clean a 2,000 sq ft house?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "For a standard recurring maintenance cleaning (dusting, vacuuming, mopping, kitchen, and 2.5 bathrooms), one solo cleaner typically requires 3.5 to 4.5 hours (approx. 450-550 sq ft per hour). If it is a first-time deep clean or move-out clean, it requires 6.0 to 8.0 man-hours."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How does crew size affect total on-site cleaning time?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Total man-hours remain roughly constant, but on-site duration scales inversely with crew size. For example, a 6 man-hour job takes 6 hours for a solo cleaner, 3 hours for a 2-person crew, and 2 hours for a 3-person crew."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Why does a move-out or deep clean take nearly double standard time?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Deep cleanings and move-out turns involve high-labor tasks omitted from routine visits: hand-scrubbing soap scum from shower grout, cleaning inside kitchen appliances (oven, fridge), detailing baseboards, door frames, window tracks, and inside kitchen cabinets."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the recommended buffer time between cleaning appointments?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Professional cleaning services recommend adding a 30 to 45-minute buffer between appointments. This accounts for packing/unpacking equipment, equipment sanitization, traffic transit, and minor on-site client walkthrough delays."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "How does crew size affect total on-site cleaning time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Total man-hours remain roughly constant, but on-site duration scales inversely with crew size. For example, a 6 man-hour job takes 6 hours for a solo cleaner, 3 hours for a 2-person crew, and 2 hours for a 3-person crew."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does a move-out or deep clean take nearly double standard time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Deep cleanings and move-out turns involve high-labor tasks omitted from routine visits: hand-scrubbing soap scum from shower grout, cleaning inside kitchen appliances (oven, fridge), detailing baseboards, door frames, window tracks, and inside kitchen cabinets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the recommended buffer time between cleaning appointments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Professional cleaning services recommend adding a 30 to 45-minute buffer between appointments. This accounts for packing/unpacking equipment, equipment sanitization, traffic transit, and minor on-site client walkthrough delays."
+          }
         }
       ]
     }
-    </script>
+  ]
+}</script>
 
     <link rel="stylesheet" href="../../css/style.css">
 
@@ -142,7 +135,7 @@
                 </p>
 
                 <p>
-                    This <strong>cleaning time estimator</strong> is calibrated according to <strong>ISSA 612 Cleaning Times</strong>, the worldwide gold standard for custodial labor production rates. It translates home square footage, room count, service scope, and crew size into exact on-site duration and billing man-hours.
+                    This <strong>cleaning time estimator</strong> uses production rates in the range published in industry references such as <strong>ISSA 612 Cleaning Times</strong>; adjust them to your own crew, equipment and facility. It translates home square footage, room count, service scope, and crew size into exact on-site duration and billing man-hours.
                 </p>
             </div>
 
@@ -483,7 +476,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Estimates are planning aids only: confirm against your own costs, product labels and local regulations.</p>
         </div>
     </footer>
 

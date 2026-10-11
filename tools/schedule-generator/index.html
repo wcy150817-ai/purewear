@@ -14,55 +14,48 @@
     <meta property="og:type" content="website">
 
     <!-- Schema.org WebApplication & FAQPage -->
-    <script type="application/ld+json">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "name": "Weekly Shift Schedule Generator",
+      "url": "https://tool.purewearspace.com/tools/schedule-generator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Interactive shift scheduling matrix and printable weekly work roster planner with overtime payroll tracking for service teams."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "WebApplication",
-          "name": "Weekly Shift Schedule Generator",
-          "url": "https://tool.purewearspace.com/tools/schedule-generator/",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "All",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "215"
-          },
-          "description": "Interactive shift scheduling matrix and printable weekly work roster planner with overtime payroll tracking for service teams."
+          "@type": "Question",
+          "name": "How far in advance should cleaning business schedules be posted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Best industry practice is to distribute the following week's schedule by Friday 12:00 PM. This gives cleaners over 48 hours notice before Monday morning shifts and significantly reduces last-minute call-outs."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How far in advance should cleaning business schedules be posted?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Best industry practice is to distribute the following week's schedule by Friday 12:00 PM. This gives cleaners over 48 hours notice before Monday morning shifts and significantly reduces last-minute call-outs."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How many hours should a residential cleaner work per day?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Most professional residential cleaners work between 6 and 8 on-site hours per day (typically 2 to 3 average homes). Scheduling beyond 8 physical cleaning hours frequently leads to fatigue, missed details, and higher employee turnover."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I export this schedule to CSV or print for bulletin boards?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes! You can instantly export to a CSV spreadsheet or print an ink-friendly, high-contrast wall roster with company header, daily hour totals, and manager sign-off lines."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "How many hours should a residential cleaner work per day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most professional residential cleaners work between 6 and 8 on-site hours per day (typically 2 to 3 average homes). Scheduling beyond 8 physical cleaning hours frequently leads to fatigue, missed details, and higher employee turnover."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I export this schedule to CSV or print for bulletin boards?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! You can instantly export to a CSV spreadsheet or print an ink-friendly, high-contrast wall roster with company header, daily hour totals, and manager sign-off lines."
+          }
         }
       ]
     }
-    </script>
+  ]
+}</script>
 
     <link rel="stylesheet" href="../../css/style.css">
     <style>
@@ -496,7 +489,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Estimates are planning aids only: confirm against your own costs, product labels and local regulations.</p>
         </div>
     </footer>
 

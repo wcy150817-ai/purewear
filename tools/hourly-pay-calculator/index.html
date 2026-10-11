@@ -14,55 +14,48 @@
     <meta property="og:type" content="website">
 
     <!-- Schema.org WebApplication & FAQ -->
-    <script type="application/ld+json">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "name": "Hourly Pay & Overtime Calculator",
+      "url": "https://tool.purewearspace.com/tools/hourly-pay-calculator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Calculates hourly wages, overtime pay, gross earnings, and net take-home estimates for workers and contractors."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "WebApplication",
-          "name": "Hourly Pay & Overtime Calculator",
-          "url": "https://tool.purewearspace.com/tools/hourly-pay-calculator/",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "All",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.7",
-            "ratingCount": "280"
-          },
-          "description": "Calculates hourly wages, overtime pay, gross earnings, and net take-home estimates for workers and contractors."
+          "@type": "Question",
+          "name": "How is 1.5x overtime calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Overtime is calculated by multiplying your regular hourly rate by 1.5, and then multiplying that overtime rate by the number of hours worked beyond 40 in a single workweek."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How is 1.5x overtime calculated?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Overtime is calculated by multiplying your regular hourly rate by 1.5, and then multiplying that overtime rate by the number of hours worked beyond 40 in a single workweek."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the average hourly wage for a residential cleaner in 2026?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "In 2026, independent residential housekeepers earn between $20.00 and $32.00 per hour depending on geographic location and experience. Commercial janitorial cleaners earn between $17.50 and $24.00 per hour."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the difference between gross pay and net pay?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Gross pay is the total amount earned before any taxes or deductions are subtracted. Net pay (also known as take-home pay) is the final amount deposited into your bank account after federal/state income taxes, FICA, and deductions."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "What is the average hourly wage for a residential cleaner in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In 2026, independent residential housekeepers earn between $20.00 and $32.00 per hour depending on geographic location and experience. Commercial janitorial cleaners earn between $17.50 and $24.00 per hour."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between gross pay and net pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gross pay is the total amount earned before any taxes or deductions are subtracted. Net pay (also known as take-home pay) is the final amount deposited into your bank account after federal/state income taxes, FICA, and deductions."
+          }
         }
       ]
     }
-    </script>
+  ]
+}</script>
 
     <link rel="stylesheet" href="../../css/style.css">
 
@@ -439,7 +432,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Estimates are planning aids only: confirm against your own costs, product labels and local regulations.</p>
         </div>
     </footer>
 

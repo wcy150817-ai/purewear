@@ -14,63 +14,56 @@
     <meta property="og:type" content="website">
 
     <!-- Schema.org WebApplication & FAQPage -->
-    <script type="application/ld+json">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "name": "Chemical Safety & Mixing Checker",
+      "url": "https://tool.purewearspace.com/tools/chemical-safety-checker/",
+      "applicationCategory": "SafetyApplication",
+      "operatingSystem": "All",
+      "description": "Checks safety and chemical compatibility between common household and commercial cleaning chemicals."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "WebApplication",
-          "name": "Chemical Safety & Mixing Checker",
-          "url": "https://tool.purewearspace.com/tools/chemical-safety-checker/",
-          "applicationCategory": "SafetyApplication",
-          "operatingSystem": "All",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "159"
-          },
-          "description": "Checks safety and chemical compatibility between common household and commercial cleaning chemicals."
+          "@type": "Question",
+          "name": "What happens if you accidentally mix bleach and vinegar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mixing bleach (sodium hypochlorite) and vinegar (acetic acid) creates toxic Chlorine Gas (Cl2). Chlorine gas attacks the respiratory tract, causing severe eye burning, coughing, chest tightness, pulmonary edema, and can be fatal in enclosed spaces like bathrooms."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What happens if you accidentally mix bleach and vinegar?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Mixing bleach (sodium hypochlorite) and vinegar (acetic acid) creates toxic Chlorine Gas (Cl2). Chlorine gas attacks the respiratory tract, causing severe eye burning, coughing, chest tightness, pulmonary edema, and can be fatal in enclosed spaces like bathrooms."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is mixing bleach and ammonia immediately dangerous?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. Bleach and ammonia react to produce lethal Chloramine vapors (NH2Cl) and highly volatile hydrazine. Inhaling chloramine gas causes rapid throat swelling, chemical pneumonia, and potential coma."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Does mixing baking soda and vinegar make a stronger cleaner?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. Baking soda (sodium bicarbonate, a base) and vinegar (acetic acid) neutralize each other upon contact. While the bubbling carbon dioxide looks active, it turns into essentially salt water (sodium acetate), eliminating both the acidity of vinegar and the alkaline scrubbing power of baking soda."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What should you do immediately if someone mixes toxic cleaning chemicals?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Evacuate the area immediately to fresh outdoor air. Do not stay to clean up the spill. In the United States, immediately call Poison Help at 1-800-222-1222 or call 911 if anyone experiences shortness of breath, dizziness, or burning eyes."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "Is mixing bleach and ammonia immediately dangerous?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Bleach and ammonia react to produce lethal Chloramine vapors (NH2Cl) and highly volatile hydrazine. Inhaling chloramine gas causes rapid throat swelling, chemical pneumonia, and potential coma."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does mixing baking soda and vinegar make a stronger cleaner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Baking soda (sodium bicarbonate, a base) and vinegar (acetic acid) neutralize each other upon contact. While the bubbling carbon dioxide looks active, it turns into essentially salt water (sodium acetate), eliminating both the acidity of vinegar and the alkaline scrubbing power of baking soda."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should you do immediately if someone mixes toxic cleaning chemicals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evacuate the area immediately to fresh outdoor air. Do not stay to clean up the spill. In the United States, immediately call Poison Help at 1-800-222-1222 or call 911 if anyone experiences shortness of breath, dizziness, or burning eyes."
+          }
         }
       ]
     }
-    </script>
+  ]
+}</script>
 
     <link rel="stylesheet" href="../../css/style.css">
 
@@ -433,7 +426,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Estimates are planning aids only: confirm against your own costs, product labels and local regulations.</p>
         </div>
     </footer>
 

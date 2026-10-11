@@ -49,58 +49,51 @@
             color: #1e40af;
         }
     </style>
-    <script type="application/ld+json">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "SoftwareApplication",
+      "name": "Commercial Cleaning Bid Calculator",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "SoftwareApplication",
-          "name": "Commercial Cleaning Bid Calculator",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Any",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "ratingCount": "342"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
+          "@type": "Question",
+          "name": "How do I calculate a commercial cleaning bid?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To calculate a commercial cleaning bid, you need to determine the square footage of the facility, estimate the time required to clean it based on production rates (e.g., 2,500 sq ft per hour), multiply the hours by your hourly labor cost, and then add your overhead, supplies cost, and desired profit margin."
           }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How do I calculate a commercial cleaning bid?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "To calculate a commercial cleaning bid, you need to determine the square footage of the facility, estimate the time required to clean it based on production rates (e.g., 2,500 sq ft per hour), multiply the hours by your hourly labor cost, and then add your overhead, supplies cost, and desired profit margin."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is a good profit margin for commercial cleaning?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "A typical net profit margin for a commercial cleaning business ranges from 10% to 28%. It's important to accurately track all labor and overhead costs to ensure your target margin is actually achieved."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How much should I charge per square foot?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "While charging per square foot is common, the rate varies widely depending on the facility type, frequency of cleaning, and geographic location. Rates typically range from $0.05 to $0.20 per square foot for standard office cleaning."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "What is a good profit margin for commercial cleaning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A typical net profit margin for a commercial cleaning business ranges from 10% to 28%. It's important to accurately track all labor and overhead costs to ensure your target margin is actually achieved."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much should I charge per square foot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While charging per square foot is common, the rate varies widely depending on the facility type, frequency of cleaning, and geographic location. Rates typically range from $0.05 to $0.20 per square foot for standard office cleaning."
+          }
         }
       ]
     }
-    </script>
+  ]
+}</script>
 <link rel="canonical" href="https://purewearspace.com/tools/commercial-bidding-calculator/" />
 </head>
 <body>

@@ -14,55 +14,48 @@
     <meta property="og:type" content="website">
 
     <!-- Schema.org WebApplication & FAQPage -->
-    <script type="application/ld+json">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "name": "Tip Split Calculator",
+      "url": "https://tool.purewearspace.com/tools/tip-calculator/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "description": "Divide and distribute tip pools fairly among workers based on actual shift hours worked."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "WebApplication",
-          "name": "Tip Split Calculator",
-          "url": "https://tool.purewearspace.com/tools/tip-calculator/",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "All",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.6",
-            "ratingCount": "424"
-          },
-          "description": "Divide and distribute tip pools fairly among workers based on actual shift hours worked."
+          "@type": "Question",
+          "name": "How do you split tips based on hours worked?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1. Add up all the hours worked by the entire team to find Total Team Hours. 2. Divide the Total Tip Pool by Total Team Hours to determine the Tip Rate per Hour ($/hr). 3. Multiply each worker's individual hours by that hourly tip rate to get their exact fair payout."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How do you split tips based on hours worked?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "1. Add up all the hours worked by the entire team to find Total Team Hours. 2. Divide the Total Tip Pool by Total Team Hours to determine the Tip Rate per Hour ($/hr). 3. Multiply each worker's individual hours by that hourly tip rate to get their exact fair payout."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the formula for dividing tips by hours?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Employee Tip = (Total Tip Amount / Sum of All Employees' Hours) × Employee's Individual Hours Worked."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How much do homeowners usually tip house cleaners?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "In 2026, standard residential tipping norms range from $15 to $25 per cleaner for recurring visits (or 10% to 15% of the total bill). For deep cleanings or move-out turnover jobs, 15% to 20% is customary."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "What is the formula for dividing tips by hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Employee Tip = (Total Tip Amount / Sum of All Employees' Hours) × Employee's Individual Hours Worked."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much do homeowners usually tip house cleaners?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In 2026, standard residential tipping norms range from $15 to $25 per cleaner for recurring visits (or 10% to 15% of the total bill). For deep cleanings or move-out turnover jobs, 15% to 20% is customary."
+          }
         }
       ]
     }
-    </script>
+  ]
+}</script>
 
     <link rel="stylesheet" href="../../css/style.css">
 
@@ -372,7 +365,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Estimates are planning aids only: confirm against your own costs, product labels and local regulations.</p>
         </div>
     </footer>
 

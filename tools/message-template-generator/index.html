@@ -14,55 +14,48 @@
     <meta property="og:type" content="website">
 
     <!-- Schema.org WebApplication & FAQPage -->
-    <script type="application/ld+json">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "name": "Cleaning Client SMS & Message Generator",
+      "url": "https://tool.purewearspace.com/tools/message-template-generator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Generates professional SMS text messages, appointment confirmations, and payment reminders for cleaning contractors."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "WebApplication",
-          "name": "Cleaning Client SMS & Message Generator",
-          "url": "https://tool.purewearspace.com/tools/message-template-generator/",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "All",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.7",
-            "ratingCount": "200"
-          },
-          "description": "Generates professional SMS text messages, appointment confirmations, and payment reminders for cleaning contractors."
+          "@type": "Question",
+          "name": "What is the best time to send cleaning appointment reminders?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The industry standard is 24 hours prior to the scheduled cleaning, typically between 10:00 AM and 5:00 PM. Sending an ETA text 20 to 30 minutes before arrival on the day of service reduces customer lockouts by over 42%."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What is the best time to send cleaning appointment reminders?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The industry standard is 24 hours prior to the scheduled cleaning, typically between 10:00 AM and 5:00 PM. Sending an ETA text 20 to 30 minutes before arrival on the day of service reduces customer lockouts by over 42%."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do I ask cleaning clients for a 5-star Google review without being pushy?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Send a warm follow-up SMS 2 to 4 hours after completing the clean while the fresh scent and spotless results are top of mind. Express gratitude and provide a direct 1-tap link to your Google Business Profile."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Why is SMS more effective than email for cleaning client communication?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "SMS text messages achieve an average 98% open rate with 90% read within 3 minutes, compared to an 18% to 22% open rate for email in residential service sectors."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "How do I ask cleaning clients for a 5-star Google review without being pushy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Send a warm follow-up SMS 2 to 4 hours after completing the clean while the fresh scent and spotless results are top of mind. Express gratitude and provide a direct 1-tap link to your Google Business Profile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is SMS more effective than email for cleaning client communication?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SMS text messages achieve an average 98% open rate with 90% read within 3 minutes, compared to an 18% to 22% open rate for email in residential service sectors."
+          }
         }
       ]
     }
-    </script>
+  ]
+}</script>
 
     <link rel="stylesheet" href="../../css/style.css">
 
@@ -452,7 +445,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Estimates are planning aids only: confirm against your own costs, product labels and local regulations.</p>
         </div>
     </footer>
 

@@ -14,63 +14,56 @@
     <meta property="og:type" content="website">
 
     <!-- Schema.org WebApplication & FAQPage -->
-    <script type="application/ld+json">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "name": "Cleaning Quote Calculator",
+      "url": "https://tool.purewearspace.com/tools/cleaning-quote-calculator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Calculates real-time residential and commercial cleaning prices, net profit margins, and generates formal client PDF quote proposals."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "WebApplication",
-          "name": "Cleaning Quote Calculator",
-          "url": "https://tool.purewearspace.com/tools/cleaning-quote-calculator/",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "All",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "390"
-          },
-          "description": "Calculates real-time residential and commercial cleaning prices, net profit margins, and generates formal client PDF quote proposals."
+          "@type": "Question",
+          "name": "How much should I charge per square foot for house cleaning in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In 2026, standard maintenance house cleaning rates range from $0.09 to $0.15 per square foot. Deep cleaning services generally range from $0.15 to $0.22 per square foot, and move-in/move-out turnover cleans range from $0.20 to $0.28 per square foot."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How much should I charge per square foot for house cleaning in 2026?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "In 2026, standard maintenance house cleaning rates range from $0.09 to $0.15 per square foot. Deep cleaning services generally range from $0.15 to $0.22 per square foot, and move-in/move-out turnover cleans range from $0.20 to $0.28 per square foot."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Should cleaning contractors charge hourly or flat rate?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Flat-rate pricing by square footage and room count is preferred by over 78% of homeowners because it eliminates billing surprises. It also rewards efficient cleaning crews who finish jobs quicker while maintaining quality standards."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do I calculate profit margins for a cleaning business?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "A healthy commercial cleaning profit margin targets 25% to 35% net profit after deducting direct labor (40–45%), cleaning supplies and chemicals (5–8%), and business overhead/insurance/vehicle fuel (15–20%)."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What frequency discounts should I offer to secure recurring cleaning clients?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Standard industry retention discounts are 20% off for weekly service, 15% off for bi-weekly service, and 10% off for monthly recurring service compared to one-time cleaning rates."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "Should cleaning contractors charge hourly or flat rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Flat-rate pricing by square footage and room count is preferred by over 78% of homeowners because it eliminates billing surprises. It also rewards efficient cleaning crews who finish jobs quicker while maintaining quality standards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate profit margins for a cleaning business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A healthy commercial cleaning profit margin targets 25% to 35% net profit after deducting direct labor (40–45%), cleaning supplies and chemicals (5–8%), and business overhead/insurance/vehicle fuel (15–20%)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What frequency discounts should I offer to secure recurring cleaning clients?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard industry retention discounts are 20% off for weekly service, 15% off for bi-weekly service, and 10% off for monthly recurring service compared to one-time cleaning rates."
+          }
         }
       ]
     }
-    </script>
+  ]
+}</script>
 
     <link rel="stylesheet" href="../../css/style.css">
 
@@ -120,7 +113,7 @@
             <h1>Cleaning Quote Calculator</h1>
             
             <div class="omni-author-bar">
-                <span class="author-badge">ISSA 2026 CALIBRATED</span>
+                <span class="author-badge">FREE PLANNING TOOL</span>
                 <span>Created by PureWear Operations Desk</span>
                 <span class="sep">•</span>
                 <span>Peer reviewed by Commercial Sanitation Board</span>
@@ -606,7 +599,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Calibrated with 2026 ISSA and OSHA benchmarks.</p>
+            <p>© 2026 PureWear Space. Free online business tools for cleaning professionals. Estimates are planning aids only: confirm against your own costs, product labels and local regulations.</p>
         </div>
     </footer>
 
