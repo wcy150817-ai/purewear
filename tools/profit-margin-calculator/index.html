@@ -2,15 +2,132 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cleaning Business Profit Margin Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Cleaning Company Profit Margin Tracker &amp; Benchmarks (2026) | PureWear Space</title>
+    <meta name="description" content="Calculate gross and net profit margins for your cleaning business. Features an interactive Excel-style service margin pivot table comparing residential, commercial, deep cleaning, and post-construction margins.">
+    <link rel="canonical" href="https://purewearspace.com/tools/profit-margin-calculator/" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cleaning Company Profit Margin Tracker &amp; Benchmarks (2026) | PureWear Space">
+    <meta property="og:description" content="Calculate gross and net profit margins for your cleaning business. Real-time calculator and service margin benchmarks.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/profit-margin-calculator/">
+    <meta property="og:type" content="article">
+
     <link rel="stylesheet" href="../../css/style.css">
     <style>
+        .excel-table-wrap {
+            overflow-x: auto;
+            margin: 24px 0;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .excel-pivot-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 620px;
+        }
+        .excel-pivot-table th {
+            background: #1e3a8a;
+            color: #ffffff;
+            font-weight: 600;
+            text-align: left;
+            padding: 10px 14px;
+            border: 1px solid #1e40af;
+        }
+        .excel-pivot-table td {
+            padding: 10px 14px;
+            border: 1px solid #e5e7eb;
+            color: #1f2937;
+        }
+        .excel-pivot-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        .excel-pivot-table tr:hover {
+            background: #f0fdf4;
+        }
+        .excel-pivot-table .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+        .excel-pivot-table .badge-high {
+            background: #dcfce7;
+            color: #15803d;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .excel-pivot-table .badge-mid {
+            background: #fef9c3;
+            color: #854d0e;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .excel-pivot-table .badge-low {
+            background: #fee2e2;
+            color: #991b1b;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .service-tab-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .service-tab-btn {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .service-tab-btn.active {
+            background: #1e3a8a;
+            color: #ffffff;
+            border-color: #1e3a8a;
+        }
+        .omni-formula-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 14px 18px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-family: inherit;
+        }
+        .omni-metric-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 0.9rem;
+        }
+        .omni-metric-row:last-child {
+            border-bottom: none;
+        }
+        .omni-metric-val {
+            font-weight: 700;
+        }
+        .omni-affiliate-box {
+            margin-top: 20px;
+            padding: 16px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+        }
         @media print {
-            .omni-calculator-aside {
-                display: none !important;
-            }
-            nav, footer, header {
+            .omni-calculator-aside, nav, footer, header {
                 display: none !important;
             }
             .omni-article {
@@ -18,147 +135,326 @@
             }
         }
     </style>
+
+    <!-- Schema.org Article, SoftwareApplication & FAQPage (no ratings) -->
     <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Article",
+      "headline": "Cleaning Company Profit Margin Tracker & Benchmarks (2026)",
+      "description": "Calculate gross and net profit margins for your cleaning business. Real-time calculator and service margin benchmarks.",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12",
+      "mainEntityOfPage": "https://purewearspace.com/tools/profit-margin-calculator/",
+      "author": {
+        "@type": "Organization",
+        "name": "PureWear Space"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PureWear Space"
+      }
+    },
+    {
       "@type": "SoftwareApplication",
-      "name": "Cleaning Business Profit Margin Calculator",
+      "name": "Cleaning Business Profit Margin Tracker",
+      "url": "https://purewearspace.com/tools/profit-margin-calculator/",
       "applicationCategory": "BusinessApplication",
-      "operatingSystem": "All"
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Calculates gross and net profit margins, labor cost percentages, overhead expense allocations, and service profitability benchmarks for custodial operators."
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is a good profit margin for a cleaning business?",
+          "name": "What is a normal profit margin for a residential cleaning company?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A good net profit margin for a cleaning business typically ranges from 15% to 25%. Anything above 25% is considered excellent and indicates a highly efficient operation."
+            "text": "For residential recurring maid services, healthy net profit margins typically range between 15% and 22%. Gross margins before administrative overhead are generally between 45% and 55%, with direct field labor consuming 40% to 48% of gross revenue."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I increase my profit margins?",
+          "name": "Which cleaning service has the highest profit margin?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can increase profit margins by optimizing labor efficiency, raising your rates, buying supplies in bulk, and reducing overhead costs."
+            "text": "Specialty services such as post-construction rough-and-final cleans (35% to 50% net) and hot-water extraction carpet restoration (30% to 45% net) yield the highest margins per hour. However, recurring commercial janitorial and bi-weekly residential contracts deliver the highest lifetime revenue due to contract predictability."
           }
         },
         {
           "@type": "Question",
-          "name": "What is the difference between gross and net profit margin?",
+          "name": "What percentage of cleaning revenue should go to labor?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Gross profit margin subtracts only direct costs (like labor and supplies) from revenue. Net profit margin subtracts all expenses, including overhead, taxes, and marketing."
+            "text": "Direct field labor (technician hourly wages plus payroll taxes and workers compensation) should ideally stay between 40% and 48% of total revenue. If labor exceeds 52%, prices must be raised or cleaning production rates per square foot must be recalibrated."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is gross profit margin calculated for commercial janitorial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gross Margin = ((Monthly Revenue - Cost of Goods Sold) / Monthly Revenue) * 100. Cost of Goods Sold includes cleaner wages, payroll tax burden, chemical concentrates, trash liners, and direct mop/towel laundry costs."
           }
         }
       ]
     }
   ]
 }</script>
-<link rel="canonical" href="https://purewearspace.com/tools/profit-margin-calculator/" />
 </head>
 <body>
     <div class="omni-layout-grid">
         <article class="omni-article">
-            <h1>What is a Good Profit Margin for a Cleaning Business?</h1>
-            <p>Understanding your profit margins is essential for the long-term success and sustainability of your cleaning business. Profit margins tell you exactly how much money you keep from the revenue you generate after all expenses are paid. Knowing these numbers inside and out will give you the confidence to make better business decisions.</p>
+            <h1>Cleaning Company Profit Margin Tracker: Which Services Pay Most?</h1>
             
-            <h2>Gross Profit vs. Net Profit</h2>
-            <p>It's important to distinguish between gross profit and net profit when evaluating your cleaning business's financial health.</p>
+            <p>In the commercial and residential cleaning industry, revenue is vanity, but profit margin is sanity. A cleaning business doing \$40,000 per month with a 10% net margin keeps less take-home profit than an operator generating \$25,000 per month with a disciplined 24% net margin, all while managing far fewer customer complaints, fewer vehicle breakdowns, and smaller payroll liabilities.</p>
+            
+            <p>Every commercial contract and residential quote you deliver involves three fundamental financial tiers: your <strong>Direct Costs (COGS)</strong>, your <strong>Gross Margin</strong>, and your final <strong>Net Operating Margin</strong>. When operators fail to price with these exact numbers in mind, unbillable windshield travel time, supply waste, and hidden payroll taxes will quietly cannibalize their cash flow.</p>
+            
+            <div class="omni-formula-box">
+                <strong>Core Accounting Formulas for Cleaning Operations:</strong><br>
+                &bull; <strong>Cost of Goods Sold (COGS)</strong> = Direct Cleaner Wages + Payroll Tax Burden (FICA/FUTA/SUTA/Workers' Comp) + Direct Chemicals &amp; Consumables<br>
+                &bull; <strong>Gross Profit Margin (%)</strong> = ((Total Revenue - COGS) / Total Revenue) &times; 100<br>
+                &bull; <strong>Net Profit Margin (%)</strong> = ((Total Revenue - Total Operating Expenses) / Total Revenue) &times; 100
+            </div>
+
+            <h2>Excel-Style Cleaning Service Margin Pivot Table</h2>
+            <p>Not all cleaning revenue is created equal. A company with \$30,000 in monthly residential recurring accounts has dramatically different overhead requirements and profit dynamics than an operator billing \$30,000 across irregular post-construction cleanups. Below is our industry benchmark pivot table analyzing the unit economics, labor load, and real-world net retention across six primary service verticals:</p>
+
+            <div class="service-tab-bar">
+                <button class="service-tab-btn active" onclick="filterServicePivot('all')">Show All Services</button>
+                <button class="service-tab-btn" onclick="filterServicePivot('recurring')">Recurring Contracts</button>
+                <button class="service-tab-btn" onclick="filterServicePivot('specialty')">High-Margin Specialty</button>
+            </div>
+
+            <div class="excel-table-wrap">
+                <table class="excel-pivot-table" id="servicePivotTable">
+                    <thead>
+                        <tr>
+                            <th>Service Category</th>
+                            <th class="num">Avg. Ticket</th>
+                            <th class="num">Labor %</th>
+                            <th class="num">Chemicals %</th>
+                            <th class="num">Gross Margin</th>
+                            <th class="num">Net Margin</th>
+                            <th>Cash Flow Stability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-category="recurring">
+                            <td><strong>Residential Recurring</strong> (Bi-Weekly / Monthly)</td>
+                            <td class="num">\$160 &ndash; \$240</td>
+                            <td class="num">42% &ndash; 46%</td>
+                            <td class="num">3.5%</td>
+                            <td class="num">50.5% &ndash; 54.5%</td>
+                            <td class="num"><span class="badge-mid">18% &ndash; 24%</span></td>
+                            <td>High (predictable monthly recurring MRR)</td>
+                        </tr>
+                        <tr data-category="recurring">
+                            <td><strong>Commercial Janitorial</strong> (Offices / Corporate)</td>
+                            <td class="num">\$850 &ndash; \$4,500</td>
+                            <td class="num">48% &ndash; 54%</td>
+                            <td class="num">4.0%</td>
+                            <td class="num">42.0% &ndash; 48.0%</td>
+                            <td class="num"><span class="badge-low">12% &ndash; 18%</span></td>
+                            <td>Very High (annual contracts, net 30 terms)</td>
+                        </tr>
+                        <tr data-category="specialty">
+                            <td><strong>Move-In / Move-Out Deep Clean</strong></td>
+                            <td class="num">\$380 &ndash; \$650</td>
+                            <td class="num">38% &ndash; 44%</td>
+                            <td class="num">5.0%</td>
+                            <td class="num">51.0% &ndash; 57.0%</td>
+                            <td class="num"><span class="badge-high">26% &ndash; 34%</span></td>
+                            <td>Moderate (heavy seasonality around move dates)</td>
+                        </tr>
+                        <tr data-category="specialty">
+                            <td><strong>Post-Construction Cleanup</strong> (Rough &amp; Final)</td>
+                            <td class="num">\$1,200 &ndash; \$8,000</td>
+                            <td class="num">32% &ndash; 38%</td>
+                            <td class="num">6.5%</td>
+                            <td class="num">55.5% &ndash; 61.5%</td>
+                            <td class="num"><span class="badge-high">35% &ndash; 48%</span></td>
+                            <td>Low (high project volatility, contractor billing delays)</td>
+                        </tr>
+                        <tr data-category="specialty">
+                            <td><strong>Carpet &amp; Upholstery Steam Extraction</strong></td>
+                            <td class="num">\$220 &ndash; \$480</td>
+                            <td class="num">28% &ndash; 34%</td>
+                            <td class="num">4.5%</td>
+                            <td class="num">61.5% &ndash; 67.5%</td>
+                            <td class="num"><span class="badge-high">32% &ndash; 45%</span></td>
+                            <td>Moderate (high equipment capital cost, low labor time)</td>
+                        </tr>
+                        <tr data-category="recurring">
+                            <td><strong>Medical &amp; Dental Clinic Sanitation</strong></td>
+                            <td class="num">\$1,400 &ndash; \$3,800</td>
+                            <td class="num">44% &ndash; 48%</td>
+                            <td class="num">5.5%</td>
+                            <td class="num">46.5% &ndash; 50.5%</td>
+                            <td class="num"><span class="badge-mid">22% &ndash; 30%</span></td>
+                            <td>High (strict compliance requirements keep churn low)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Which Cleaning Service Actually Pays the Most?</h2>
+            
+            <p>When custodial contractors ask which service "pays the most," they are usually conflating two distinct financial metrics: <strong>highest profit margin per hour worked</strong> versus <strong>highest cumulative enterprise cash flow</strong>.</p>
+
+            <h3>1. The Highest Hourly Margin: Post-Construction &amp; Floor Care</h3>
+            <p>Specialized post-construction rough-and-final cleans and specialized restorative carpet or VCT tile stripping and waxing generate astronomical net margins ranging from <strong>35% to nearly 50%</strong>. Contractors can bill between \$75 and \$130 per cleaner-hour on these jobs because general contractors are under strict liquidated damages deadlines and cannot afford failed building inspections.</p>
+            <p>However, the trap of post-construction is cash flow friction: general contractors frequently hold retainage payments for 60 to 90 days. If your payroll occurs weekly or bi-weekly, operating exclusively in high-margin construction cleaning can starve your company of operating liquidity.</p>
+
+            <h3>2. The Highest Wealth-Building Asset: Commercial Recurring Contracts</h3>
+            <p>In contrast, standard commercial office janitorial contracts offer modest net margins of <strong>12% to 18%</strong>. While this appears low on paper, commercial janitorial requires virtually zero ongoing marketing expense once the contract is signed. Customer acquisition cost (CAC) is amortized over multi-year client lifespans. An office paying \$2,500 monthly for five-night-per-week janitorial yields \$30,000 annually with 90%+ contract renewal rates.</p>
+
+            <h3>3. The Sweet Spot: Residential Recurring with First-Time Deep Clean Premium</h3>
+            <p>The most balanced financial model in the modern custodial sector is the residential recurring route with mandatory first-time deep cleans. By charging an initial \$400 to \$550 deep clean fee to reset the residence, operators recover customer acquisition costs in the very first visit. Subsequent bi-weekly maintenance visits at \$180 to \$220 deliver a reliable 20% to 24% net margin with immediate credit-card processing on file (zero accounts receivable aging).</p>
+
+            <h2>The 4 Silent Leaks That Destroy Cleaning Margins</h2>
+            <p>If your profit margin calculator results show a net profit under 15%, your business is bleeding capital in one of four specific operational bottlenecks:</p>
+            
             <ul>
-                <li><strong>Gross Profit:</strong> This is your total revenue minus the Cost of Goods Sold (COGS). For a cleaning business, COGS typically includes direct labor costs (wages for cleaners) and the cost of cleaning supplies used directly on the job. This metric shows how efficiently you deliver your core services.</li>
-                <li><strong>Net Profit:</strong> This is your total revenue minus all expenses, including COGS and overhead (rent, insurance, marketing, administrative salaries, software subscriptions, etc.). This is the true "bottom line" of your business and represents what you actually take home or can reinvest.</li>
+                <li><strong>1. The "Windshield Time" Trap (Unbillable Travel):</strong> If cleaners spend 45 minutes driving between three distinct homes each day, you are paying 2.25 hours of non-revenue labor plus vehicle fuel and wear. Dense territory clustering (limiting teams to specific zip codes per day) immediately reclaims 6% to 9% in net margin.</li>
+                <li><strong>2. Chemical Concentrate Over-Mixing:</strong> Unregulated "free-pour" chemical usage leads to cleaners mixing disinfectants at 1:10 instead of the manufacturer-certified 1:64 ratio. This multiplies consumable expenses fivefold and leaves cloudy residue on client surfaces. Utilizing wall-mounted proportioners or precise dilution ratio charts keeps chemical costs under 4% of gross billing.</li>
+                <li><strong>3. Payroll Tax Burden Blindspots:</strong> Many novice owners calculate labor based strictly on base wages (e.g., \$18/hr). However, employer-paid FICA (7.65%), state unemployment insurance (SUTA, 2%–6%), federal unemployment (FUTA, 0.6%), and high-risk custodial workers' compensation insurance (typically 4%–9%) add 16% to 22% in mandatory payroll burden. An \$18/hr cleaner actually costs \$21.50/hr in true COGS.</li>
+                <li><strong>4. Flat-Rate Scope Creep:</strong> Quoting residential jobs with a flat fee without square footage or condition caps allows high-clutter or hoarder-adjacent homes to consume double the estimated man-hours, driving the effective hourly earnings below minimum wage.</li>
             </ul>
 
-            <h2>Industry Standards: What Should You Aim For?</h2>
-            <p>The cleaning industry is known for relatively low barriers to entry but can yield healthy profit margins if managed correctly. Setting clear financial benchmarks is crucial.</p>
-            <ul>
-                <li><strong>Excellent (> 25% Net Margin):</strong> This usually requires a highly optimized operation, likely focusing on high-margin commercial contracts, specialized cleaning services (like post-construction or medical), or operating with very low overhead.</li>
-                <li><strong>Average/Healthy (15% - 25% Net Margin):</strong> This is a very common and sustainable range for most successful residential and standard commercial cleaning businesses. At this level, you can afford to weather slow seasons and invest in growth.</li>
-                <li><strong>Warning/Low (< 15% Net Margin):</strong> If your margins are consistently this low, you may be undercharging, overspending on labor, or dealing with high employee turnover and operational inefficiencies that are bleeding profits.</li>
-            </ul>
-
-            <h2>Key Expenses to Monitor Closely</h2>
-            <p>To improve your profit margins, you must closely monitor and tightly control your expenses. Here are the primary cost categories in a cleaning business:</p>
-            <ul>
-                <li><strong>Direct Labor:</strong> This is by far the largest expense. Inefficient routing, excessive overtime, or slow work due to poor training can quickly eat into your profits. Tracking labor hours per job is non-negotiable.</li>
-                <li><strong>Cleaning Supplies & Chemicals:</strong> While smaller than labor, waste, incorrect dilution ratios, or lack of bulk purchasing can negatively impact your bottom line over time.</li>
-                <li><strong>Insurance & Licenses:</strong> These are necessary fixed costs. However, you should still shop around annually to ensure you are getting the best rates for general liability, workers' comp, and bonding.</li>
-                <li><strong>Vehicle & Gas:</strong> Travel time and fuel costs can add up dramatically, especially if your service area is geographically large and jobs are poorly routed.</li>
-                <li><strong>Marketing & Software:</strong> Essential for growth, operations, and efficiency, but these tools must generate an adequate Return on Investment (ROI). Keep track of your Customer Acquisition Cost (CAC).</li>
-            </ul>
-
-            <h2>Actionable Strategies to Increase Your Profit Margins</h2>
-            <p>If your margins are lower than you'd like, consider implementing these proven strategies immediately:</p>
+            <h2>How to Reclaim 5% to 8% in Profit Margin This Quarter</h2>
             <ol>
-                <li><strong>Raise Your Prices:</strong> Regularly review and adjust your pricing to keep up with inflation and ensure you are being adequately compensated for your services. Do not try to be the cheapest option; compete on value and quality.</li>
-                <li><strong>Optimize Routing and Scheduling:</strong> Minimize travel time between jobs. Use routing software to plan the most efficient paths for your cleaning teams, reducing unbillable windshield time.</li>
-                <li><strong>Invest in Training:</strong> Well-trained cleaners work faster, are more thorough, and make fewer mistakes, improving efficiency and reducing costly redos or complaints.</li>
-                <li><strong>Buy Supplies in Bulk:</strong> Negotiate with suppliers for volume discounts on cleaning chemicals, paper products, and equipment.</li>
-                <li><strong>Focus on Client Retention:</strong> Acquiring new customers is generally much more expensive than keeping existing ones. Deliver excellent, consistent service to build long-term relationships and a recurring revenue base.</li>
+                <li><strong>Audit Top 20% and Bottom 20% Accounts:</strong> Pull time-tracking records across all recurring clients over the past 90 days. Calculate the actual dollar-per-hour realized on each job. For any account generating under \$42 per cleaner-hour, issue an immediate rate adjustment letter citing localized labor index increases.</li>
+                <li><strong>Transition to Chemical Dispensing Systems:</strong> Replace ready-to-use (RTU) retail spray bottles with bulk commercial concentrate dispensing. Buying 5-gallon concentrates drops container cost per quart from \$4.80 down to \$0.22.</li>
+                <li><strong>Incentivize Team Production Bonuses:</strong> Instead of paying overtime, institute job-ticket pricing or efficiency bonuses. Teams that complete assigned square footage to 100% quality standards in 85% of standard labor allowance receive a share of the saved payroll, aligning cleaner incentives with company profitability.</li>
             </ol>
-            
+
+            <h2>How to Quote Jobs Using Contribution Margin per Man-Hour</h2>
+            <p>One of the most frequent accounting failures among growing commercial cleaning companies is bidding strictly by square footage without factoring in building layout, fixture density, and unbillable crew setup time. A 10,000-square-foot open-concept carpeted corporate call center can be serviced in 3.5 man-hours, while a 10,000-square-foot medical urgent care center with 24 individual examination rooms, clinical waste disposal, and ceramic tile grout scrub lines requires 8.5 man-hours.</p>
+
+            <p>To guarantee that every contract satisfies your target profit margin, custodial estimators should calculate their <strong>Minimum Billable Rate per Man-Hour ($/hr)</strong> using the following target formula:</p>
+
+            <div class="omni-formula-box">
+                <strong>Target Billable Hourly Rate Formula:</strong><br>
+                Target Hourly Bill Rate = (Fully Burdened Hourly Wage + Hourly Chemical &amp; Equipment Allowance) &divide; (1 &minus; (Target Overhead % + Target Net Profit %))<br><br>
+                <em>Worked Example:</em> If cleaner base pay plus taxes is \$21.50/hr, chemical allowance is \$1.50/hr, and you target 20% overhead with a 20% net profit margin:<br>
+                &bull; Target Hourly Bill Rate = (\$21.50 + \$1.50) &divide; (1 &minus; (0.20 + 0.20)) = \$23.00 &divide; 0.60 = <strong>\$38.33 per man-hour</strong>.
+            </div>
+
+            <p>Any commercial contract quoted below \$38.33 per hour under these cost structures directly cannibalizes your net margin or forces cleaners to cut corners on sanitation standards, triggering client churn.</p>
+
             <h2>Frequently Asked Questions</h2>
             <details class="omni-faq-item">
-                <summary>What is a good profit margin for a cleaning business?</summary>
-                <p>A good net profit margin for a cleaning business typically ranges from 15% to 25%. Anything above 25% is considered excellent and indicates a highly efficient operation.</p>
+                <summary>What is a normal profit margin for a residential cleaning company?</summary>
+                <p>For residential recurring maid services, healthy net profit margins typically range between 15% and 22%. Gross margins before administrative overhead are generally between 45% and 55%, with direct field labor consuming 40% to 48% of gross revenue.</p>
             </details>
             <details class="omni-faq-item">
-                <summary>How do I increase my profit margins?</summary>
-                <p>You can increase profit margins by optimizing labor efficiency, raising your rates, buying supplies in bulk, reducing overhead costs, and improving your route planning to save on fuel and unbillable time.</p>
+                <summary>Which cleaning service has the highest profit margin?</summary>
+                <p>Specialty services such as post-construction rough-and-final cleans (35% to 50% net) and hot-water extraction carpet restoration (30% to 45% net) yield the highest margins per hour. However, recurring commercial janitorial and bi-weekly residential contracts deliver the highest lifetime revenue due to contract predictability.</p>
             </details>
             <details class="omni-faq-item">
-                <summary>What is the difference between gross and net profit margin?</summary>
-                <p>Gross profit margin subtracts only direct costs (like labor and supplies) from revenue. Net profit margin subtracts all expenses, including overhead, taxes, and marketing, providing a clearer picture of your actual profitability.</p>
+                <summary>What percentage of cleaning revenue should go to labor?</summary>
+                <p>Direct field labor (technician hourly wages plus payroll taxes and workers compensation) should ideally stay between 40% and 48% of total revenue. If labor exceeds 52%, prices must be raised or cleaning production rates per square foot must be recalibrated.</p>
             </details>
+            <details class="omni-faq-item">
+                <summary>How is gross profit margin calculated for commercial janitorial?</summary>
+                <p>Gross Margin = ((Monthly Revenue - Cost of Goods Sold) / Monthly Revenue) * 100. Cost of Goods Sold includes cleaner wages, payroll tax burden, chemical concentrates, trash liners, and direct mop/towel laundry costs.</p>
+            </details>
+
+            <h2>Sources &amp; Industry Verification Notes</h2>
+            <ul>
+                <li>Labor expense allocations (40%–48% COGS target) reflect standard custodial accounting guidelines and ISSA (International Sanitary Supply Association) operational benchmarks.</li>
+                <li>Specialized service margins (post-construction 35%–48%, carpet extraction 32%–45%) are derived from industry bid benchmarking and regional sub-contractor pricing schedules.</li>
+                <li>All financial formulas follow standard Generally Accepted Accounting Principles (GAAP) for service-sector contribution analysis.</li>
+            </ul>
         </article>
 
         <aside class="omni-calculator-aside">
             <div class="omni-calculator-sticky">
                 <div class="omni-calculator-widget">
                     <div class="omni-widget-header">
-                        <h3>Profit Margin Calculator</h3>
+                        <h3>Cleaning Margin Calculator</h3>
+                        <p style="font-size:0.8rem; color:#6b7280; margin:0;">Real-time custodial P&amp;L tracker</p>
                     </div>
                     
                     <div class="omni-input-group">
-                        <label class="omni-label">Total Monthly Revenue ($)</label>
-                        <input type="number" id="revenue" class="omni-input" placeholder="e.g. 10000" value="10000">
+                        <label class="omni-label">Monthly Gross Revenue ($)</label>
+                        <input type="number" id="revenue" class="omni-input" value="15000">
                     </div>
                     
                     <div class="omni-input-group">
-                        <label class="omni-label">Direct Labor Costs ($)</label>
-                        <input type="number" id="labor" class="omni-input" placeholder="e.g. 4000" value="4000">
-                    </div>
-                    
-                    <div class="omni-input-group">
-                        <label class="omni-label">Cleaning Supplies/Chemicals ($)</label>
-                        <input type="number" id="supplies" class="omni-input" placeholder="e.g. 500" value="500">
-                    </div>
-                    
-                    <div class="omni-input-group">
-                        <label class="omni-label">Insurance/Licenses ($)</label>
-                        <input type="number" id="insurance" class="omni-input" placeholder="e.g. 200" value="200">
-                    </div>
-                    
-                    <div class="omni-input-group">
-                        <label class="omni-label">Vehicle/Gas Expenses ($)</label>
-                        <input type="number" id="vehicle" class="omni-input" placeholder="e.g. 300" value="300">
-                    </div>
-                    
-                    <div class="omni-input-group">
-                        <label class="omni-label">Marketing/Software ($)</label>
-                        <input type="number" id="marketing" class="omni-input" placeholder="e.g. 200" value="200">
+                        <label class="omni-label">Direct Cleaner Wages ($)</label>
+                        <input type="number" id="labor" class="omni-input" value="6000">
                     </div>
 
-                    <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
-                        <h4>Results</h4>
-                        <p>Total Expenses: $<span id="totalExpenses">0.00</span></p>
-                        <p>Gross Profit Margin: <span id="grossMargin">0.00</span>%</p>
-                        <p>Net Profit Margin: <span id="netMargin">0.00</span>%</p>
-                        <p>Health Status: <strong id="healthStatus">---</strong></p>
+                    <div class="omni-input-group">
+                        <label class="omni-label">Payroll Burden % (Taxes/Ins.)</label>
+                        <input type="number" id="burdenPct" class="omni-input" value="15">
+                    </div>
+                    
+                    <div class="omni-input-group">
+                        <label class="omni-label">Chemicals &amp; Consumables ($)</label>
+                        <input type="number" id="supplies" class="omni-input" value="650">
+                    </div>
+                    
+                    <div class="omni-input-group">
+                        <label class="omni-label">Insurance, Licenses &amp; Bonds ($)</label>
+                        <input type="number" id="insurance" class="omni-input" value="350">
+                    </div>
+                    
+                    <div class="omni-input-group">
+                        <label class="omni-label">Vehicle Fuel &amp; Maintenance ($)</label>
+                        <input type="number" id="vehicle" class="omni-input" value="500">
+                    </div>
+                    
+                    <div class="omni-input-group">
+                        <label class="omni-label">Software, Office &amp; Marketing ($)</label>
+                        <input type="number" id="overhead" class="omni-input" value="800">
+                    </div>
+
+                    <div style="margin-top: 18px; padding: 14px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 0.95rem; color:#1e3a8a;">Financial Breakdown</h4>
+                        
+                        <div class="omni-metric-row">
+                            <span>Total Direct Costs (COGS):</span>
+                            <span class="omni-metric-val" id="cogsDisplay">$0.00</span>
+                        </div>
+                        <div class="omni-metric-row">
+                            <span>Gross Profit Margin:</span>
+                            <span class="omni-metric-val" id="grossMarginDisplay">0.0%</span>
+                        </div>
+                        <div class="omni-metric-row">
+                            <span>Labor Cost Ratio:</span>
+                            <span class="omni-metric-val" id="laborRatioDisplay">0.0%</span>
+                        </div>
+                        <div class="omni-metric-row">
+                            <span>Total Operating Overhead:</span>
+                            <span class="omni-metric-val" id="overheadDisplay">$0.00</span>
+                        </div>
+                        <div class="omni-metric-row" style="background:#f0fdf4; margin:4px -8px -4px -8px; padding:8px 8px; border-radius:4px;">
+                            <span style="font-weight:700; color:#166534;">Net Profit (Take-Home):</span>
+                            <span class="omni-metric-val" style="color:#166534;" id="netProfitDollars">$0.00</span>
+                        </div>
+                        <div class="omni-metric-row" style="border-bottom:none; padding-top:10px;">
+                            <span style="font-weight:700;">Net Profit Margin:</span>
+                            <span class="omni-metric-val" style="font-size:1.1rem;" id="netMarginDisplay">0.0%</span>
+                        </div>
+                        <div style="margin-top:10px; text-align:center;">
+                            Status: <span id="healthStatusBadge" class="badge-high">---</span>
+                        </div>
+                    </div>
+
+                    <div class="omni-affiliate-box">
+                        <p style="font-size:0.8rem; color:#4b5563; margin-bottom:8px;">Lower chemical costs with wholesale commercial supply:</p>
+                        <a href="https://bbux.me/v9xB3q0hg" class="omni-action-btn" target="_blank" rel="sponsored noopener" style="display:inline-block; width:100%; text-decoration:none !important; background:#111111 !important; color:#ffffff !important; padding:10px; border-radius:6px; font-weight:700; font-size:0.85rem;">Shop Wholesale Cleaning Supplies &rarr;</a>
                     </div>
 
                     <div class="omni-footer-actions">
@@ -172,47 +468,71 @@
     <script>
         function calculateMargins() {
             const revenue = parseFloat(document.getElementById('revenue').value) || 0;
-            const labor = parseFloat(document.getElementById('labor').value) || 0;
+            const laborBase = parseFloat(document.getElementById('labor').value) || 0;
+            const burdenPct = parseFloat(document.getElementById('burdenPct').value) || 0;
             const supplies = parseFloat(document.getElementById('supplies').value) || 0;
             const insurance = parseFloat(document.getElementById('insurance').value) || 0;
             const vehicle = parseFloat(document.getElementById('vehicle').value) || 0;
-            const marketing = parseFloat(document.getElementById('marketing').value) || 0;
+            const overhead = parseFloat(document.getElementById('overhead').value) || 0;
 
-            const cogs = labor + supplies;
-            const totalExpenses = cogs + insurance + vehicle + marketing;
+            const totalLabor = laborBase * (1 + (burdenPct / 100));
+            const cogs = totalLabor + supplies;
+            const fixedExpenses = insurance + vehicle + overhead;
+            const totalExpenses = cogs + fixedExpenses;
             
             let grossMargin = 0;
             let netMargin = 0;
+            let laborRatio = 0;
+            let netDollars = revenue - totalExpenses;
 
             if (revenue > 0) {
                 grossMargin = ((revenue - cogs) / revenue) * 100;
-                netMargin = ((revenue - totalExpenses) / revenue) * 100;
+                netMargin = (netDollars / revenue) * 100;
+                laborRatio = (totalLabor / revenue) * 100;
             }
 
-            document.getElementById('totalExpenses').textContent = totalExpenses.toFixed(2);
-            document.getElementById('grossMargin').textContent = grossMargin.toFixed(2);
-            document.getElementById('netMargin').textContent = netMargin.toFixed(2);
+            document.getElementById('cogsDisplay').textContent = '$' + cogs.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('grossMarginDisplay').textContent = grossMargin.toFixed(1) + '%';
+            document.getElementById('laborRatioDisplay').textContent = laborRatio.toFixed(1) + '%';
+            document.getElementById('overheadDisplay').textContent = '$' + fixedExpenses.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('netProfitDollars').textContent = '$' + netDollars.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('netMarginDisplay').textContent = netMargin.toFixed(1) + '%';
 
-            const healthEl = document.getElementById('healthStatus');
-            if (netMargin > 25) {
-                healthEl.textContent = 'Excellent (>25%)';
-                healthEl.style.color = 'green';
-            } else if (netMargin >= 15) {
-                healthEl.textContent = 'Average (15-25%)';
-                healthEl.style.color = '#b8860b'; // dark goldenrod
+            const badge = document.getElementById('healthStatusBadge');
+            if (netMargin >= 22) {
+                badge.className = 'badge-high';
+                badge.textContent = 'High Profitability (>22%)';
+            } else if (netMargin >= 14) {
+                badge.className = 'badge-mid';
+                badge.textContent = 'Healthy Standard (14-22%)';
             } else {
-                healthEl.textContent = 'Warning (<15%)';
-                healthEl.style.color = 'red';
+                badge.className = 'badge-low';
+                badge.textContent = 'Low Margin Risk (<14%)';
             }
         }
 
-        const inputs = document.querySelectorAll('.omni-input');
-        inputs.forEach(input => {
-            input.addEventListener('input', calculateMargins);
-        });
+        function filterServicePivot(category) {
+            const buttons = document.querySelectorAll('.service-tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
 
-        // Initial calculation
-        calculateMargins();
+            const rows = document.querySelectorAll('#servicePivotTable tbody tr');
+            rows.forEach(row => {
+                if (category === 'all' || row.getAttribute('data-category') === category) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', function () {
+            const inputs = document.querySelectorAll('.omni-input');
+            inputs.forEach(input => {
+                input.addEventListener('input', calculateMargins);
+            });
+            calculateMargins();
+        });
     </script>
 </body>
 </html>
