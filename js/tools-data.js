@@ -180,6 +180,16 @@ const TOOLS_DATA = [
         tag: 'Finance',
         featured: true,
         url: '/tools/profit-margin-calculator/'
+    },
+    {
+        id: 'square-foot-vs-hourly',
+        title: 'Square Foot vs. Hourly Quoting Calculator',
+        icon: '📐',
+        desc: 'Compare square foot vs. hourly quoting models for commercial and residential cleaning jobs with 2026 ISSA production benchmarks.',
+        category: 'pricing',
+        tag: 'New',
+        featured: true,
+        url: '/tools/square-foot-vs-hourly/'
     }
 ];
 
