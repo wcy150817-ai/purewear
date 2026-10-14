@@ -99,7 +99,52 @@
   .omni-calculator-widget { box-shadow: none !important; border: 1px solid #ddd !important; }
   body { background: #fff !important; }
 }
-.lp-table-wrap { width: 100%; overflow-x: auto; margin: 20px 0; }
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+.omni-layout-grid {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+.omni-article {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+.lp-table-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  display: block !important;
+  margin: 20px 0;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+.affiliate-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  margin: 24px 0 !important;
+  width: 100% !important;
+}
+@media (min-width: 768px) {
+  .affiliate-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -386,8 +431,8 @@
                 </p>
 
                 <!-- 双路联盟推荐卡片 -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 24px 0;">
-                    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px; display: flex; flex-col; justify-content: space-between;">
+                <div class="affiliate-grid">
+                    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; width: 100%; max-width: 100%;">
                         <div>
                             <span style="font-size: 11px; font-weight: 700; color: #0284c7; background: #e0f2fe; padding: 3px 8px; border-radius: 4px; text-transform: uppercase;">Professional Cleaning Hardware</span>
                             <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 10px 0 6px 0;">The Cleaning Warehouse</h3>
@@ -400,7 +445,7 @@
                         </div>
                     </div>
 
-                    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px; display: flex; flex-col; justify-content: space-between;">
+                    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; width: 100%; max-width: 100%;">
                         <div>
                             <span style="font-size: 11px; font-weight: 700; color: #15803d; background: #dcfce7; padding: 3px 8px; border-radius: 4px; text-transform: uppercase;">Bulk Commercial Consumables</span>
                             <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 10px 0 6px 0;">Warehouse 115 Commercial</h3>
