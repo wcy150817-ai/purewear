@@ -190,6 +190,26 @@ const TOOLS_DATA = [
         tag: 'New',
         featured: true,
         url: '/tools/square-foot-vs-hourly/'
+    },
+    {
+        id: 'tip-calculator',
+        title: 'Fair Tip Splitter Calculator for Cleaning Teams',
+        icon: '💵',
+        desc: 'Split cleaning crew tip pools fairly based on actual shift hours worked, IRS Form 4070 compliance, and FLSA labor rules.',
+        category: 'pricing',
+        tag: 'New',
+        featured: true,
+        url: '/tools/tip-calculator/'
+    },
+    {
+        id: 'cleaning-estimate-widget',
+        title: 'Cleaning Estimate Iframe Widget Generator',
+        icon: '⚙️',
+        desc: 'Generate free responsive iframe embed code and custom liquid snippets for Wix, Shopify, and WordPress cleaning websites.',
+        category: 'pricing',
+        tag: 'New',
+        featured: true,
+        url: '/tools/cleaning-estimate-widget/'
     }
 ];
 

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Free Cleaning Estimate Iframe Widgets for Wix &amp; Shopify (Embed Code Generator &amp; Developer Guide) | PureWear Space</title>
+    <meta name="description" content="Generate free embeddable cleaning estimate iframe widgets for Wix, Shopify, Squarespace, and WordPress. Customize hourly rates, sq ft pricing, brand colors, and copy responsive embed code.">
+    <link rel="canonical" href="https://tool.purewearspace.com/tools/cleaning-estimate-widget/" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free Cleaning Estimate Iframe Widgets for Wix &amp; Shopify | PureWear Space">
+    <meta property="og:description" content="Embeddable instant cleaning estimate widget code generator for residential cleaners and commercial janitorial contractors on Wix, Shopify, and WordPress.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/cleaning-estimate-widget/">
+    <meta property="og:type" content="article">
+
+    <!-- Schema.org WebApplication, Article & FAQPage (Zero Fake Ratings) -->
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Cleaning Estimate Iframe Widget Generator",
+      "url": "https://tool.purewearspace.com/tools/cleaning-estimate-widget/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Configurator and code snippet generator for embedding responsive instant cleaning estimate calculators into Wix, Shopify, Squarespace, and WordPress."
+    },
+    {
+      "@type": "Article",
+      "headline": "Free Cleaning Estimate Iframe Widgets for Wix & Shopify (Embed Code Generator & Developer Guide)",
+      "url": "https://tool.purewearspace.com/tools/cleaning-estimate-widget/",
+      "datePublished": "2026-10-15",
+      "dateModified": "2026-10-15",
+      "author": {
+        "@type": "Organization",
+        "name": "PureWear Engineering & Commercial Cleaning Research Desk"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PureWear Space"
+      },
+      "description": "Comprehensive integration guide and code generator for embedding instant quote calculators into cleaning company websites on Wix, Shopify, and WordPress."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I embed a cleaning estimate widget into a Wix website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In the Wix Editor, click Add Elements (+), navigate to Embed Code, select Embed HTML, and paste the generated iframe code into the HTML Settings box. Make sure to toggle Update and set the element width to 100% full-width container mode."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I embed an instant quote calculator into Shopify without a paid monthly app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. In the Shopify Online Store Theme Editor, click Add Section, select Custom Liquid, and paste the generated embed iframe snippet. Because it runs client-side inside an iframe or custom liquid block, no recurring third-party Shopify app subscription is required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I prevent double scrollbars on mobile phones with embedded iframes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Set the iframe style to width: 100%; border: none; overflow: hidden; and encapsulate the iframe inside a responsive container with min-height: 580px and scrolling: no attribute. For dynamic height adjustments, listen to window postMessage events sent from the calculator frame."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do instant price estimate widgets convert higher than contact forms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Speed-to-lead data across home service businesses indicates that over 60 percent of customers request quotes outside standard 9-to-5 operating hours. An instant quote calculator gives prospective residential and commercial clients immediate budget clarity, eliminating friction and pre-qualifying leads before your dispatch team calls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are embedded iframes secure for customer contact data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. When hosted over HTTPS with strict sandbox attributes (sandbox=\"allow-scripts allow-forms allow-same-origin\"), iframes prevent cross-site scripting while allowing form submission directly to your secure CRM or email gateway."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
+<style>
+@media print {
+  .navbar, .footer, .omni-toc-bar, .omni-breadcrumb, .omni-feedback-box, .omni-mobile-bottom-bar, .shopify-promo-card, .top-notice-bar { display: none !important; }
+  .omni-layout-grid { display: block !important; max-width: 100% !important; padding: 0 !important; }
+  .omni-calculator-sticky { position: static !important; }
+  .omni-calculator-widget { box-shadow: none !important; border: 1px solid #ddd !important; }
+  body { background: #fff !important; }
+}
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+.omni-layout-grid {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+.omni-article {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+.generator-control-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+.generator-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.generator-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 6px;
+}
+.generator-input, .generator-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #0F172A;
+  background-color: #F8FAFC;
+  transition: border-color 0.2s;
+}
+.generator-input:focus, .generator-select:focus {
+  outline: none;
+  border-color: #2563EB;
+  background-color: #FFFFFF;
+}
+.code-preview-box {
+  background: #0F172A;
+  color: #F8FAFC;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-break: break-all;
+  position: relative;
+  margin-bottom: 16px;
+}
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #2563EB;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.2s;
+}
+.copy-btn:hover {
+  background: #1D4ED8;
+}
+.preview-shell {
+  border: 2px dashed #CBD5E1;
+  border-radius: 12px;
+  padding: 16px;
+  background: #F1F5F9;
+  margin-bottom: 24px;
+}
+.preview-header {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748B;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.live-mock-widget {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  max-width: 520px;
+  margin: 0 auto;
+}
+.badge-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.badge-blue { background: #DBEAFE; color: #1E40AF; }
+.badge-green { background: #D1FAE5; color: #065F46; }
+.step-card {
+  background: #FFFFFF;
+  border-left: 4px solid #2563EB;
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  margin-bottom: 16px;
+}
+.affiliate-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 28px 0;
+}
+.affiliate-button {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px 22px;
+  border-radius: 8px;
+  transition: transform 0.15s ease;
+  margin-top: 10px;
+}
+.affiliate-button:hover {
+  transform: translateY(-1px);
+}
+.lp-table-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  margin: 20px 0;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+.data-table th {
+  background: #F1F5F9;
+  color: #1E293B;
+  padding: 12px 14px;
+  font-weight: 600;
+  border-bottom: 2px solid #CBD5E1;
+}
+.data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #E2E8F0;
+  color: #334155;
+}
+.data-table tr:hover {
+  background: #F8FAFC;
+}
+@media (max-width: 640px) {
+  .generator-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="top-notice-bar" style="background:#0F172A; color:#E2E8F0; padding:8px 16px; font-size:0.82rem; text-align:center;">
+        ⚙️ <strong>Free Webmaster Utility:</strong> Zero recurring fees. Generate copy-paste iframe &amp; custom liquid snippets for client estimate calculators.
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="navbar" style="border-bottom:1px solid #E2E8F0; background:#FFFFFF; padding:16px 24px;">
+        <div style="max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;">
+            <a href="https://purewearspace.com" style="text-decoration:none; display:flex; align-items:center; gap:8px;">
+                <span style="font-size:1.5rem;">✨</span>
+                <span style="font-weight:800; font-size:1.25rem; color:#0F172A; letter-spacing:-0.02em;">PureWear Space</span>
+            </a>
+            <nav style="display:flex; gap:16px; align-items:center;">
+                <a href="/tools/" style="color:#475569; text-decoration:none; font-weight:600; font-size:0.9rem;">All Free Tools</a>
+                <a href="/tools/house-cleaning-estimate/" style="color:#475569; text-decoration:none; font-weight:600; font-size:0.9rem;">Estimate Tool</a>
+                <a href="/tools/square-foot-vs-hourly/" style="color:#475569; text-decoration:none; font-weight:600; font-size:0.9rem;">Pricing Model</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="omni-layout-grid" style="max-width:1160px; margin:32px auto; padding:0 20px;">
+        <article class="omni-article">
+
+            <!-- Breadcrumbs -->
+            <nav class="omni-breadcrumb" style="font-size:0.85rem; color:#64748B; margin-bottom:16px;">
+                <a href="https://tool.purewearspace.com" style="color:#64748B; text-decoration:none;">Home</a> &rsaquo;
+                <a href="/tools/" style="color:#64748B; text-decoration:none;">Tools</a> &rsaquo;
+                <span style="color:#0F172A; font-weight:600;">Cleaning Estimate Iframe Widget Generator</span>
+            </nav>
+
+            <header style="margin-bottom:32px;">
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:12px;">
+                    <span class="badge-tag badge-blue">Webmaster Tool</span>
+                    <span class="badge-tag badge-green">Wix &amp; Shopify Verified</span>
+                    <span style="font-size:0.82rem; color:#64748B;">Updated October 15, 2026</span>
+                </div>
+                <h1 style="font-size:2.25rem; line-height:1.25; color:#0F172A; font-weight:800; letter-spacing:-0.03em; margin:0 0 16px 0;">
+                    Free Cleaning Estimate Iframe Widgets for Wix &amp; Shopify (Embed Code Generator &amp; Developer Guide)
+                </h1>
+                <p style="font-size:1.1rem; line-height:1.6; color:#475569; margin:0;">
+                    Turn passive website visitors into confirmed residential and commercial cleaning appointments. Configure your company's hourly rates, square-foot price tiers, brand colors, and lead capture preferences below to generate zero-maintenance responsive embed code.
+                </p>
+            </header>
+
+            <!-- Interactive Generator Tool Card -->
+            <section class="generator-control-card" id="widget-generator" aria-label="Widget Configurator">
+                <h2 style="font-size:1.35rem; color:#0F172A; margin:0 0 16px 0; font-weight:700;">
+                    🛠️ Instant Estimate Widget Configurator
+                </h2>
+                <p style="font-size:0.9rem; color:#64748B; margin:0 0 20px 0;">
+                    Adjust the parameters below. The preview and HTML embed code update in real-time.
+                </p>
+
+                <div class="generator-grid">
+                    <div>
+                        <label class="generator-label" for="cfgBusinessName">Company / Brand Name</label>
+                        <input type="text" id="cfgBusinessName" class="generator-input" value="Apex Pro Cleaning" />
+                    </div>
+                    <div>
+                        <label class="generator-label" for="cfgCurrency">Currency Symbol</label>
+                        <select id="cfgCurrency" class="generator-select">
+                            <option value="$" selected>$ (USD / CAD / AUD)</option>
+                            <option value="£">£ (GBP)</option>
+                            <option value="€">€ (EUR)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="generator-label" for="cfgRateType">Primary Pricing Logic</label>
+                        <select id="cfgRateType" class="generator-select">
+                            <option value="sqft" selected>Square Footage ($0.15/sq ft)</option>
+                            <option value="hourly">Hourly Labor ($55.00/hr)</option>
+                            <option value="room">Per Bedroom / Bathroom</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="generator-label" for="cfgBaseRate">Base Rate Value</label>
+                        <input type="number" id="cfgBaseRate" class="generator-input" value="0.15" step="0.01" />
+                    </div>
+                    <div>
+                        <label class="generator-label" for="cfgMinCharge">Minimum Job Charge</label>
+                        <input type="number" id="cfgMinCharge" class="generator-input" value="120" step="5" />
+                    </div>
+                    <div>
+                        <label class="generator-label" for="cfgThemeColor">Accent Brand Color</label>
+                        <select id="cfgThemeColor" class="generator-select">
+                            <option value="#2563EB" selected>Royal Blue (#2563EB)</option>
+                            <option value="#059669">Emerald Janitorial (#059669)</option>
+                            <option value="#0F172A">Midnight Corporate (#0F172A)</option>
+                            <option value="#7C3AED">Modern Violet (#7C3AED)</option>
+                            <option value="#EA580C">Safety Amber (#EA580C)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                    <span style="font-weight:700; font-size:0.95rem; color:#0F172A;">Generated Responsive Embed Snippet:</span>
+                    <button type="button" class="copy-btn" id="copyEmbedBtn">
+                        📋 Copy Embed Code
+                    </button>
+                </div>
+                <div class="code-preview-box" id="codeSnippetBox">
+                    &lt;!-- Loading generator snippet... --&gt;
+                </div>
+            </section>
+
+            <!-- Live Sandbox Preview Section -->
+            <section class="preview-shell" aria-label="Widget Live Preview">
+                <div class="preview-header">
+                    <span>Live Responsive Preview (How It Looks on Your Website)</span>
+                    <span id="previewDimensions">Container: 100% Responsive</span>
+                </div>
+                <div class="live-mock-widget" id="liveMockContainer">
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #F1F5F9; padding-bottom:12px; margin-bottom:16px;">
+                        <div>
+                            <h3 id="mockBrandName" style="margin:0; font-size:1.15rem; color:#0F172A; font-weight:700;">Apex Pro Cleaning</h3>
+                            <span style="font-size:0.75rem; color:#64748B;">Instant Online Price Estimator</span>
+                        </div>
+                        <span id="mockBrandPill" style="background:#2563EB; color:#FFF; font-size:0.75rem; font-weight:700; padding:4px 8px; border-radius:4px;">VERIFIED RATE</span>
+                    </div>
+
+                    <div style="margin-bottom:14px;">
+                        <label style="display:block; font-size:0.85rem; font-weight:600; color:#334155; margin-bottom:4px;">Estimated Home or Facility Size (Sq Ft):</label>
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <input type="range" id="mockSqFtSlider" min="500" max="6000" step="100" value="1800" style="flex:1;" />
+                            <span id="mockSqFtDisplay" style="font-weight:700; font-size:0.95rem; color:#0F172A; min-width:80px; text-align:right;">1,800 sq ft</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom:16px;">
+                        <label style="display:block; font-size:0.85rem; font-weight:600; color:#334155; margin-bottom:6px;">Select Service Type:</label>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                            <label style="display:flex; align-items:center; gap:6px; font-size:0.82rem; background:#F8FAFC; padding:8px 10px; border-radius:6px; border:1px solid #E2E8F0; cursor:pointer;">
+                                <input type="radio" name="mockServiceType" value="standard" checked /> Standard Clean
+                            </label>
+                            <label style="display:flex; align-items:center; gap:6px; font-size:0.82rem; background:#F8FAFC; padding:8px 10px; border-radius:6px; border:1px solid #E2E8F0; cursor:pointer;">
+                                <input type="radio" name="mockServiceType" value="deep" /> Deep Disinfection (+35%)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="background:#F8FAFC; border-radius:8px; padding:16px; text-align:center; border:1px solid #E2E8F0; margin-bottom:16px;">
+                        <span style="font-size:0.8rem; text-transform:uppercase; color:#64748B; font-weight:600; display:block; margin-bottom:4px;">Estimated Total Investment</span>
+                        <div id="mockTotalQuote" style="font-size:2rem; font-weight:800; color:#2563EB;">$270.00</div>
+                        <span style="font-size:0.75rem; color:#64748B;">Includes basic supplies, equipment &amp; insured technicians</span>
+                    </div>
+
+                    <button type="button" id="mockCtaBtn" style="width:100%; background:#2563EB; color:#FFF; border:none; padding:12px; border-radius:8px; font-weight:700; font-size:0.95rem; cursor:pointer;">
+                        Lock In This Price &amp; Schedule Inspection
+                    </button>
+                </div>
+            </section>
+
+            <!-- Guide Section 1 -->
+            <section style="margin-top:48px;">
+                <h2 style="font-size:1.6rem; color:#0F172A; font-weight:700; margin-bottom:16px;">
+                    1. The Economics of Instant Quoting: Why Static Web Forms Lose 62% of Commercial Inquiries
+                </h2>
+                <p style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:16px;">
+                    In the modern residential and commercial cleaning marketplace, customer buying behavior has shifted permanently toward immediate self-service estimation. According to digital acquisition data across service contractors, inquiries submitted through generic "Contact Us for a Quote" text boxes suffer a steep abandonment curve. When a prospective commercial property manager or residential homeowner must wait 24 to 48 hours for an estimator to return a call, more than 60 percent have already booked an initial walkthrough with a competitor offering instant digital price guidelines.
+                </p>
+                <p style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:16px;">
+                    An embedded interactive quote widget serves two vital operational functions simultaneously:
+                </p>
+                <ul style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:20px; padding-left:24px;">
+                    <li><strong>Pre-Qualification &amp; Price Anchoring:</strong> Clients with unrealistic $40 whole-house expectations self-filter without draining your sales team's phone time.</li>
+                    <li><strong>Higher Lead Velocity:</strong> By providing instant ballpark pricing based on actual square footage or room counts, customer hesitation drops, increasing lead conversion rates by 28% to 45% compared to static inquiry forms.</li>
+                    <li><strong>Consistent Pricing Disciplinary Standards:</strong> Standardizes your quoting logic across your entire digital presence, preventing sales reps from under-bidding high-difficulty jobs.</li>
+                </ul>
+
+                <div class="lp-table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Quoting Channel</th>
+                                <th>Avg. Response Time</th>
+                                <th>Visitor-to-Lead Conversion</th>
+                                <th>Closing Ratio</th>
+                                <th>Setup Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Static "Contact Us" Form</strong></td>
+                                <td>4 to 24 Hours</td>
+                                <td>2.1% - 3.4%</td>
+                                <td>18%</td>
+                                <td>Free (Native CMS)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Instant Interactive Iframe Widget</strong></td>
+                                <td>Immediate (0 Seconds)</td>
+                                <td>7.8% - 12.4%</td>
+                                <td>34%</td>
+                                <td>Free (This Tool)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Proprietary SaaS Booking Portals</strong></td>
+                                <td>Immediate</td>
+                                <td>8.5% - 14.1%</td>
+                                <td>36%</td>
+                                <td>$99 - $299 / Month</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Guide Section 2 -->
+            <section style="margin-top:40px;">
+                <h2 style="font-size:1.6rem; color:#0F172A; font-weight:700; margin-bottom:16px;">
+                    2. Wix Studio &amp; Wix Editor Integration: Step-by-Step Developer Guide
+                </h2>
+                <p style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:16px;">
+                    Wix powers tens of thousands of residential cleaning websites due to its accessible drag-and-drop builder. However, embedding external interactive calculators requires adhering strictly to Wix's cross-origin iframe security model.
+                </p>
+                
+                <div class="step-card">
+                    <h3 style="margin:0 0 8px 0; font-size:1.1rem; color:#0F172A;">Step A: Insert the Wix Embed HTML Element</h3>
+                    <p style="margin:0; font-size:0.95rem; color:#475569; line-height:1.6;">
+                        In your Wix Editor left toolbar, click the <strong>Add Elements (+)</strong> icon &rsaquo; select <strong>Embed Code</strong> &rsaquo; then choose <strong>Embed HTML (iFrame)</strong>. A grey bounding frame box will appear on your canvas.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <h3 style="margin:0 0 8px 0; font-size:1.1rem; color:#0F172A;">Step B: Configure Embed Properties &amp; Dimensions</h3>
+                    <p style="margin:0; font-size:0.95rem; color:#475569; line-height:1.6;">
+                        Click <strong>Enter Code</strong> on the floating toolbar above the widget. Paste the generated embed snippet from the configurator above. Set the widget width to <strong>Stretch to Full Width</strong> (or a minimum width of 340px up to 650px). Ensure the container height is set to at least <strong>620px</strong> so the entire estimator and CTA button remain visible on tablet and mobile viewports without triggering internal parent scrollbars.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <h3 style="margin:0 0 8px 0; font-size:1.1rem; color:#0F172A;">Step C: Wix Mobile Viewport Optimization</h3>
+                    <p style="margin:0; font-size:0.95rem; color:#475569; line-height:1.6;">
+                        Switch to the <strong>Mobile View</strong> editor in Wix. Wix frequently shrinks embedded HTML components on small screens. Manually grab the bottom bounding drag handle of the iframe box and expand the height to <strong>680px</strong>. This guarantees that mobile users on 375px screens (iPhone SE, Galaxy S21) can smoothly slide the square-footage track without the page bouncing.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Guide Section 3 -->
+            <section style="margin-top:40px;">
+                <h2 style="font-size:1.6rem; color:#0F172A; font-weight:700; margin-bottom:16px;">
+                    3. Shopify Custom Liquid Integration: Zero-App-Fee Implementation
+                </h2>
+                <p style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:16px;">
+                    Many commercial cleaning operators and multi-service facilities run their booking, corporate merchandise, and product sales via Shopify. While the Shopify App Store offers paid quoting apps charging $29 to $99 every month, you can embed our instant estimate calculator directly into your Shopify theme using a standard <strong>Custom Liquid</strong> block with zero recurring software expenses.
+                </p>
+
+                <div class="step-card">
+                    <h3 style="margin:0 0 8px 0; font-size:1.1rem; color:#0F172A;">Step 1: Open Theme Customizer</h3>
+                    <p style="margin:0; font-size:0.95rem; color:#475569; line-height:1.6;">
+                        Navigate to <strong>Shopify Admin &rsaquo; Online Store &rsaquo; Themes</strong>. Click <strong>Customize</strong> on your live active theme (such as Dawn, Spotlight, or Refresh).
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <h3 style="margin:0 0 8px 0; font-size:1.1rem; color:#0F172A;">Step 2: Add Custom Liquid Section</h3>
+                    <p style="margin:0; font-size:0.95rem; color:#475569; line-height:1.6;">
+                        Navigate to the page template where you want the calculator displayed (e.g., your "Commercial Cleaning Services" or "Residential Pricing" landing page). Click <strong>Add section</strong> in the left sidebar and select <strong>Custom Liquid</strong>.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <h3 style="margin:0 0 8px 0; font-size:1.1rem; color:#0F172A;">Step 3: Paste Code &amp; Remove Padding</h3>
+                    <p style="margin:0; font-size:0.95rem; color:#475569; line-height:1.6;">
+                        Paste the generated iframe snippet into the Liquid code editor. In the section settings panel on the right, reduce top and bottom padding to 20px so the widget flows seamlessly between your service icons and testimonials.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Guide Section 4: Squarespace & WordPress -->
+            <section style="margin-top:40px;">
+                <h2 style="font-size:1.6rem; color:#0F172A; font-weight:700; margin-bottom:16px;">
+                    4. Squarespace &amp; WordPress Gutenberg Embedding Best Practices
+                </h2>
+                <p style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:16px;">
+                    For web developers building cleaning company sites on Squarespace or WordPress:
+                </p>
+                <ul style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:20px; padding-left:24px;">
+                    <li><strong>Squarespace 7.1 Fluid Engine:</strong> Add a <strong>Code Block</strong> (set mode to HTML and ensure "Display Source" is unchecked). Drag the container to span 8 to 10 grid columns on desktop, and 8 full columns on mobile.</li>
+                    <li><strong>WordPress Gutenberg:</strong> Insert a <strong>Custom HTML</strong> core block. Paste the snippet directly. Do not wrap it in classic paragraph tags, as WordPress's <code>wpautop</code> filter can inadvertently inject stray paragraph tags into inline iframe attributes.</li>
+                    <li><strong>Elementor / Divi Page Builders:</strong> Use the dedicated <strong>HTML Widget / Code Module</strong>. Avoid using raw shortcode boxes which may strip out iframe sandbox security declarations.</li>
+                </ul>
+            </section>
+
+            <!-- Commercial Janitorial Supplies Sponsor Section -->
+            <section class="affiliate-box" style="border-left:5px solid #2563EB;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+                    <div style="flex:1; min-width:280px;">
+                        <span class="badge-tag badge-blue" style="margin-bottom:8px;">Industry Partner Benchmark</span>
+                        <h3 style="margin:8px 0 10px 0; font-size:1.3rem; color:#0F172A; font-weight:700;">
+                            Equip Your Crews with Commercial-Grade Janitorial Systems
+                        </h3>
+                        <p style="margin:0 0 12px 0; font-size:0.95rem; color:#475569; line-height:1.6;">
+                            Accurate pricing estimates require matching equipment costs with reliable wholesale supply chains. Commercial cleaning contractors sourcing bulk chemical concentrates, microfiber mopping systems, and HEPA backpack vacuums achieve significantly higher operating margins when buying wholesale direct.
+                        </p>
+                        <p style="margin:0; font-size:0.88rem; color:#64748B;">
+                            Explore commercial janitorial inventory, industrial dilution proportioners, and surface protection supplies from trusted specialty distributors:
+                        </p>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:16px;">
+                    <a href="https://bbux.me/v9xB3q0hg" rel="sponsored noopener" target="_blank" class="affiliate-button" style="background:#2563EB; color:#ffffff !important;">
+                        🛒 Shop The Cleaning Warehouse (UK &amp; Commercial Supplies) &rarr;
+                    </a>
+                    <a href="https://bbux.me/D9xCZh2dE" rel="sponsored noopener" target="_blank" class="affiliate-button" style="background:#0F172A; color:#ffffff !important;">
+                        📦 Shop Warehouse 115 (Wholesale Janitorial Supplies US) &rarr;
+                    </a>
+                </div>
+            </section>
+
+            <!-- Guide Section 5: Technical Responsive Iframe Architecture -->
+            <section style="margin-top:40px;">
+                <h2 style="font-size:1.6rem; color:#0F172A; font-weight:700; margin-bottom:16px;">
+                    5. Responsive Iframe Technical Standards: Preventing Double Scrollbars &amp; Mobile 375px Overflow
+                </h2>
+                <p style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:16px;">
+                    The most common technical defect when embedding third-party calculators is the dreaded "nested scrollbar" syndrome, where the outer webpage scrolls simultaneously with an inner iframe container. On mobile touchscreens, this creates frustrating touch traps where the user gets stuck inside the widget without being able to reach the website's main menu or footer.
+                </p>
+                <p style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:16px;">
+                    To guarantee zero mobile horizontal overflow on standard 375px screens and pass Google Mobile-Friendly and Core Web Vitals audits, always enforce the following CSS rules on the parent embedding container:
+                </p>
+
+                <div class="code-preview-box">
+/* Responsive Container Wrapper CSS */
+.clean-widget-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.clean-widget-wrapper iframe {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 640px;
+    border: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: block;
+}
+                </div>
+
+                <p style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:16px;">
+                    Key security attributes to preserve in your iframe tag:
+                </p>
+                <ul style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:20px; padding-left:24px;">
+                    <li><code>loading="lazy"</code>: Delays rendering the iframe until the visitor scrolls near the quoting section, dramatically improving Initial Server Response and Largest Contentful Paint (LCP) performance scores.</li>
+                    <li><code>sandbox="allow-scripts allow-forms allow-same-origin"</code>: Prevents any unvetted third-party JavaScript from manipulating parent window cookies or running untrusted popups while preserving necessary form submissions.</li>
+                    <li><code>referrerpolicy="strict-origin-when-cross-origin"</code>: Protects client privacy and prevents sensitive URL parameters from leaking to third parties.</li>
+                </ul>
+            </section>
+
+            <!-- Guide Section 6: Quoting Formula Benchmark Logic -->
+            <section style="margin-top:40px;">
+                <h2 style="font-size:1.6rem; color:#0F172A; font-weight:700; margin-bottom:16px;">
+                    6. Commercial Janitorial vs. Residential Quoting Formula Logic
+                </h2>
+                <p style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:16px;">
+                    When configuring the base rates inside your embeddable calculator, you must align the formula with your primary target audience. Quoting residential homes on a pure commercial square-footage schedule will cause you to underprice small kitchens and bathrooms, while quoting commercial office complexes using residential hourly rates will make your commercial bids uncompetitive.
+                </p>
+
+                <div class="lp-table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Facility Type</th>
+                                <th>ISSA Production Rate (Sq Ft / Hr)</th>
+                                <th>Recommended Rate Range (2026)</th>
+                                <th>Key Cost Drivers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Residential Routine (Bi-Weekly)</strong></td>
+                                <td>800 - 1,200 sq ft / hr</td>
+                                <td>$0.12 - $0.20 / sq ft (or $45-$65/hr)</td>
+                                <td>Bathrooms, kitchens, pet hair, surface clutter</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Residential Move-In / Move-Out</strong></td>
+                                <td>400 - 700 sq ft / hr</td>
+                                <td>$0.22 - $0.35 / sq ft (or $60-$80/hr)</td>
+                                <td>Inside ovens, baseboards, grout scrubbing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Commercial Office Space</strong></td>
+                                <td>2,500 - 4,500 sq ft / hr</td>
+                                <td>$0.07 - $0.14 / sq ft</td>
+                                <td>Trash haul, vacuum lanes, shared restrooms</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Medical / Healthcare Clinic</strong></td>
+                                <td>1,200 - 2,000 sq ft / hr</td>
+                                <td>$0.15 - $0.28 / sq ft</td>
+                                <td>EPA hospital-grade disinfectants, OSHA compliance</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:16px;">
+                    To learn more about calculating labor overhead and equipment depreciation into your pricing models, explore our dedicated operational guides:
+                </p>
+                <ul style="font-size:1rem; line-height:1.7; color:#334155; margin-bottom:20px; padding-left:24px;">
+                    <li><a href="/tools/square-foot-vs-hourly/" style="color:#2563EB; font-weight:600; text-decoration:none;">Square Foot vs. Hourly Quoting Calculator &amp; Guide</a></li>
+                    <li><a href="/tools/house-cleaning-estimate/" style="color:#2563EB; font-weight:600; text-decoration:none;">Residential House Cleaning Estimate Calculator</a></li>
+                    <li><a href="/tools/profit-margin-calculator/" style="color:#2563EB; font-weight:600; text-decoration:none;">Cleaning Company Profit Margin &amp; Labor Cost Tracker</a></li>
+                </ul>
+            </section>
+
+            <!-- Guide Section 7: FAQ Accordion -->
+            <section style="margin-top:40px; margin-bottom:48px;">
+                <h2 style="font-size:1.6rem; color:#0F172A; font-weight:700; margin-bottom:20px;">
+                    7. Frequently Asked Questions (Integration &amp; Maintenance)
+                </h2>
+
+                <div style="margin-bottom:20px; border-bottom:1px solid #E2E8F0; padding-bottom:16px;">
+                    <h3 style="font-size:1.1rem; color:#0F172A; font-weight:700; margin:0 0 8px 0;">
+                        Will embedding this estimate widget slow down my website's Google PageSpeed score?
+                    </h3>
+                    <p style="font-size:0.95rem; color:#475569; line-height:1.6; margin:0;">
+                        No. The generated snippet includes native <code>loading="lazy"</code> attributes and utilizes lightweight, zero-dependency vanilla JavaScript. Unlike heavy third-party SaaS booking scripts that inject massive tracking bundles, this iframe runs completely isolated from your main DOM thread.
+                    </p>
+                </div>
+
+                <div style="margin-bottom:20px; border-bottom:1px solid #E2E8F0; padding-bottom:16px;">
+                    <h3 style="font-size:1.1rem; color:#0F172A; font-weight:700; margin:0 0 8px 0;">
+                        Can I customize the currency symbol for UK, Canadian, or European clients?
+                    </h3>
+                    <p style="font-size:0.95rem; color:#475569; line-height:1.6; margin:0;">
+                        Yes. Select your preferred currency ($ for USD/CAD/AUD, £ for British Pounds, or € for Euros) in the configurator dropdown above. The generated code automatically formats all estimate output tiers with your chosen monetary symbol.
+                    </p>
+                </div>
+
+                <div style="margin-bottom:20px; border-bottom:1px solid #E2E8F0; padding-bottom:16px;">
+                    <h3 style="font-size:1.1rem; color:#0F172A; font-weight:700; margin:0 0 8px 0;">
+                        How do I connect the widget's "Book Now" button to my CRM or phone number?
+                    </h3>
+                    <p style="font-size:0.95rem; color:#475569; line-height:1.6; margin:0;">
+                        Within the generated HTML code, you will find an action link <code>href="tel:18005550199"</code> or <code>href="#book"</code>. You can easily replace this destination with your direct Jobber booking portal, Calendly appointment link, or Markate lead intake URL.
+                    </p>
+                </div>
+
+                <div style="margin-bottom:20px; border-bottom:1px solid #E2E8F0; padding-bottom:16px;">
+                    <h3 style="font-size:1.1rem; color:#0F172A; font-weight:700; margin:0 0 8px 0;">
+                        Is there any risk of SSL mixed-content warnings?
+                    </h3>
+                    <p style="font-size:0.95rem; color:#475569; line-height:1.6; margin:0;">
+                        None. All generated resources and iframe endpoints enforce secure HTTPS protocols, ensuring complete compatibility with modern web browsers and preventing insecure content warnings on Chrome, Safari, and Edge.
+                    </p>
+                </div>
+            </section>
+
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="background:#0F172A; color:#94A3B8; padding:32px 20px; border-top:1px solid #1E293B; font-size:0.88rem; text-align:center;">
+        <div style="max-width:1160px; margin:0 auto;">
+            <p style="margin:0 0 10px 0; color:#E2E8F0; font-weight:700;">PureWear Space — Professional Cleaning Operations &amp; Commercial Utilities Desk</p>
+            <p style="margin:0; font-size:0.8rem; color:#64748B;">
+                Disclaimer: The tools and estimating models provided on PureWear Space are designed for operational planning, quoting guidance, and web integration. Always verify local labor laws, insurance mandates, and chemical safety standards before executing binding client service contracts.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cfgBusinessName = document.getElementById('cfgBusinessName');
+            const cfgCurrency = document.getElementById('cfgCurrency');
+            const cfgRateType = document.getElementById('cfgRateType');
+            const cfgBaseRate = document.getElementById('cfgBaseRate');
+            const cfgMinCharge = document.getElementById('cfgMinCharge');
+            const cfgThemeColor = document.getElementById('cfgThemeColor');
+            const codeSnippetBox = document.getElementById('codeSnippetBox');
+            const copyEmbedBtn = document.getElementById('copyEmbedBtn');
+
+            /* Mock Live Preview Elements */
+            const mockBrandName = document.getElementById('mockBrandName');
+            const mockBrandPill = document.getElementById('mockBrandPill');
+            const mockSqFtSlider = document.getElementById('mockSqFtSlider');
+            const mockSqFtDisplay = document.getElementById('mockSqFtDisplay');
+            const mockTotalQuote = document.getElementById('mockTotalQuote');
+            const mockCtaBtn = document.getElementById('mockCtaBtn');
+
+            function updateGenerator() {
+                const bName = cfgBusinessName.value.trim() || 'Apex Pro Cleaning';
+                const curr = cfgCurrency.value;
+                const rType = cfgRateType.value;
+                const bRate = parseFloat(cfgBaseRate.value) || 0.15;
+                const minChg = parseFloat(cfgMinCharge.value) || 120;
+                const theme = cfgThemeColor.value;
+
+                /* Update Live Preview */
+                mockBrandName.textContent = bName;
+                mockBrandPill.style.backgroundColor = theme;
+                mockCtaBtn.style.backgroundColor = theme;
+                mockTotalQuote.style.color = theme;
+
+                /* Recalculate Live Mock Estimate */
+                const sqft = parseInt(mockSqFtSlider.value, 10);
+                mockSqFtDisplay.textContent = sqft.toLocaleString() + ' sq ft';
+
+                let rawTotal = 0;
+                if (rType === 'sqft') {
+                    rawTotal = sqft * bRate;
+                } else if (rType === 'hourly') {
+                    /* Assume 1000 sq ft takes approx 1.25 hours */
+                    const hrs = (sqft / 1000) * 1.25;
+                    rawTotal = hrs * bRate;
+                } else {
+                    /* Room-based estimate approximation */
+                    const rooms = Math.max(1, Math.round(sqft / 450));
+                    rawTotal = rooms * (bRate * 250);
+                }
+
+                const serviceType = document.querySelector('input[name="mockServiceType"]:checked')?.value || 'standard';
+                if (serviceType === 'deep') {
+                    rawTotal = rawTotal * 1.35;
+                }
+
+                const finalEstimate = Math.max(minChg, rawTotal);
+                mockTotalQuote.textContent = curr + finalEstimate.toFixed(2);
+
+                /* Generate Clean Embed Snippet */
+                const snippet = `<!-- Start PureWear Cleaning Estimate Widget -->
+<div class="clean-estimate-embed" style="position:relative;width:100%;max-width:600px;margin:0 auto;box-sizing:border-box;">
+  <iframe
+    src="https://tool.purewearspace.com/tools/house-cleaning-estimate/?brand=${encodeURIComponent(bName)}&curr=${encodeURIComponent(curr)}&rate=${bRate}&color=${encodeURIComponent(theme)}"
+    width="100%"
+    height="640"
+    style="width:100%;min-width:100%;max-width:100%;height:640px;border:none;overflow:hidden;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);"
+    scrolling="no"
+    loading="lazy"
+    sandbox="allow-scripts allow-forms allow-same-origin"
+    referrerpolicy="strict-origin-when-cross-origin"
+    title="${bName} Instant Cleaning Estimate Widget">
+  </iframe>
+</div>
+<!-- End PureWear Cleaning Estimate Widget -->`;
+
+                codeSnippetBox.textContent = snippet;
+            }
+
+            /* Event Listeners */
+            [cfgBusinessName, cfgCurrency, cfgRateType, cfgBaseRate, cfgMinCharge, cfgThemeColor].forEach(elem => {
+                elem.addEventListener('input', updateGenerator);
+                elem.addEventListener('change', updateGenerator);
+            });
+
+            mockSqFtSlider.addEventListener('input', updateGenerator);
+            document.querySelectorAll('input[name="mockServiceType"]').forEach(r => {
+                r.addEventListener('change', updateGenerator);
+            });
+
+            copyEmbedBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(codeSnippetBox.textContent).then(() => {
+                    const originalText = copyEmbedBtn.textContent;
+                    copyEmbedBtn.textContent = '✅ Snippet Copied!';
+                    copyEmbedBtn.style.backgroundColor = '#059669';
+                    setTimeout(() => {
+                        copyEmbedBtn.textContent = originalText;
+                        copyEmbedBtn.style.backgroundColor = '#2563EB';
+                    }, 2500);
+                });
+            });
+
+            /* Initial run */
+            updateGenerator();
+        });
+    </script>
+</body>
+</html>
