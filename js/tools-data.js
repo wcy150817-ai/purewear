@@ -52,6 +52,16 @@ const TOOLS_DATA = [
         url: '/tools/schedule-generator/'
     },
     {
+        id: 'on-call-rotation-generator',
+        title: 'On-Call Rotation & Standby Pay Generator',
+        icon: '🚨',
+        desc: 'Generate fair 4-week 24/7 emergency on-call rotations, assign primary and backup techs, and calculate FLSA standby vs call-out pay.',
+        category: 'ops',
+        tag: 'New',
+        featured: true,
+        url: '/tools/on-call-rotation-generator/'
+    },
+    {
         id: 'hourly-pay-calculator',
         title: 'Hourly Pay & Wage Calculator',
         icon: '💰',

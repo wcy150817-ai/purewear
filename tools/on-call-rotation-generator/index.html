@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Commercial Cleaning On-Call Rotation &amp; Fair Shift Allocation Generator (2026 Ops Tool) | PureWear Space</title>
+    <meta name="description" content="Generate fair 24/7 emergency on-call rotations for commercial cleaning and janitorial teams. Calculate FLSA standby stipends, emergency call-out overtime pay, and export printable dispatch rosters.">
+    <link rel="canonical" href="https://tool.purewearspace.com/tools/on-call-rotation-generator/" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Commercial Cleaning On-Call Rotation &amp; Fair Shift Allocation Generator (2026 Ops Tool) | PureWear Space">
+    <meta property="og:description" content="Interactive 4-week emergency on-call rotation generator and FLSA standby vs call-out labor cost calculator for commercial janitorial contractors.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/on-call-rotation-generator/">
+    <meta property="og:type" content="article">
+
+    <!-- Schema.org SoftwareApplication, Article & FAQPage (Zero Fake Ratings) -->
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Commercial Cleaning On-Call Rotation & Fair Shift Allocation Generator",
+      "url": "https://tool.purewearspace.com/tools/on-call-rotation-generator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "description": "Interactive 4-week emergency on-call rotation planner, fairness index auditor, and FLSA standby vs active call-out payroll calculator for commercial cleaning operations."
+    },
+    {
+      "@type": "Article",
+      "headline": "Commercial Cleaning On-Call Rotation & Fair Shift Allocation Generator (2026 Ops Tool)",
+      "url": "https://tool.purewearspace.com/tools/on-call-rotation-generator/",
+      "datePublished": "2026-10-17",
+      "dateModified": "2026-10-17",
+      "author": {
+        "@type": "Organization",
+        "name": "PureWear Commercial Cleaning Operations Research Desk"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PureWear Space"
+      },
+      "description": "A comprehensive operational engineering guide and interactive generator for building equitable 24/7 emergency on-call rotations and compliant standby compensation structures."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Under the FLSA, do commercial cleaning companies have to pay technicians for all hours spent on call?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "According to U.S. Department of Labor Wage and Hour Division Fact Sheet #22, whether on-call time is compensable hours worked depends on whether the employee is 'engaged to wait' or 'waiting to be engaged.' An employee required to remain on call on the employer's premises is 'engaged to wait' and must be paid for all on-call hours. Conversely, an employee required to remain on call at home or leave a phone number where they can be reached is generally 'waiting to be engaged' and is not working while idle, unless additional geographical or response-time constraints prevent them from using the time effectively for personal purposes. All actual emergency call-out work hours performed are always compensable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you structure a fair on-call rotation so the same lead cleaner does not work every weekend?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An equitable commercial cleaning on-call rotation separates weekday overnight standby (Monday through Thursday nights) from high-disruption weekend blocks (Friday 5:00 PM through Monday 6:00 AM) and rotates technicians sequentially across a 4-week or N-week cycle. Using a round-robin modulo offset ensures that each lead technician carries exactly one primary weekend standby block per month and transitions to secondary backup the following week."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does travel time to an emergency flood or biohazard call-out count as paid work time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under U.S. Department of Labor Fact Sheet #22, time spent by an employee traveling from job site to job site during the workday is compensable work time. When an on-call technician is dispatched from home after regular hours to an emergency client facility, contractors typically institute a minimum call-out guarantee (such as 2 to 4 hours of pay at 1.5x overtime rates) and reimburse round-trip mileage to cover travel burden and ensure rapid response compliance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a primary on-call technician and a secondary backup?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In commercial janitorial service level agreements (SLAs), the primary on-call technician is the first responder required to acknowledge dispatch alerts within 15 to 30 minutes and deploy to the site for water extraction, restroom overflows, or urgent sanitization. The secondary backup technician acts as an escalation safety net if the primary responder is already deployed at another facility, experiences vehicle failure, or requires a two-person crew for heavy extraction equipment."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
+<style>
+@media print {
+  .navbar, .footer, .omni-toc-bar, .omni-breadcrumb, .omni-feedback-box, .omni-mobile-bottom-bar, .shopify-promo-card, .top-notice-bar, .affiliate-button, .no-print { display: none !important; }
+  .omni-layout-grid { display: block !important; max-width: 100% !important; padding: 0 !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .print-only-header { display: block !important; }
+}
+.print-only-header { display: none; }
+
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+.omni-layout-grid, .omni-article {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+.scheduler-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+.scheduler-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E2E8F0;
+}
+.scheduler-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+}
+.scheduler-sub {
+  font-size: 0.9rem;
+  color: #64748B;
+  margin-top: 4px;
+}
+.control-pill-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.825rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+.btn-primary { background: #2563EB; color: #ffffff; }
+.btn-primary:hover { background: #1D4ED8; }
+.btn-secondary { background: #F1F5F9; color: #334155; border-color: #CBD5E1; }
+.btn-secondary:hover { background: #E2E8F0; }
+.btn-outline-green { background: #F0FDF4; color: #166534; border-color: #BBF7D0; }
+.btn-outline-green:hover { background: #DCFCE7; }
+
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+  gap: 14px;
+  background: #F8FAFC;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #E2E8F0;
+  margin-bottom: 20px;
+}
+.config-field label {
+  display: block;
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.config-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #0F172A;
+  background: #FFFFFF;
+}
+.lp-table-wrap, .rota-table-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  margin: 16px 0;
+  border: 1px solid #CBD5E1;
+  border-radius: 10px;
+}
+.rota-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  min-width: 680px;
+  font-size: 0.875rem;
+  background: #FFFFFF;
+}
+.rota-table th {
+  background: #F1F5F9;
+  color: #1E293B;
+  font-weight: 700;
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid #E2E8F0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+.rota-table td {
+  padding: 10px 12px;
+  border: 1px solid #E2E8F0;
+  vertical-align: middle;
+}
+.metrics-banner {
+  background: #0F172A;
+  color: #FFFFFF;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-top: 20px;
+}
+.metrics-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+.metric-box {
+  border-right: 1px solid #334155;
+  padding-right: 12px;
+}
+.metric-box:last-child { border-right: none; }
+.metric-box-label {
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  color: #94A3B8;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.metric-box-val {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #38BDF8;
+  margin-top: 2px;
+  line-height: 1.1;
+}
+.guidance-box {
+  background: #EFF6FF;
+  border-left: 4px solid #2563EB;
+  padding: 16px 20px;
+  border-radius: 0 10px 10px 0;
+  margin: 24px 0;
+}
+.guidance-box h4 { margin: 0 0 6px; color: #1E3A8A; font-size: 1rem; }
+.guidance-box p { margin: 0; font-size: 0.925rem; color: #1E40AF; line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .scheduler-header-row { flex-direction: column; align-items: flex-start; }
+  .control-pill-group { width: 100%; }
+  .action-btn { flex: 1; justify-content: center; }
+  .metrics-banner-grid { grid-template-columns: 1fr 1fr; }
+  .metric-box { border-right: none; }
+}
+</style>
+</head>
+<body>
+<div class="top-notice-bar no-print">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; font-size:0.875rem;">
+        <span><strong>2026 Operations Release:</strong> Commercial Cleaning 24/7 On-Call Rotation &amp; Standby Pay Generator</span>
+        <a href="../" style="color:#ffffff; text-decoration:underline;">Explore All 16+ Janitorial Calculators &rarr;</a>
+    </div>
+</div>
+
+<header class="navbar no-print">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; padding:16px 0;">
+        <a href="../../" class="logo" style="font-weight:900; font-size:1.35rem; color:#0F172A; text-decoration:none;">PureWear Space</a>
+        <nav>
+            <a href="../" style="margin-right:20px; color:#475569; text-decoration:none; font-weight:600;">Tools Library</a>
+            <a href="../schedule-generator/" style="margin-right:20px; color:#475569; text-decoration:none; font-weight:600;">Weekly Shift Rota</a>
+            <a href="../hourly-pay-calculator/" style="color:#2563EB; text-decoration:none; font-weight:700;">Overtime Pay Calc</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container omni-layout-grid" style="padding: 30px 16px;">
+    <article class="omni-article">
+        <!-- Mandatory Affiliate Disclosure -->
+        <aside class="no-print" style="background:#F8FAFC; border:1px solid #CBD5E1; border-radius:8px; padding:12px 16px; margin-bottom:20px; font-size:0.85rem; color:#475569; line-height:1.5;">
+            <strong>Editorial &amp; Commercial Disclosure:</strong> PureWear Space provides independent operational calculators and workforce engineering guides for commercial janitorial contractors. When you purchase bulk janitorial equipment or supplies through partner links on this page, we may earn an affiliate commission at no additional cost to you. All statutory labor references are sourced from official U.S. Department of Labor (DOL) publications.
+        </aside>
+
+        <header style="margin-bottom: 24px;">
+            <p class="omni-breadcrumb no-print" style="font-size:0.875rem; color:#64748B; margin-bottom:12px;">
+                <a href="../../" style="color:#2563EB; text-decoration:none;">Home</a> &gt; 
+                <a href="../" style="color:#2563EB; text-decoration:none;">Tools</a> &gt; 
+                <span>On-Call Rotation Generator</span>
+            </p>
+            <h1 style="font-size:2.3rem; font-weight:900; color:#0F172A; line-height:1.2; margin-bottom:12px;">
+                Commercial Cleaning On-Call Rotation &amp; Fair Shift Allocation Generator (2026 Ops Tool)
+            </h1>
+            <p style="font-size:1.08rem; color:#475569; line-height:1.65; max-width:920px;">
+                Commercial facilities, medical clinics, and multi-tenant corporate towers frequently require 24/7 emergency janitorial dispatch for pipe bursts, restroom overflows, biohazard remediation, and urgent post-event turnovers. Without a mathematically balanced on-call rotation and a legally compliant compensation framework, contractors face rapid lead-technician burnout and unexpected Fair Labor Standards Act (FLSA) wage liabilities. Use this interactive on-call rotation generator to build equitable 4-week primary and backup dispatch rosters, calculate standby stipends versus active 1.5x call-out overtime pay, and print ready-to-post emergency escalation sheets. Looking for regular daytime or evening crew shifts instead? Use our companion <a href="../schedule-generator/" style="color:#2563EB; font-weight:600;">Weekly Cleaning Employee Shift Schedule Generator</a>.
+            </p>
+        </header>
+
+        <!-- Interactive On-Call Rotation & Standby Pay Generator -->
+        <section class="scheduler-card" id="oncall-tool-section">
+            <div class="scheduler-header-row">
+                <div>
+                    <h2 class="scheduler-title">4-Week Emergency On-Call Rotation &amp; FLSA Standby Calculator</h2>
+                    <div class="scheduler-sub">Assign Primary &amp; Secondary Backup responders, rotate weekend blocks equitably, and model monthly dispatch payroll.</div>
+                </div>
+                <div class="control-pill-group no-print">
+                    <button type="button" class="action-btn btn-outline-green" id="btnRotateOrder" onclick="rotateCrewOrder()">
+                        🔄 Rotate Crew Order
+                    </button>
+                    <button type="button" class="action-btn btn-secondary" id="btnAddTech" onclick="addOnCallTech()">
+                        ➕ Add Lead Tech
+                    </button>
+                    <button type="button" class="action-btn btn-primary" id="btnCalcRotation" onclick="recalcOnCall()">
+                        ⚡ Recalculate Budget
+                    </button>
+                    <button type="button" class="action-btn btn-secondary" id="btnPrintOnCall" onclick="window.print()">
+                        🖨️ Print Dispatch Roster
+                    </button>
+                </div>
+            </div>
+
+            <!-- Print Header -->
+            <div class="print-only-header" style="margin-bottom:16px; border-bottom:2px solid #000; padding-bottom:10px;">
+                <h2 style="margin:0; font-size:1.4rem;">24/7 EMERGENCY JANITORIAL ON-CALL DISPATCH ROSTER</h2>
+                <p style="margin:4px 0 0; font-size:0.9rem;">Escalation Protocol: Primary Responder must acknowledge within 15 minutes; escalate to Secondary Backup at 20 minutes.</p>
+            </div>
+
+            <!-- Configuration Inputs -->
+            <div class="config-grid no-print">
+                <div class="config-field">
+                    <label for="inputBaseWage">Lead Tech Base Rate ($/hr)</label>
+                    <input type="number" id="inputBaseWage" class="config-input" value="22.00" min="10" max="100" step="0.50" oninput="recalcOnCall()">
+                </div>
+                <div class="config-field">
+                    <label for="inputStandbyStipend">Weekly Standby Stipend ($)</label>
+                    <input type="number" id="inputStandbyStipend" class="config-input" value="100.00" min="0" max="1000" step="10" oninput="recalcOnCall()">
+                </div>
+                <div class="config-field">
+                    <label for="inputMinGuarantee">Min Call-Out Guarantee (Hrs)</label>
+                    <select id="inputMinGuarantee" class="config-input" onchange="recalcOnCall()">
+                        <option value="2">2.0 Hours Minimum per Dispatch</option>
+                        <option value="3" selected>3.0 Hours Minimum per Dispatch</option>
+                        <option value="4">4.0 Hours Minimum per Dispatch</option>
+                    </select>
+                </div>
+                <div class="config-field">
+                    <label for="inputDispatchesPerWeek">Est. Emergency Dispatches / Wk</label>
+                    <input type="number" id="inputDispatchesPerWeek" class="config-input" value="2" min="0" max="20" step="1" oninput="recalcOnCall()">
+                </div>
+                <div class="config-field">
+                    <label for="inputFlsaStatus">FLSA Standby Classification</label>
+                    <select id="inputFlsaStatus" class="config-input" onchange="recalcOnCall()">
+                        <option value="waiting" selected>Waiting to Be Engaged (Home/Mobile)</option>
+                        <option value="engaged">Engaged to Wait (On-Site Mandatory)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 4-Week Rotation Matrix Table -->
+            <div class="rota-table-wrap">
+                <table class="rota-table">
+                    <thead>
+                        <tr>
+                            <th>Rotation Week</th>
+                            <th>Primary On-Call Responder (1st Dispatch)</th>
+                            <th>Secondary Backup (Escalation &amp; 2-Person Assist)</th>
+                            <th>Weekend Block (Fri 6PM &ndash; Mon 6AM)</th>
+                            <th>Est. Weekly On-Call Pay</th>
+                        </tr>
+                    </thead>
+                    <tbody id="onCallTableBody">
+                        <!-- Populated dynamically via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Editable Technician Roster Pool -->
+            <div class="no-print" style="margin-top:16px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:14px;">
+                <div style="font-size:0.8rem; font-weight:700; color:#475569; text-transform:uppercase; margin-bottom:10px;">
+                    Active On-Call Technician Pool (Edit Names &amp; Phone Extensions)
+                </div>
+                <div id="techPoolContainer" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+
+            <!-- Live Output Metrics Banner -->
+            <div class="metrics-banner">
+                <div class="metrics-banner-grid">
+                    <div class="metric-box">
+                        <div class="metric-box-label">4-Week Total On-Call Budget</div>
+                        <div class="metric-box-val" id="dispMonthlyOnCallCost">$1,390.00</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-box-label">1.5x Overtime Call-Out Rate</div>
+                        <div class="metric-box-val" id="dispOvertimeRate">$33.00/hr</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-box-label">Cost Per Emergency Dispatch</div>
+                        <div class="metric-box-val" id="dispCostPerDispatch">$149.00</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-box-label">Weekend Burden Per Tech</div>
+                        <div class="metric-box-val" id="dispWeekendFairness">1.0 wk / mo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mid-Page Affiliate Supply CTA Card -->
+        <section class="no-print" style="background:linear-gradient(135deg, #1E293B 0%, #0F172A 100%); color:#FFFFFF; border-radius:12px; padding:22px 26px; margin:28px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;">
+            <div style="max-width:600px;">
+                <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:#38BDF8; font-weight:800; margin-bottom:4px;">Emergency Response Readiness</div>
+                <h3 style="margin:0 0 6px; font-size:1.25rem; font-weight:800; color:#FFFFFF;">Equip Your On-Call Dispatch Vans with Wet Vacuums &amp; Biohazard Kits</h3>
+                <p style="margin:0; font-size:0.9rem; color:#CBD5E1; line-height:1.55;">
+                    After-hours flood extraction and emergency facility sanitization require commercial wet/dry vacuums, high-capacity mop buckets, and PPE kits ready to roll. Compare wholesale contractor pricing from vetted distributors.
+                </p>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a href="https://bbux.me/v9xB3q0hg" rel="sponsored noopener" target="_blank" class="affiliate-button" style="background:#2563EB; color:#ffffff !important; padding:12px 20px; border-radius:8px; font-weight:700; font-size:0.875rem; text-decoration:none; display:inline-block;">
+                    Shop The Cleaning Warehouse &rarr;
+                </a>
+                <a href="https://bbux.me/D9xCZh2dE" rel="sponsored noopener" target="_blank" class="affiliate-button" style="background:#059669; color:#ffffff !important; padding:12px 20px; border-radius:8px; font-weight:700; font-size:0.875rem; text-decoration:none; display:inline-block;">
+                    Warehouse 115 Bulk Janitorial &rarr;
+                </a>
+            </div>
+        </section>
+        <!-- Section 1: FLSA Legal & Payroll Engineering -->
+        <section style="margin-top:36px;">
+            <h2 style="font-size:1.75rem; font-weight:800; color:#0F172A; margin-bottom:14px;">
+                1. FLSA On-Call Pay Rules: &ldquo;Engaged to Wait&rdquo; vs. &ldquo;Waiting to Be Engaged&rdquo;
+            </h2>
+            <p style="font-size:1rem; color:#334155; line-height:1.75; margin-bottom:16px;">
+                Before publishing an after-hours emergency schedule for commercial cleaning technicians, operations managers must structure compensation in strict accordance with the federal Fair Labor Standards Act (FLSA). According to <a href="https://www.dol.gov/agencies/whd/fact-sheets/22-flsa-hours-worked" target="_blank" rel="noopener" style="color:#2563EB; font-weight:600;">U.S. Department of Labor (DOL) Wage and Hour Division Fact Sheet #22</a>, non-exempt employees must receive at least the statutory minimum wage for all hours worked and at least one and one-half times (1.5x) their regular rate of pay for all hours worked beyond 40 in a single workweek.
+            </p>
+            <p style="font-size:1rem; color:#334155; line-height:1.75; margin-bottom:16px;">
+                Whether idle standby hours count as compensable &ldquo;hours worked&rdquo; hinges on the legal distinction between two classifications defined in DOL Fact Sheet #22:
+            </p>
+
+            <div class="lp-table-wrap">
+                <table class="rota-table">
+                    <thead>
+                        <tr>
+                            <th>FLSA Classification</th>
+                            <th>Statutory Definition (DOL Fact Sheet #22)</th>
+                            <th>Janitorial Field Example (Illustrative)</th>
+                            <th>Idle Standby Pay Requirement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Waiting to Be Engaged</strong></td>
+                            <td>Employee remains at home or leaves a mobile contact number where they can be reached, retaining freedom to use idle time for personal tasks.</td>
+                            <td>Lead technician carries a company smartphone over the weekend with a 45-minute window to respond to a client flood call.</td>
+                            <td>Idle standby hours are generally not compensable work time under federal law; employers commonly offer a flat voluntary standby stipend plus 1.5x pay for active dispatches.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Engaged to Wait</strong></td>
+                            <td>Employee is required to remain on call on the employer&rsquo;s or client&rsquo;s premises, or under geographic/time constraints so strict they cannot use time effectively for personal purposes.</td>
+                            <td>Day porter or night technician required to stay inside a hospital or airport terminal breakroom overnight awaiting biohazard calls.</td>
+                            <td>100% of on-call hours must be counted and paid as active compensable hours worked, accruing toward the 40-hour overtime threshold.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="guidance-box">
+                <h4>⚠️ Critical Compliance Warning on Response-Time Constraints</h4>
+                <p>
+                    As noted in DOL Fact Sheet #22, even when an employee is permitted to wait at home, imposing additional constraints on the employee&rsquo;s freedom can convert &ldquo;waiting to be engaged&rdquo; into compensable work time. If your service level agreement (SLA) demands that a technician arrive on-site in 10 minutes or prohibits them from traveling more than 3 miles from the facility while on call, consult labor counsel—regulatory auditors may classify the entire standby window as paid working hours.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 2: Mathematical Models for Fair Shift & On-Call Allocation -->
+        <section style="margin-top:36px;">
+            <h2 style="font-size:1.75rem; font-weight:800; color:#0F172A; margin-bottom:14px;">
+                2. Engineering a Fair On-Call Rotation: Modulo Cycling &amp; Fatigue Prevention
+            </h2>
+            <p style="font-size:1rem; color:#334155; line-height:1.75; margin-bottom:16px;">
+                The fastest way to lose experienced commercial floor technicians and area supervisors is ad-hoc emergency dispatching—calling whichever supervisor answers their phone at 11:30 PM on a Saturday. When high-performers are disproportionately penalized with weekend call-outs, turnover spikes. A mathematically sound rotation distributes overnight and weekend risk equally across qualified personnel using a deterministic modulo sequence.
+            </p>
+            <p style="font-size:1rem; color:#334155; line-height:1.75; margin-bottom:16px;">
+                For a pool of $N$ qualified lead technicians across week index $w \in \{0, 1, 2, \dots\}$, our generator assigns roles using offset modular arithmetic:
+            </p>
+            <ul style="font-size:1rem; color:#334155; line-height:1.8; margin-bottom:18px; padding-left:22px;">
+                <li><strong>Primary Responder Index:</strong> $P(w) = (w + s) \bmod N$, where $s$ is the current rotation shift offset.</li>
+                <li><strong>Secondary Backup Index:</strong> $B(w) = (w + s + 1) \bmod N$, ensuring the backup responder is never the same person as the primary responder and automatically steps into the primary role the following week.</li>
+                <li><strong>Weekend Fairness Ratio:</strong> Over an $N$-week cycle, every technician serves exactly $1/N$ of total weekend standby blocks (for a 4-person lead pool, exactly 1 weekend per 4-week period).</li>
+            </ul>
+
+            <h3 style="font-size:1.3rem; font-weight:800; color:#0F172A; margin:22px 0 10px;">
+                Comparing 3 Proven Commercial Janitorial Rotation Architectures
+            </h3>
+            <div class="lp-table-wrap">
+                <table class="rota-table">
+                    <thead>
+                        <tr>
+                            <th>Rotation Pattern</th>
+                            <th>Hand-Off Cadence</th>
+                            <th>Best Facility Fit</th>
+                            <th>Operational Pros &amp; Cons</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Weekly Block (7-Day Primary/Backup)</strong></td>
+                            <td>Every Monday at 8:00 AM</td>
+                            <td>Standard multi-tenant offices, retail plazas, schools (1–3 call-outs/week)</td>
+                            <td>Simplest hand-off; single point of accountability all week. Can cause fatigue if multiple weekend floods occur back-to-back.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weekday vs. Weekend Split (4-3 Cadence)</strong></td>
+                            <td>Mon–Thu Nights vs. Fri 5PM–Mon 7AM</td>
+                            <td>Medical clinics, ambulatory surgical centers, HOA clubhouses</td>
+                            <td>Protects weekday night supervisors from losing their weekends; separates short weeknight lock-up calls from heavy weekend extractions.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Primary-to-Secondary Escalation Ladder</strong></td>
+                            <td>7-Day cycle with 2-Tier SLA (15m / 30m)</td>
+                            <td>24/7 logistics hubs, airports, large property management portfolios</td>
+                            <td>Guarantees zero missed client calls; automatically pairs two technicians when heavy water extraction or biohazard containment requires a two-person crew.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 3: Worked Illustrative Payroll & Bidding Math -->
+        <section style="margin-top:36px;">
+            <h2 style="font-size:1.75rem; font-weight:800; color:#0F172A; margin-bottom:14px;">
+                3. Illustrative On-Call Payroll Math &amp; Emergency Call-Out Billing
+            </h2>
+            <p style="font-size:1rem; color:#334155; line-height:1.75; margin-bottom:16px;">
+                To protect gross margins—which you can benchmark in our <a href="../profit-margin-calculator/" style="color:#2563EB; font-weight:600;">Cleaning Company Profit Margin Calculator</a>—your emergency service billing rate must cover three distinct cost layers: the weekly standby stipend, the minimum call-out overtime wage guarantee, and inter-site travel time. Under <a href="https://www.dol.gov/agencies/whd/fact-sheets/22-flsa-hours-worked" target="_blank" rel="noopener" style="color:#2563EB; font-weight:600;">DOL Fact Sheet #22</a>, travel from job site to job site during a workday is compensable work time, and short rest breaks of 20 minutes or less must also be counted as paid hours.
+            </p>
+            <p style="font-size:1rem; color:#334155; line-height:1.75; margin-bottom:16px;">
+                Below is an <strong>illustrative operational model</strong> for a commercial cleaning contractor managing a 4-technician on-call pool where each lead technician already works a standard 40-hour daytime or evening schedule at a base wage of $22.00/hour:
+            </p>
+
+            <div class="lp-table-wrap">
+                <table class="rota-table">
+                    <thead>
+                        <tr>
+                            <th>Cost Component (Illustrative Model)</th>
+                            <th>Formula / Calculation</th>
+                            <th>Weekly Cost</th>
+                            <th>4-Week Monthly Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Primary Weekly Standby Stipend</strong></td>
+                            <td>Flat $100.00/week retention stipend for carrying the primary dispatch phone</td>
+                            <td>$100.00</td>
+                            <td>$400.00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Secondary Backup Stipend</strong></td>
+                            <td>50% backup stipend ($50.00/week) for escalation readiness</td>
+                            <td>$50.00</td>
+                            <td>$200.00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Active Call-Out Overtime Wages</strong></td>
+                            <td>2 dispatches/wk &times; 3.0 hr minimum guarantee &times; $33.00/hr (1.5x of $22.00 base)</td>
+                            <td>$198.00</td>
+                            <td>$792.00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Monthly On-Call Program Budget</strong></td>
+                            <td>Sum of Primary Stipend + Backup Stipend + Active Call-Out Overtime</td>
+                            <td><strong>$348.00 / wk</strong></td>
+                            <td><strong>$1,392.00 / mo</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:0.95rem; color:#475569; line-height:1.65; margin-top:12px;">
+                <strong>Contract Pricing Takeaway:</strong> In this illustrative scenario, each emergency call-out costs the contractor $174.00 in blended direct labor and standby overhead ($348.00 divided by 2 dispatches) before payroll taxes, workers&rsquo; compensation, chemical dilution costs (see our <a href="../dilution-calculator/" style="color:#2563EB; font-weight:600;">Chemical Dilution Ratio Calculator</a>), and vehicle mileage. Consequently, commercial janitorial contracts should specify an after-hours emergency call-out fee of $275.00 to $450.00 per incident (or $95.00 to $135.00 per billable emergency hour with a 3-hour minimum) to preserve a 40%+ gross margin.
+            </p>
+        </section>
+
+        <!-- Section 4: Step-by-Step Escalation SOP & Checklist -->
+        <section style="margin-top:36px;">
+            <h2 style="font-size:1.75rem; font-weight:800; color:#0F172A; margin-bottom:14px;">
+                4. Standard Operating Procedure (SOP): 3-Tier Emergency Dispatch Escalation
+            </h2>
+            <p style="font-size:1rem; color:#334155; line-height:1.75; margin-bottom:16px;">
+                Posting a schedule is only half of the operational equation. Every technician on your rotation roster must understand the exact escalation timeline when a facility manager triggers an urgent ticket:
+            </p>
+            <ol style="font-size:1rem; color:#334155; line-height:1.8; margin-bottom:20px; padding-left:22px;">
+                <li><strong>T+0 Minutes (Incident Logged):</strong> Property manager calls the 24/7 dispatch hotline or submits an urgent ticket. Automated SMS and voice ring alerts notify the assigned <strong>Primary On-Call Responder</strong>.</li>
+                <li><strong>T+15 Minutes (Primary Acknowledgment SLA):</strong> Primary responder must reply with confirmation and estimated time of arrival (ETA). If the incident involves hazardous chemical spills, the technician verifies compatibility using the <a href="../chemical-safety-checker/" style="color:#2563EB; font-weight:600;">Chemical Safety &amp; Incompatibility Checker</a> before loading the van.</li>
+                <li><strong>T+20 Minutes (Secondary Escalation Trigger):</strong> If the Primary Responder fails to acknowledge within 15 minutes—or if the flood covers more than 1,500 square feet requiring two extractors—dispatch automatically pages the <strong>Secondary Backup Technician</strong>.</li>
+                <li><strong>T+60 to T+90 Minutes (On-Site Containment &amp; Photo Log):</strong> Responder arrives on-site, clocks into the mobile timekeeping app to record exact compensable FLSA work hours, captures timestamped before-and-after remediation photos, and obtains the security guard or facility manager sign-off.</li>
+                <li><strong>Next Morning Post-Mortem (8-Hour Rest Rule):</strong> If an overnight call-out exceeds 3 hours of active work between midnight and 5:00 AM, the operations manager adjusts the technician&rsquo;s morning start time so they receive a full rest window before their next regular shift.</li>
+            </ol>
+        </section>
+        <!-- Section 5: Who Should Skip & Verification Notes -->
+        <section style="margin-top:36px;">
+            <h2 style="font-size:1.75rem; font-weight:800; color:#0F172A; margin-bottom:14px;">
+                5. Who Should Skip a 24/7 On-Call Program (And Honest Limits)
+            </h2>
+            <p style="font-size:1rem; color:#334155; line-height:1.75; margin-bottom:16px;">
+                Not every cleaning business benefits from offering 24/7 emergency standby coverage. You should think twice or decline 24/7 SLA clauses if:
+            </p>
+            <ul style="font-size:1rem; color:#334155; line-height:1.8; margin-bottom:18px; padding-left:22px;">
+                <li><strong>Your crew has fewer than 3 qualified lead technicians:</strong> Rotating 24/7 weekend standby between only two employees means each person sacrifices 26 weekends per year, almost guaranteeing resignation within 90 days.</li>
+                <li><strong>Residential-only maid services:</strong> Standard residential clients rarely require midnight emergency dispatch. Instead of an overnight rotation, use our <a href="../house-cleaning-estimate/" style="color:#2563EB; font-weight:600;">House Cleaning Estimate Calculator</a> to charge a daytime rush-booking surcharge for last-minute move-out or post-party cleans.</li>
+                <li><strong>State &amp; Municipal Predictive Scheduling Laws:</strong> While federal FLSA guidelines are governed by U.S. DOL Fact Sheet #22, state labor codes (such as California reporting-time pay rules or municipal Fair Workweek ordinances in Seattle, New York City, and Chicago) impose stricter standby and shift-change penalties that we cannot verify for every local jurisdiction. Always confirm local municipal rules with qualified labor counsel before finalizing your employee handbook.</li>
+            </ul>
+        </section>
+
+        <!-- Section 6: Frequently Asked Questions -->
+        <section style="margin-top:40px;">
+            <h2 style="font-size:1.75rem; font-weight:800; color:#0F172A; margin-bottom:16px;">
+                Frequently Asked Questions (FAQ)
+            </h2>
+
+            <details style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:16px 20px; margin-bottom:12px;" open>
+                <summary style="font-weight:700; color:#0F172A; cursor:pointer;">Under the FLSA, do commercial cleaning companies have to pay technicians for all hours spent on call?</summary>
+                <p style="margin:12px 0 0; color:#475569; font-size:0.95rem; line-height:1.65;">
+                    According to U.S. Department of Labor Wage and Hour Division Fact Sheet #22, whether on-call time is compensable hours worked depends on whether the employee is &ldquo;engaged to wait&rdquo; or &ldquo;waiting to be engaged.&rdquo; An employee required to remain on call on the employer&rsquo;s premises is &ldquo;engaged to wait&rdquo; and must be paid for all on-call hours. Conversely, an employee required to remain on call at home or leave a phone number where they can be reached is generally &ldquo;waiting to be engaged&rdquo; and is not working while idle, unless additional geographical or response-time constraints prevent them from using the time effectively for personal purposes. All actual emergency call-out work hours performed are always compensable.
+                </p>
+            </details>
+
+            <details style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:16px 20px; margin-bottom:12px;">
+                <summary style="font-weight:700; color:#0F172A; cursor:pointer;">How do you structure a fair on-call rotation so the same lead cleaner does not work every weekend?</summary>
+                <p style="margin:12px 0 0; color:#475569; font-size:0.95rem; line-height:1.65;">
+                    An equitable commercial cleaning on-call rotation separates weekday overnight standby (Monday through Thursday nights) from high-disruption weekend blocks (Friday 5:00 PM through Monday 6:00 AM) and rotates technicians sequentially across a 4-week or N-week cycle. Using a round-robin modulo offset ensures that each lead technician carries exactly one primary weekend standby block per month and transitions to secondary backup the following week.
+                </p>
+            </details>
+
+            <details style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:16px 20px; margin-bottom:12px;">
+                <summary style="font-weight:700; color:#0F172A; cursor:pointer;">Does travel time to an emergency flood or biohazard call-out count as paid work time?</summary>
+                <p style="margin:12px 0 0; color:#475569; font-size:0.95rem; line-height:1.65;">
+                    Under U.S. Department of Labor Fact Sheet #22, time spent by an employee traveling from job site to job site during the workday is compensable work time. When an on-call technician is dispatched from home after regular hours to an emergency client facility, contractors typically institute a minimum call-out guarantee (such as 2 to 4 hours of pay at 1.5x overtime rates) and reimburse round-trip mileage to cover travel burden and ensure rapid response compliance.
+                </p>
+            </details>
+
+            <details style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:16px 20px; margin-bottom:12px;">
+                <summary style="font-weight:700; color:#0F172A; cursor:pointer;">What is the difference between a primary on-call technician and a secondary backup?</summary>
+                <p style="margin:12px 0 0; color:#475569; font-size:0.95rem; line-height:1.65;">
+                    In commercial janitorial service level agreements (SLAs), the primary on-call technician is the first responder required to acknowledge dispatch alerts within 15 to 30 minutes and deploy to the site for water extraction, restroom overflows, or urgent sanitization. The secondary backup technician acts as an escalation safety net if the primary responder is already deployed at another facility, experiences vehicle failure, or requires a two-person crew for heavy extraction equipment.
+                </p>
+            </details>
+        </section>
+
+        <!-- Final Bottom Affiliate CTA -->
+        <section style="background:#0F172A; color:#FFFFFF; border-radius:14px; padding:28px; margin:40px 0; text-align:center;" class="no-print">
+            <h3 style="font-size:1.45rem; font-weight:800; margin:0 0 10px;">Stock Up on Commercial Emergency Extraction &amp; Janitorial Supplies</h3>
+            <p style="font-size:0.975rem; color:#94A3B8; max-width:640px; margin:0 auto 20px; line-height:1.6;">
+                Ensure your emergency dispatch vans are stocked with industrial wet/dry vacuums, hospital-grade disinfectants, absorbent pads, and heavy-duty trash liners from trusted commercial suppliers.
+            </p>
+            <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+                <a href="https://bbux.me/v9xB3q0hg" rel="sponsored noopener" target="_blank" class="affiliate-button" style="background:#2563EB; color:#ffffff !important; padding:14px 26px; border-radius:8px; font-weight:700; text-decoration:none;">
+                    🛒 The Cleaning Warehouse Commercial Catalog &rarr;
+                </a>
+                <a href="https://bbux.me/D9xCZh2dE" rel="sponsored noopener" target="_blank" class="affiliate-button" style="background:#334155; color:#ffffff !important; padding:14px 26px; border-radius:8px; font-weight:700; text-decoration:none;">
+                    📦 Warehouse 115 Bulk Janitorial Supplies &rarr;
+                </a>
+            </div>
+        </section>
+    </article>
+</main>
+
+<footer class="footer no-print" style="background:#0B132B; color:#94A3B8; padding:36px 0; border-top:1px solid #1E293B; margin-top:50px;">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-size:0.875rem;">
+        <div>&copy; 2026 PureWear Space &mdash; Operations &amp; Commercial Cleaning Research Lab. All rights reserved.</div>
+        <div style="display:flex; gap:20px;">
+            <a href="../" style="color:#94A3B8; text-decoration:none;">All Tools</a>
+            <a href="../../privacy.html" style="color:#94A3B8; text-decoration:none;">Privacy Policy</a>
+            <a href="../../terms.html" style="color:#94A3B8; text-decoration:none;">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    window.rotationOffset = 0;
+    window.onCallTechs = [
+        { name: 'Marcus Vance (Senior Lead)', phone: 'Ext. 101' },
+        { name: 'Elena Rostova (Floor Specialist)', phone: 'Ext. 102' },
+        { name: 'David Kim (Night Supervisor)', phone: 'Ext. 103' },
+        { name: 'Sarah Jenkins (Biohazard Lead)', phone: 'Ext. 104' }
+    ];
+
+    window.renderTechPool = function() {
+        var container = document.getElementById('techPoolContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        window.onCallTechs.forEach(function(tech, idx) {
+            var card = document.createElement('div');
+            card.style.background = '#FFFFFF';
+            card.style.border = '1px solid #CBD5E1';
+            card.style.borderRadius = '6px';
+            card.style.padding = '8px';
+            card.innerHTML =
+                '<input type="text" value="' + tech.name + '" style="width:100%; font-weight:700; font-size:0.82rem; border:1px solid #E2E8F0; border-radius:4px; padding:4px 6px; margin-bottom:4px;" oninput="updateTechName(' + idx + ', this.value)">' +
+                '<input type="text" value="' + tech.phone + '" style="width:100%; font-size:0.76rem; color:#64748B; border:1px solid #E2E8F0; border-radius:4px; padding:3px 6px;" oninput="updateTechPhone(' + idx + ', this.value)">';
+            container.appendChild(card);
+        });
+    };
+
+    window.updateTechName = function(idx, val) {
+        if (window.onCallTechs[idx]) {
+            window.onCallTechs[idx].name = val;
+            window.recalcOnCall();
+        }
+    };
+
+    window.updateTechPhone = function(idx, val) {
+        if (window.onCallTechs[idx]) {
+            window.onCallTechs[idx].phone = val;
+            window.recalcOnCall();
+        }
+    };
+
+    window.rotateCrewOrder = function() {
+        window.rotationOffset = (window.rotationOffset + 1) % window.onCallTechs.length;
+        window.recalcOnCall();
+    };
+
+    window.addOnCallTech = function() {
+        var nextNum = window.onCallTechs.length + 1;
+        window.onCallTechs.push({
+            name: 'Lead Technician ' + nextNum,
+            phone: 'Ext. 10' + nextNum
+        });
+        window.renderTechPool();
+        window.recalcOnCall();
+    };
+
+    window.recalcOnCall = function() {
+        var baseWage = parseFloat(document.getElementById('inputBaseWage').value) || 22.00;
+        var stipend = parseFloat(document.getElementById('inputStandbyStipend').value) || 0;
+        var minGuarantee = parseFloat(document.getElementById('inputMinGuarantee').value) || 3.0;
+        var dispatches = parseFloat(document.getElementById('inputDispatchesPerWeek').value) || 0;
+        var flsaMode = document.getElementById('inputFlsaStatus').value;
+
+        var otRate = baseWage * 1.5;
+        var backupStipend = stipend * 0.5;
+        var activeDispatchPay = dispatches * minGuarantee * otRate;
+
+        /* If Engaged to Wait (on-site mandatory), add 16 weekend standby hours at base rate */
+        var engagedSiteHoursPay = (flsaMode === 'engaged') ? (16 * baseWage) : 0;
+        var weeklyTotal = stipend + backupStipend + activeDispatchPay + engagedSiteHoursPay;
+        var monthlyTotal = weeklyTotal * 4;
+        var costPerDispatch = dispatches > 0 ? (weeklyTotal / dispatches) : weeklyTotal;
+
+        var tbody = document.getElementById('onCallTableBody');
+        if (tbody) {
+            tbody.innerHTML = '';
+            var n = window.onCallTechs.length;
+            for (var w = 0; w < 4; w++) {
+                var pIdx = (w + window.rotationOffset) % n;
+                var bIdx = (w + window.rotationOffset + 1) % n;
+                var primary = window.onCallTechs[pIdx];
+                var backup = window.onCallTechs[bIdx];
+
+                var tr = document.createElement('tr');
+                tr.innerHTML =
+                    '<td><strong>Week ' + (w + 1) + '</strong></td>' +
+                    '<td><span style="color:#1E40AF; font-weight:700;">' + primary.name + '</span> <small style="color:#64748B;">(' + primary.phone + ')</small></td>' +
+                    '<td><span style="color:#334155; font-weight:600;">' + backup.name + '</span> <small style="color:#64748B;">(' + backup.phone + ')</small></td>' +
+                    '<td><span style="background:#EFF6FF; color:#1D4ED8; padding:3px 8px; border-radius:4px; font-weight:700; font-size:0.78rem;">' + primary.name + ' (Primary)</span></td>' +
+                    '<td style="font-weight:800; color:#0F172A;">$' + weeklyTotal.toFixed(2) + '</td>';
+                tbody.appendChild(tr);
+            }
+        }
+
+        var elMonthly = document.getElementById('dispMonthlyOnCallCost');
+        var elOt = document.getElementById('dispOvertimeRate');
+        var elPerDisp = document.getElementById('dispCostPerDispatch');
+        var elFairness = document.getElementById('dispWeekendFairness');
+
+        if (elMonthly) elMonthly.innerText = '$' + monthlyTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if (elOt) elOt.innerText = '$' + otRate.toFixed(2) + '/hr';
+        if (elPerDisp) elPerDisp.innerText = '$' + costPerDispatch.toFixed(2);
+        if (elFairness) {
+            var wkPerTech = (4 / window.onCallTechs.length).toFixed(1);
+            elFairness.innerText = wkPerTech + ' wk / mo';
+        }
+    };
+
+    window.renderTechPool();
+    window.recalcOnCall();
+});
+</script>
+</body>
+</html>
