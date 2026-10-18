@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Hypochlorous Acid (HOCl) &amp; Bleach Dilution Ratio Calculator for Disinfection (2026) | PureWear Space</title>
+    <meta name="description" content="Calculate exact Hypochlorous Acid (HOCl) and Sodium Hypochlorite (bleach) dilution ratios in gallons, ounces, liters, and milliliters using C1V1 = C2V2 and CDC PPM disinfection standards.">
+    <link rel="canonical" href="https://tool.purewearspace.com/tools/hocl-bleach-dilution-calculator/" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Hypochlorous Acid (HOCl) &amp; Bleach Dilution Ratio Calculator for Disinfection (2026) | PureWear Space">
+    <meta property="og:description" content="Interactive C1V1 = C2V2 parts-per-million (PPM) dilution calculator for Hypochlorous Acid (HOCl) and Sodium Hypochlorite bleach across gallons, fluid ounces, liters, and milliliters.">
+    <meta property="og:url" content="https://tool.purewearspace.com/tools/hocl-bleach-dilution-calculator/">
+    <meta property="og:type" content="article">
+
+    <!-- Schema.org SoftwareApplication, Article & FAQPage (Zero Fake Ratings) -->
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Hypochlorous Acid (HOCl) & Bleach PPM Dilution Ratio Calculator",
+      "url": "https://tool.purewearspace.com/tools/hocl-bleach-dilution-calculator/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Interactive C1V1 = C2V2 dilution calculator for converting percent sodium hypochlorite or stock hypochlorous acid (HOCl) PPM into exact concentrate and water volumes across gallons, ounces, liters, and milliliters."
+    },
+    {
+      "@type": "Article",
+      "headline": "Hypochlorous Acid (HOCl) & Bleach Dilution Ratio Calculator for Disinfection (2026)",
+      "url": "https://tool.purewearspace.com/tools/hocl-bleach-dilution-calculator/",
+      "datePublished": "2026-10-18",
+      "dateModified": "2026-10-18",
+      "author": {
+        "@type": "Organization",
+        "name": "PureWear Commercial Cleaning Operations Research Desk"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PureWear Space"
+      },
+      "description": "A comprehensive stoichiometry and chemical disinfection reference guide for calculating Hypochlorous Acid (HOCl) and Sodium Hypochlorite (NaOCl) dilutions using CDC Healthcare Infection Control guidelines."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you convert sodium hypochlorite bleach percentage into parts per million (PPM)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To convert an aqueous sodium hypochlorite percentage into parts per million (ppm) of available chlorine, multiply the label percentage by 10,000 (since 1 percent equals 10,000 ppm). According to the CDC Guideline for Disinfection and Sterilization in Healthcare Facilities, standard household bleach containing 5.25 percent to 6.15 percent sodium hypochlorite contains approximately 52,500 to 61,500 ppm of available chlorine. A concentrated 8.25 percent commercial jug contains approximately 82,500 ppm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is undissociated hypochlorous acid (HOCl) more effective as a germicide than alkaline bleach?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "According to the CDC Chemical Disinfectants guideline, the microbicidal activity of chlorine is attributed largely to undissociated hypochlorous acid (HOCl). The dissociation of HOCl into the less microbicidal hypochlorite ion (OCl-) depends directly on solution pH: as pH increases into the alkaline range (above pH 8), HOCl converts into OCl- and disinfecting efficacy decreases. Electrolyzed saline or superoxidized water systems generate HOCl at a mildly acidic pH of 5.0 to 6.5 with an oxidation-reduction potential (ORP) above 950 mV, keeping free chlorine predominantly in the active HOCl state."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the formula for diluting a stock HOCl or bleach solution to a target PPM in gallons?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the dilution conservation equation C1 multiplied by V1 equals C2 multiplied by V2, solved for concentrate volume as V1 = (C2 * V2) / C1. First ensure C1 (starting stock concentration) and C2 (desired target concentration) are both expressed in ppm, and express V2 (final batch volume) in fluid ounces (1 US gallon equals 128 fluid ounces). Subtract V1 from V2 to find the exact volume of water required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast do diluted hypochlorite solutions lose strength when stored in plastic bottles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "According to the CDC Disinfection and Sterilization Guideline, hypochlorite solutions prepared in tap water at a pH above 8 and stored at room temperature (23 degrees Celsius) in closed, opaque plastic containers can lose 40 percent to 50 percent of their free available chlorine level over 1 month. Consequently, the CDC notes that if a facility needs a solution containing 500 ppm of available chlorine at day 30, it must prepare a 1,000 ppm solution at day 0, or mix fresh daily batches."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
+<style>
+@media print {
+  .navbar, .footer, .omni-toc-bar, .omni-breadcrumb, .omni-feedback-box, .omni-mobile-bottom-bar, .shopify-promo-card, .top-notice-bar, .affiliate-button, .no-print { display: none !important; }
+  .omni-layout-grid { display: block !important; max-width: 100% !important; padding: 0 !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .print-only-header { display: block !important; }
+}
+.print-only-header { display: none; }
+
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+.omni-layout-grid, .omni-article {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+.calc-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+.calc-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E2E8F0;
+}
+.calc-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+}
+.calc-sub {
+  font-size: 0.9rem;
+  color: #64748B;
+  margin-top: 4px;
+}
+.preset-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.preset-pill {
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid #CBD5E1;
+  background: #F8FAFC;
+  color: #1E293B;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.preset-pill:hover {
+  background: #EFF6FF;
+  border-color: #2563EB;
+  color: #1D4ED8;
+}
+.input-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.field-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 14px;
+}
+.field-box label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #475569;
+  margin-bottom: 6px;
+}
+.field-box input, .field-box select {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid #CBD5E1;
+  border-radius: 7px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0F172A;
+  background: #ffffff;
+}
+.kpi-summary-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+  margin-bottom: 20px;
+}
+.kpi-tile {
+  background: #0F172A;
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+}
+.kpi-tile.accent {
+  background: #0369A1;
+}
+.kpi-tile-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94A3B8;
+  margin-bottom: 4px;
+}
+.kpi-tile.accent .kpi-tile-label {
+  color: #BAE6FD;
+}
+.kpi-tile-val {
+  font-size: 1.45rem;
+  font-weight: 800;
+}
+.kpi-tile-sub {
+  font-size: 0.78rem;
+  color: #CBD5E1;
+  margin-top: 4px;
+}
+.table-scroll-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  margin: 18px 0;
+}
+.rotation-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+  font-size: 0.88rem;
+}
+.rotation-table th {
+  background: #F1F5F9;
+  color: #1E293B;
+  text-align: left;
+  padding: 12px 14px;
+  font-weight: 700;
+  border-bottom: 2px solid #CBD5E1;
+}
+.rotation-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid #E2E8F0;
+  color: #334155;
+  vertical-align: middle;
+}
+.rotation-table tr:nth-child(even) td {
+  background: #F8FAFC;
+}
+.cta-dual-box {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 28px 0;
+}
+.cta-dual-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.batch-label-box {
+  background: #FFFBEB;
+  border: 2px dashed #D97706;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 18px;
+}
+</style>
+</head>
+<body>
+
+    <div class="top-notice-bar" style="background:#0F172A; color:#E2E8F0; font-size:0.78rem; padding:8px 16px; text-align:center;">
+        <strong>Affiliate Disclosure:</strong> PureWear Space provides independent chemical stoichiometry calculators and operational guides for commercial cleaning teams. When you purchase bulk janitorial supplies through our retail partner links, we may earn an affiliate commission at no extra cost to you.
+    </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../../index.html" class="brand">PureWear<span>Space</span></a>
+            <ul class="nav-links">
+                <li><a href="../../index.html">All Calculators</a></li>
+                <li><a href="../dilution-calculator/index.html">1:X Ratio Calculator</a></li>
+                <li><a href="../chemical-safety-checker/index.html">Chemical Safety</a></li>
+                <li><a href="../on-call-rotation-generator/index.html">On-Call Roster</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container" style="padding-top: 24px; padding-bottom: 60px;">
+        <div class="omni-breadcrumb" style="margin-bottom: 16px; font-size: 0.85rem; color: #64748B;">
+            <a href="../../index.html" style="color: #2563EB; text-decoration: none;">Home</a> &rsaquo;
+            <a href="../../index.html#safety" style="color: #2563EB; text-decoration: none;">Chemical Safety &amp; Mixing</a> &rsaquo;
+            <span>Hypochlorous Acid (HOCl) &amp; Bleach PPM Dilution Calculator</span>
+        </div>
+
+        <header style="margin-bottom: 26px;">
+            <span style="display:inline-block; background:#E0F2FE; color:#0369A1; font-weight:700; font-size:0.75rem; padding:4px 10px; border-radius:99px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;">2026 Disinfection Stoichiometry &amp; CDC PPM Reference</span>
+            <h1 style="font-size: clamp(1.65rem, 3.2vw, 2.35rem); font-weight: 900; color: #0F172A; line-height: 1.2; margin: 0 0 12px 0;">Hypochlorous Acid (HOCl) &amp; Bleach Dilution Ratio Calculator for Disinfection (2026)</h1>
+            <p style="font-size: 1.05rem; color: #475569; max-width: 840px; line-height: 1.6; margin: 0;">
+                Convert starting <strong>Sodium Hypochlorite (\(\text{NaOCl}\%\))</strong> jugs or on-site <strong>Hypochlorous Acid (\(\text{HOCl}\) PPM)</strong> generator stock into exact parts-per-million disinfection batches across gallons, fluid ounces, liters, and milliliters using the conservation formula \(C_1 \times V_1 = C_2 \times V_2\).
+            </p>
+        </header>
+
+        <!-- INTERACTIVE CALCULATOR CARD -->
+        <section class="calc-card" id="hocl-calculator-widget" aria-label="Hypochlorous Acid and Bleach PPM Dilution Calculator">
+            <div class="calc-header-row">
+                <div>
+                    <h2 class="calc-title">Interactive HOCl &amp; Sodium Hypochlorite PPM Dilution Engine</h2>
+                    <p class="calc-sub">Select stock chemistry (% bleach or stock PPM), target disinfection PPM, and container volume to compute exact concentrate and water quantities.</p>
+                </div>
+                <div class="no-print" style="display:flex; gap:8px;">
+                    <button type="button" id="btnApplyDay30Decay" onclick="window.applyDay30Compensation()" style="padding:8px 14px; border-radius:8px; font-weight:700; font-size:0.84rem; cursor:pointer; border:1px solid #0284C7; background:#E0F2FE; color:#0369A1;">+ Apply CDC 30-Day Decay Buffer (2x)</button>
+                    <button type="button" onclick="window.print()" style="padding:8px 14px; border-radius:8px; font-weight:700; font-size:0.84rem; cursor:pointer; border:none; background:#0284C7; color:#ffffff;">Print OSHA Batch Label</button>
+                </div>
+            </div>
+
+            <div class="no-print" style="margin-bottom: 8px; font-size: 0.8rem; font-weight: 700; color: #475569; text-transform: uppercase;">Quick CDC Reference Presets (Click to Load):</div>
+            <div class="preset-pill-row no-print">
+                <button type="button" class="preset-pill" onclick="window.loadPreset('hocl_200')">HOCl 500 ppm &rarr; 200 ppm Spray Bottle (32 oz)</button>
+                <button type="button" class="preset-pill" onclick="window.loadPreset('hocl_bucket')">HOCl 1,000 ppm &rarr; 200 ppm Mop Bucket (1 Gal)</button>
+                <button type="button" class="preset-pill" onclick="window.loadPreset('bleach_500')">5.25% Bleach &rarr; 500 ppm Manikin / Surface (1 Gal)</button>
+                <button type="button" class="preset-pill" onclick="window.loadPreset('bleach_1000')">6.0% Bleach &rarr; 1,000 ppm TB / Healthcare (1 Gal)</button>
+                <button type="button" class="preset-pill" onclick="window.loadPreset('bleach_5000')">8.25% Bleach &rarr; 5,000 ppm C. diff / Spill (1 Gal)</button>
+            </div>
+
+            <div class="input-grid-3">
+                <div class="field-box">
+                    <label for="inputChemistryMode">1. Starting Stock Chemistry</label>
+                    <select id="inputChemistryMode" onchange="window.handleModeChange()">
+                        <option value="bleach_pct" selected>Sodium Hypochlorite Bleach (% NaOCl)</option>
+                        <option value="hocl_ppm">Hypochlorous Acid (HOCl) Stock (PPM)</option>
+                    </select>
+                </div>
+                <div class="field-box">
+                    <label for="inputStockStrength" id="labelStockStrength">2. Stock Concentration (% NaOCl)</label>
+                    <input type="number" id="inputStockStrength" value="5.25" min="0.01" max="50" step="0.05" oninput="window.recalcDilution()">
+                </div>
+                <div class="field-box">
+                    <label for="inputTargetPpm">3. Target Disinfection Strength (PPM)</label>
+                    <input type="number" id="inputTargetPpm" value="500" min="1" max="20000" step="10" oninput="window.recalcDilution()">
+                </div>
+                <div class="field-box">
+                    <label for="inputFinalVolume">4. Final Container Volume (\(V_2\))</label>
+                    <input type="number" id="inputFinalVolume" value="1" min="0.1" max="1000" step="0.5" oninput="window.recalcDilution()">
+                </div>
+                <div class="field-box">
+                    <label for="inputVolumeUnit">5. Container Volume Unit</label>
+                    <select id="inputVolumeUnit" onchange="window.recalcDilution()">
+                        <option value="gal" selected>US Gallons (1 gal = 128 fl oz)</option>
+                        <option value="floz">US Fluid Ounces (fl oz)</option>
+                        <option value="liter">Liters (1 L = 1,000 mL)</option>
+                        <option value="ml">Milliliters (mL)</option>
+                    </select>
+                </div>
+                <div class="field-box">
+                    <label for="inputJugCost">6. Concentrate Cost per Gallon ($)</label>
+                    <input type="number" id="inputJugCost" value="6.50" min="0.5" max="200" step="0.5" oninput="window.recalcDilution()">
+                </div>
+            </div>
+
+            <div class="no-print" style="margin-bottom:14px;">
+                <button type="button" id="btnRecalcDilution" onclick="window.recalcDilution()" style="padding:10px 18px; border-radius:8px; font-weight:800; font-size:0.9rem; cursor:pointer; border:none; background:#0F172A; color:#ffffff;">Calculate Exact Mix Volumes</button>
+            </div>
+
+            <!-- KPI OUTPUT BAR -->
+            <div class="kpi-summary-bar" id="dilutionKpiSummary">
+                <div class="kpi-tile accent">
+                    <div class="kpi-tile-label">Pour Stock Concentrate (\(V_1\))</div>
+                    <div class="kpi-tile-val" id="dispConcentrateVolume">1.22 fl oz</div>
+                    <div class="kpi-tile-sub" id="dispConcentrateMetric">36.05 mL (~2.4 Tbsp)</div>
+                </div>
+                <div class="kpi-tile">
+                    <div class="kpi-tile-label">Add Clean Water (\(V_2 - V_1\))</div>
+                    <div class="kpi-tile-val" id="dispWaterVolume">126.78 fl oz</div>
+                    <div class="kpi-tile-sub" id="dispWaterMetric">3,749.36 mL to reach 1 gal</div>
+                </div>
+                <div class="kpi-tile">
+                    <div class="kpi-tile-label">Equivalent Dilution Ratio</div>
+                    <div class="kpi-tile-val" id="dispEquivalentRatio">1 : 104</div>
+                    <div class="kpi-tile-sub" id="dispStockPpmSub">Stock C1 = 52,500 ppm</div>
+                </div>
+                <div class="kpi-tile">
+                    <div class="kpi-tile-label">Mixed Batch Chemical Cost</div>
+                    <div class="kpi-tile-val" id="dispBatchCost">$0.06</div>
+                    <div class="kpi-tile-sub" id="dispDay30DecaySub">Est. Day-30 strength: ~250–300 ppm</div>
+                </div>
+            </div>
+
+            <!-- PRINTABLE OSHA SECONDARY CONTAINER LABEL -->
+            <div class="batch-label-box" id="oshaSecondaryLabelCard">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+                    <strong style="color:#92400E; font-size:0.88rem; text-transform:uppercase; letter-spacing:0.04em;">OSHA 29 CFR 1910.1200(f)(6) Secondary Container Workplace Label Summary</strong>
+                    <span id="dispLabelChemistryTag" style="background:#FEF3C7; color:#92400E; font-weight:700; font-size:0.78rem; padding:3px 8px; border-radius:4px; border:1px solid #F59E0B;">Diluted Sodium Hypochlorite Solution (500 ppm)</span>
+                </div>
+                <p id="dispOshaLabelText" style="margin:0; font-size:0.86rem; color:#78350F; line-height:1.55;">
+                    <strong>Mix Instructions:</strong> Measure <strong>1.22 fl oz (36.05 mL)</strong> of 5.25% stock solution and combine with <strong>126.78 fl oz (3,749.36 mL)</strong> of cool water to yield <strong>128.00 fl oz (3,785.41 mL)</strong> at <strong>500 ppm</strong> free available chlorine. <strong>Hazard Warning:</strong> Eye and skin irritant; never mix with ammonia, quaternary ammonium, or acidic restroom cleaners (releases lethal chlorine gas).
+                </p>
+            </div>
+        </section>
+
+        <!-- DUAL AFFILIATE CTA BOX -->
+        <div class="cta-dual-box no-print">
+            <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#38BDF8; margin-bottom:6px;">Commercial Janitorial Chemical &amp; Dispenser Supply Partners</div>
+            <h3 style="margin:0 0 8px 0; font-size:1.25rem; font-weight:800; color:#ffffff;">Stock Up on Graduated Dilution Bottles, Chlorine Test Strips &amp; Bulk Disinfectants</h3>
+            <p style="margin:0; font-size:0.92rem; color:#CBD5E1; line-height:1.55;">
+                Accurate parts-per-million disinfection requires chemical-resistant HDPE trigger sprayers, calibrated metering pumps, and commercial bulk disinfectants. Compare wholesale pricing from our verified supply partners:
+            </p>
+            <div class="cta-dual-row">
+                <a href="https://bbux.me/v9xB3q0hg" target="_blank" rel="sponsored noopener" class="affiliate-button" style="display:inline-block; background-color:#2563EB; color:#ffffff !important; font-weight:800; font-size:0.9rem; padding:12px 20px; border-radius:8px; text-decoration:none;">Shop Bulk Janitorial Supplies at The Cleaning Warehouse &rarr;</a>
+                <a href="https://bbux.me/D9xCZh2dE" target="_blank" rel="sponsored noopener" class="affiliate-button" style="display:inline-block; background-color:#FF6B35; color:#ffffff !important; font-weight:800; font-size:0.9rem; padding:12px 20px; border-radius:8px; text-decoration:none;">Compare Wholesale Facility Cases at Warehouse 115 &rarr;</a>
+            </div>
+        </div>
+
+        <!-- DEEP-DIVE OPERATIONAL GUIDE -->
+        <article class="omni-article" style="background:#ffffff; border:1px solid #E2E8F0; border-radius:14px; padding:28px; line-height:1.72; color:#1E293B;">
+
+            <h2 style="font-size:1.45rem; font-weight:800; color:#0F172A; margin-top:0;">1. The Exact Dilution Ratio Formula: Converting Percent (%) and PPM via \(C_1V_1 = C_2V_2\)</h2>
+            <p>
+                Whether your janitorial crew is stepping down an on-site <strong>Hypochlorous Acid (\(\text{HOCl}\))</strong> electrolyzed water generator from 500 ppm to 200 ppm, or diluting a commercial jug of <strong>Sodium Hypochlorite (\(\text{NaOCl}\))</strong> bleach into 1-gallon mop buckets and 32-fl-oz trigger spray bottles, every parts-per-million batch follows the fundamental mass-conservation equation of chemical stoichiometry:
+            </p>
+            <div style="background:#F8FAFC; border-left:4px solid #0284C7; padding:16px 20px; margin:18px 0; border-radius:0 8px 8px 0; font-family:monospace; font-size:0.98rem; color:#0F172A;">
+                <strong>\(C_1 \times V_1 = C_2 \times V_2\)</strong><br>
+                Solved for Stock Concentrate Volume (\(V_1\)): <strong>\(V_1 = \frac{C_2 \times V_2}{C_1}\)</strong><br>
+                Solved for Diluent Water Volume (\(V_{\text{water}}\)): <strong>\(V_{\text{water}} = V_2 - V_1\)</strong>
+            </div>
+            <p>
+                In this equation, \(C_1\) represents the starting concentration of your stock liquid, \(V_1\) is the exact volume of stock concentrate you must measure and pour, \(C_2\) is your target disinfection concentration, and \(V_2\) is the total finished volume of your spray bottle, mop bucket, or electrostatic sprayer tank. For the algebra to hold without unit errors, \(C_1\) and \(C_2\) must share the exact same concentration unit (parts per million, \(\text{ppm}\)), and \(V_1\) and \(V_2\) must share the same volume unit (such as US fluid ounces or milliliters).
+            </p>
+            <p>
+                When starting from a commercial or household bleach bottle labeled by weight/volume percentage (\(\%\text{ NaOCl}\)), you first convert the percentage into parts per million of available chlorine using the standard aqueous conversion factor where <strong>\(1\% = 10,000\text{ ppm}\)</strong>. According to the <a href="https://www.cdc.gov/infection-control/hcp/disinfection-sterilization/chemical-disinfectants.html" target="_blank" rel="noopener" style="color:#2563EB;">CDC Guideline for Disinfection and Sterilization in Healthcare Facilities (Chemical Disinfectants)</a>, standard household bleach containing <strong>5.25% to 6.15% sodium hypochlorite</strong> provides approximately <strong>52,500 to 61,500 ppm</strong> of available chlorine. Higher-strength concentrated commercial jugs labeled at <strong>7.5%</strong>, <strong>8.25%</strong>, or <strong>12.5%</strong> correspond to <strong>75,000 ppm</strong>, <strong>82,500 ppm</strong>, and <strong>125,000 ppm</strong> respectively. If you need a general 1:X part-to-part calculator for non-chlorine surfactants or neutral floor cleaners, use our companion <a href="../dilution-calculator/index.html" style="color:#2563EB; font-weight:700;">1:X Cleaning Chemical Dilution Ratio Calculator</a>.
+            </p>
+
+            <h2 style="font-size:1.45rem; font-weight:800; color:#0F172A; margin-top:32px;">2. Hypochlorous Acid (\(\text{HOCl}\)) vs. Sodium Hypochlorite (\(\text{NaOCl}\)): The pH Dissociation Curve</h2>
+            <p>
+                A frequent point of confusion among facility managers and environmental services (EVS) technicians is why a <strong>200 ppm Hypochlorous Acid (\(\text{HOCl}\))</strong> solution generated from electrolyzed saline exhibits rapid microbicidal action without the harsh fumes, fabric bleaching, or metal corrosion associated with a 500 to 1,000 ppm alkaline bleach mix. The answer lies in aqueous chlorine equilibrium chemistry documented by the Centers for Disease Control and Prevention (CDC).
+            </p>
+            <p>
+                As the CDC Chemical Disinfectants guideline explains, <em>"The microbicidal activity of chlorine is attributed largely to undissociated hypochlorous acid (HOCl). The dissociation of HOCl to the less microbicidal form (hypochlorite ion OCl&minus;) depends on pH. The disinfecting efficacy of chlorine decreases with an increase in pH that parallels the conversion of undissociated HOCl to OCl&minus;."</em>
+            </p>
+            <div class="table-scroll-wrap">
+                <table class="rotation-table">
+                    <thead>
+                        <tr>
+                            <th>Chemical Parameter</th>
+                            <th>Electrolyzed Hypochlorous Acid (\(\text{HOCl}\))</th>
+                            <th>Diluted Sodium Hypochlorite Bleach (\(\text{NaOCl}\))</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Predominant Active Species</strong></td>
+                            <td>Undissociated \(\text{HOCl}\) (uncharged molecule penetrates cell walls rapidly)</td>
+                            <td>Hypochlorite ion \(\text{OCl}^-\) in alkaline state; converts to \(\text{HOCl}\) as pH drops</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Typical Working pH Range</strong></td>
+                            <td><strong>pH 5.0 to 6.5</strong> (CDC superoxidized water specification)</td>
+                            <td><strong>pH 8.5 to 11.5+</strong> (stabilized with sodium hydroxide to slow decomposition)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Oxidation-Reduction Potential (ORP)</strong></td>
+                            <td><strong>&gt; 950 mV</strong> at point of generation (CDC specification)</td>
+                            <td>Typically 650 mV to 800 mV depending on dilution and tap water alkalinity</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Stock Generation Method</strong></td>
+                            <td>Saline (\(\text{NaCl} + \text{H}_2\text{O}\)) passed over coated titanium electrodes (e.g., at 9 amps) or dissolved \(\text{NaDCC}\) tablets</td>
+                            <td>Manufactured industrial caustic chlor-alkali process bottled at 5.25% to 12.5%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Typical Stock Strength (\(C_1\))</strong></td>
+                            <td><strong>144 ppm to 1,000 ppm</strong> free available chlorine</td>
+                            <td><strong>52,500 ppm to 82,500 ppm</strong> (5.25% to 8.25% household/commercial jugs)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Surface &amp; Metal Compatibility</strong></td>
+                            <td>Low corrosion at 100–200 ppm; device warranty compatibility must still be verified per manufacturer</td>
+                            <td>CDC notes corrosiveness to metals at concentrations <strong>&gt; 500 ppm</strong> and fabric bleaching</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                Because pathogen cell walls carry a net negative electrostatic charge, the negatively charged hypochlorite ion (\(\text{OCl}^-\)) that dominates in high-pH bleach solutions experiences electrostatic repulsion, requiring higher total ppm concentrations or longer contact times. Conversely, undissociated \(\text{HOCl}\) at pH 5.0–6.5 is electrically neutral, allowing it to diffuse rapidly across bacterial and viral membranes to oxidize sulfhydryl enzymes, ring-chlorinate amino acids, and disrupt DNA synthesis. However, as the CDC notes, both \(\text{HOCl}\) (superoxidized water) and \(\text{NaOCl}\) are substantially inactivated by organic matter (such as blood or 5% serum), meaning heavily soiled surfaces must always be pre-cleaned before disinfection.
+            </p>
+
+            <h2 style="font-size:1.45rem; font-weight:800; color:#0F172A; margin-top:32px;">3. CDC Verified Chlorine &amp; HOCl PPM Disinfection Benchmarks</h2>
+            <p>
+                Always follow the specific EPA Registration Number directions and contact time printed on your product's master label. To help commercial cleaning supervisors sanity-check their dilution math against federal infection control literature, the table below summarizes the exact parts-per-million benchmarks cited in the <a href="https://www.cdc.gov/infection-control/hcp/disinfection-sterilization/chemical-disinfectants.html" target="_blank" rel="noopener" style="color:#2563EB;">CDC Guideline for Disinfection and Sterilization in Healthcare Facilities</a>:
+            </p>
+            <div class="table-scroll-wrap">
+                <table class="rotation-table">
+                    <thead>
+                        <tr>
+                            <th>Target Available Chlorine (PPM)</th>
+                            <th>5.25% Bleach per 1 US Gallon (128 fl oz)</th>
+                            <th>500 ppm Stock HOCl per 32 fl oz Bottle</th>
+                            <th>CDC Documented Microbicidal Activity &amp; Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>53–62 ppm</strong><br><small>(1:1,000 of 5.25%–6.15%)</small></td>
+                            <td><strong>0.13 fl oz</strong> (3.79 mL)</td>
+                            <td><strong>3.84 fl oz</strong> (113.6 mL) + 28.16 oz water</td>
+                            <td>Low-level chlorine reference; CDC notes &lt;5 ppm kills vegetative bacteria and 25 ppm kills mycoplasma in seconds in the absence of organic load.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>100 ppm</strong></td>
+                            <td><strong>0.24 fl oz</strong> (7.21 mL)</td>
+                            <td><strong>6.40 fl oz</strong> (189.3 mL) + 25.60 oz water</td>
+                            <td>Killed \(10^6\text{–}10^7\) <em>S. aureus</em>, <em>Salmonella choleraesuis</em>, and <em>P. aeruginosa</em> in &lt;10 min (AOAC Use-Dilution); killed &ge;99.9% of <em>B. atrophaeus</em> spores within 5 min.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>200 ppm</strong></td>
+                            <td><strong>0.49 fl oz</strong> (14.42 mL)</td>
+                            <td><strong>12.80 fl oz</strong> (378.5 mL) + 19.20 oz water</td>
+                            <td>Inactivated 25 different viruses in 10 minutes in CDC-cited study; standard upper limit for no-rinse food-contact surface sanitizing solutions.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>500 ppm</strong><br><small>(~1:100 of 5.25% = 525 ppm)</small></td>
+                            <td><strong>1.22 fl oz</strong> (36.05 mL)</td>
+                            <td><strong>32.00 fl oz</strong> (Use undiluted at 500 ppm)</td>
+                            <td>Recommended by CDC for decontaminating CPR training manikins (10 min contact) and small blood spills (drops of blood) on noncritical surfaces.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1,000 ppm</strong></td>
+                            <td><strong>2.44 fl oz</strong> (72.10 mL)</td>
+                            <td>Requires &ge;1,000 ppm stock</td>
+                            <td>Required to kill <em>M. tuberculosis</em> in AOAC tuberculocidal test; also recommended at Day 0 if 500 ppm is required after 30 days of plastic container storage.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5,000 ppm</strong><br><small>(~1:10 of 5.25% = 5,250 ppm)</small></td>
+                            <td><strong>12.19 fl oz</strong> (360.52 mL)</td>
+                            <td>Requires sodium hypochlorite stock</td>
+                            <td>Inactivates \(10^6\) <em>Clostridium difficile</em> (<em>C. diff</em>) spores in &le;10 minutes; CDC 1:10 final dilution for large blood spills after surface pre-cleaning.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 style="font-size:1.45rem; font-weight:800; color:#0F172A; margin-top:32px;">4. Step-by-Step Worked Examples for Janitorial Crews</h2>
+            <p>
+                Let's walk through three real-world field scenarios so your supervisors can verify how the calculator arrives at every fluid ounce and milliliter figure:
+            </p>
+            <h3 style="font-size:1.15rem; font-weight:700; color:#0F172A; margin-top:20px;">Worked Example A: Stepping 500 ppm On-Site HOCl Down to 200 ppm in a 32 fl oz Trigger Bottle</h3>
+            <p>
+                Suppose your facility uses an electrolyzed water generator that produces stock <strong>Hypochlorous Acid at \(C_1 = 500\text{ ppm}\)</strong>, and your food-prep sanitization protocol calls for a <strong>\(C_2 = 200\text{ ppm}\)</strong> no-rinse spray in a standard <strong>\(V_2 = 32\text{ fl oz}\)</strong> bottle:
+            </p>
+            <ul>
+                <li><strong>Calculate Stock HOCl Volume (\(V_1\)):</strong> \(V_1 = (200\text{ ppm} \times 32\text{ fl oz}) \div 500\text{ ppm} = 12.80\text{ fl oz}\) (or \(378.54\text{ mL}\)).</li>
+                <li><strong>Calculate Clean Water Volume (\(V_{\text{water}}\)):</strong> \(32\text{ fl oz} - 12.80\text{ fl oz} = 19.20\text{ fl oz}\) (or \(567.81\text{ mL}\)).</li>
+                <li><strong>Equivalent Part-to-Part Ratio:</strong> \(500 \div 200 = 2.5\text{ total parts}\), which is <strong>1 part stock HOCl to 1.5 parts water</strong> (or 2 parts stock to 3 parts water).</li>
+            </ul>
+
+            <h3 style="font-size:1.15rem; font-weight:700; color:#0F172A; margin-top:20px;">Worked Example B: Diluting 8.25% Commercial Bleach to 1,000 ppm in a 5-Gallon Mop Bucket</h3>
+            <p>
+                Many modern commercial bleach jugs contain <strong>8.25% sodium hypochlorite</strong> (\(C_1 = 82,500\text{ ppm}\)) rather than legacy 5.25% strength. If an outpatient clinic contract requires <strong>\(C_2 = 1,000\text{ ppm}\)</strong> across a <strong>5-gallon (\(640\text{ fl oz}\))</strong> environmental cart bucket:
+            </p>
+            <ul>
+                <li><strong>Calculate Stock Bleach Volume (\(V_1\)):</strong> \(V_1 = (1,000\text{ ppm} \times 640\text{ fl oz}) \div 82,500\text{ ppm} = 7.76\text{ fl oz}\) (or \(229.42\text{ mL}\), just under 1 US cup).</li>
+                <li><strong>Calculate Clean Water Volume (\(V_{\text{water}}\)):</strong> \(640\text{ fl oz} - 7.76\text{ fl oz} = 632.24\text{ fl oz}\) (4.94 gallons).</li>
+                <li><strong>Why Label Verification Matters:</strong> Had the technician used a legacy 5.25% chart (which calls for \(12.19\text{ fl oz}\) in 5 gallons), pouring \(12.19\text{ fl oz}\) of 8.25% bleach would have yielded \(1,571\text{ ppm}\)—overdosing the floor by 57% and accelerating metal fixture corrosion.</li>
+            </ul>
+
+            <h2 style="font-size:1.45rem; font-weight:800; color:#0F172A; margin-top:32px;">5. The 30-Day Shelf-Life Decay Rule &amp; Lethal Mixing Hazards</h2>
+            <p>
+                Chlorine solutions are chemically reactive and degrade when exposed to heat, UV light, open air, or alkaline tap water. Specifically, the <a href="https://www.cdc.gov/infection-control/hcp/disinfection-sterilization/chemical-disinfectants.html" target="_blank" rel="noopener" style="color:#2563EB;">CDC Chemical Disinfectants guideline</a> reports a critical operational finding:
+            </p>
+            <blockquote style="background:#FFFBEB; border-left:4px solid #D97706; padding:14px 18px; margin:16px 0; color:#78350F; font-style:normal;">
+                "Hypochlorite solutions in tap water at a pH &gt;8 stored at room temperature (23&deg;C) in closed, opaque plastic containers can lose up to 40%–50% of their free available chlorine level over 1 month. Thus, if a user wished to have a solution containing 500 ppm of available chlorine at day 30, he or she should prepare a solution containing 1,000 ppm of chlorine at time 0. Sodium hypochlorite solution does not decompose after 30 days when stored in a closed brown bottle."
+            </blockquote>
+            <p>
+                Similarly, for electrolyzed saline ("superoxidized water" / \(\text{HOCl}\)), the CDC notes that while it is intended to be generated fresh at the point of use, under clean conditions it remained effective within 5 minutes when <strong>48 hours old</strong>, and commercial bottled \(\text{HOCl}\) formulations require opaque, airtight packaging verified with chlorine test strips prior to deployment.
+            </p>
+            <p>
+                Finally, every employee who transfers diluted \(\text{HOCl}\) or sodium hypochlorite into a spray bottle must comply with <strong>OSHA Hazard Communication Standard 29 CFR 1910.1200(f)(6)</strong> (workplace secondary container labeling) unless the portable container is used immediately and exclusively by the single employee who poured it during that shift under <strong>1910.1200(f)(8)</strong>. Never mix sodium hypochlorite or \(\text{HOCl}\) with ammonia, quaternary ammonium compounds, or acidic toilet bowl cleaners (hydrochloric, phosphoric, or citric acid), as acidifying hypochlorite shifts the equilibrium toward dissolved elemental chlorine gas (\(\text{Cl}_2\)), which releases lethal fumes immediately dangerous to life or health (IDLH at 10 ppm). Before combining any two products in a janitor closet, verify compatibility in our <a href="../chemical-safety-checker/index.html" style="color:#2563EB; font-weight:700;">OSHA Chemical Safety &amp; Mixing Checker</a>, or build your shift roster with our <a href="../on-call-rotation-generator/index.html" style="color:#2563EB; font-weight:700;">Commercial Cleaning On-Call Rotation Generator</a> and <a href="../mixing-guide/index.html" style="color:#2563EB; font-weight:700;">Spray Bottle &amp; Bucket Mixing Guide</a>.
+            </p>
+
+            <h2 style="font-size:1.45rem; font-weight:800; color:#0F172A; margin-top:32px;">6. Frequently Asked Questions (FAQ)</h2>
+            <div style="margin-top:16px;">
+                <h3 style="font-size:1.05rem; font-weight:700; color:#0F172A; margin-bottom:6px;">How do you convert sodium hypochlorite bleach percentage into parts per million (PPM)?</h3>
+                <p style="margin-top:0;">To convert an aqueous sodium hypochlorite percentage into parts per million (ppm) of available chlorine, multiply the label percentage by 10,000 (since 1 percent equals 10,000 ppm). According to the CDC Guideline for Disinfection and Sterilization in Healthcare Facilities, standard household bleach containing 5.25 percent to 6.15 percent sodium hypochlorite contains approximately 52,500 to 61,500 ppm of available chlorine. A concentrated 8.25 percent commercial jug contains approximately 82,500 ppm.</p>
+
+                <h3 style="font-size:1.05rem; font-weight:700; color:#0F172A; margin-bottom:6px;">Why is undissociated hypochlorous acid (HOCl) more effective as a germicide than alkaline bleach?</h3>
+                <p style="margin-top:0;">According to the CDC Chemical Disinfectants guideline, the microbicidal activity of chlorine is attributed largely to undissociated hypochlorous acid (HOCl). The dissociation of HOCl into the less microbicidal hypochlorite ion (OCl-) depends directly on solution pH: as pH increases into the alkaline range (above pH 8), HOCl converts into OCl- and disinfecting efficacy decreases. Electrolyzed saline or superoxidized water systems generate HOCl at a mildly acidic pH of 5.0 to 6.5 with an oxidation-reduction potential (ORP) above 950 mV, keeping free chlorine predominantly in the active HOCl state.</p>
+
+                <h3 style="font-size:1.05rem; font-weight:700; color:#0F172A; margin-bottom:6px;">What is the formula for diluting a stock HOCl or bleach solution to a target PPM in gallons?</h3>
+                <p style="margin-top:0;">Use the dilution conservation equation C1 multiplied by V1 equals C2 multiplied by V2, solved for concentrate volume as V1 = (C2 * V2) / C1. First ensure C1 (starting stock concentration) and C2 (desired target concentration) are both expressed in ppm, and express V2 (final batch volume) in fluid ounces (1 US gallon equals 128 fluid ounces). Subtract V1 from V2 to find the exact volume of water required.</p>
+
+                <h3 style="font-size:1.05rem; font-weight:700; color:#0F172A; margin-bottom:6px;">How fast do diluted hypochlorite solutions lose strength when stored in plastic bottles?</h3>
+                <p style="margin-top:0;">According to the CDC Disinfection and Sterilization Guideline, hypochlorite solutions prepared in tap water at a pH above 8 and stored at room temperature (23 degrees Celsius) in closed, opaque plastic containers can lose 40 percent to 50 percent of their free available chlorine level over 1 month. Consequently, the CDC notes that if a facility needs a solution containing 500 ppm of available chlorine at day 30, it must prepare a 1,000 ppm solution at day 0, or mix fresh daily batches.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer" style="background:#0F172A; color:#94A3B8; padding:32px 0; text-align:center; font-size:0.85rem;">
+        <div class="container">
+            <p style="margin:0 0 8px 0;">&copy; 2026 PureWear Space Commercial Cleaning Operations Hub. Formulas verified against CDC Healthcare Infection Control &amp; OSHA 29 CFR 1910.1200 standards.</p>
+            <p style="margin:0;">
+                <a href="../../index.html" style="color:#CBD5E1; margin:0 8px;">All Tools</a> |
+                <a href="../dilution-calculator/index.html" style="color:#CBD5E1; margin:0 8px;">1:X Dilution Calculator</a> |
+                <a href="../chemical-safety-checker/index.html" style="color:#CBD5E1; margin:0 8px;">Chemical Safety Checker</a> |
+                <a href="../on-call-rotation-generator/index.html" style="color:#CBD5E1; margin:0 8px;">On-Call Rotation Generator</a>
+            </p>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    window.handleModeChange = function() {
+        var mode = document.getElementById('inputChemistryMode').value;
+        var label = document.getElementById('labelStockStrength');
+        var input = document.getElementById('inputStockStrength');
+        var target = document.getElementById('inputTargetPpm');
+        if (mode === 'hocl_ppm') {
+            label.innerText = '2. Stock HOCl Concentration (PPM)';
+            input.value = '500';
+            input.step = '50';
+            input.max = '10000';
+            target.value = '200';
+        } else {
+            label.innerText = '2. Stock Concentration (% NaOCl)';
+            input.value = '5.25';
+            input.step = '0.05';
+            input.max = '50';
+            target.value = '500';
+        }
+        window.recalcDilution();
+    };
+
+    window.loadPreset = function(presetKey) {
+        var modeEl = document.getElementById('inputChemistryMode');
+        var stockEl = document.getElementById('inputStockStrength');
+        var targetEl = document.getElementById('inputTargetPpm');
+        var volEl = document.getElementById('inputFinalVolume');
+        var unitEl = document.getElementById('inputVolumeUnit');
+        var label = document.getElementById('labelStockStrength');
+
+        if (presetKey === 'hocl_200') {
+            modeEl.value = 'hocl_ppm';
+            label.innerText = '2. Stock HOCl Concentration (PPM)';
+            stockEl.value = '500';
+            targetEl.value = '200';
+            volEl.value = '32';
+            unitEl.value = 'floz';
+        } else if (presetKey === 'hocl_bucket') {
+            modeEl.value = 'hocl_ppm';
+            label.innerText = '2. Stock HOCl Concentration (PPM)';
+            stockEl.value = '1000';
+            targetEl.value = '200';
+            volEl.value = '1';
+            unitEl.value = 'gal';
+        } else if (presetKey === 'bleach_500') {
+            modeEl.value = 'bleach_pct';
+            label.innerText = '2. Stock Concentration (% NaOCl)';
+            stockEl.value = '5.25';
+            targetEl.value = '500';
+            volEl.value = '1';
+            unitEl.value = 'gal';
+        } else if (presetKey === 'bleach_1000') {
+            modeEl.value = 'bleach_pct';
+            label.innerText = '2. Stock Concentration (% NaOCl)';
+            stockEl.value = '6.0';
+            targetEl.value = '1000';
+            volEl.value = '1';
+            unitEl.value = 'gal';
+        } else if (presetKey === 'bleach_5000') {
+            modeEl.value = 'bleach_pct';
+            label.innerText = '2. Stock Concentration (% NaOCl)';
+            stockEl.value = '8.25';
+            targetEl.value = '5000';
+            volEl.value = '1';
+            unitEl.value = 'gal';
+        }
+        window.recalcDilution();
+    };
+
+    window.applyDay30Compensation = function() {
+        var targetEl = document.getElementById('inputTargetPpm');
+        var currentTarget = parseFloat(targetEl.value) || 500;
+        targetEl.value = String(Math.min(20000, Math.round(currentTarget * 2)));
+        window.recalcDilution();
+    };
+
+    window.recalcDilution = function() {
+        var mode = document.getElementById('inputChemistryMode').value;
+        var rawStock = parseFloat(document.getElementById('inputStockStrength').value) || 5.25;
+        var targetPpm = parseFloat(document.getElementById('inputTargetPpm').value) || 500;
+        var rawVol = parseFloat(document.getElementById('inputFinalVolume').value) || 1;
+        var unit = document.getElementById('inputVolumeUnit').value;
+        var jugCost = parseFloat(document.getElementById('inputJugCost').value) || 6.50;
+
+        var c1Ppm = (mode === 'bleach_pct') ? (rawStock * 10000) : rawStock;
+        if (c1Ppm <= 0) c1Ppm = 500;
+        if (targetPpm > c1Ppm) {
+            targetPpm = c1Ppm;
+        }
+
+        /* Convert final container volume to both US fl oz and mL */
+        var v2Floz = 128;
+        if (unit === 'gal') {
+            v2Floz = rawVol * 128;
+        } else if (unit === 'floz') {
+            v2Floz = rawVol;
+        } else if (unit === 'liter') {
+            v2Floz = rawVol * 33.8140227;
+        } else if (unit === 'ml') {
+            v2Floz = rawVol / 29.5735296;
+        }
+
+        var v1Floz = (targetPpm * v2Floz) / c1Ppm;
+        var waterFloz = Math.max(0, v2Floz - v1Floz);
+
+        var v1Ml = v1Floz * 29.5735296;
+        var waterMl = waterFloz * 29.5735296;
+        var v2Ml = v2Floz * 29.5735296;
+
+        var tbsp = v1Floz * 2;
+        var totalParts = c1Ppm / targetPpm;
+        var waterParts = Math.max(0, totalParts - 1);
+        var ratioStr = (waterParts >= 10) ? ('1 : ' + Math.round(waterParts)) : ('1 : ' + waterParts.toFixed(1));
+
+        var batchCost = (v1Floz / 128) * jugCost;
+        var day30Low = Math.round(targetPpm * 0.5);
+        var day30High = Math.round(targetPpm * 0.6);
+
+        var elConc = document.getElementById('dispConcentrateVolume');
+        var elConcSub = document.getElementById('dispConcentrateMetric');
+        var elWat = document.getElementById('dispWaterVolume');
+        var elWatSub = document.getElementById('dispWaterMetric');
+        var elRatio = document.getElementById('dispEquivalentRatio');
+        var elStockSub = document.getElementById('dispStockPpmSub');
+        var elCost = document.getElementById('dispBatchCost');
+        var elDecaySub = document.getElementById('dispDay30DecaySub');
+        var elTag = document.getElementById('dispLabelChemistryTag');
+        var elOsha = document.getElementById('dispOshaLabelText');
+
+        if (elConc) elConc.innerText = v1Floz.toFixed(2) + ' fl oz';
+        if (elConcSub) elConcSub.innerText = v1Ml.toFixed(1) + ' mL (~' + tbsp.toFixed(1) + ' Tbsp)';
+        if (elWat) elWat.innerText = waterFloz.toFixed(2) + ' fl oz';
+        if (elWatSub) elWatSub.innerText = waterMl.toFixed(1) + ' mL (' + (v2Floz / 128).toFixed(2) + ' gal total)';
+        if (elRatio) elRatio.innerText = ratioStr;
+        if (elStockSub) elStockSub.innerText = 'Stock C1 = ' + Math.round(c1Ppm).toLocaleString('en-US') + ' ppm';
+        if (elCost) elCost.innerText = '$' + batchCost.toFixed(2);
+        if (elDecaySub) elDecaySub.innerText = 'Est. Day-30 strength: ~' + day30Low + '–' + day30High + ' ppm';
+
+        var chemName = (mode === 'bleach_pct') ? ('Diluted Sodium Hypochlorite Solution (' + Math.round(targetPpm) + ' ppm)') : ('Diluted Hypochlorous Acid (HOCl) Solution (' + Math.round(targetPpm) + ' ppm)');
+        var stockDesc = (mode === 'bleach_pct') ? (rawStock + '% NaOCl stock') : (Math.round(rawStock) + ' ppm HOCl stock');
+        if (elTag) elTag.innerText = chemName;
+        if (elOsha) {
+            elOsha.innerHTML = '<strong>Mix Instructions:</strong> Measure <strong>' + v1Floz.toFixed(2) + ' fl oz (' + v1Ml.toFixed(1) + ' mL)</strong> of ' + stockDesc + ' and combine with <strong>' + waterFloz.toFixed(2) + ' fl oz (' + waterMl.toFixed(1) + ' mL)</strong> of cool water to yield <strong>' + v2Floz.toFixed(2) + ' fl oz (' + v2Ml.toFixed(1) + ' mL)</strong> at <strong>' + Math.round(targetPpm) + ' ppm</strong> free available chlorine. <strong>Hazard Warning:</strong> Eye and mucous membrane irritant above 500 ppm; never mix with ammonia, quaternary ammonium, or acidic cleaners (releases toxic chlorine gas).';
+        }
+    };
+
+    window.recalcDilution();
+});
+</script>
+</body>
+</html>

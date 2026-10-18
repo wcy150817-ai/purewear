@@ -42,6 +42,16 @@ const TOOLS_DATA = [
         url: '/tools/dilution-calculator/'
     },
     {
+        id: 'hocl-bleach-dilution-calculator',
+        title: 'HOCl & Bleach PPM Dilution Calculator',
+        icon: '💧',
+        desc: 'Convert Sodium Hypochlorite (% NaOCl) or Hypochlorous Acid (HOCl PPM) into exact gallon and ounce disinfection mixes via C1V1 = C2V2.',
+        category: 'safety',
+        tag: 'New',
+        featured: true,
+        url: '/tools/hocl-bleach-dilution-calculator/'
+    },
+    {
         id: 'schedule-generator',
         title: 'Weekly Shift Schedule Generator',
         icon: '📅',
