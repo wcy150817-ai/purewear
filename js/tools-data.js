@@ -153,12 +153,12 @@ const TOOLS_DATA = [
     },
     {
         id: 'performance-review',
-        title: 'Staff Performance Evaluation Generator',
+        title: 'Cleaning Staff Performance Review Generator (2026)',
         icon: '⭐',
-        desc: 'Construct objective, standardized performance reviews and scorecards for cleaners and team leads.',
+        desc: 'Construct weighted 100-point custodial scorecards, APPA Level 1–5 audit ratings, OSHA safety appraisals, and copy-paste staff review examples.',
         category: 'ops',
         tag: 'Management',
-        featured: false,
+        featured: true,
         url: '/tools/performance-review/'
     },
     {
