@@ -99,6 +99,27 @@
   .omni-calculator-widget { box-shadow: none !important; border: 1px solid #ddd !important; }
   body { background: #fff !important; }
 }
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+.omni-layout-grid, .omni-article, .omni-calculator-aside, .omni-calculator-widget, .omni-math-block, .omni-case-study, .omni-row, .omni-input-group, select.omni-select {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.omni-table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+}
+.omni-math-equation {
+  overflow-x: auto;
+  max-width: 100%;
+  word-break: break-word;
+}
 </style>
 </head>
 <body>
@@ -417,25 +438,23 @@
                     </div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <div class="omni-row">
-                        <div class="omni-label">
-                            <span>Restroom fixtures</span>
-                        </div>
-                        <div class="omni-input-group">
-                            <input type="number" id="fixturesInput" class="omni-input" value="12" min="0" max="500" step="1" oninput="calculateTime()">
-                            <span style="display:flex; align-items:center; padding:0 8px; font-size:11px; font-weight:600; color:var(--text-muted); background:var(--bg-surface); border-left:1px solid var(--border-light);">units</span>
-                        </div>
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Restroom fixtures (toilets/sinks)</span>
                     </div>
+                    <div class="omni-input-group">
+                        <input type="number" id="fixturesInput" class="omni-input" value="12" min="0" max="500" step="1" oninput="calculateTime()">
+                        <span style="display:flex; align-items:center; padding:0 8px; font-size:11px; font-weight:600; color:var(--text-muted); background:var(--bg-surface); border-left:1px solid var(--border-light);">units</span>
+                    </div>
+                </div>
 
-                    <div class="omni-row">
-                        <div class="omni-label">
-                            <span>Min per fixture</span>
-                        </div>
-                        <div class="omni-input-group">
-                            <input type="number" id="fixtureMinInput" class="omni-input" value="3.5" min="1" max="15" step="0.5" oninput="calculateTime()">
-                            <span style="display:flex; align-items:center; padding:0 8px; font-size:11px; font-weight:600; color:var(--text-muted); background:var(--bg-surface); border-left:1px solid var(--border-light);">min</span>
-                        </div>
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Minutes per restroom fixture</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="number" id="fixtureMinInput" class="omni-input" value="3.5" min="1" max="15" step="0.5" oninput="calculateTime()">
+                        <span style="display:flex; align-items:center; padding:0 8px; font-size:11px; font-weight:600; color:var(--text-muted); background:var(--bg-surface); border-left:1px solid var(--border-light);">min</span>
                     </div>
                 </div>
 
@@ -452,33 +471,31 @@
                     </div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <div class="omni-row">
-                        <div class="omni-label">
-                            <span>Soil / Density</span>
-                        </div>
-                        <div class="omni-input-group">
-                            <select id="condSelect" class="omni-select" style="width: 100%; border-left: none;" onchange="calculateTime()">
-                                <option value="0.90">Low Density (0.90&times;)</option>
-                                <option value="1.0" selected>Standard (1.00&times;)</option>
-                                <option value="1.25">Heavy Soil (1.25&times;)</option>
-                            </select>
-                        </div>
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Soil &amp; Obstacle Density</span>
                     </div>
+                    <div class="omni-input-group">
+                        <select id="condSelect" class="omni-select" style="width: 100%; border-left: none;" onchange="calculateTime()">
+                            <option value="0.90">Low Density (0.90&times;)</option>
+                            <option value="1.0" selected>Standard (1.00&times;)</option>
+                            <option value="1.25">Heavy Soil (1.25&times;)</option>
+                        </select>
+                    </div>
+                </div>
 
-                    <div class="omni-row">
-                        <div class="omni-label">
-                            <span>Crew size</span>
-                        </div>
-                        <div class="omni-input-group">
-                            <select id="crewSelect" class="omni-select" style="width: 100%; border-left: none;" onchange="calculateTime()">
-                                <option value="1">1 Cleaner (Solo)</option>
-                                <option value="2" selected>2 Cleaners</option>
-                                <option value="3">3 Cleaners</option>
-                                <option value="4">4 Cleaners</option>
-                                <option value="6">6 Cleaners</option>
-                            </select>
-                        </div>
+                <div class="omni-row">
+                    <div class="omni-label">
+                        <span>Assigned Crew Size</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <select id="crewSelect" class="omni-select" style="width: 100%; border-left: none;" onchange="calculateTime()">
+                            <option value="1">1 Cleaner (Solo)</option>
+                            <option value="2" selected>2 Cleaners</option>
+                            <option value="3">3 Cleaners</option>
+                            <option value="4">4 Cleaners</option>
+                            <option value="6">6 Cleaners</option>
+                        </select>
                     </div>
                 </div>
 
