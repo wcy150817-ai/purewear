@@ -93,9 +93,9 @@ const TOOLS_DATA = [
     },
     {
         id: 'time-estimator',
-        title: 'Cleaning Time Estimator',
+        title: 'Cleaning Production Rate & Square Footage Time Estimator (2026)',
         icon: '⏱️',
-        desc: 'Predict total cleaning hours based on square footage, room count, and ISSA standard production rates.',
+        desc: 'Calculate commercial janitorial hours, Cleaning Units (CU = Sq Ft / 1,000), restroom fixture times, and ISSA 612 production rates.',
         category: 'ops',
         tag: 'Operations',
         featured: true,
