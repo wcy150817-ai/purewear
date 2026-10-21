@@ -23,9 +23,9 @@ const TOOLS_DATA = [
     },
     {
         id: 'commercial-bidding-calculator',
-        title: 'Commercial Bidding Calculator',
+        title: 'Commercial Janitorial Bidding & Price Per Sq Ft Calculator (2026)',
         icon: '🏢',
-        desc: 'Calculate high-ticket commercial janitorial bids (offices, clinics) based on sq ft, production rates, supplies, and target profit.',
+        desc: 'Calculate commercial janitorial bids and price per square foot using ISSA production rates, FICA + Workers\' Comp payroll burden, and gross margin divisor math.',
         category: 'pricing',
         tag: 'New',
         featured: true, 
