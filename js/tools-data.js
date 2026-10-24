@@ -230,6 +230,16 @@ const TOOLS_DATA = [
         tag: 'New',
         featured: true,
         url: '/tools/cleaning-estimate-widget/'
+    },
+    {
+        id: 'mileage-reimbursement-calculator',
+        title: 'Cleaning Company Vehicle Mileage & Fuel Reimbursement Calculator (2026)',
+        icon: '🚐',
+        desc: 'Calculate tax-free IRS standard mileage reimbursement ($0.70/mile per Notice 2025-5), actual fleet fuel burn, Accountable Plan tax savings, and FLSA 29 CFR 785.38 inter-site drive-time payroll.',
+        category: 'pricing',
+        tag: 'Finance',
+        featured: true,
+        url: '/tools/mileage-reimbursement-calculator/'
     }
 ];
 

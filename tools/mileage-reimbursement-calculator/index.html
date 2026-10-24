@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleaning Company Vehicle Mileage &amp; Fuel Reimbursement Calculator: IRS Standard Rates (2026) | PureWear Space</title>
+    <meta name="description" content="Calculate tax-free employee mileage reimbursement, actual fuel + maintenance cost, and FLSA drive-time wages for residential maid crews and commercial janitorial fleets using IRS Notice 2025-5 ($0.70/mile) and FAVR standards.">
+    <link rel="canonical" href="https://tool.purewearspace.com/tools/mileage-reimbursement-calculator/">
+
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Cleaning Company Vehicle Mileage & Fuel Reimbursement Calculator: IRS Standard Rates (2026)",
+      "description": "A complete tax, payroll, and route economics guide and interactive calculator for cleaning companies reimbursing personal employee vehicles or managing commercial vans under IRS Notice 2025-5 ($0.70/mile), IRC Section 62(c) Accountable Plans, and FLSA drive-time rules.",
+      "datePublished": "2026-10-24",
+      "dateModified": "2026-10-24",
+      "author": {
+        "@type": "Organization",
+        "name": "PureWear Fleet & Janitorial Operations Desk",
+        "url": "https://tool.purewearspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PureWear Space",
+        "url": "https://tool.purewearspace.com"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tool.purewearspace.com/tools/mileage-reimbursement-calculator/"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Cleaning Company Vehicle Mileage & Fuel Reimbursement Calculator",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://tool.purewearspace.com/tools/mileage-reimbursement-calculator/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the IRS standard mileage reimbursement rate for cleaning businesses in 2025 and 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under IRS Notice 2025-5, the federal optional standard business mileage rate is $0.70 per mile (70 cents/mile, including a $0.33/mile depreciation component), up from $0.67 per mile in 2024. Cleaning business owners can use this rate under an IRC Section 62(c) Accountable Plan to reimburse W-2 technicians tax-free for driving between client homes or commercial job sites."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do cleaning companies have to pay for drive from home to the first cleaning job?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under IRS Publication 463 and the FLSA Portal-to-Portal Act (29 CFR 785.35), ordinary commuting from a technician's home directly to the first client site and from the last client site back home is non-deductible personal commuting and non-compensable travel time. However, if you require cleaners to report to your central office or chemical warehouse first to load supplies and equipment, the trip from the office to the first job site (and all travel between client sites during the day under 29 CFR 785.38) is 100% compensable work time and reimbursable business mileage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is a flat monthly car stipend worse than an IRS Accountable Plan for maid services?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you pay a cleaning supervisor or solo tech a flat $300/month car allowance without requiring contemporary odometer/GPS logs under IRC Section 62(c), the IRS classifies it as a Non-Accountable Plan. The entire $300 must be added to Box 1 W-2 taxable wages, costing your company an extra 7.65% in employer FICA taxes plus Workers' Comp premiums, while the employee loses 15% to 29% of the allowance to income and FICA withholding."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When does FLSA require mandatory vehicle reimbursement for cleaning employees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under FLSA 29 CFR 531.35 ('Free and Clear' minimum wage rule), unreimbursed business expenses—such as a technician buying fuel and putting wear-and-tear on their personal car to drive between four residential houses a day—cannot push the worker's net effective hourly wage below the federal, state, or municipal minimum wage. Additionally, states such as California (Labor Code 2802), Illinois, and Massachusetts mandate 100% reimbursement of necessary employee vehicle expenses regardless of wage level."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
+<style>
+@media print {
+  .navbar, .footer, .omni-toc-bar, .omni-breadcrumb, .omni-feedback-box, .omni-mobile-bottom-bar, .shopify-promo-card, .top-notice-bar { display: none !important; }
+  .omni-layout-grid { display: block !important; max-width: 100% !important; padding: 0 !important; }
+  .omni-calculator-sticky { position: static !important; }
+  .omni-calculator-widget { box-shadow: none !important; border: 1px solid #ddd !important; }
+  body { background: #fff !important; }
+}
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+.omni-layout-grid, .omni-article, .omni-calculator-aside, .omni-calculator-widget, .omni-math-block, .omni-case-study, .omni-row, .omni-input-group, select.omni-select {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.omni-table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+}
+.omni-math-equation {
+  overflow-x: auto;
+  max-width: 100%;
+  word-break: break-word;
+}
+</style>
+</head>
+<body>
+
+    <div class="top-notice-bar">
+        <span>👕 High-Mobility Cleaning Uniforms &amp; Bleach-Resistant Aprons:</span>
+        <a href="https://purewearspace.com" target="_blank" rel="noopener">Explore PureWear Official Store &rarr;</a>
+    </div>
+
+    <nav class="navbar">
+        <a href="../../index.html" class="brand">Pure<span>Wear</span> <span style="font-weight: 400; color: var(--text-muted); font-size: 14px; margin-left: 2px;">Calculators</span></a>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link active">All Calculators</a>
+            <a href="../../resources.html" class="nav-link">Resources</a>
+            <a href="https://purewearspace.com" target="_blank" rel="noopener" class="nav-shop-btn">🛍️ Shop Workwear</a>
+        </div>
+    </nav>
+    <div class="omni-layout-grid">
+
+        <article class="omni-article">
+            <nav class="omni-breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span class="sep">/</span>
+                <a href="../index.html">All Calculators</a>
+                <span class="sep">/</span>
+                <span>Vehicle Mileage &amp; Fuel Reimbursement Calculator</span>
+            </nav>
+
+            <h1>Cleaning Company Vehicle Mileage &amp; Fuel Reimbursement Calculator: IRS Standard Rates (2026)</h1>
+
+            <div class="omni-author-bar">
+                <span class="author-badge">Fleet &amp; Payroll Tax Compliance</span>
+                <span>By PureWear Fleet &amp; Janitorial Operations Desk</span>
+                <span class="sep">&bull;</span>
+                <span class="live-indicator"><span class="live-dot"></span>Updated October 24, 2026</span>
+            </div>
+
+            <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:12px 16px;border-radius:0 8px 8px 0;font-size:13px;color:#475569;margin:16px 0;">
+                <strong>Methodology &amp; Affiliate Disclosure:</strong> This cleaning fleet mileage and fuel reimbursement calculator is built on official <strong>IRS Notice 2025-5 ($0.70/mile standard business rate)</strong>, <strong>IRS Notice 2024-08 ($0.67/mile)</strong>, <strong>IRC Section 62(c) Accountable Plan rules</strong>, and <strong>FLSA 29 CFR &sect; 785.38 inter-site travel wage regulations</strong>. Always consult a CPA or employment counsel for state-specific reimbursement mandates (such as CA Labor Code &sect; 2802). Some links to wholesale janitorial supply distributors below are sponsored affiliate links (<code>rel="sponsored"</code>) that may earn us a commission at no extra cost to you.
+            </div>
+
+            <nav class="omni-toc-bar">
+                <a href="#overview" class="omni-toc-pill">Overview</a>
+                <a href="#reimbursement-formulas" class="omni-toc-pill">IRS vs Fuel Math</a>
+                <a href="#rate-comparison-table" class="omni-toc-pill">IRS vs FAVR vs Stipend</a>
+                <a href="#commute-vs-intersite" class="omni-toc-pill">Commute vs Site-to-Site Rules</a>
+                <a href="#flsa-drive-time" class="omni-toc-pill">FLSA Drive-Time Pay</a>
+                <a href="#case-studies" class="omni-toc-pill">Worked Fleet Examples</a>
+                <a href="#faq" class="omni-toc-pill">FAQ</a>
+            </nav>
+            <div id="overview">
+                <p>
+                    For residential maid services and multi-site commercial janitorial contractors, vehicle travel between client properties is the second largest operational expense after direct technician wages. When a two-person residential cleaning crew drives a personal sedan or company cargo van across 4 houses a day—or a night-shift janitorial area supervisor checks 7 medical clinics across a metro area—those miles rapidly compound into <strong>12,000 to 22,000 business miles per vehicle per year</strong>.
+                </p>
+                <p>
+                    Yet many cleaning business owners handle vehicle costs in one of two costly ways: either they hand employees an untracked <strong>$250/month flat car stipend</strong> (which the IRS treats as taxable W-2 wages under a Non-Accountable Plan, adding 7.65% employer FICA and Workers' Comp overhead), or they under-reimburse W-2 cleaners using only raw gas receipts—risking a federal <strong>Fair Labor Standards Act (FLSA 29 CFR &sect; 531.35)</strong> minimum-wage kickback violation.
+                </p>
+                <p>
+                    This interactive <strong>Cleaning Company Vehicle Mileage &amp; Fuel Reimbursement Calculator</strong> models both sides of your mobile fleet ledger: tax-free <strong>IRS Standard Mileage Reimbursement ($0.70/mile under IRS Notice 2025-5)</strong>, actual fuel + maintenance + tire wear cost per mile, and <strong>FLSA compensable inter-site drive-time wages</strong>. Pair these route outputs with our <a href="../commercial-bidding-calculator/" style="color:#2563eb;font-weight:600;text-decoration:underline;">Commercial Janitorial Bidding &amp; Price Per Sq Ft Calculator</a>, our <a href="../house-cleaning-estimate/" style="color:#2563eb;font-weight:600;text-decoration:underline;">Residential House Cleaning Estimate Calculator</a>, our <a href="../schedule-generator/" style="color:#2563eb;font-weight:600;text-decoration:underline;">Weekly Shift Schedule Generator</a>, and our <a href="../profit-margin-calculator/" style="color:#2563eb;font-weight:600;text-decoration:underline;">Cleaning Business Profit Margin Calculator</a> to ensure windshield time never erodes your net margin.
+                </p>
+            </div>
+
+            <h2 id="reimbursement-formulas">1. The 4 Core Fleet Mileage &amp; Drive-Time Equations</h2>
+            <p>
+                Whether your technicians drive their own hatchbacks or your company owns a fleet of wrapped Ford Transit Connect vans, accurate route accounting requires separating <strong>tax-free vehicle reimbursement</strong> from <strong>compensable W-2 drive-time labor</strong>:
+            </p>
+
+            <div class="omni-math-block">
+                <div class="omni-math-header">
+                    <span>📐 IRS ACCOUNTABLE PLAN MILEAGE &amp; FLSA INTER-SITE DRIVE-TIME FORMULAS</span>
+                </div>
+                <div class="omni-math-equation" style="font-family:monospace;font-size:13.5px;line-height:1.75;background:#fffbeb;padding:12px;border-radius:6px;color:#1e293b;">
+                    1. Reimbursable Monthly Miles (M_mo) = Daily_InterSite_Miles &times; Workdays_Per_Week &times; 4.333 weeks/mo &times; Active_Vehicles<br>
+                    2. Tax-Free IRS Standard Reimbursement = M_mo &times; IRS_Rate ($0.70/mile per IRS Notice 2025-5)<br>
+                    3. Actual Fuel + Operating Cost = [(M_mo &divide; Vehicle_MPG) &times; Fuel_Price_Per_Gal] + (M_mo &times; Maint_Tire_Depr_Per_Mile)<br>
+                    4. FLSA Inter-Site Drive-Time Payroll = (M_mo &divide; Avg_Route_Speed_MPH) &times; Tech_Hourly_Wage &times; (1 + Payroll_Burden_%)<br>
+                    5. Total True Monthly Fleet &amp; Windshield Cost = Vehicle_Reimbursement + FLSA_InterSite_Drive_Payroll
+                </div>
+                <div style="font-size: 12.5px; color: #664D1B; line-height: 1.65; margin-top: 10px;">
+                    <strong>Why $0.70/Mile Covers More Than Just Gasoline:</strong><br>
+                    &bull; At <code>$3.50/gallon</code> and <code>28 MPG</code>, pure gasoline only costs <strong>$0.125 per mile</strong>. The remaining <strong>$0.575 per mile</strong> inside the IRS $0.70 standard rate accounts for vehicle depreciation (<strong>$0.33/mile</strong> in 2025 per IRS Notice 2025-5), commercial/business-use auto insurance endorsements, brake pads, tires, oil changes, and transmission wear caused by stop-and-go suburban route driving.
+                </div>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:12px;margin:22px 0;">
+                <a href="https://bbux.me/D9xCZh2dE" target="_blank" rel="sponsored noopener" style="display:inline-block;background:#1d4ed8;color:#ffffff !important;font-weight:700;padding:12px 18px;border-radius:8px;text-decoration:none;font-size:14px;">Order Bulk Janitorial Chemicals &amp; Route Caddies at Warehouse 115 (6% CPS) &rarr;</a>
+                <a href="https://bbux.me/v9xB3q0hg" target="_blank" rel="sponsored noopener" style="display:inline-block;background:#0f172a;color:#ffffff !important;font-weight:700;padding:12px 18px;border-radius:8px;text-decoration:none;font-size:14px;">Shop Portable Backpack Vacuums &amp; Kits at The Cleaning Warehouse (3% CPS) &rarr;</a>
+                <a href="https://bbux.me/NarLTZc1c" target="_blank" rel="sponsored noopener" style="display:inline-block;background:#047857;color:#ffffff !important;font-weight:700;padding:12px 18px;border-radius:8px;text-decoration:none;font-size:14px;">Get Mileage Logbooks &amp; Clipboard Organizers at Office Depot &rarr;</a>
+            </div>
+
+            <h2 id="rate-comparison-table">2. IRS Standard Rate ($0.70/mi) vs. FAVR vs. Taxable Car Stipend Compared</h2>
+            <p>
+                Cleaning companies generally choose between four legal structures to fund vehicle transportation. Only two of them pass the <strong>Internal Revenue Code (IRC) Section 62(c) Accountable Plan</strong> test to remain 100% payroll-tax-free for both employer and employee:
+            </p>
+
+            <div class="omni-table-wrapper">
+                <table class="omni-table">
+                    <thead>
+                        <tr>
+                            <th>Reimbursement Method</th>
+                            <th>2025/2026 IRS Benchmark</th>
+                            <th>FICA &amp; Income Tax Status</th>
+                            <th>Logbook Substantiation Required?</th>
+                            <th>Best Cleaning Fleet Fit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>IRS Standard Mileage Rate (Accountable Plan)</strong></td>
+                            <td><strong>$0.70 / mile</strong> (IRS Notice 2025-5; up from $0.67 in 2024)</td>
+                            <td><strong>100% Tax-Free</strong> to employee; 100% deductible to company</td>
+                            <td><strong>Yes:</strong> Date, client site addresses, business purpose &amp; odometer/GPS miles</td>
+                            <td>Residential maid teams &amp; part-time commercial floaters driving personal cars (under 15,000 mi/yr).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FAVR Plan (Fixed &amp; Variable Rate Allowance)</strong></td>
+                            <td>Fixed monthly insurance/depr stipend + localized cents/mile (Vehicle cap: <strong>$61,200</strong>)</td>
+                            <td><strong>100% Tax-Free</strong> (Rev. Proc. 2019-46 compliance)</td>
+                            <td><strong>Yes:</strong> Must drive &ge;5,000 business miles/yr; requires &ge;5 covered drivers</td>
+                            <td>Mid-to-large cleaning companies with 5+ full-time route supervisors in high-fuel/insurance zip codes.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Flat Unsubstantiated Car Allowance / Stipend</strong></td>
+                            <td>e.g., Flat $250 – $500 / month added to paycheck</td>
+                            <td><strong>100% Taxable W-2 Wages:</strong> +7.65% Employer FICA + Employee income/FICA tax</td>
+                            <td>No (because no logs are collected, IRS treats 100% as taxable wage)</td>
+                            <td><strong>Avoid:</strong> Wastes 30%+ combined tax friction; replace with a logged Accountable Plan.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Company-Owned Commercial Cargo Van Fleet</strong></td>
+                            <td>Actual fuel + commercial auto policy + Section 179 / MACRS depreciation</td>
+                            <td>100% Business Expense (Personal evening commuting by tech is a taxable fringe benefit)</td>
+                            <td>Yes, if vehicles are not 100% garaged at company depot overnight</td>
+                            <td> Carpet/floor-care trucks, pressure washing rigs, and multi-crew residential fleets carrying heavy gear.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 id="commute-vs-intersite">3. IRS Publication 463: What Counts as Reimbursable Cleaning Mileage?</h2>
+            <p>
+                One of the most frequent payroll disputes in residential and commercial cleaning is whether a technician should be reimbursed for driving from their house to the first job of the morning. Under <strong>IRS Publication 463 (Travel, Gift, and Car Expenses)</strong> and the <strong>FLSA Portal-to-Portal Act (29 CFR &sect; 785.35)</strong>, the boundary between personal commuting and business mileage depends entirely on <em>where</em> the technician starts and ends their workday:
+            </p>
+            <ul>
+                <li><strong>Scenario A — Direct Home-to-First-Client Dispatch (Solo Techs Keeping Supplies in Trunk):</strong> Driving from the cleaner's home to Client House #1, and driving from Client House #4 back home at 4:30 PM, is classified by the IRS and Department of Labor as <strong>ordinary personal commuting</strong> (not reimbursable and not paid drive time). However, every single mile driven <strong>from Client #1 to Client #2, Client #2 to Client #3, and Client #3 to Client #4</strong> is 100% deductible business mileage and compensable work time.</li>
+                <li><strong>Scenario B — Morning Equipment Depot / Office Check-In (Crew Model):</strong> If your company requires technicians to arrive at your central office or chemical locker at 7:30 AM to pick up clean microfiber towels, dilute disinfectants (see our <a href="../hocl-bleach-dilution-calculator/" style="color:#2563eb;font-weight:600;text-decoration:underline;">HOCl &amp; Bleach Dilution Calculator</a>), and load vacuums, the workday officially starts at 7:30 AM at the office. Every mile driven <strong>from the office to Client #1, between all clients, and from the last client back to the office</strong> to unload dirty laundry is 100% reimbursable business travel and paid hourly work time!</li>
+            </ul>
+
+            <h2 id="flsa-drive-time">4. FLSA "Travel All in a Day's Work" (29 CFR &sect; 785.38) &amp; Minimum Wage Protection</h2>
+            <p>
+                Many cleaning owners mistakenly believe that paying $0.70 per mile under the IRS standard rate relieves them from paying an hourly wage while technicians are driving between houses. Under federal <strong>29 CFR &sect; 785.38 ("Travel that is all in a day's work")</strong>, time spent by an employee traveling from one job site to another during the workday must be counted as <strong>hours worked</strong>.
+            </p>
+            <p>
+                You may legally establish a separate, lower <strong>"Travel Rate / Windshield Wage"</strong> (for example, $12.00/hr or state minimum wage for drive time vs. $19.00/hr for active scrubbing time), provided:
+            </p>
+            <ol>
+                <li>The employee is notified of the dual-rate pay structure in writing <em>before</em> performing the work;</li>
+                <li>The travel hourly rate is at least equal to the highest applicable federal, state, or city minimum wage; and</li>
+                <li>When total weekly hours (active cleaning hours + inter-site driving hours) exceed 40 hours in a workweek, FLSA overtime is calculated using the <strong>weighted average regular rate</strong> of both pay rates (see our <a href="../hourly-pay-calculator/" style="color:#2563eb;font-weight:600;text-decoration:underline;">Hourly Pay &amp; Overtime Wage Calculator</a>).</li>
+            </ol>
+
+            <p>
+                Furthermore, under the <strong>FLSA "Free and Clear" rule (29 CFR &sect; 531.35)</strong>, if an employee earns close to the minimum wage and is forced to use their own vehicle to drive 35 miles a day between houses without reimbursement, those out-of-pocket fuel and maintenance costs are treated by the Department of Labor as an illegal <em>kickback</em> to the employer if they reduce the cleaner's net hourly earnings below minimum wage. In states such as <strong>California (Labor Code &sect; 2802)</strong>, <strong>Illinois (820 ILCS 115/9.5)</strong>, and <strong>Massachusetts</strong>, employers must reimburse 100% of necessary business mileage regardless of how high the cleaner's hourly wage is.
+            </p>
+
+            <h2 id="case-studies">5. Worked Fleet Scenarios: Residential Maid Team vs. Multi-Site Janitorial Floater</h2>
+            <p>
+                Below are two complete monthly financial models showing how IRS standard reimbursement, actual fuel burn, and FLSA inter-site windshield payroll interact:
+            </p>
+
+            <div class="omni-case-study" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:18px;margin-bottom:16px;">
+                <h3 style="margin-top:0;color:#0f172a;font-size:16px;">Scenario A: 3-Car Residential Maid Service (Suburban Route Density, 5 Days/Week)</h3>
+                <ul style="font-size:14px;line-height:1.7;color:#334155;">
+                    <li><strong>Route Profile:</strong> 3 driver-lead teams, each cleaning 4 houses/day across a suburban county; <strong>32 reimbursable miles/day per car</strong> (morning office load-in &rarr; 4 client homes &rarr; evening office laundry drop-off), 5 days/week (<code>4.333 weeks/mo = 693.3 miles/car/month</code>; <strong>2,080 total fleet miles/month</strong>).</li>
+                    <li><strong>Tax-Free IRS Standard Reimbursement ($0.70/mi):</strong> <code>2,080 miles &times; $0.70 = $1,456.00 / month</code> ($485.33/mo tax-free per driver).</li>
+                    <li><strong>Actual Fuel Burn vs. Wear Reserve (28 MPG @ $3.50/gal):</strong> Pure gasoline costs <code>(2,080 &divide; 28) &times; $3.50 = $260.00/mo</code>; the remaining <strong>$1,196.00/mo</strong> covers the drivers' depreciation ($0.33/mi = $686.40), tires, oil changes, and insurance.</li>
+                    <li><strong>FLSA Inter-Site Drive-Time Payroll (28 MPH suburban avg, $16.00/hr travel wage + 18% payroll tax/WC burden):</strong> <code>2,080 miles &divide; 28 MPH = 74.29 windshield hours/mo &times; $18.88 loaded wage = $1,402.59 / month</code>.</li>
+                    <li><strong>True Combined Fleet + Windshield Overhead:</strong> <code>$1,456.00 + $1,402.59 = $2,858.59 / month</code> across ~260 monthly residential house cleans = <strong>$10.99 transportation cost per house cleaned</strong>.</li>
+                </ul>
+            </div>
+
+            <div class="omni-case-study" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:18px;margin-bottom:16px;">
+                <h3 style="margin-top:0;color:#0f172a;font-size:16px;">Scenario B: Night-Shift Commercial Area Supervisor vs. $400 Taxable Stipend Trap</h3>
+                <ul style="font-size:14px;line-height:1.7;color:#334155;">
+                    <li><strong>Route Profile:</strong> 1 evening commercial quality-control supervisor inspecting and restocking 6 medical/dental clinics per night, driving <strong>45 inter-site miles/night</strong>, 5 nights/week (<strong>975 business miles/month</strong>).</li>
+                    <li><strong>Option 1 — Unlogged $400/Mo Flat Car Stipend (Non-Accountable Plan):</strong> Because no mileage log is collected, the $400 stipend is taxed as W-2 wages. The company pays <code>$400 + 7.65% FICA ($30.60) + 4.5% WC ($18.00) = $448.60/mo</code>, while the supervisor only nets <strong>~$296/mo after taxes</strong>—well below their actual $682.50 IRS vehicle cost.</li>
+                    <li><strong>Option 2 — IRS $0.70/Mi Accountable Plan Logbook:</strong> With a simple daily route log, the company reimburses <code>975 miles &times; $0.70 = $682.50/month</code> with <strong>$0 employer FICA tax and $0 employee income tax</strong>. Every dollar goes directly toward maintaining the vehicle while remaining 100% tax-deductible for the janitorial company.</li>
+                </ul>
+            </div>
+
+            <h2 id="faq">6. Frequently Asked Questions (Cleaning Fleet Mileage &amp; IRS Compliance)</h2>
+            <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
+                <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;">
+                    <h3 style="margin:0 0 8px 0;font-size:15.5px;color:#0f172a;">What is the IRS standard mileage reimbursement rate for cleaning businesses in 2025 and 2026?</h3>
+                    <p style="margin:0;font-size:14px;color:#475569;line-height:1.65;">Under <strong>IRS Notice 2025-5</strong>, the federal optional standard business mileage rate is <strong>$0.70 per mile</strong> (70 cents/mile, including a $0.33/mile depreciation component), up from $0.67 per mile in 2024. Cleaning business owners can use this rate under an IRC Section 62(c) Accountable Plan to reimburse W-2 technicians tax-free for driving between client homes or commercial job sites.</p>
+                </div>
+                <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;">
+                    <h3 style="margin:0 0 8px 0;font-size:15.5px;color:#0f172a;">Do cleaning companies have to pay for drive from home to the first cleaning job?</h3>
+                    <p style="margin:0;font-size:14px;color:#475569;line-height:1.65;">Under <strong>IRS Publication 463</strong> and the <strong>FLSA Portal-to-Portal Act (29 CFR &sect; 785.35)</strong>, ordinary commuting from a technician's home directly to the first client site and from the last client site back home is non-deductible personal commuting and non-compensable travel time. However, if you require cleaners to report to your central office or chemical warehouse first to load supplies and equipment, the trip from the office to the first job site (and all travel between client sites during the day under 29 CFR &sect; 785.38) is 100% compensable work time and reimbursable business mileage.</p>
+                </div>
+                <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;">
+                    <h3 style="margin:0 0 8px 0;font-size:15.5px;color:#0f172a;">Why is a flat monthly car stipend worse than an IRS Accountable Plan for maid services?</h3>
+                    <p style="margin:0;font-size:14px;color:#475569;line-height:1.65;">If you pay a cleaning supervisor or solo tech a flat $300/month car allowance without requiring contemporary odometer/GPS logs under <strong>IRC Section 62(c)</strong>, the IRS classifies it as a Non-Accountable Plan. The entire $300 must be added to Box 1 W-2 taxable wages, costing your company an extra 7.65% in employer FICA taxes plus Workers' Comp premiums, while the employee loses 15% to 29% of the allowance to income and FICA withholding.</p>
+                </div>
+                <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;">
+                    <h3 style="margin:0 0 8px 0;font-size:15.5px;color:#0f172a;">When does FLSA require mandatory vehicle reimbursement for cleaning employees?</h3>
+                    <p style="margin:0;font-size:14px;color:#475569;line-height:1.65;">Under <strong>FLSA 29 CFR &sect; 531.35</strong> ("Free and Clear" minimum wage rule), unreimbursed business expenses—such as a technician buying fuel and putting wear-and-tear on their personal car to drive between four residential houses a day—cannot push the worker's net effective hourly wage below the federal, state, or municipal minimum wage. Additionally, states such as California (Labor Code &sect; 2802), Illinois, and Massachusetts mandate 100% reimbursement of necessary employee vehicle expenses regardless of wage level.</p>
+                </div>
+            </div>
+
+            <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:20px;margin:24px 0;">
+                <h3 style="margin-top:0;font-size:16px;color:#1e3a8a;">Related Cleaning Operations &amp; Financial Calculators</h3>
+                <ul style="margin:0;padding-left:20px;line-height:1.8;font-size:14px;">
+                    <li><a href="../commercial-bidding-calculator/" style="color:#1d4ed8;font-weight:600;">Commercial Janitorial Bidding &amp; Price Per Sq Ft Calculator (2026)</a></li>
+                    <li><a href="../house-cleaning-estimate/" style="color:#1d4ed8;font-weight:600;">Residential House Cleaning Estimate Calculator</a></li>
+                    <li><a href="../hourly-pay-calculator/" style="color:#1d4ed8;font-weight:600;">Cleaning Employee Hourly Pay &amp; Weighted Overtime Calculator</a></li>
+                    <li><a href="../profit-margin-calculator/" style="color:#1d4ed8;font-weight:600;">Cleaning Business Net Profit Margin Calculator</a></li>
+                    <li><a href="../schedule-generator/" style="color:#1d4ed8;font-weight:600;">Weekly Cleaning Crew Shift &amp; Route Schedule Generator</a></li>
+                </ul>
+            </div>
+
+        </article>
+
+        <aside class="omni-calculator-aside">
+            <div class="omni-calculator-sticky">
+                <div class="omni-calculator-widget" id="mileageCalculatorWidget">
+                    <div class="omni-calc-header" style="background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;padding:16px 18px;border-radius:12px 12px 0 0;">
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#93c5fd;font-weight:700;">Interactive Fleet Audit Tool</div>
+                        <h3 style="margin:4px 0 0 0;font-size:17px;color:#fff;">IRS Mileage, Fuel &amp; Drive-Time Calculator</h3>
+                    </div>
+
+                    <div class="omni-calc-body" style="padding:18px;background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 12px 12px;">
+                        <div class="omni-input-group" style="margin-bottom:12px;">
+                            <label for="dailyMilesInput" style="display:block;font-size:12.5px;font-weight:700;color:#1e293b;margin-bottom:4px;">Reimbursable Inter-Site Miles / Day (Per Car)</label>
+                            <input type="number" id="dailyMilesInput" value="32" min="1" max="500" step="1" style="width:100%;padding:9px 11px;border:1px solid #cbd5e1;border-radius:7px;font-size:14px;">
+                        </div>
+
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
+                            <div class="omni-input-group">
+                                <label for="daysWeekSelect" style="display:block;font-size:12px;font-weight:700;color:#1e293b;margin-bottom:4px;">Workdays / Week</label>
+                                <select id="daysWeekSelect" class="omni-select" style="width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:7px;font-size:13.5px;">
+                                    <option value="3">3 Days / Wk</option>
+                                    <option value="4">4 Days / Wk</option>
+                                    <option value="5" selected>5 Days / Wk</option>
+                                    <option value="6">6 Days / Wk</option>
+                                    <option value="7">7 Days / Wk</option>
+                                </select>
+                            </div>
+                            <div class="omni-input-group">
+                                <label for="vehiclesInput" style="display:block;font-size:12px;font-weight:700;color:#1e293b;margin-bottom:4px;">Active Route Cars</label>
+                                <input type="number" id="vehiclesInput" value="3" min="1" max="100" step="1" style="width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:7px;font-size:14px;">
+                            </div>
+                        </div>
+
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
+                            <div class="omni-input-group">
+                                <label for="irsRateInput" style="display:block;font-size:12px;font-weight:700;color:#1e293b;margin-bottom:4px;">IRS Rate ($/Mile)</label>
+                                <input type="number" id="irsRateInput" value="0.70" min="0.10" max="2.50" step="0.01" style="width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:7px;font-size:14px;">
+                            </div>
+                            <div class="omni-input-group">
+                                <label for="jobsPerDayInput" style="display:block;font-size:12px;font-weight:700;color:#1e293b;margin-bottom:4px;">Cleans / Day / Car</label>
+                                <input type="number" id="jobsPerDayInput" value="4" min="1" max="30" step="1" style="width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:7px;font-size:14px;">
+                            </div>
+                        </div>
+
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
+                            <div class="omni-input-group">
+                                <label for="mpgInput" style="display:block;font-size:12px;font-weight:700;color:#1e293b;margin-bottom:4px;">Vehicle Avg MPG</label>
+                                <input type="number" id="mpgInput" value="28" min="8" max="120" step="1" style="width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:7px;font-size:14px;">
+                            </div>
+                            <div class="omni-input-group">
+                                <label for="gasPriceInput" style="display:block;font-size:12px;font-weight:700;color:#1e293b;margin-bottom:4px;">Gas Price ($/Gal)</label>
+                                <input type="number" id="gasPriceInput" value="3.50" min="1.50" max="9.00" step="0.05" style="width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:7px;font-size:14px;">
+                            </div>
+                        </div>
+
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+                            <div class="omni-input-group">
+                                <label for="driveWageInput" style="display:block;font-size:12px;font-weight:700;color:#1e293b;margin-bottom:4px;">Loaded Drive Wage ($/Hr)</label>
+                                <input type="number" id="driveWageInput" value="18.88" min="7.25" max="80" step="0.25" style="width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:7px;font-size:14px;">
+                            </div>
+                            <div class="omni-input-group">
+                                <label for="avgSpeedInput" style="display:block;font-size:12px;font-weight:700;color:#1e293b;margin-bottom:4px;">Avg Route Speed (MPH)</label>
+                                <input type="number" id="avgSpeedInput" value="28" min="10" max="65" step="1" style="width:100%;padding:9px 10px;border:1px solid #cbd5e1;border-radius:7px;font-size:14px;">
+                            </div>
+                        </div>
+
+                        <button type="button" id="calcMileageBtn" style="width:100%;background:#2563eb;color:#ffffff;border:none;padding:11px 14px;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;margin-bottom:14px;">Recalculate Fleet Mileage &amp; Tax Savings</button>
+
+                        <div id="mileageResultBox" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:14px;">
+                            <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #e2e8f0;padding-bottom:8px;margin-bottom:8px;">
+                                <span style="font-size:12px;color:#475569;font-weight:600;">Monthly Tax-Free IRS Reimbursement:</span>
+                                <strong id="resIrsMonthly" style="font-size:20px;color:#1d4ed8;">$1,455.89</strong>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px;color:#334155;">
+                                <span>Monthly Fleet Reimbursable Miles:</span>
+                                <strong id="resTotalMiles">2,080 mi/mo</strong>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px;color:#334155;">
+                                <span>Est. Raw Gasoline Spend:</span>
+                                <strong id="resFuelCost">$259.98 / mo</strong>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px;color:#334155;">
+                                <span>Depreciation ($0.33/mi) + Maint Buffer:</span>
+                                <strong id="resWearReserve">$1,195.91 / mo</strong>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px;color:#334155;">
+                                <span>FLSA Inter-Site Drive-Time Payroll:</span>
+                                <strong id="resDrivePayroll">$1,402.47 / mo</strong>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;font-size:13px;border-top:1px dashed #cbd5e1;padding-top:8px;margin-top:6px;color:#0f172a;">
+                                <span><strong>True Fleet + Drive Cost / Clean:</strong></span>
+                                <strong id="resCostPerJob" style="color:#047857;">$10.99 / job</strong>
+                            </div>
+                            <div style="margin-top:8px;padding:8px 10px;background:#ecfdf5;border-radius:6px;font-size:11.5px;color:#065f46;" id="resTaxNote">
+                                Accountable Plan saves ~$436.77/mo in combined W-2 FICA &amp; income tax friction vs. an unlogged stipend.
+                            </div>
+                        </div>
+
+                        <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px;">
+                            <a href="https://bbux.me/D9xCZh2dE" target="_blank" rel="sponsored noopener" style="display:block;text-align:center;background:#1e3a8a;color:#ffffff !important;font-weight:700;padding:10px 12px;border-radius:7px;text-decoration:none;font-size:12.5px;">Warehouse 115 Bulk Janitorial Supplies &rarr;</a>
+                            <a href="https://bbux.me/NarLTZc1c" target="_blank" rel="sponsored noopener" style="display:block;text-align:center;background:#0f172a;color:#ffffff !important;font-weight:700;padding:10px 12px;border-radius:7px;text-decoration:none;font-size:12.5px;">Office Depot Vehicle Mileage Logbooks &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>&copy; 2026 PureWear Calculators (<a href="https://purewearspace.com" style="color:#94a3b8;">purewearspace.com</a>). Built on IRS Notice 2025-5 &amp; FLSA 29 CFR Part 785 benchmarks.</p>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        var runCount = 0;
+        function calculateFleetMileage() {
+            runCount += 1;
+            var dailyMiles = parseFloat(document.getElementById('dailyMilesInput').value);
+            if (!(dailyMiles > 0)) dailyMiles = 32;
+            var daysWeek = parseFloat(document.getElementById('daysWeekSelect').value);
+            if (!(daysWeek > 0)) daysWeek = 5;
+            var vehicles = parseFloat(document.getElementById('vehiclesInput').value);
+            if (!(vehicles > 0)) vehicles = 1;
+            var irsRate = parseFloat(document.getElementById('irsRateInput').value);
+            if (!(irsRate > 0)) irsRate = 0.70;
+            var jobsPerDay = parseFloat(document.getElementById('jobsPerDayInput').value);
+            if (!(jobsPerDay > 0)) jobsPerDay = 4;
+            var mpg = parseFloat(document.getElementById('mpgInput').value);
+            if (!(mpg > 0)) mpg = 28;
+            var gasPrice = parseFloat(document.getElementById('gasPriceInput').value);
+            if (!(gasPrice > 0)) gasPrice = 3.50;
+            var driveWage = parseFloat(document.getElementById('driveWageInput').value);
+            if (!(driveWage > 0)) driveWage = 18.88;
+            var avgSpeed = parseFloat(document.getElementById('avgSpeedInput').value);
+            if (!(avgSpeed > 0)) avgSpeed = 28;
+
+            var weeksPerMonth = 4.333;
+            var monthlyMiles = dailyMiles * daysWeek * weeksPerMonth * vehicles;
+            var irsMonthly = monthlyMiles * irsRate;
+            var gallonsUsed = monthlyMiles / mpg;
+            var fuelCost = gallonsUsed * gasPrice;
+            var wearReserve = irsMonthly - fuelCost;
+            if (wearReserve < 0) wearReserve = 0;
+
+            var driveHours = monthlyMiles / avgSpeed;
+            var drivePayroll = driveHours * driveWage;
+            var totalJobs = jobsPerDay * daysWeek * weeksPerMonth * vehicles;
+            var totalCombinedCost = irsMonthly + drivePayroll;
+            var costPerJob = totalCombinedCost / totalJobs;
+            var taxFrictionSaved = irsMonthly * 0.30;
+
+            document.getElementById('resIrsMonthly').textContent = '$' + irsMonthly.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resTotalMiles').textContent = Math.round(monthlyMiles).toLocaleString('en-US') + ' mi/mo (' + Math.round(monthlyMiles * 12).toLocaleString('en-US') + ' mi/yr)';
+            document.getElementById('resFuelCost').textContent = '$' + fuelCost.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' / mo (' + gallonsUsed.toFixed(1) + ' gal)';
+            document.getElementById('resWearReserve').textContent = '$' + wearReserve.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' / mo';
+            document.getElementById('resDrivePayroll').textContent = '$' + drivePayroll.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' / mo (' + driveHours.toFixed(1) + ' hrs)';
+            document.getElementById('resCostPerJob').textContent = '$' + costPerJob.toFixed(2) + ' / job ($' + totalCombinedCost.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0}) + ' total)';
+            document.getElementById('resTaxNote').textContent = 'Accountable Plan saves ~$' + taxFrictionSaved.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '/mo in combined FICA & income tax friction vs. an unlogged stipend (Audit #' + runCount + ').';
+        }
+
+        var ids = ['dailyMilesInput', 'daysWeekSelect', 'vehiclesInput', 'irsRateInput', 'jobsPerDayInput', 'mpgInput', 'gasPriceInput', 'driveWageInput', 'avgSpeedInput'];
+        for (var i = 0; i < ids.length; i++) {
+            var el = document.getElementById(ids[i]);
+            if (el) {
+                el.addEventListener('input', calculateFleetMileage);
+                el.addEventListener('change', calculateFleetMileage);
+            }
+        }
+        var btn = document.getElementById('calcMileageBtn');
+        if (btn) {
+            btn.addEventListener('click', calculateFleetMileage);
+        }
+    })();
+    </script>
+</body>
+</html>
