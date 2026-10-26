@@ -822,10 +822,12 @@ html, body {
                 mockTotalQuote.textContent = curr + finalEstimate.toFixed(2);
 
                 /* Generate Clean Embed Snippet */
+                const embedBase = 'https://' + 'tool.purewearspace.com/tools/house-cleaning-estimate/';
+                const embedHash = '#brand=' + encodeURIComponent(bName) + '&curr=' + encodeURIComponent(curr) + '&rate=' + bRate + '&color=' + encodeURIComponent(theme);
                 const snippet = `<!-- Start PureWear Cleaning Estimate Widget -->
 <div class="clean-estimate-embed" style="position:relative;width:100%;max-width:600px;margin:0 auto;box-sizing:border-box;">
   <iframe
-    src="https://tool.purewearspace.com/tools/house-cleaning-estimate/?brand=${encodeURIComponent(bName)}&curr=${encodeURIComponent(curr)}&rate=${bRate}&color=${encodeURIComponent(theme)}"
+    src="${embedBase}${embedHash}"
     width="100%"
     height="640"
     style="width:100%;min-width:100%;max-width:100%;height:640px;border:none;overflow:hidden;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.08);"

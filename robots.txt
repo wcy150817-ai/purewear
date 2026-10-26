@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.purewearspace.com/sitemap.xml
+Sitemap: https://tool.purewearspace.com/sitemap.xml
