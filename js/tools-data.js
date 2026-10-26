@@ -240,6 +240,76 @@ const TOOLS_DATA = [
         tag: 'Finance',
         featured: true,
         url: '/tools/mileage-reimbursement-calculator/'
+    },
+    {
+        id: '1099-vs-w2-cleaning-labor-calculator',
+        title: 'Subcontractor 1099 vs W2 Cleaning Employee Labor Cost & Tax Calculator (2026)',
+        icon: '⚖️',
+        desc: 'Compare loaded W-2 cleaning employee cost (7.65% FICA, FUTA, SUTA, Class 9014 Workers\' Comp) against 1099 subcontractor payouts and IRC Section 3509 misclassification exposure.',
+        category: 'pricing',
+        tag: 'Finance',
+        featured: true,
+        url: '/tools/1099-vs-w2-cleaning-labor-calculator/'
+    },
+    {
+        id: 'window-cleaning-quote-calculator',
+        title: 'Commercial & Residential Window Cleaning Quote Calculator: Per-Pane vs Hourly Pricing (2026)',
+        icon: '🪟',
+        desc: 'Calculate residential and commercial window cleaning quotes using 2026 per-pane rates, French panes, screens, tracks, hard-water stain removal, and water-fed pole hourly targets.',
+        category: 'pricing',
+        tag: 'New',
+        featured: true,
+        url: '/tools/window-cleaning-quote-calculator/'
+    },
+    {
+        id: 'disinfectant-oz-per-gallon-calculator',
+        title: '1:128, 1:64 & 1:256 Disinfectant Oz-Per-Gallon Chart & Spray Bottle Dilution Calculator (2026)',
+        icon: '🧴',
+        desc: 'Convert 1:256, 1:128, 1:64, 1:32, and 1:10 chemical ratios into exact fluid ounces, milliliters, teaspoons, active PPM, and ready-to-use cost per spray bottle or mop bucket.',
+        category: 'safety',
+        tag: 'Safety',
+        featured: true,
+        url: '/tools/disinfectant-oz-per-gallon-calculator/'
+    },
+    {
+        id: 'osha-secondary-container-label-generator',
+        title: 'OSHA HazCom & SDS Janitorial Chemical Mixing Compatibility Chart & Secondary Label Generator (2026)',
+        icon: '⚠️',
+        desc: 'Check janitorial chemical mixing compatibility (Bleach, Ammonia, Acid, Peroxide, Quats) and print OSHA 29 CFR 1910.1200(f)(6) GHS 3x4" secondary spray bottle labels.',
+        category: 'safety',
+        tag: 'Safety',
+        featured: true,
+        url: '/tools/osha-secondary-container-label-generator/'
+    },
+    {
+        id: 'sanitary-expense-accounting-calculator',
+        title: 'Janitorial Chart of Accounts & Sanitary Supply Expense Ratio Calculator for Cleaning Businesses (2026)',
+        icon: '🧾',
+        desc: 'Audit your cleaning business sanitary supply COGS ratio (1.8%–3.5% target), map costs to IRS Schedule C & QuickBooks accounts, and calculate restroom consumable markups.',
+        category: 'pricing',
+        tag: 'Finance',
+        featured: true,
+        url: '/tools/sanitary-expense-accounting-calculator/'
+    },
+    {
+        id: 'maid-service-tip-pooling-calculator',
+        title: 'House Cleaning & Maid Service Tip Pooling Calculator: Solo Tech vs Crew Split Rules (2026)',
+        icon: '🤝',
+        desc: 'Split residential maid crew tips fairly by role-weighted hours (Lead/Driver 1.20x vs Associate 1.00x vs Trainee 0.75x) under FLSA 29 CFR 531.54 and IRS Form 4070 rules.',
+        category: 'pricing',
+        tag: 'Finance',
+        featured: true,
+        url: '/tools/maid-service-tip-pooling-calculator/'
+    },
+    {
+        id: 'move-out-deep-cleaning-calculator',
+        title: 'Move-Out & Deep Cleaning Add-On Pricing Calculator: Inside Oven, Fridge & Cabinet Rates (2026)',
+        icon: '🔑',
+        desc: 'Build itemized move-out and deep cleaning quotes with 2026 add-on pricing for inside oven, refrigerator, empty cabinets, baseboards, interior windows, blinds, and heavy soil multipliers.',
+        category: 'pricing',
+        tag: 'New',
+        featured: true,
+        url: '/tools/move-out-deep-cleaning-calculator/'
     }
 ];
 
