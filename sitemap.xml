@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://tool.purewearspace.com/tools/cleaning-checklist/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -195,6 +195,12 @@
   <url>
     <loc>https://tool.purewearspace.com/tools/maid-service-tip-pooling-calculator/</loc>
     <lastmod>2026-10-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://tool.purewearspace.com/tools/move-out-deep-cleaning-calculator/</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
