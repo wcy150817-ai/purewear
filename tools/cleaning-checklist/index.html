@@ -82,6 +82,28 @@
   .omni-calculator-widget { box-shadow: none !important; border: 1px solid #ddd !important; }
   body { background: #fff !important; }
 }
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+.omni-layout-grid, .omni-article, .omni-calculator-aside, .omni-calculator-widget, .omni-math-block, .omni-case-study, .omni-row, .omni-input-group, select.omni-select {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.omni-table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+}
+.omni-math-equation {
+  overflow-x: auto;
+  max-width: 100%;
+  word-break: break-word;
+}
+.omni-toc-bar { flex-wrap: wrap; }
 </style>
 </head>
 <body>
