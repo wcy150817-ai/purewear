@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Cleaning Production Rate &amp; Square Footage Time Estimator: ISSA Standards (2026) | PureWear Space</title>
-    <meta name="description" content="Calculate commercial and residential cleaning labor hours, cleaning units (per 1,000 sq ft), restroom fixture time, and crew duration using ISSA 612 production rates and APPA cleanliness levels.">
+    <title>How Many Cleaners Do I Need? Crew Size, Sq Ft/Hr &amp; Cleaning Time Calculator (2026) | PureWear Space</title>
+    <meta name="description" content="Calculate how many cleaners you need for any building size and shift window (1,500 to 100,000 sq ft), square feet per hour production rates, and ISSA 612 cleaning units.">
     <link rel="canonical" href="https://tool.purewearspace.com/tools/time-estimator/" />
 
-    <meta property="og:title" content="Cleaning Production Rate & Square Footage Time Estimator: ISSA Standards (2026)">
-    <meta property="og:description" content="Estimate commercial office, medical clinic, school, and residential cleaning hours from square footage, restroom fixture units, and APPA cleanliness levels.">
+    <meta property="og:title" content="How Many Cleaners Do I Need? Crew Size, Sq Ft/Hr & Cleaning Time Calculator (2026)">
+    <meta property="og:description" content="Solve crew size for a 4-hour shift, commercial and residential square feet per hour production rates, cleaning units (per 1,000 sq ft), and restroom fixture time.">
     <meta property="og:url" content="https://tool.purewearspace.com/tools/time-estimator/">
     <meta property="og:type" content="article">
 
@@ -17,10 +17,10 @@
   "@graph": [
     {
       "@type": "Article",
-      "headline": "Cleaning Production Rate & Square Footage Time Estimator: ISSA Standards (2026)",
-      "description": "Engineering guide and interactive workloading calculator for commercial janitorial and residential cleaning time estimation using ISSA 612 production rates, cleaning units, restroom fixture counts, and APPA Levels 1-5.",
+      "headline": "How Many Cleaners Do I Need? Crew Size, Square Feet per Hour & Cleaning Time Calculator (2026)",
+      "description": "Engineering guide and interactive workloading calculator for solving how many cleaners are needed for any square footage and shift window using ISSA 612 production rates, cleaning units, restroom fixture counts, and APPA Levels 1-5.",
       "datePublished": "2026-10-20",
-      "dateModified": "2026-10-20",
+      "dateModified": "2026-11-03",
       "author": {
         "@type": "Organization",
         "name": "PureWear Productivity & Operations Desk",
@@ -52,6 +52,14 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many cleaners do I need to clean a 1,500-square-foot (or 15,000-square-foot) office building in 4 hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Using the crew-size formula Required Cleaners = ceil(Total Man-Hours / Shift Window Hours): A 1,500-square-foot office at the ISSA 612 open-office production rate of 2,400 to 3,200 sq ft/hr plus 2 restroom fixtures (7 minutes) takes only 0.59 to 0.74 total man-hours (35 to 45 minutes), so 1 cleaner easily finishes well inside a 4-hour window. For a 15,000-square-foot office with 12 restroom fixtures (5.39 total man-hours at 3,200 sq ft/hr or 6.95 man-hours at 2,400 sq ft/hr), dividing by a 4-hour evening shift window yields 1.35 to 1.74 cleaners—meaning you need a 2-cleaner crew (each working 2 hours 42 minutes to 3 hours 28 minutes on-site)."
+          }
+        },
         {
           "@type": "Question",
           "name": "What is the standard commercial cleaning production rate in square feet per hour?",
@@ -150,21 +158,22 @@ html, body {
                 <span>Cleaning Production Rate &amp; Time Estimator</span>
             </nav>
 
-            <h1>Cleaning Production Rate &amp; Square Footage Time Estimator: ISSA Standards (2026)</h1>
+            <h1>How Many Cleaners Do I Need? Crew Size, Square Feet per Hour &amp; Cleaning Time Calculator (2026)</h1>
 
             <div class="omni-author-bar">
                 <span class="author-badge">ISSA 612 &amp; APPA Workloading</span>
                 <span>By PureWear Productivity &amp; Operations Desk</span>
                 <span class="sep">&bull;</span>
-                <span class="live-indicator"><span class="live-dot"></span>Updated October 20, 2026</span>
+                <span class="live-indicator"><span class="live-dot"></span>Updated November 3, 2026</span>
             </div>
 
             <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:12px 16px;border-radius:0 8px 8px 0;font-size:13px;color:#475569;margin:16px 0;">
-                <strong>Methodology &amp; Affiliate Disclosure:</strong> This workloading guide and time estimator apply published commercial janitorial formulas from <strong>ISSA (The Worldwide Cleaning Industry Association — ISSA 612 Cleaning Times)</strong>, <strong>BSCAI</strong>, and <strong>APPA Operational Guidelines for Educational Facilities (Levels 1–5)</strong>. All production rate tables represent illustrative benchmark ranges—adjust inputs to match your crew, equipment (backpack HEPA vacuum vs upright, auto-scrubber vs string mop), and building congestion. Some links to janitorial supply distributors below are sponsored affiliate links (<code>rel="sponsored"</code>) that may earn us a commission at no extra cost to you.
+                <strong>Methodology &amp; Affiliate Disclosure:</strong> This workloading guide and crew-size calculator apply published commercial janitorial formulas from <strong>ISSA (The Worldwide Cleaning Industry Association — ISSA 612 Cleaning Times)</strong>, <strong>BSCAI</strong>, and <strong>APPA Operational Guidelines for Educational Facilities (Levels 1–5)</strong>. All production rate tables represent illustrative benchmark ranges—adjust inputs to match your crew, equipment (backpack HEPA vacuum vs upright, auto-scrubber vs string mop), and building congestion. Some links to field-service scheduling software and janitorial supply distributors below are sponsored affiliate links (<code>rel="sponsored"</code>) that may earn us a commission at no extra cost to you.
             </div>
 
             <nav class="omni-toc-bar">
-                <a href="#overview" class="omni-toc-pill">Overview</a>
+                <a href="#overview" class="omni-toc-pill">Quick Answer</a>
+                <a href="#crew-size-solver" class="omni-toc-pill">How Many Cleaners Do I Need?</a>
                 <a href="#issa-formula" class="omni-toc-pill">Cleaning Units &amp; Formulas</a>
                 <a href="#benchmark-table" class="omni-toc-pill">Facility Production Rates</a>
                 <a href="#restroom-fixtures" class="omni-toc-pill">Fixture Unit Math</a>
@@ -174,18 +183,125 @@ html, body {
             </nav>
 
             <div id="overview">
+                <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:16px 18px;margin-bottom:20px;">
+                    <div style="font-size:14px;font-weight:800;color:#1e3a8a;margin-bottom:8px;">⚡ Instant Answer: How Many Cleaners Do I Need to Clean a 1,500 sq ft (or 15,000 sq ft) Office in 4 Hours?</div>
+                    <ul style="margin:0;padding-left:18px;font-size:13.5px;line-height:1.65;color:#1e293b;">
+                        <li><strong>1,500 sq ft Office Building in a 4-Hour Window:</strong> You need <strong>1 cleaner</strong> (taking only <strong>35 to 45 minutes</strong> on-site). At the standard ISSA 612 commercial office rate of <code>2,400 to 3,200 sq ft/hr</code> plus 2 restroom fixtures (<code>7 minutes</code>), total workloading is <code>0.59 to 0.74 man-hours</code>.</li>
+                        <li><strong>15,000 sq ft Office Building in a 4-Hour Window:</strong> You need <strong>2 cleaners</strong> (each working <strong>2 hours 42 minutes to 3 hours 28 minutes</strong>). Dividing <code>5.39 to 6.95 total man-hours</code> (floor + 12 restroom fixtures) by a <code>4-hour shift window</code> yields <code>1.35 to 1.74 cleaners</code>, which rounds up to a <strong>2-person evening crew</strong>.</li>
+                        <li><strong>How Many Square Feet Can One Person Clean per Hour?</strong> One trained technician averages <strong>2,500–4,200 sq ft/hr</strong> in open commercial offices (APPA Level 2), <strong>2,000–2,800 sq ft/hr</strong> in congested cubicle layouts, <strong>1,000–2,200 sq ft/hr</strong> in medical clinics, and <strong>300–600 sq ft/hr</strong> in residential homes.</li>
+                    </ul>
+                </div>
+
                 <p>
                     Whether you are bidding a 45,000-square-foot Class-A corporate office, scoping a medical clinic with strict terminal disinfection protocols, or scheduling a 2-person residential maid team, guessing labor hours is the fastest way to destroy contract profitability. Bid 20% too slow and you lose the RFP to a sharper contractor; bid 20% too fast and your night crew either cuts corners (triggering contract cancellation) or racks up unbilled overtime.
                 </p>
                 <p>
-                    Professional janitorial estimators never rely on a single flat square-footage rule across different building types. Instead, they combine three core industrial engineering metrics: <strong>Facility Production Rates (cleanable sq ft per hour)</strong>, <strong>Cleaning Units (1,000 sq ft task blocks from the ISSA 612 framework)</strong>, and <strong>Restroom Plumbing Fixture Counts</strong>—all calibrated to the client's contracted <strong>APPA Cleanliness Level (Levels 1 through 5)</strong>.
+                    Professional janitorial estimators never rely on a single flat square-footage rule across different building types. Instead, they combine four core industrial engineering metrics: <strong>Facility Production Rates (cleanable sq ft per hour)</strong>, <strong>Cleaning Units (1,000 sq ft task blocks from the ISSA 612 framework)</strong>, <strong>Restroom Plumbing Fixture Counts</strong>, and the client's <strong>Allowed Shift Window (e.g., 4 hours between 6:00 PM and 10:00 PM)</strong>—all calibrated to the contracted <strong>APPA Cleanliness Level (Levels 1 through 5)</strong>.
                 </p>
                 <p>
-                    Once you calculate your exact man-hours and crew duration below, feed your labor hours directly into our <a href="../commercial-bidding-calculator/" style="color:#2563eb;font-weight:600;text-decoration:underline;">Commercial Janitorial Bidding &amp; Price Per Square Foot Calculator</a>, compare pricing models in our <a href="../square-foot-vs-hourly/" style="color:#2563eb;font-weight:600;text-decoration:underline;">Square Foot vs. Hourly Cleaning Pricing Analyzer</a>, and assign shifts in our <a href="../on-call-rotation-generator/" style="color:#2563eb;font-weight:600;text-decoration:underline;">Commercial Cleaning On-Call Rotation &amp; Shift Generator</a>.
+                    Once you solve your exact man-hours and crew size below, compare payroll taxes and classification rules in our <a href="../1099-vs-w2-cleaning-labor-calculator/" style="color:#2563eb;font-weight:600;text-decoration:underline;">1099 vs. W-2 Cleaning Labor True Hourly Cost Calculator</a>, feed your labor hours directly into our <a href="../commercial-bidding-calculator/" style="color:#2563eb;font-weight:600;text-decoration:underline;">Commercial Janitorial Bidding &amp; Price Per Square Foot Calculator</a>, or scope residential turnovers with our <a href="../move-out-deep-cleaning-calculator/" style="color:#2563eb;font-weight:600;text-decoration:underline;">Move-Out vs. Standard Deep Cleaning Labor &amp; Supply Calculator</a>.
                 </p>
             </div>
 
-            <h2 id="issa-formula">1. How to Calculate Cleaning Units (CU) &amp; ISSA 612 Labor Equations</h2>
+            <h2 id="crew-size-solver">1. How Many Cleaners Do I Need? Crew-Size Formula &amp; 4-Hour Shift Matrix</h2>
+            <p>
+                When a property manager asks <em>"How many cleaners will you assign to our building each night?"</em>, the answer depends on two independent constraints: the <strong>Total Billable Man-Hours</strong> required by the building's square footage and restroom fixtures, and the <strong>Maximum Allowed Shift Window</strong> (how many clock hours the building is accessible after tenants leave or before security locks the alarm):
+            </p>
+            <div class="omni-math-block" style="margin-bottom:18px;">
+                <div class="omni-math-header">
+                    <span>👥 CREW-SIZE SOLVER FORMULA (SHIFT WINDOW WORKLOADING)</span>
+                </div>
+                <div class="omni-math-equation" style="font-family:monospace;font-size:13.5px;line-height:1.75;background:#eff6ff;padding:12px;border-radius:6px;color:#1e293b;">
+                    1. Total Man-Hours = (Cleanable Sq Ft &divide; Production Rate sq ft/hr) + ((Restroom Fixtures &times; 3.5 min) &divide; 60)<br>
+                    2. Required Crew Size = CEILING( Total Man-Hours &divide; Allowed Shift Window Hours )<br>
+                    3. Actual On-Site Clock Time = Total Man-Hours &divide; Assigned Crew Size
+                </div>
+            </div>
+            <p>
+                Use the quick-reference matrix below to see how many cleaners are required across commercial office sizes from <strong>1,500 sq ft to 100,000 sq ft</strong> at the standard ISSA 612 APPA Level 2 open-office rate (<code>3,200 sq ft/hr</code> floor rate + <code>3.5 min/fixture</code> restroom allowance, equating to an effective blended building rate of ~<code>2,780 sq ft/hr</code>):
+            </p>
+            <div class="omni-table-wrapper">
+                <table class="omni-table">
+                    <thead>
+                        <tr>
+                            <th>Cleanable Building Area</th>
+                            <th>Cleaning Units (CU)</th>
+                            <th>Typical Restroom Fixtures</th>
+                            <th>Total Billable Man-Hours</th>
+                            <th>Crew for 2-Hr Window</th>
+                            <th>Crew for 4-Hr Window</th>
+                            <th>Crew for 6-Hr Window</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1,500 sq ft Office</strong></td>
+                            <td>1.5 CU</td>
+                            <td>2 fixtures (7 min)</td>
+                            <td><strong>0.59 man-hrs (35 min)</strong></td>
+                            <td>1 Cleaner (35m)</td>
+                            <td><strong>1 Cleaner (35m)</strong></td>
+                            <td>1 Cleaner (35m)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5,000 sq ft Office</strong></td>
+                            <td>5.0 CU</td>
+                            <td>4 fixtures (14 min)</td>
+                            <td><strong>1.80 man-hrs (1h 48m)</strong></td>
+                            <td>1 Cleaner (1h 48m)</td>
+                            <td><strong>1 Cleaner (1h 48m)</strong></td>
+                            <td>1 Cleaner (1h 48m)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>10,000 sq ft Office</strong></td>
+                            <td>10.0 CU</td>
+                            <td>8 fixtures (28 min)</td>
+                            <td><strong>3.59 man-hrs (3h 35m)</strong></td>
+                            <td>2 Cleaners (1h 48m)</td>
+                            <td><strong>1 Cleaner (3h 35m)</strong></td>
+                            <td>1 Cleaner (3h 35m)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>15,000 sq ft Office</strong></td>
+                            <td>15.0 CU</td>
+                            <td>12 fixtures (42 min)</td>
+                            <td><strong>5.39 man-hrs (5h 23m)</strong></td>
+                            <td>3 Cleaners (1h 48m)</td>
+                            <td><strong>2 Cleaners (2h 42m)</strong></td>
+                            <td>1 Cleaner (5h 23m)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>25,000 sq ft Office</strong></td>
+                            <td>25.0 CU</td>
+                            <td>20 fixtures (70 min)</td>
+                            <td><strong>8.98 man-hrs (8h 59m)</strong></td>
+                            <td>5 Cleaners (1h 48m)</td>
+                            <td><strong>3 Cleaners (3h 00m)</strong></td>
+                            <td>2 Cleaners (4h 29m)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>50,000 sq ft Office</strong></td>
+                            <td>50.0 CU</td>
+                            <td>40 fixtures (140 min)</td>
+                            <td><strong>17.96 man-hrs (17h 58m)</strong></td>
+                            <td>9 Cleaners (2h 00m)</td>
+                            <td><strong>5 Cleaners (3h 36m)</strong></td>
+                            <td>3 Cleaners (5h 59m)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>100,000 sq ft Campus</strong></td>
+                            <td>100.0 CU</td>
+                            <td>80 fixtures (280 min)</td>
+                            <td><strong>35.92 man-hrs (35h 55m)</strong></td>
+                            <td>18 Cleaners (2h 00m)</td>
+                            <td><strong>9 Cleaners (3h 59m)</strong></td>
+                            <td>6 Cleaners (5h 59m)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 id="issa-formula">2. How to Calculate Cleaning Units (CU) &amp; ISSA 612 Labor Equations</h2>
             <p>
                 One of the most searched questions in commercial facility management is <strong>how to calculate cleaning units</strong>. In the <strong>ISSA 612 Cleaning Times</strong> methodology, individual cleaning tasks (dusting, vacuuming, spot-mopping, pulling trash) are benchmarked in <strong>minutes per 1,000 cleanable square feet</strong>. Therefore, <strong>1 Cleaning Unit (CU) equals 1,000 square feet of cleanable floor area</strong> (excluding mechanical closets, structural columns, and elevator shafts):
             </p>
@@ -346,9 +462,16 @@ html, body {
                 </div>
             </div>
 
-            <h2 id="faq">5. Frequently Asked Questions (FAQ)</h2>
+            <h2 id="faq">6. Frequently Asked Questions (FAQ)</h2>
             <div class="omni-faq-accordion">
                 <details class="omni-faq-item" open>
+                    <summary>How many cleaners do I need to clean a 1,500-square-foot (or 15,000-square-foot) office building in 4 hours?</summary>
+                    <div class="omni-faq-answer">
+                        Using the crew-size formula <code>Required Cleaners = ceil(Total Man-Hours / Shift Window Hours)</code>: A <strong>1,500-square-foot office</strong> at the ISSA 612 open-office production rate of 2,400 to 3,200 sq ft/hr plus 2 restroom fixtures (7 minutes) takes only <strong>0.59 to 0.74 total man-hours (35 to 45 minutes)</strong>, so <strong>1 cleaner</strong> easily finishes well inside a 4-hour window. For a <strong>15,000-square-foot office</strong> with 12 restroom fixtures (<code>5.39 total man-hours</code> at 3,200 sq ft/hr or <code>6.95 man-hours</code> at 2,400 sq ft/hr), dividing by a 4-hour evening shift window yields <code>1.35 to 1.74 cleaners</code>—meaning you need a <strong>2-cleaner crew</strong> (each working 2 hours 42 minutes to 3 hours 28 minutes on-site).
+                    </div>
+                </details>
+
+                <details class="omni-faq-item">
                     <summary>What is the standard commercial cleaning production rate in square feet per hour?</summary>
                     <div class="omni-faq-answer">
                         Under industry workloading references such as ISSA 612 Cleaning Times and BSCAI benchmarks, general open-plan commercial offices average <strong>2,500 to 4,200 cleanable square feet per hour</strong> at APPA Level 2 (Ordinary Tidiness). Congested private offices and cubicle layouts average <strong>2,000 to 2,800 sq ft/hr</strong>, educational classrooms average <strong>3,000 to 4,500 sq ft/hr</strong>, and medical or dental clinics average <strong>1,000 to 2,200 sq ft/hr</strong> due to hospital-grade disinfectant dwell times and terminal high-touch wiping.
@@ -378,9 +501,10 @@ html, body {
             </div>
 
             <div style="margin-top: 32px; padding: 22px; background: #0f172a; color: #ffffff; border-radius: 12px;">
-                <h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 18px;">Upgrade Your Commercial Janitorial Fleet &amp; Supply Chain</h3>
-                <p style="font-size: 13.5px; color: #cbd5e1; margin: 0 0 16px 0;">Equip your crews with commercial HEPA backpack vacuums, microfiber flat-mop carts, and bulk EPA-registered disinfectants from verified B2B suppliers:</p>
+                <h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 18px;">Automate Crew Scheduling &amp; Upgrade Your Commercial Supply Chain</h3>
+                <p style="font-size: 13.5px; color: #cbd5e1; margin: 0 0 16px 0;">Dispatch evening crews with GPS time-tracking software and equip technicians with commercial HEPA backpack vacuums, microfiber flat-mop carts, and bulk EPA-registered disinfectants:</p>
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="https://bbux.me/o9xAj2b5" target="_blank" rel="sponsored noopener" style="display:inline-block;background:#ea580c;color:#ffffff !important;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none;font-size:13.5px;">Automate Crew Dispatch with Housecall Pro (CPS) &rarr;</a>
                     <a href="https://bbux.me/D9xCZh2dE" target="_blank" rel="sponsored noopener" style="display:inline-block;background:#2563eb;color:#ffffff !important;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none;font-size:13.5px;">Warehouse 115 Bulk Janitorial Supply (CPS) &rarr;</a>
                     <a href="https://bbux.me/v9xB3q0hg" target="_blank" rel="sponsored noopener" style="display:inline-block;background:#059669;color:#ffffff !important;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none;font-size:13.5px;">The Cleaning Warehouse Commercial Gear &rarr;</a>
                     <a href="https://bbux.me/NarLTZc1c" target="_blank" rel="sponsored noopener" style="display:inline-block;background:#475569;color:#ffffff !important;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none;font-size:13.5px;">Office Depot Facility Breakroom &amp; Paper &rarr;</a>
@@ -388,13 +512,18 @@ html, body {
             </div>
 
             <div style="margin-top: 28px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
-                <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">Related Commercial Cleaning Calculators:</div>
+                <div style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">Related Commercial &amp; Residential Cleaning Calculators:</div>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="../1099-vs-w2-cleaning-labor-calculator/" class="omni-action-btn">👷 1099 vs W-2 Cleaning Labor Calculator</a>
                     <a href="../commercial-bidding-calculator/" class="omni-action-btn">🏢 Commercial Bidding Calculator</a>
-                    <a href="../on-call-rotation-generator/" class="omni-action-btn">📅 On-Call Rotation Generator</a>
-                    <a href="../hocl-bleach-dilution-calculator/" class="omni-action-btn">🧪 HOCl &amp; Bleach Dilution Calculator</a>
+                    <a href="../move-out-deep-cleaning-calculator/" class="omni-action-btn">🏠 Move-Out Deep Cleaning Calculator</a>
+                    <a href="../window-cleaning-quote-calculator/" class="omni-action-btn">🪟 Window Cleaning Quote Calculator</a>
+                    <a href="../disinfectant-oz-per-gallon-calculator/" class="omni-action-btn">🧴 Disinfectant Oz/Gal Calculator</a>
+                    <a href="../osha-secondary-container-label-generator/" class="omni-action-btn">🏷️ OSHA Secondary Label Generator</a>
+                    <a href="../sanitary-expense-accounting-calculator/" class="omni-action-btn">📊 Sanitary Expense Accounting Calculator</a>
+                    <a href="../maid-service-tip-pooling-calculator/" class="omni-action-btn">💵 Maid Service Tip Pooling Calculator</a>
+                    <a href="../cleaning-checklist/" class="omni-action-btn">✅ Cleaning Checklist Generator</a>
                     <a href="../performance-review/" class="omni-action-btn">⭐ Staff Performance Review Generator</a>
-                    <a href="../square-foot-vs-hourly/" class="omni-action-btn">⚖️ Sq Ft vs Hourly Pricing</a>
                 </div>
             </div>
         </article>
@@ -403,7 +532,7 @@ html, body {
             <div class="omni-calculator-widget omni-calculator-sticky">
 
                 <div class="omni-widget-header">
-                    <span class="omni-widget-title">Production Rate &amp; Time Estimator</span>
+                    <span class="omni-widget-title">Crew Size &amp; Time Estimator</span>
                     <span style="font-size: 11px; font-weight: 700; color: var(--omni-blue); background: var(--omni-blue-light); padding: 2px 6px; border-radius: 4px;">ISSA 612 + APPA</span>
                 </div>
 
@@ -486,6 +615,16 @@ html, body {
 
                 <div class="omni-row">
                     <div class="omni-label">
+                        <span>Max Shift Window Allowed</span>
+                    </div>
+                    <div class="omni-input-group">
+                        <input type="number" id="shiftWindowInput" class="omni-input" value="4" min="1" max="12" step="0.5" oninput="calculateTime()">
+                        <span style="display:flex; align-items:center; padding:0 8px; font-size:11px; font-weight:600; color:var(--text-muted); background:var(--bg-surface); border-left:1px solid var(--border-light);">hrs</span>
+                    </div>
+                </div>
+
+                <div class="omni-row">
+                    <div class="omni-label">
                         <span>Assigned Crew Size</span>
                     </div>
                     <div class="omni-input-group">
@@ -504,6 +643,17 @@ html, body {
                 <div class="omni-group-title">2. Workloading Output</div>
 
                 <div id="timeEstResultBox" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:12px;">
+                    <div class="omni-row result" style="margin-bottom:8px;">
+                        <div class="omni-label">
+                            <span style="font-weight: 700; color: #047857;">Cleaners needed for window</span>
+                            <span id="windowLabelText" style="font-size: 11px; color: var(--text-muted); font-weight: 600;">4.0h max shift</span>
+                        </div>
+                        <div class="omni-input-group">
+                            <input type="text" id="reqCrewDisplay" class="omni-input" readonly value="2 Cleaners">
+                            <span style="display:flex; align-items:center; padding:0 10px; font-size:12px; font-weight:700; color:#047857; background:#ecfdf5; border-left:1px solid #a7f3d0;">crew</span>
+                        </div>
+                    </div>
+
                     <div class="omni-row result" style="margin-bottom:8px;">
                         <div class="omni-label">
                             <span style="font-weight: 700; color: var(--omni-blue);">On-site clock duration</span>
@@ -598,15 +748,19 @@ html, body {
             var fixtureMin = parseFloat(document.getElementById('fixtureMinInput').value) || 3.5;
             var appaMult = parseFloat(document.getElementById('appaSelect').value) || 1.0;
             var condMult = parseFloat(document.getElementById('condSelect').value) || 1.0;
+            var shiftWindow = parseFloat(document.getElementById('shiftWindowInput').value) || 4.0;
             var crew = parseInt(document.getElementById('crewSelect').value, 10) || 2;
 
             var cleaningUnits = sqft / 1000;
             var baseFloorHours = sqft / baseRate;
             var fixtureHours = (fixtures * fixtureMin) / 60;
             var totalManHours = (baseFloorHours + fixtureHours) * appaMult * condMult;
+            var reqCrew = Math.max(1, Math.ceil(totalManHours / Math.max(0.5, shiftWindow)));
             var onSiteMinutes = (totalManHours / crew) * 60;
             var effectiveRate = totalManHours > 0 ? Math.round(sqft / totalManHours) : 0;
 
+            document.getElementById('reqCrewDisplay').value = reqCrew === 1 ? '1 Cleaner' : reqCrew + ' Cleaners';
+            document.getElementById('windowLabelText').textContent = shiftWindow.toFixed(1) + 'h max shift';
             document.getElementById('durationDisplay').value = formatHoursMinutes(onSiteMinutes);
             document.getElementById('manHoursDisplay').value = totalManHours.toFixed(2);
             document.getElementById('cuDisplay').textContent = cleaningUnits.toFixed(1) + ' CU';
@@ -627,6 +781,7 @@ html, body {
             document.getElementById('fixtureMinInput').value = 3.5;
             document.getElementById('appaSelect').value = '1.0';
             document.getElementById('condSelect').value = '1.0';
+            document.getElementById('shiftWindowInput').value = 4;
             document.getElementById('crewSelect').value = '2';
             calculateTime();
             showToast('Calculator reset to default ISSA parameters.');
@@ -634,11 +789,12 @@ html, body {
 
         function copyTimeEstimate() {
             var area = document.getElementById('areaInput').value;
+            var reqCrew = document.getElementById('reqCrewDisplay').value;
             var duration = document.getElementById('durationDisplay').value;
             var manHours = document.getElementById('manHoursDisplay').value;
             var cu = document.getElementById('cuDisplay').textContent;
             var effRate = document.getElementById('effRateDisplay').textContent;
-            var text = 'ISSA 612 CLEANING TIME ESTIMATE:\nArea: ' + area + ' ' + currentUnit + ' (' + cu + ')\nTotal Labor: ' + manHours + ' man-hours\nOn-Site Duration: ' + duration + '\nBlended Production Rate: ' + effRate + '\nURL: https://tool.purewearspace.com/tools/time-estimator/';
+            var text = 'ISSA 612 CLEANING TIME & CREW ESTIMATE:\nArea: ' + area + ' ' + currentUnit + ' (' + cu + ')\nRequired Crew: ' + reqCrew + '\nTotal Labor: ' + manHours + ' man-hours\nOn-Site Duration: ' + duration + '\nBlended Production Rate: ' + effRate + '\nURL: https://tool.purewearspace.com/tools/time-estimator/';
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(text).then(function() {
                     showToast('Time estimate copied to clipboard!');
