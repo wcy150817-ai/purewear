@@ -342,3 +342,332 @@
                     </tbody>
                 </table>
             </div>
+
+            <h2>Excel-Style Cleaning Service Margin Pivot Table by Job Type</h2>
+            <p>Not all cleaning revenue carries the same payroll load. A company generating $30,000 per month from recurring residential routes faces different travel overhead and chemical consumption than an operator billing $30,000 across commercial night janitorial or post-construction cleanups. Use the tabs below to filter illustrative unit economics across six core service verticals:</p>
+
+            <div class="service-tab-bar">
+                <button type="button" class="service-tab-btn active" onclick="filterServicePivot('all', this)">Show All Services</button>
+                <button type="button" class="service-tab-btn" onclick="filterServicePivot('recurring', this)">Recurring Contracts</button>
+                <button type="button" class="service-tab-btn" onclick="filterServicePivot('specialty', this)">High-Margin Specialty</button>
+            </div>
+
+            <div class="excel-table-wrap">
+                <table class="excel-pivot-table" id="servicePivotTable">
+                    <thead>
+                        <tr>
+                            <th>Service Category</th>
+                            <th class="num">Illustrative Ticket</th>
+                            <th class="num">Loaded Labor %</th>
+                            <th class="num">Chemicals %</th>
+                            <th class="num">Gross Margin</th>
+                            <th class="num">Target Net Margin</th>
+                            <th>Cash Flow Profile</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-category="recurring">
+                            <td><strong>Residential Recurring</strong> (Bi-Weekly / Weekly)</td>
+                            <td class="num">$160 &ndash; $240</td>
+                            <td class="num">40% &ndash; 46%</td>
+                            <td class="num">2.5% &ndash; 3.5%</td>
+                            <td class="num">50.5% &ndash; 57.5%</td>
+                            <td class="num"><span class="badge-mid">16% &ndash; 24%</span></td>
+                            <td>High (card-on-file recurring revenue)</td>
+                        </tr>
+                        <tr data-category="recurring">
+                            <td><strong>Commercial Janitorial</strong> (Offices / Suites)</td>
+                            <td class="num">$850 &ndash; $4,500/mo</td>
+                            <td class="num">46% &ndash; 54%</td>
+                            <td class="num">3.0% &ndash; 4.5%</td>
+                            <td class="num">41.5% &ndash; 51.0%</td>
+                            <td class="num"><span class="badge-low">12% &ndash; 18%</span></td>
+                            <td>Very High (annual contracts, Net-30 terms)</td>
+                        </tr>
+                        <tr data-category="specialty">
+                            <td><strong>Move-In / Move-Out Deep Clean</strong></td>
+                            <td class="num">$380 &ndash; $650</td>
+                            <td class="num">36% &ndash; 43%</td>
+                            <td class="num">4.0% &ndash; 5.0%</td>
+                            <td class="num">52.0% &ndash; 60.0%</td>
+                            <td class="num"><span class="badge-high">25% &ndash; 34%</span></td>
+                            <td>Moderate (seasonal peaks at month-end)</td>
+                        </tr>
+                        <tr data-category="specialty">
+                            <td><strong>Post-Construction Cleanup</strong> (Rough &amp; Final)</td>
+                            <td class="num">$1,200 &ndash; $8,000</td>
+                            <td class="num">32% &ndash; 39%</td>
+                            <td class="num">5.0% &ndash; 6.5%</td>
+                            <td class="num">54.5% &ndash; 63.0%</td>
+                            <td class="num"><span class="badge-high">32% &ndash; 45%</span></td>
+                            <td>Variable (GC Net-60 retainage delays)</td>
+                        </tr>
+                        <tr data-category="specialty">
+                            <td><strong>Carpet &amp; Hard-Floor Restoration</strong></td>
+                            <td class="num">$220 &ndash; $600</td>
+                            <td class="num">28% &ndash; 35%</td>
+                            <td class="num">4.0% &ndash; 5.0%</td>
+                            <td class="num">60.0% &ndash; 68.0%</td>
+                            <td class="num"><span class="badge-high">30% &ndash; 44%</span></td>
+                            <td>Moderate (higher equipment cap-ex)</td>
+                        </tr>
+                        <tr data-category="recurring">
+                            <td><strong>Medical &amp; Dental Suite Sanitation</strong></td>
+                            <td class="num">$1,400 &ndash; $3,800/mo</td>
+                            <td class="num">43% &ndash; 49%</td>
+                            <td class="num">4.5% &ndash; 5.5%</td>
+                            <td class="num">45.5% &ndash; 52.5%</td>
+                            <td class="num"><span class="badge-mid">20% &ndash; 28%</span></td>
+                            <td>High (OSHA/EPA compliance lowers churn)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Step-by-Step Cleaning Company Profit Tracking System</h2>
+            <p>Many small operators check their business bank balance on Friday afternoon and assume whatever remains after payroll is profit—only to get blindsided by quarterly tax deposits, annual general-liability renewals, or a three-paycheck calendar month. Reliable <strong>cleaning company profit tracking</strong> relies on four monthly habits:</p>
+            <ol>
+                <li><strong>Separate Field COGS from Overhead in Your Chart of Accounts:</strong> Put cleaner hourly wages, paid inter-site travel time (required for W-2 employees under FLSA 29 CFR 785.38), employer payroll taxes, Workers&apos; Comp, and diluted chemicals inside Cost of Goods Sold. Keep office admin pay, software, marketing, and insurance inside Operating Overhead. Use our <a href="/tools/sanitary-expense-accounting-calculator/" style="color:#1e3a8a; font-weight:600; text-decoration:underline;">Janitorial Chart of Accounts &amp; Sanitary Supply Expense Ratio Calculator</a> and <a href="/tools/expense-tracker/" style="color:#1e3a8a; font-weight:600; text-decoration:underline;">Cleaning Income &amp; Expense Ledger</a> to structure every category cleanly.</li>
+                <li><strong>Track Realized Dollars per Cleaner Man-Hour Weekly:</strong> Divide gross job revenue by total clocked technician hours (including setup and drive time between houses). If your target loaded bill rate is $52 per man-hour and a bi-weekly house yields only $34 per man-hour due to clutter creep, either recalibrate scope with our <a href="/tools/cleaning-quote-calculator/" style="color:#1e3a8a; font-weight:600; text-decoration:underline;">Residential &amp; Commercial Cleaning Quote Calculator</a> or send a formal rate-adjustment notice.</li>
+                <li><strong>Isolate Customer Tips from Wage Ratios:</strong> Client gratuities passed through to cleaners are not company revenue and cannot subsidize minimum-wage obligations unless tip-credit rules apply—split crew tips accurately with our <a href="/tools/maid-service-tip-pooling-calculator/" style="color:#1e3a8a; font-weight:600; text-decoration:underline;">Maid Service Tip Pooling Calculator</a> so payroll percentages stay clean.</li>
+                <li><strong>Budget on Accrual Rather Than Bi-Weekly Cash Spikes:</strong> Two months every year contain three bi-weekly payroll runs instead of two. Converting bi-weekly payroll to a monthly accrual (`Bi-Weekly Payroll × 26 ÷ 12`) prevents artificial profit swings on your monthly P&amp;L.</li>
+            </ol>
+
+            <h2>4 Silent Leaks That Push Payroll Percentage Past 52%</h2>
+            <ul>
+                <li><strong>1. Unbillable Windshield Time:</strong> Two cleaners spending 45 minutes driving between three scattered zip codes burn 1.5 paid man-hours producing $0 in billable revenue, plus IRS mileage reimbursement ($0.70/mile benchmark—see our <a href="/tools/mileage-reimbursement-calculator/" style="color:#1e3a8a; font-weight:600; text-decoration:underline;">Cleaning Vehicle Mileage Calculator</a>). Tight geographic route clustering typically cuts payroll ratio by 4% to 7%.</li>
+                <li><strong>2. Under-Priced Commercial Square-Foot Bids:</strong> Bidding commercial offices at a flat $0.08/sq ft without counting restroom fixtures or trash pulls forces crews over budget. Verify man-hours first with our <a href="/tools/commercial-bidding-calculator/" style="color:#1e3a8a; font-weight:600; text-decoration:underline;">Commercial Janitorial Bidding Calculator</a> and <a href="/tools/time-estimator/" style="color:#1e3a8a; font-weight:600; text-decoration:underline;">ISSA 612 Cleaning Time Estimator</a>.</li>
+                <li><strong>3. Re-Cleans &amp; Unstructured Callback Labor:</strong> Every unpaid quality callback doubles direct labor on that ticket, pushing a 42% payroll job to 84% instantly.</li>
+                <li><strong>4. Free-Pour Chemical Waste:</strong> Mixing disinfectant concentrates at 1:16 instead of 1:64 or 1:128 quadruples chemical COGS—audit bottle costs in our <a href="/tools/disinfectant-oz-per-gallon-calculator/" style="color:#1e3a8a; font-weight:600; text-decoration:underline;">Disinfectant Oz-Per-Gallon Dilution Calculator</a>.</li>
+            </ul>
+
+            <div class="omni-formula-box">
+                <strong>Minimum Billable Man-Hour Rate Formula (Illustrative Example):</strong><br>
+                Target Hourly Bill Rate = (Loaded Hourly Wage + Hourly Supply Allowance) &divide; (1 &minus; [Overhead % + Target Net Margin %])<br><br>
+                <em>Illustrative Calculation:</em> If base cleaner pay is $19.00/hr with an 18% employer tax/Workers&apos; Comp burden ($22.42/hr loaded) plus $1.30/hr in supplies, and you target 18% fixed overhead and 20% net operating profit:<br>
+                &bull; Minimum Billable Rate = ($22.42 + $1.30) &divide; (1 &minus; 0.38) = $23.72 &divide; 0.62 = <strong>$38.26 per clocked man-hour</strong> (or ~$45.00/hr on-site after allowing 15% route travel time).
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+            <details class="omni-faq-item">
+                <summary>What is the benchmark payroll percentage of revenue for a house cleaning business?</summary>
+                <p>For W-2 residential maid services, direct cleaner base wages typically target 32% to 39% of gross revenue, while fully loaded field payroll (including employer FICA at 7.65%, FUTA, SUTA, and Workers&apos; Compensation insurance) should stay between 38% and 48% of gross revenue. Adding 6% to 10% for office or dispatcher wages brings total company-wide payroll to roughly 46% to 55% of revenue.</p>
+            </details>
+            <details class="omni-faq-item">
+                <summary>How does commercial janitorial payroll percentage differ from residential maid services?</summary>
+                <p>Commercial office janitorial contracts typically run a higher direct loaded field payroll ratio—around 45% to 55% of revenue—because evening routes have minimal inter-site drive time, lower marketing churn, and larger monthly invoice sizes, allowing healthy 12% to 18% net operating profit even with tighter gross margins.</p>
+            </details>
+            <details class="omni-faq-item">
+                <summary>What is a normal net profit margin for a cleaning company?</summary>
+                <p>Recurring residential cleaning companies commonly target 15% to 24% net operating profit after administrative overhead, whereas multi-crew commercial janitorial contractors typically realize 12% to 18% net profit and specialty post-construction or restorative floor-care jobs can reach 30% to 45% net margin per project.</p>
+            </details>
+            <details class="omni-faq-item">
+                <summary>How do you track cleaning company profit accurately every month?</summary>
+                <p>Accurate cleaning company profit tracking separates Cost of Goods Sold (direct technician wages, employer payroll taxes, Workers&apos; Comp, paid drive time, and diluted chemical usage) from fixed Operating Overhead (office/admin salaries, CRM software, general liability insurance, fleet leases, and client acquisition marketing), reconciled monthly on an accrual P&amp;L.</p>
+            </details>
+            <details class="omni-faq-item">
+                <summary>Why does quoting only base hourly wage ruin cleaning profit margins?</summary>
+                <p>Under IRS Publication 15 rules, every W-2 dollar incurs 7.65% employer FICA (6.2% Social Security + 1.45% Medicare) plus FUTA (0.6% net on the first $7,000), state unemployment (SUTA), and custodial Workers&apos; Compensation—typically adding 14% to 22% above base hourly pay before paid travel time is even counted.</p>
+            </details>
+
+            <h2>Sources &amp; Accounting Verification Notes</h2>
+            <ul>
+                <li><strong>Federal Payroll Tax Rates:</strong> Employer FICA (6.2% Social Security + 1.45% Medicare = 7.65%) and FUTA (6.0% gross / 0.6% net after 5.4% state credit on the first $7,000 of annual wages) per IRS Publication 15 (Circular E) and Form 940 Instructions (`irs.gov`).</li>
+                <li><strong>Drive-Time Compensability:</strong> Travel between job sites during the workday is compensable hours worked for non-exempt W-2 cleaners under U.S. Department of Labor FLSA 29 CFR &sect; 785.38.</li>
+                <li><strong>Target Margin &amp; Labor Benchmarks:</strong> Service-line labor ratios (38%–48% residential loaded field payroll; 45%–55% commercial janitorial) represent illustrative operational targets aligned with standard GAAP service contribution accounting; actual Workers&apos; Compensation and SUTA rates depend on state NCCI class codes and company claims history.</li>
+            </ul>
+        </article>
+
+        <aside class="omni-calculator-aside">
+            <div class="omni-calculator-sticky">
+                <div class="omni-calculator-widget">
+                    <div class="omni-widget-header">
+                        <h3>Payroll % &amp; Profit Calculator</h3>
+                        <p style="font-size:0.8rem; color:#6b7280; margin:0;">Real-time custodial P&amp;L &amp; labor benchmark</p>
+                    </div>
+
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="businessModel">Service Model Benchmark</label>
+                        <select id="businessModel" class="omni-input">
+                            <option value="resi" selected>Residential Maid Service (38–48% Loaded Target)</option>
+                            <option value="comm">Commercial Janitorial (45–55% Loaded Target)</option>
+                        </select>
+                    </div>
+
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="revenue">Monthly Gross Revenue ($)</label>
+                        <input type="number" id="revenue" class="omni-input" value="25000">
+                    </div>
+
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="labor">Direct Cleaner Base Wages ($)</label>
+                        <input type="number" id="labor" class="omni-input" value="9200">
+                    </div>
+
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="burdenPct">Employer Tax &amp; Workers&apos; Comp Burden (%)</label>
+                        <input type="number" id="burdenPct" class="omni-input" value="18">
+                    </div>
+
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="supplies">Direct Chemicals &amp; Supplies ($)</label>
+                        <input type="number" id="supplies" class="omni-input" value="750">
+                    </div>
+
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="adminPay">Office / Dispatcher Payroll ($)</label>
+                        <input type="number" id="adminPay" class="omni-input" value="1800">
+                    </div>
+
+                    <div class="omni-input-group">
+                        <label class="omni-label" for="overhead">Insurance, Fleet, Software &amp; Ads ($)</label>
+                        <input type="number" id="overhead" class="omni-input" value="2400">
+                    </div>
+
+                    <button type="button" id="calcBtn" onclick="calculateMargins()" style="width:100%; margin-top:10px; padding:11px; border:none; border-radius:6px; background:#1e3a8a; color:#ffffff; font-weight:700; cursor:pointer; font-size:0.9rem;">Calculate Payroll % &amp; Profit Margin &rarr;</button>
+
+                    <div id="calcResultBox" style="margin-top: 16px; padding: 14px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 0.95rem; color:#1e3a8a;">Monthly P&amp;L &amp; Payroll Audit</h4>
+
+                        <div class="omni-metric-row">
+                            <span>Base Field Wage % of Revenue:</span>
+                            <span class="omni-metric-val" id="baseWageRatioDisplay">0.0%</span>
+                        </div>
+                        <div class="omni-metric-row">
+                            <span>Loaded Field Payroll % (COGS):</span>
+                            <span class="omni-metric-val" id="laborRatioDisplay">0.0%</span>
+                        </div>
+                        <div class="omni-metric-row">
+                            <span>All-In Payroll % (Field + Admin):</span>
+                            <span class="omni-metric-val" id="allPayrollRatioDisplay">0.0%</span>
+                        </div>
+                        <div class="omni-metric-row">
+                            <span>Total Direct Costs (COGS):</span>
+                            <span class="omni-metric-val" id="cogsDisplay">$0.00</span>
+                        </div>
+                        <div class="omni-metric-row">
+                            <span>Gross Profit Margin:</span>
+                            <span class="omni-metric-val" id="grossMarginDisplay">0.0%</span>
+                        </div>
+                        <div class="omni-metric-row" style="background:#f0fdf4; margin:4px -8px -4px -8px; padding:8px 8px; border-radius:4px;">
+                            <span style="font-weight:700; color:#166534;">Net Operating Profit:</span>
+                            <span class="omni-metric-val" style="color:#166534;" id="netProfitDollars">$0.00</span>
+                        </div>
+                        <div class="omni-metric-row" style="border-bottom:none; padding-top:10px;">
+                            <span style="font-weight:700;">Net Profit Margin:</span>
+                            <span class="omni-metric-val" style="font-size:1.1rem;" id="netMarginDisplay">0.0%</span>
+                        </div>
+                        <div style="margin-top:8px; text-align:center; font-size:0.82rem;">
+                            Payroll Benchmark: <span id="payrollStatusBadge" class="badge-high">---</span>
+                        </div>
+                        <div style="margin-top:6px; text-align:center; font-size:0.82rem;">
+                            Net Margin Status: <span id="healthStatusBadge" class="badge-high">---</span>
+                        </div>
+                    </div>
+
+                    <div class="omni-affiliate-box">
+                        <p style="font-size:0.8rem; color:#4b5563; margin:0 0 8px 0;">Automate W-2 cleaner FICA/FUTA filings &amp; supplies:</p>
+                        <a href="https://bbux.me/EarLmEW7" target="_blank" rel="sponsored noopener" style="display:inline-block; width:100%; margin-bottom:8px; text-decoration:none !important; background:#1e3a8a !important; color:#ffffff !important; padding:10px; border-radius:6px; font-weight:700; font-size:0.84rem;">Explore Gusto Automated Payroll &rarr;</a>
+                        <a href="https://bbux.me/v9xB3q0hg" target="_blank" rel="sponsored noopener" style="display:inline-block; width:100%; text-decoration:none !important; background:#111111 !important; color:#ffffff !important; padding:10px; border-radius:6px; font-weight:700; font-size:0.84rem;">Shop Wholesale Cleaning Supplies &rarr;</a>
+                    </div>
+
+                    <div class="omni-footer-actions">
+                        <button type="button" class="omni-action-btn omni-print-btn" onclick="window.print()">Print / Save P&amp;L PDF</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        function calculateMargins() {
+            const model = document.getElementById('businessModel').value;
+            const revenue = parseFloat(document.getElementById('revenue').value) || 0;
+            const laborBase = parseFloat(document.getElementById('labor').value) || 0;
+            const burdenPct = parseFloat(document.getElementById('burdenPct').value) || 0;
+            const supplies = parseFloat(document.getElementById('supplies').value) || 0;
+            const adminPay = parseFloat(document.getElementById('adminPay').value) || 0;
+            const overhead = parseFloat(document.getElementById('overhead').value) || 0;
+
+            const loadedFieldLabor = laborBase * (1 + (burdenPct / 100));
+            const loadedAdminLabor = adminPay * (1 + (burdenPct / 100));
+            const cogs = loadedFieldLabor + supplies;
+            const fixedExpenses = loadedAdminLabor + overhead;
+            const totalExpenses = cogs + fixedExpenses;
+
+            let baseWageRatio = 0;
+            let loadedLaborRatio = 0;
+            let allPayrollRatio = 0;
+            let grossMargin = 0;
+            let netMargin = 0;
+            const netDollars = revenue - totalExpenses;
+
+            if (revenue > 0) {
+                baseWageRatio = (laborBase / revenue) * 100;
+                loadedLaborRatio = (loadedFieldLabor / revenue) * 100;
+                allPayrollRatio = ((loadedFieldLabor + loadedAdminLabor) / revenue) * 100;
+                grossMargin = ((revenue - cogs) / revenue) * 100;
+                netMargin = (netDollars / revenue) * 100;
+            }
+
+            document.getElementById('baseWageRatioDisplay').textContent = baseWageRatio.toFixed(1) + '%';
+            document.getElementById('laborRatioDisplay').textContent = loadedLaborRatio.toFixed(1) + '%';
+            document.getElementById('allPayrollRatioDisplay').textContent = allPayrollRatio.toFixed(1) + '%';
+            document.getElementById('cogsDisplay').textContent = '$' + cogs.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('grossMarginDisplay').textContent = grossMargin.toFixed(1) + '%';
+            document.getElementById('netProfitDollars').textContent = '$' + netDollars.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('netMarginDisplay').textContent = netMargin.toFixed(1) + '%';
+
+            const pBadge = document.getElementById('payrollStatusBadge');
+            const maxTarget = model === 'comm' ? 55 : 48;
+            const lowTarget = model === 'comm' ? 45 : 38;
+            if (loadedLaborRatio <= lowTarget) {
+                pBadge.className = 'badge-high';
+                pBadge.textContent = 'Lean Labor (<=' + lowTarget + '%)';
+            } else if (loadedLaborRatio <= maxTarget) {
+                pBadge.className = 'badge-mid';
+                pBadge.textContent = 'On Target (' + lowTarget + '-' + maxTarget + '%)';
+            } else {
+                pBadge.className = 'badge-low';
+                pBadge.textContent = 'Over Benchmark (>' + maxTarget + '%)';
+            }
+
+            const badge = document.getElementById('healthStatusBadge');
+            if (netMargin >= 20) {
+                badge.className = 'badge-high';
+                badge.textContent = 'Strong Net Margin (>=20%)';
+            } else if (netMargin >= 12) {
+                badge.className = 'badge-mid';
+                badge.textContent = 'Healthy Range (12-20%)';
+            } else {
+                badge.className = 'badge-low';
+                badge.textContent = 'Margin Squeeze (<12%)';
+            }
+        }
+
+        function filterServicePivot(category, btnEl) {
+            const buttons = document.querySelectorAll('.service-tab-btn');
+            buttons.forEach(function (btn) { btn.classList.remove('active'); });
+            if (btnEl) { btnEl.classList.add('active'); }
+
+            const rows = document.querySelectorAll('#servicePivotTable tbody tr');
+            rows.forEach(function (row) {
+                if (category === 'all' || row.getAttribute('data-category') === category) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', function () {
+            const inputs = document.querySelectorAll('.omni-input');
+            inputs.forEach(function (input) {
+                input.addEventListener('input', calculateMargins);
+                input.addEventListener('change', calculateMargins);
+            });
+            calculateMargins();
+        });
+    </script>
+</body>
+</html>

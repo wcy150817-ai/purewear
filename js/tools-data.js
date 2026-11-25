@@ -193,9 +193,9 @@ const TOOLS_DATA = [
     },
     {
         id: 'profit-margin-calculator',
-        title: 'Cleaning Business Profit Margin Calculator',
+        title: 'Cleaning Business Payroll % & Profit Margin Calculator (2026)',
         icon: '📈',
-        desc: 'Calculate total expenses, gross profit, and net profit margins to assess the financial health of your cleaning business.',
+        desc: 'Calculate loaded field payroll percentage of revenue (wages + FICA, FUTA, SUTA & Workers\' Comp), COGS, gross margin, and net operating profit.',
         category: 'pricing',
         tag: 'Finance',
         featured: true,
