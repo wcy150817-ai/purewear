@@ -310,6 +310,16 @@ const TOOLS_DATA = [
         tag: 'New',
         featured: true,
         url: '/tools/move-out-deep-cleaning-calculator/'
+    },
+    {
+        id: 'everyday-stain-cleaning-cheat-sheet',
+        title: 'Everyday Household Stain & Surface Cleaning Cheat Sheet: Coffee, Wine, Grease & Marble Care (2026)',
+        icon: '✨',
+        desc: 'Interactive stain and countertop cleaner picker for everyday homes: match pH-safe cleaners to marble, quartz, hardwood, and fabrics using ACI and Natural Stone Institute chemistry.',
+        category: 'safety',
+        tag: 'Home Guide',
+        featured: true,
+        url: '/tools/everyday-stain-cleaning-cheat-sheet/'
     }
 ];
 
